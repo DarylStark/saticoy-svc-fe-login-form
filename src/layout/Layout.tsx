@@ -1,9 +1,10 @@
+import LoginForm from '../widgets/LoginForm'
 import './Layout.css'
 
 function Layout() {
   return (
-    <div id='page'>
-      uw text hier
+    <div id='layout'>
+      <LoginForm />
     </div>
   )
 }
