@@ -1,0 +1,15 @@
+div.loginform {
+    @apply w-full;
+    @apply bg-transparent;
+
+    h1 {
+        @text-3xl;
+    }
+}
+
+@media (min-width: 768px) {
+    div.loginform {
+        max-width: 100%;
+        width: 650px;
+    }
+}

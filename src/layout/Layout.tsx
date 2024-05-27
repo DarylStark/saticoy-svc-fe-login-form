@@ -1,5 +1,5 @@
 import LoginForm from '../widgets/LoginForm'
-import './Layout.css'
+import './Layout.scss'
 
 function Layout() {
   return (

@@ -1,7 +1,19 @@
-import './Button.css'
+import './Button.scss'
+import { ReactNode } from 'react';
+import { IconType } from 'react-icons';
 
-function Button() {
-    return <button className='button'>Button</button>
+interface ButtonProps {
+    children: ReactNode;
+    icon?: IconType;
 }
 
-export default Button
+function Button({ children, icon: Icon }: ButtonProps) {
+    return (
+        <button className='button'>
+            {Icon && <Icon />}
+            {children}
+        </button>
+    );
+}
+
+export default Button;
