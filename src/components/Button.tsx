@@ -10,8 +10,8 @@ interface ButtonProps {
 function Button({ children, icon: Icon }: ButtonProps) {
     return (
         <button className='button'>
-            {Icon && <Icon />}
-            {children}
+            {Icon && <div className='icon'><Icon /></div>}
+            <div className='text'>{children}</div>
         </button>
     );
 }
