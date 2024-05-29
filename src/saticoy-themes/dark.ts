@@ -4,7 +4,7 @@ export default createTheme({
     palette: {
         mode: 'dark',
         background: {
-            default: '#1a2333'
+            default: '#1b2635'
         },
         primary: {
             main: '#3c6aa6',
@@ -14,7 +14,7 @@ export default createTheme({
         MuiPaper: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#1a2333'
+                    backgroundColor: '#233044'
                 },
             },
         },
