@@ -1,6 +1,6 @@
-import LoginForm from '../widgets/LoginForm'
+import LoginForm from '../organisms/LoginForm'
 import './Layout.scss'
-import DarkModeToggle from '../components/DarkModeToggle'
+import DarkModeToggle from '../atoms/DarkModeToggle'
 
 function Layout() {
   return (
