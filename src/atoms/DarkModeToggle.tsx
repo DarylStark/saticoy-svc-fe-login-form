@@ -1,13 +1,14 @@
 import './DarkModeToggle.scss'
 import { MdOutlineDarkMode } from "react-icons/md";
 
-function ToggleDarkMode() {
-    document.body.classList.toggle("dark");
+// Props
+interface DarkModeToggleProps {
+    toggle_theme: () => void
 }
 
-function DarkModeToggle() {
+function DarkModeToggle({ toggle_theme }: DarkModeToggleProps) {
     return (
-        <button onClick={ToggleDarkMode} className='dark_mode_toggle'>
+        <button onClick={toggle_theme} className='dark_mode_toggle'>
             <MdOutlineDarkMode />
         </button>
     );
