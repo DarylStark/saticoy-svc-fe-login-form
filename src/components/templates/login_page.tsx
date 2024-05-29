@@ -12,9 +12,9 @@ function Layout({ toggle_theme }: LayoutProps) {
   return (
     <div id='layout'>
       <Header toggle_theme={toggle_theme} />
-      <body>
+      <main>
         <LoginForm />
-      </body>
+      </main>
     </div>
   )
 }
