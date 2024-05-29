@@ -1,5 +1,5 @@
 import './LoginForm.scss'
-import Button from '../components/Button'
+import Button from '../atoms/Button'
 
 import { FaUser } from 'react-icons/fa';
 
