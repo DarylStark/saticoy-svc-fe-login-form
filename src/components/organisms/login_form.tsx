@@ -9,11 +9,20 @@ import TextField from '@mui/material/TextField';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyIcon from '@mui/icons-material/Key';
 
+import { useEffect, useRef } from 'react';
+
 function LoginForm() {
+    const username_ref = useRef();
+    useEffect(() => {
+        if (username_ref.current)
+            username_ref.current.focus();
+    });
+
     return <>
         <form>
             <h1>Saticoy</h1>
             <TextField
+                inputRef={username_ref}
                 id="username"
                 label='Username'
                 variant='outlined'
