@@ -1,7 +1,18 @@
+import SettingsMenu from './settings_menu';
 import './header.scss';
 
-function Header() {
-    return (<header>Hier komt de header</header>)
+// Props
+interface HeaderProps {
+    toggle_theme: () => void
 }
+
+
+function Header({ toggle_theme }: HeaderProps) {
+    return (
+        <header className='header'>
+            <SettingsMenu toggle_theme={toggle_theme} />
+        </header>
+    )
+};
 
 export default Header;

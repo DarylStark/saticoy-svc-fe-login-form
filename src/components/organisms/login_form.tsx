@@ -1,34 +1,54 @@
 import './login_form.scss'
-import { FaUser } from 'react-icons/fa';
-
-import Paper from '@mui/material/Paper';
+import LoginIcon from '@mui/icons-material/Login';
 
 import Button from '@mui/material/Button';
-import CardContent from '@mui/material/CardContent';
 
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
 
 function LoginForm() {
     return <>
-        <Paper>
+        <form>
             <h1>Saticoy</h1>
-            <CardContent>
-                <form>
-                    <div className='field'>
-                        <label htmlFor='username'>Username
-                            <input id='username' type='text' />
-                        </label>
-                    </div>
-                    <div className='field'>
-                        <label htmlFor='password'>Password
-                            <input id='password' type='password' />
-                        </label>
-                    </div>
-                    <div className='button_bar'>
-                        <Button color='primary' variant='contained' startIcon={<FaUser />} size='large'>Log in</Button>
-                    </div>
-                </form>
-            </CardContent>
-        </Paper>
+            <TextField
+                id="username"
+                label='Username'
+                variant='outlined'
+                autoComplete='off'
+                placeholder='Username'
+                className='w-full'
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <AccountCircleIcon />
+                        </InputAdornment>
+                    ),
+                }}
+            />
+
+            <TextField
+                id="password"
+                label='Password'
+                variant='outlined'
+                type='password'
+                autoComplete='off'
+                placeholder='Password'
+                className='w-full'
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <KeyIcon />
+                        </InputAdornment>
+                    ),
+                }}
+            />
+
+
+            <Button color='primary' variant='contained' startIcon={<LoginIcon />} size='large'>Log in</Button>
+        </form >
     </>
 }
 
