@@ -11,6 +11,8 @@ import KeyIcon from '@mui/icons-material/Key';
 
 import { useEffect, useRef } from 'react';
 
+import Paper from '@mui/material/Paper';
+
 function LoginForm() {
     const username_ref = useRef();
     useEffect(() => {
@@ -19,45 +21,47 @@ function LoginForm() {
     });
 
     return <>
-        <form>
-            <h1>Saticoy</h1>
-            <TextField
-                inputRef={username_ref}
-                id="username"
-                label='Username'
-                variant='outlined'
-                autoComplete='off'
-                placeholder='Username'
-                className='w-full'
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <AccountCircleIcon />
-                        </InputAdornment>
-                    ),
-                }}
-            />
+        <Paper variant='outlined' square={true}>
+            <form>
+                <h1>Saticoy</h1>
+                <TextField
+                    inputRef={username_ref}
+                    id="username"
+                    label='Username'
+                    variant='outlined'
+                    autoComplete='off'
+                    placeholder='Username'
+                    className='w-full'
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <AccountCircleIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
 
-            <TextField
-                id="password"
-                label='Password'
-                variant='outlined'
-                type='password'
-                autoComplete='off'
-                placeholder='Password'
-                className='w-full'
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <KeyIcon />
-                        </InputAdornment>
-                    ),
-                }}
-            />
+                <TextField
+                    id="password"
+                    label='Password'
+                    variant='outlined'
+                    type='password'
+                    autoComplete='off'
+                    placeholder='Password'
+                    className='w-full'
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <KeyIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
 
 
-            <Button color='primary' variant='contained' startIcon={<LoginIcon />} size='large'>Log in</Button>
-        </form >
+                <Button color='primary' variant='contained' startIcon={<LoginIcon />} size='large'>Log in</Button>
+            </form>
+        </Paper>
     </>
 }
 
