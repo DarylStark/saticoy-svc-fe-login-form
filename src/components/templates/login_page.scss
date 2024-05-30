@@ -1,0 +1,7 @@
+#layout {
+    @apply flex flex-col h-[100dvh];
+
+    main {
+        @apply flex-grow flex items-center sm:justify-center flex-col;
+    }
+}

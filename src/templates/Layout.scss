@@ -1,7 +1,0 @@
-div#layout {
-    @apply flex flex-col h-[100dvh] items-center justify-center;
-
-    .bottom-right {
-        @apply absolute bottom-4 right-4;
-    }
-}
