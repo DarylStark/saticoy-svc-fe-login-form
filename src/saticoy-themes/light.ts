@@ -1,6 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-
-export default createTheme({
+// TODO: rewrite this for Ant Design
+export default {
     palette: {
         mode: 'light',
         background: {
@@ -16,4 +15,4 @@ export default createTheme({
             },
         },
     },
-});
+};
