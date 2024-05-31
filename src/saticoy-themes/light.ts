@@ -17,4 +17,7 @@ export default {
     //     },
     // },
     algorithm: theme.defaultAlgorithm,
+    token: {
+        motion: false
+    }
 };

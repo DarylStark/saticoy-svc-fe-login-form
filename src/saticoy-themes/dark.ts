@@ -20,4 +20,8 @@ export default {
     //     },
     // },
     algorithm: theme.darkAlgorithm,
+    token: {
+        motion: false,
+        colorBgContainer: '#233044'
+    }
 };
