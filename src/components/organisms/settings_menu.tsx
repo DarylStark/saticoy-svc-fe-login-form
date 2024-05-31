@@ -23,7 +23,7 @@ export default function AccountMenu({ toggle_theme }: AccountMenuProps) {
 
     const menu = (
         <Menu selectable={false} mode='vertical' onClick={handle_menu_click}>
-            <Menu.Item key={'toggle_dark_mode'} icon={<FaGear />}>
+            <Menu.Item key='toggle_dark_mode' icon={<FaGear />}>
                 Toggle dark mode
                 <Switch size="small" defaultChecked />
             </Menu.Item>
