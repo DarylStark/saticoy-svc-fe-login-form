@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dropdown, Menu, MenuProps, Popover } from 'antd';
+import { Menu, Popover, Switch } from 'antd';
 import { FaGear } from "react-icons/fa6";
 import { ClickParam } from 'antd/lib/menu';
 
@@ -15,7 +15,6 @@ export default function AccountMenu({ toggle_theme }: AccountMenuProps) {
         if (param.key == 'toggle_dark_mode') {
             toggle_theme();
         }
-        set_open(false);
     };
 
     const handle_open_change = (newOpen: boolean) => {
@@ -24,7 +23,10 @@ export default function AccountMenu({ toggle_theme }: AccountMenuProps) {
 
     const menu = (
         <Menu selectable={false} mode='vertical' onClick={handle_menu_click}>
-            <Menu.Item key={'toggle_dark_mode'}>Toggle dark mode</Menu.Item>
+            <Menu.Item key={'toggle_dark_mode'} icon={<FaGear />}>
+                Toggle dark mode
+                <Switch size="small" defaultChecked />
+            </Menu.Item>
         </Menu>
     );
 
