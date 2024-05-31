@@ -3,5 +3,6 @@
 
     main {
         @apply flex-grow flex items-center sm:justify-center flex-col;
+        @apply bg-blue-200;
     }
 }
