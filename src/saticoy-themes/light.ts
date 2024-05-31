@@ -1,18 +1,20 @@
-// TODO: rewrite this for Ant Design
+import { theme } from 'antd';
+
 export default {
-    palette: {
-        mode: 'light',
-        background: {
-            default: '#f7f9fc'
-        },
-    },
-    components: {
-        MuiPaper: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: '#fff',
-                },
-            },
-        },
-    },
+    // palette: {
+    //     mode: 'light',
+    //     background: {
+    //         default: '#f7f9fc'
+    //     },
+    // },
+    // components: {
+    //     MuiPaper: {
+    //         styleOverrides: {
+    //             root: {
+    //                 backgroundColor: '#fff',
+    //             },
+    //         },
+    //     },
+    // },
+    algorithm: theme.defaultAlgorithm,
 };
