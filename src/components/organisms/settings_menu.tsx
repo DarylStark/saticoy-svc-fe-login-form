@@ -1,60 +1,38 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import ContrastIcon from '@mui/icons-material/Contrast';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-
+import { useState } from 'react';
+import { Menu, Popover, Switch } from 'antd';
+import { FaGear } from "react-icons/fa6";
+import { ClickParam } from 'antd/lib/menu';
 
 // Props
-interface SettingsMenuProps {
-    toggle_theme: () => void
+interface AccountMenuProps {
+    toggle_theme: () => void;
 }
 
-// Component
-export default function AccountMenu({ toggle_theme }: SettingsMenuProps) {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
+export default function AccountMenu({ toggle_theme }: AccountMenuProps) {
+    const [open, set_open] = useState(false);
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
+    const handle_menu_click = (param: ClickParam) => {
+        if (param.key == 'toggle_dark_mode') {
+            toggle_theme();
+        }
     };
 
-    const handleClose = () => {
-        setAnchorEl(null);
+    const handle_open_change = (newOpen: boolean) => {
+        set_open(newOpen);
     };
+
+    const menu = (
+        <Menu selectable={false} mode='vertical' onClick={handle_menu_click}>
+            <Menu.Item key='toggle_dark_mode' icon={<FaGear />}>
+                Toggle dark mode
+                <Switch size="small" defaultChecked />
+            </Menu.Item>
+        </Menu>
+    );
 
     return (
-        <>
-            <Box>
-                <Tooltip title="Settings">
-                    <IconButton
-                        onClick={handleClick}
-                        size="medium"
-                    >
-                        <SettingsIcon fontSize="inherit" />
-                    </IconButton>
-                </Tooltip>
-            </Box>
-            <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                onClick={handleClose}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-                <MenuItem onClick={toggle_theme}>
-                    <ListItemIcon>
-                        <ContrastIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText>Toggle theme style</ListItemText>
-                </MenuItem>
-            </Menu>
-        </>
+        <Popover content={menu} placement="bottomRight" arrow={false} trigger='click' open={open} onOpenChange={handle_open_change}>
+            <FaGear />
+        </Popover>
     );
 }

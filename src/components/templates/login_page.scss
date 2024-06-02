@@ -2,6 +2,7 @@
     @apply flex flex-col h-[100dvh];
 
     main {
-        @apply flex-grow flex items-center sm:justify-center flex-col;
+        @apply flex-grow flex items-center justify-center flex-col;
+        padding: 24px;
     }
 }
