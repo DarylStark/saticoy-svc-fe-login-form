@@ -1,11 +1,11 @@
 import EventBus from '../src/eventbus/eventbus';
 
 describe('EventBus', () => {
-    let eventBus: EventBus;
+    let event_bus: EventBus;
     let call_count: number;
 
     beforeEach(() => {
-        eventBus = new EventBus();
+        event_bus = new EventBus();
         call_count = 0;
     });
 
@@ -15,8 +15,8 @@ describe('EventBus', () => {
             console.log(`EventBus: data: ${data}`);
             call_count++;
         }
-        eventBus.on('test_event', callback);
-        expect(eventBus.subscriptions['test_event'].length).toBe(1);
+        event_bus.on('test_event', callback);
+        expect(event_bus.subscriptions['test_event'].length).toBe(1);
     });
 
     it('Adding the same', () => {
@@ -25,9 +25,9 @@ describe('EventBus', () => {
             console.log(`EventBus: data: ${data}`);
             call_count++;
         }
-        eventBus.on('test_event', callback);
-        eventBus.on('test_event', callback);
-        expect(eventBus.subscriptions['test_event'].length).toBe(1);
+        event_bus.on('test_event', callback);
+        event_bus.on('test_event', callback);
+        expect(event_bus.subscriptions['test_event'].length).toBe(1);
     });
 
     it('Deleting subscribers', () => {
@@ -36,19 +36,19 @@ describe('EventBus', () => {
             console.log(`EventBus: data: ${data}`);
             call_count++;
         }
-        eventBus.on('test_event', callback);
-        eventBus.off('test_event', callback);
-        expect(eventBus.subscriptions['test_event'].length).toBe(0);
+        event_bus.on('test_event', callback);
+        event_bus.off('test_event', callback);
+        expect(event_bus.subscriptions['test_event'].length).toBe(0);
     });
 
     it('Raising events', () => {
-        eventBus.on('test_event', (event: string, data: any) => {
+        event_bus.on('test_event', (event: string, data: any) => {
             console.log(`EventBus: raising event ${event}`);
             console.log(`EventBus: data: ${data}`);
             call_count++;
         });
 
-        eventBus.raise('test_event', 'testData');
+        event_bus.raise('test_event', 'testData');
         expect(call_count).toBe(1);
     });
 });
