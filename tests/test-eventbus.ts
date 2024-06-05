@@ -10,9 +10,7 @@ describe('EventBus', () => {
     });
 
     it('Adding subscribers', () => {
-        const callback = (event: string, data: any) => {
-            console.log(`EventBus: raising event ${event}`);
-            console.log(`EventBus: data: ${data}`);
+        const callback = () => {
             call_count++;
         }
         event_bus.on('test_event', callback);
@@ -20,9 +18,7 @@ describe('EventBus', () => {
     });
 
     it('Adding the same', () => {
-        const callback = (event: string, data: any) => {
-            console.log(`EventBus: raising event ${event}`);
-            console.log(`EventBus: data: ${data}`);
+        const callback = () => {
             call_count++;
         }
         event_bus.on('test_event', callback);
@@ -31,9 +27,7 @@ describe('EventBus', () => {
     });
 
     it('Deleting subscribers', () => {
-        const callback = (event: string, data: any) => {
-            console.log(`EventBus: raising event ${event}`);
-            console.log(`EventBus: data: ${data}`);
+        const callback = () => {
             call_count++;
         }
         event_bus.on('test_event', callback);
@@ -42,9 +36,7 @@ describe('EventBus', () => {
     });
 
     it('Raising events', () => {
-        event_bus.on('test_event', (event: string, data: any) => {
-            console.log(`EventBus: raising event ${event}`);
-            console.log(`EventBus: data: ${data}`);
+        event_bus.on('test_event', () => {
             call_count++;
         });
 
