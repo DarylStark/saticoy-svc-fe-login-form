@@ -3,17 +3,14 @@ import { Menu, Popover, Switch } from 'antd';
 import { FaGear } from "react-icons/fa6";
 import { ClickParam } from 'antd/lib/menu';
 
-// Props
-interface AccountMenuProps {
-    toggle_theme: () => void;
-}
+import { event_bus } from '../../globals';
 
-export default function AccountMenu({ toggle_theme }: AccountMenuProps) {
+export default function AccountMenu() {
     const [open, set_open] = useState(false);
 
     const handle_menu_click = (param: ClickParam) => {
         if (param.key == 'toggle_dark_mode') {
-            toggle_theme();
+            event_bus.raise('toggle_theme', null);
         }
     };
 
