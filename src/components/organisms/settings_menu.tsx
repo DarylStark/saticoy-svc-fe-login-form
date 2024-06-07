@@ -33,9 +33,6 @@ function MenuItems() {
             <Menu.Item key='set_saticoy' icon={<FaGear />}>
                 Saticoy
             </Menu.Item>
-            <Menu.Item key='set_ugly' icon={<FaGear />}>
-                Ugly
-            </Menu.Item>
         </Menu>
     );
 }

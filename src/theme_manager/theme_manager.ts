@@ -16,7 +16,9 @@ them when the toggle_style method is called. The ThemeManager will notify all
 subscribers when the style is changed. */
 
 export type Style = {
-    page: { [key: string]: string },
+    page: {
+        'class': string
+    },
     antd: { [key: string]: any }
 }
 
@@ -58,7 +60,7 @@ class ThemeManager {
     activate_theme(theme_name: string): boolean {
         if (this._themes[theme_name]) {
             this._selected_theme = this._themes[theme_name];
-            this._publish();
+            this.publish();
             return true;
         }
         return false;
@@ -77,7 +79,7 @@ class ThemeManager {
 
     toggle_mode(): void {
         this._selected_mode = this._selected_mode === 'light' ? 'dark' : 'light';
-        this._publish();
+        this.publish();
     }
 
     on_set_style(handler: ThemeSelectHandler) {
@@ -104,7 +106,7 @@ class ThemeManager {
         this._mode_subscriptions.forEach(sub => sub(mode));
     }
 
-    private _publish(): void {
+    publish(): void {
         this._publish_style();
         this._publish_mode();
     }

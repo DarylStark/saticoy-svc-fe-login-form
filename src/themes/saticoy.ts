@@ -1,5 +1,5 @@
 // Saticoy Theme
-
+import './saticoy.scss'
 import { theme } from 'antd';
 import { Theme } from '../theme_manager/theme_manager';
 
@@ -8,7 +8,7 @@ const saticoy_theme: Theme = {
     author: 'Daryl Stark',
     light: {
         page: {
-            'background': '#f7f9fc'
+            'class': 'saticoy-light',
         },
         antd: {
             algorithm: theme.defaultAlgorithm,
@@ -19,7 +19,7 @@ const saticoy_theme: Theme = {
     },
     dark: {
         page: {
-            'background': '#1b2635'
+            'class': 'saticoy-dark',
         },
         antd: {
             algorithm: theme.darkAlgorithm,
