@@ -1,8 +1,11 @@
 // Saticoy Theme
 
 import { theme } from 'antd';
+import { Theme } from '../theme_manager/theme_manager';
 
-const saticoy_theme = {
+const saticoy_theme: Theme = {
+    name: 'Saticoy',
+    author: 'Daryl Stark',
     light: {
         page: {
             'background': '#f7f9fc'
