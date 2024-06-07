@@ -38,13 +38,16 @@ export type Theme = {
 type ThemeMode = 'light' | 'dark';
 
 export type ThemeSelectHandler = (selected_style: Style) => void;
-type Subscriptions = ThemeSelectHandler[];
+export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
+type ThemeSubscriptions = ThemeSelectHandler[];
+type ModeSubscriptions = ModeSelectHandler[];
 
 class ThemeManager {
     private _themes: { [key: string]: Theme } = {};
     private _selected_theme?: Theme;
     private _selected_mode: ThemeMode = 'dark';
-    private _subscriptions: Subscriptions = [];
+    private _style_subscriptions: ThemeSubscriptions = [];
+    private _mode_subscriptions: ModeSubscriptions = [];
 
     install_theme(theme: Theme) {
         this._themes[theme.name] = theme;
@@ -68,21 +71,42 @@ class ThemeManager {
         return this._selected_theme[other_mode];
     }
 
-    toggle_style(): void {
+    get_active_mode(): ThemeMode {
+        return this._selected_mode;
+    }
+
+    toggle_mode(): void {
         this._selected_mode = this._selected_mode === 'light' ? 'dark' : 'light';
         this._publish();
     }
 
     on_set_style(handler: ThemeSelectHandler) {
         // Subscribe to style changes
-        if (!this._subscriptions.includes(handler))
-            this._subscriptions.push(handler);
+        if (!this._style_subscriptions.includes(handler))
+            this._style_subscriptions.push(handler);
+    }
+
+    on_set_mode(handler: ModeSelectHandler) {
+        // Subscribe to mode changes
+        if (!this._mode_subscriptions.includes(handler))
+            this._mode_subscriptions.push(handler);
+    }
+
+    private _publish_style(): void {
+        // Publish to all subscribers
+        const style = this.get_active_style();
+        this._style_subscriptions.forEach(sub => sub(style));
+    }
+
+    private _publish_mode(): void {
+        // Publish to all subscribers
+        const mode = this.get_active_mode();
+        this._mode_subscriptions.forEach(sub => sub(mode));
     }
 
     private _publish(): void {
-        // Publish to all subscribers
-        const style = this.get_active_style();
-        this._subscriptions.forEach(sub => sub(style));
+        this._publish_style();
+        this._publish_mode();
     }
 }
 

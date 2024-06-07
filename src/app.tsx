@@ -8,7 +8,9 @@ import './index.scss'
 // Themeing
 import { theme_manager } from './globals';
 import saticoy_theme from './themes/saticoy';
+import ugly_theme from './themes/ugly';
 theme_manager.install_theme(saticoy_theme);
+theme_manager.install_theme(ugly_theme);
 
 import LoginPage from './components/templates/login_page';
 
