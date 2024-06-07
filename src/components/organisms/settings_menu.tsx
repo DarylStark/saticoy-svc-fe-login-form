@@ -19,8 +19,6 @@ function MenuItems() {
             return toggleDarkMode();
         if (param.key === 'set_saticoy')
             return theme_manager.activate_theme('Saticoy');
-        if (param.key === 'set_ugly')
-            return theme_manager.activate_theme('Ugly');
     }
 
     return (
