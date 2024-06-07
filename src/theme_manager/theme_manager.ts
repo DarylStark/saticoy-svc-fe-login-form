@@ -39,16 +39,16 @@ export type Theme = {
 
 type ThemeMode = 'light' | 'dark';
 
-export type ThemeSelectHandler = (selected_style: Style) => void;
+export type StyleSelectHandler = (selected_style: Style) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
-type ThemeSubscriptions = ThemeSelectHandler[];
+type StyleSubscriptions = StyleSelectHandler[];
 type ModeSubscriptions = ModeSelectHandler[];
 
 class ThemeManager {
     private _themes: { [key: string]: Theme } = {};
     private _selected_theme?: Theme;
     private _selected_mode: ThemeMode = 'dark';
-    private _style_subscriptions: ThemeSubscriptions = [];
+    private _style_subscriptions: StyleSubscriptions = [];
     private _mode_subscriptions: ModeSubscriptions = [];
 
     install_theme(theme: Theme) {
@@ -82,7 +82,7 @@ class ThemeManager {
         this.publish();
     }
 
-    on_set_style(handler: ThemeSelectHandler) {
+    on_set_style(handler: StyleSelectHandler) {
         // Subscribe to style changes
         if (!this._style_subscriptions.includes(handler))
             this._style_subscriptions.push(handler);
