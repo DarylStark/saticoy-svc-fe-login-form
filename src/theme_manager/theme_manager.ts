@@ -57,13 +57,12 @@ class ThemeManager {
             this.activate_theme(theme.name);
     }
 
-    activate_theme(theme_name: string): boolean {
-        if (this._themes[theme_name]) {
-            this._selected_theme = this._themes[theme_name];
-            this.publish();
-            return true;
-        }
-        return false;
+    activate_theme(theme_name: string): void {
+        const theme = this._themes[theme_name]
+        if (!theme)
+            throw new Error(`Theme ${theme_name} not found`);
+        this._selected_theme = this._themes[theme_name];
+        this.publish();
     }
 
     get_active_style(): Style {
