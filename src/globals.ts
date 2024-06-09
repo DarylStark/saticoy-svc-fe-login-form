@@ -1,8 +1,20 @@
 // Globals for the application. Might be refactored into something else later.
 
 import EventBus from "./eventbus/eventbus";
-import { ManualThemeRepository, ThemeManager } from './theme_manager/theme_manager';
+import ThemeManager from './theme_manager/theme_manager';
+import { ManualThemeRepository } from "./theme_manager/theme_repository";
+import saticoy_theme from "./themes/saticoy";
 
-export const event_bus = new EventBus();
-export const theme_repository = new ManualThemeRepository();
-export const theme_manager = new ThemeManager(theme_repository);
+// Event bus for global event handling
+const event_bus = new EventBus();
+
+// Themeing managers
+const theme_repository = new ManualThemeRepository();
+const theme_manager = new ThemeManager(theme_repository);
+
+// Themes
+theme_repository.install_theme(saticoy_theme);
+theme_manager.activate_theme('Saticoy');
+
+// Exports
+export { event_bus, theme_manager, theme_repository }

@@ -1,64 +1,10 @@
-/* Module with a ThemeManager class.
-
-The ThemeManager class manages themes. Themes can be defined in objects of
-type Theme. A Theme object can have a light and dark style, or just one of
-them. A style is an object with two keys, 'page' and 'antd'. The 'page' key
-contains CSS properties for the page, and the 'antd' key contains the theme
-for the Ant Design library.
-
-Clients can subscribe to the ThemeManager to receive notifications when the
-style is changed. The ThemeManager can have multiple subscribers. You can
-use a setter function from the `useState` hook to update the style of a
-component when the style changes.
-
-If a theme has both light and dark styles, the ThemeManager will switch between
-them when the toggle_style method is called. The ThemeManager will notify all
-subscribers when the style is changed. */
-
-export type Style = {
-    page: {
-        'class': string
-    },
-    antd: { [key: string]: any }
-}
-
-export type Theme = {
-    name: string,
-    author: string,
-    light: Style,
-    dark: Style
-} | {
-    name: string,
-    author: string,
-    dark: Style
-} | {
-    name: string,
-    author: string,
-    light: Style
-};
-
-type ThemeMode = 'light' | 'dark';
+import { Style, Theme, ThemeMode } from './theme';
+import ThemeRepository from './theme_repository';
 
 export type StyleSelectHandler = (selected_style: Style) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
 type StyleSubscriptions = StyleSelectHandler[];
 type ModeSubscriptions = ModeSelectHandler[];
-
-interface ThemeRepository {
-    install_theme(theme: Theme): void;
-}
-
-class ManualThemeRepository implements ThemeRepository {
-    private _themes: { [key: string]: Theme } = {};
-
-    install_theme(theme: Theme) {
-        this._themes[theme.name] = theme;
-    }
-
-    get_theme(theme_name: string): Theme {
-        return this._themes[theme_name];
-    }
-}
 
 class ThemeManager {
     private _selected_theme: string = '';
@@ -138,4 +84,4 @@ class ThemeManager {
     }
 }
 
-export { ManualThemeRepository, ThemeManager };
+export default ThemeManager;
