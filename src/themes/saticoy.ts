@@ -1,5 +1,5 @@
 // Saticoy Theme
-import { SaticoyAntDStyle } from './saticoy_style';
+import { SaticoyAntDStyle } from './saticoy-style';
 import './saticoy.scss'
 import { theme } from 'antd';
 import { Theme } from '../theme_manager/theme';
