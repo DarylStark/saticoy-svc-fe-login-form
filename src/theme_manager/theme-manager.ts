@@ -1,5 +1,5 @@
 import { Style, Theme, ThemeMode } from './theme';
-import ThemeRepository from './theme_repository';
+import ThemeRepository from './theme-repository';
 
 export type StyleSelectHandler<T extends Style> = (selected_style: T) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;

@@ -2,7 +2,7 @@
 
 import EventBus from "./eventbus/eventbus";
 import ThemeManager from './theme_manager/theme-manager';
-import { ManualThemeRepository } from "./theme_manager/theme_repository";
+import { ManualThemeRepository } from "./theme_manager/theme-repository";
 import { AntDStyle } from "./theme_manager/theme";
 import saticoy_theme from "./themes/saticoy";
 
