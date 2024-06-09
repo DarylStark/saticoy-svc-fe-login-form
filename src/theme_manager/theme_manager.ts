@@ -44,32 +44,48 @@ export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
 type StyleSubscriptions = StyleSelectHandler[];
 type ModeSubscriptions = ModeSelectHandler[];
 
-class ThemeManager {
+class ThemeRepository {
     private _themes: { [key: string]: Theme } = {};
-    private _selected_theme?: Theme;
+
+    install_theme(theme: Theme) {
+        this._themes[theme.name] = theme;
+    }
+
+    get_theme(theme_name: string): Theme {
+        return this._themes[theme_name];
+    }
+}
+
+class ThemeManager {
+    private _selected_theme: string = '';
     private _selected_mode: ThemeMode = 'dark';
     private _style_subscriptions: StyleSubscriptions = [];
     private _mode_subscriptions: ModeSubscriptions = [];
 
-    install_theme(theme: Theme) {
-        this._themes[theme.name] = theme;
-        if (!this._selected_theme)
-            this.activate_theme(theme.name);
-    }
+    constructor(private _theme_repository: ThemeRepository) { }
 
     activate_theme(theme_name: string): void {
-        const theme = this._themes[theme_name]
-        if (!theme)
-            throw new Error(`Theme ${theme_name} not found`);
-        this._selected_theme = this._themes[theme_name];
+        this._get_theme_by_name(theme_name);
+        this._selected_theme = theme_name;
         this.publish();
     }
 
     get_active_style(): Style {
-        const style = this._selected_theme[this._selected_mode];
-        if (style) return style;
-        const other_mode = this._selected_mode === 'light' ? 'dark' : 'light';
-        return this._selected_theme[other_mode];
+        // const theme = this._get_theme_by_name(this._selected_theme);
+        // if (this._selected_mode in theme)
+        //     return theme[this._selected_mode];
+        // const other_mode = this._selected_mode === 'light' ? 'dark' : 'light';
+        // return theme[other_mode];
+
+        try {
+            return this._get_style_for_theme(
+                this._selected_theme,
+                this._selected_mode);
+        } catch {
+            return this._get_style_for_theme(
+                this._selected_theme,
+                this._selected_mode === 'light' ? 'dark' : 'light');
+        }
     }
 
     get_active_mode(): ThemeMode {
@@ -109,6 +125,19 @@ class ThemeManager {
         this._publish_style();
         this._publish_mode();
     }
+
+    private _get_theme_by_name(theme_name: string): Theme {
+        const theme = this._theme_repository.get_theme(theme_name);
+        if (!theme)
+            throw new Error(`Theme "${theme_name}" is not in the repository`);
+        return theme;
+    }
+
+    private _get_style_for_theme(theme_name: string, mode: ThemeMode): Style {
+        if (mode.toString() in this._get_theme_by_name(theme_name))
+            return this._get_theme_by_name(theme_name)[mode.toString()];
+        throw new Error(`Theme "${theme_name}" has no mode: "${mode.toString()}"`);
+    }
 }
 
-export { ThemeManager };
+export { ThemeRepository, ThemeManager };

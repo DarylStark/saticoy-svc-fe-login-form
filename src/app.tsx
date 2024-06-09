@@ -7,9 +7,12 @@ import './index.scss'
 
 // Themeing
 import { Style } from './theme_manager/theme_manager';
-import { theme_manager } from './globals';
+import { theme_manager, theme_repository } from './globals';
+
 import saticoy_theme from './themes/saticoy';
-theme_manager.install_theme(saticoy_theme);
+
+theme_repository.install_theme(saticoy_theme);
+theme_manager.activate_theme('Saticoy');
 
 import LoginPage from './components/templates/login_page';
 
