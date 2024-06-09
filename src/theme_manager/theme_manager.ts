@@ -44,7 +44,11 @@ export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
 type StyleSubscriptions = StyleSelectHandler[];
 type ModeSubscriptions = ModeSelectHandler[];
 
-class ThemeRepository {
+interface ThemeRepository {
+    install_theme(theme: Theme): void;
+}
+
+class ManualThemeRepository implements ThemeRepository {
     private _themes: { [key: string]: Theme } = {};
 
     install_theme(theme: Theme) {
@@ -134,4 +138,4 @@ class ThemeManager {
     }
 }
 
-export { ThemeRepository, ThemeManager };
+export { ManualThemeRepository, ThemeManager };
