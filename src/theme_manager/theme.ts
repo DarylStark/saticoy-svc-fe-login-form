@@ -2,22 +2,21 @@ export type Style = {
     page: {
         'class': string
     },
-    antd: { [key: string]: any }
 }
 
-export type Theme = {
+export type Theme<T extends Style = Style> = {
     name: string,
     author: string,
-    light: Style,
-    dark: Style
+    light: T,
+    dark: T
 } | {
     name: string,
     author: string,
-    dark: Style
+    dark: T
 } | {
     name: string,
     author: string,
-    light: Style
+    light: T
 };
 
 export type ThemeMode = 'light' | 'dark';

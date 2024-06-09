@@ -1,18 +1,18 @@
 import { Style, Theme, ThemeMode } from './theme';
 import ThemeRepository from './theme_repository';
 
-export type StyleSelectHandler = (selected_style: Style) => void;
+export type StyleSelectHandler<T extends Style> = (selected_style: T) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
-type StyleSubscriptions = StyleSelectHandler[];
+type StyleSubscriptions<T extends Style> = StyleSelectHandler<T>[];
 type ModeSubscriptions = ModeSelectHandler[];
 
-class ThemeManager {
+class ThemeManager<T extends Style> {
     private _selected_theme: string = '';
     private _selected_mode: ThemeMode = 'dark';
-    private _style_subscriptions: StyleSubscriptions = [];
+    private _style_subscriptions: StyleSubscriptions<T> = [];
     private _mode_subscriptions: ModeSubscriptions = [];
 
-    constructor(private _theme_repository: ThemeRepository) { }
+    constructor(private _theme_repository: ThemeRepository<T>) { }
 
     activate_theme(theme_name: string): void {
         this._get_theme_by_name(theme_name);
@@ -20,7 +20,7 @@ class ThemeManager {
         this.publish();
     }
 
-    get_active_style(): Style {
+    get_active_style(): T {
         try {
             return this._get_style_for_theme(
                 this._selected_theme,
@@ -41,7 +41,7 @@ class ThemeManager {
         this.publish();
     }
 
-    on_set_style(handler: StyleSelectHandler) {
+    on_set_style(handler: StyleSelectHandler<T>) {
         // Subscribe to style changes
         if (!this._style_subscriptions.includes(handler))
             this._style_subscriptions.push(handler);
@@ -77,7 +77,7 @@ class ThemeManager {
         return theme;
     }
 
-    private _get_style_for_theme(theme_name: string, mode: ThemeMode): Style {
+    private _get_style_for_theme(theme_name: string, mode: ThemeMode): T {
         if (mode.toString() in this._get_theme_by_name(theme_name))
             return this._get_theme_by_name(theme_name)[mode.toString()];
         throw new Error(`Theme "${theme_name}" has no mode: "${mode.toString()}"`);

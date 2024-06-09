@@ -3,14 +3,15 @@
 import EventBus from "./eventbus/eventbus";
 import ThemeManager from './theme_manager/theme_manager';
 import { ManualThemeRepository } from "./theme_manager/theme_repository";
+import { AntDStyle } from "./theme_manager/theme";
 import saticoy_theme from "./themes/saticoy";
 
 // Event bus for global event handling
 const event_bus = new EventBus();
 
 // Themeing managers
-const theme_repository = new ManualThemeRepository();
-const theme_manager = new ThemeManager(theme_repository);
+const theme_repository = new ManualThemeRepository<AntDStyle>();
+const theme_manager = new ThemeManager<AntDStyle>(theme_repository);
 
 // Themes
 theme_repository.install_theme(saticoy_theme);
