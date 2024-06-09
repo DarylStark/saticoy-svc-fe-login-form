@@ -16,6 +16,8 @@ class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<
     }
 
     get_theme(theme_name: string): Theme<T> {
+        if (!this._themes[theme_name])
+            throw new Error(`Theme "${theme_name}" is not found.`);
         return this._themes[theme_name];
     }
 }
