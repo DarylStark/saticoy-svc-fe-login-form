@@ -101,7 +101,7 @@ describe('Theme Manager', () => {
         expect(style).toEqual(MockThemeDarkLight.dark);
     });
 
-    it('Check given style after setting', () => {
+    it('Check given style after setting mode', () => {
         manager.activate_theme('mock theme - dark and light');
         let style = manager.get_active_style();
 
@@ -116,6 +116,28 @@ describe('Theme Manager', () => {
         expect(style).toEqual(MockThemeDarkLight.dark);
     });
 
-    // TODO: Add tests that check if we get the correct values with themes
-    // that have no dark or on light mode.
+    it('Check given style after setting mode', () => {
+        manager.activate_theme('mock theme - dark');
+        let style = manager.get_active_style();
+
+        // Should still be dark
+        expect(style).toEqual(MockThemeDark.dark);
+
+        // Toggle to light, should still be dark
+        manager.set_mode(ThemeMode.Light);
+        style = manager.get_active_style();
+        expect(style).toEqual(MockThemeDark.dark);
+
+        // Toggle to dark again, should still be dark
+        manager.set_mode(ThemeMode.Dark);
+        style = manager.get_active_style();
+        expect(style).toEqual(MockThemeDark.dark);
+
+        // Toggle to light, go to a theme with both dark and light styles and
+        // see if it changes to light
+        manager.set_mode(ThemeMode.Light);
+        manager.activate_theme('mock theme - dark and light');
+        style = manager.get_active_style();
+        expect(style).toEqual(MockThemeDarkLight.light);
+    });
 });
