@@ -157,4 +157,33 @@ describe('Theme Manager', () => {
         expect(manager.has_light_mode()).toBe(true);
         expect(manager.has_both_modes()).toBe(true);
     });
+
+    it('Register to style changes', () => {
+        const mock_handler = jest.fn();
+        manager.on_set_style(mock_handler);
+
+        manager.activate_theme('mock theme - dark and light');
+        expect(mock_handler).toHaveBeenCalledTimes(1);
+
+        manager.off_set_style(mock_handler);
+
+        manager.activate_theme('mock theme - dark and light');
+        expect(mock_handler).toHaveBeenCalledTimes(1);
+    });
+
+    it('Register to mode changes', () => {
+        const mock_handler = jest.fn();
+        manager.on_set_mode(mock_handler);
+
+        manager.activate_theme('mock theme - dark and light');
+        expect(mock_handler).toHaveBeenCalledTimes(1);
+
+        manager.toggle_mode();
+        expect(mock_handler).toHaveBeenCalledTimes(2);
+
+        manager.off_set_mode(mock_handler);
+
+        manager.toggle_mode();
+        expect(mock_handler).toHaveBeenCalledTimes(2);
+    });
 });

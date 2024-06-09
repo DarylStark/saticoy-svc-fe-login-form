@@ -60,6 +60,16 @@ class ThemeManager<T extends Style = Style> {
             this._mode_subscriptions.push(handler);
     }
 
+    off_set_style(handler: StyleSelectHandler<T>) {
+        // Unsubscribe from style changes
+        this._style_subscriptions = this._style_subscriptions.filter(sub => sub !== handler);
+    }
+
+    off_set_mode(handler: ModeSelectHandler) {
+        // Unsubscribe from mode changes
+        this._mode_subscriptions = this._mode_subscriptions.filter(sub => sub !== handler);
+    }
+
     publish(): void {
         this._publish_style();
         this._publish_mode();
