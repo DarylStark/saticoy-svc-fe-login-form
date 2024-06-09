@@ -2,7 +2,7 @@
 import { SaticoyAntDStyle } from './saticoy-style';
 import './saticoy.scss'
 import { theme } from 'antd';
-import { Theme } from '../theme_manager/theme';
+import { Theme } from '../theme-manager/theme';
 
 const saticoy_theme: Theme<SaticoyAntDStyle> = {
     name: 'Saticoy',

@@ -1,5 +1,5 @@
-import { Theme } from '../src/theme_manager/theme';
-import { ManualThemeRepository } from '../src/theme_manager/theme-repository';
+import { Theme } from '../src/theme-manager/theme';
+import { ManualThemeRepository } from '../src/theme-manager/theme-repository';
 
 const MockTheme: Theme = {
     name: 'mock theme',

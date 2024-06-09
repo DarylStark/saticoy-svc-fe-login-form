@@ -1,9 +1,9 @@
 // Globals for the application. Might be refactored into something else later.
 
 import EventBus from "./eventbus/eventbus";
-import ThemeManager from './theme_manager/theme-manager';
-import { ManualThemeRepository } from "./theme_manager/theme-repository";
-import { AntDStyle } from "./theme_manager/theme";
+import ThemeManager from './theme-manager/theme-manager';
+import { ManualThemeRepository } from "./theme-manager/theme-repository";
+import { AntDStyle } from "./theme-manager/theme";
 import saticoy_theme from "./themes/saticoy";
 
 // Event bus for global event handling
