@@ -6,7 +6,7 @@ export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
 type StyleSubscriptions<T extends Style> = StyleSelectHandler<T>[];
 type ModeSubscriptions = ModeSelectHandler[];
 
-class ThemeManager<T extends Style> {
+class ThemeManager<T extends Style = Style> {
     private _selected_theme: string = '';
     private _selected_mode: ThemeMode = 'dark';
     private _style_subscriptions: StyleSubscriptions<T> = [];

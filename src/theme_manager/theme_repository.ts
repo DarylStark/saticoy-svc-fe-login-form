@@ -1,10 +1,10 @@
 import { Theme, Style } from './theme';
 
-interface ThemeRepository<T extends Style> {
-    install_theme(theme: Theme<T>): void;
+interface ThemeRepository<T extends Style = Style> {
+    get_theme(theme_name: string): Theme<T>;
 }
 
-class ManualThemeRepository<T extends Style> implements ThemeRepository<T> {
+class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<T> {
     private _themes: { [key: string]: Theme<T> } = {};
 
     install_theme(theme: Theme<T>) {
