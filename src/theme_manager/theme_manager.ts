@@ -71,12 +71,6 @@ class ThemeManager {
     }
 
     get_active_style(): Style {
-        // const theme = this._get_theme_by_name(this._selected_theme);
-        // if (this._selected_mode in theme)
-        //     return theme[this._selected_mode];
-        // const other_mode = this._selected_mode === 'light' ? 'dark' : 'light';
-        // return theme[other_mode];
-
         try {
             return this._get_style_for_theme(
                 this._selected_theme,
