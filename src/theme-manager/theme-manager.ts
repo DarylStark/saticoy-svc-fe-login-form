@@ -65,6 +65,20 @@ class ThemeManager<T extends Style = Style> {
         this._publish_mode();
     }
 
+    has_dark_mode(): boolean {
+        this._raise_on_no_active_theme();
+        return this._get_theme_by_name(this._selected_theme).dark !== undefined;
+    }
+
+    has_light_mode(): boolean {
+        this._raise_on_no_active_theme();
+        return this._get_theme_by_name(this._selected_theme).light !== undefined;
+    }
+
+    has_both_modes(): boolean {
+        return this.has_dark_mode() && this.has_light_mode();
+    }
+
     private _raise_on_no_active_theme(): void {
         if (!this._selected_theme)
             throw new Error('No active style is set.');

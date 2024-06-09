@@ -140,4 +140,21 @@ describe('Theme Manager', () => {
         style = manager.get_active_style();
         expect(style).toEqual(MockThemeDarkLight.light);
     });
+
+    it('Check theme modes', () => {
+        manager.activate_theme('mock theme - dark');
+        expect(manager.has_dark_mode()).toBe(true);
+        expect(manager.has_light_mode()).toBe(false);
+        expect(manager.has_both_modes()).toBe(false);
+
+        manager.activate_theme('mock theme - light');
+        expect(manager.has_dark_mode()).toBe(false);
+        expect(manager.has_light_mode()).toBe(true);
+        expect(manager.has_both_modes()).toBe(false);
+
+        manager.activate_theme('mock theme - dark and light');
+        expect(manager.has_dark_mode()).toBe(true);
+        expect(manager.has_light_mode()).toBe(true);
+        expect(manager.has_both_modes()).toBe(true);
+    });
 });
