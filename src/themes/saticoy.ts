@@ -1,11 +1,15 @@
 // Saticoy Theme
-
+import { SaticoyAntDStyle } from './saticoy-style';
+import './saticoy.scss'
 import { theme } from 'antd';
+import { Theme } from '../theme-manager/theme';
 
-const saticoy_theme = {
+const saticoy_theme: Theme<SaticoyAntDStyle> = {
+    name: 'Saticoy',
+    author: 'Daryl Stark',
     light: {
         page: {
-            'background': '#f7f9fc'
+            'class': 'saticoy-light',
         },
         antd: {
             algorithm: theme.defaultAlgorithm,
@@ -16,7 +20,7 @@ const saticoy_theme = {
     },
     dark: {
         page: {
-            'background': '#1b2635'
+            'class': 'saticoy-dark',
         },
         antd: {
             algorithm: theme.darkAlgorithm,

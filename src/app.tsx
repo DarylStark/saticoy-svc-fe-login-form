@@ -1,29 +1,34 @@
-
+// React imports
 import { useState } from 'react';
-import LoginPage from './components/templates/login_page';
 
+// Styling
 import { ConfigProvider } from 'antd';
 import './index.scss'
 
-import light_theme from './themes/light';
-import dark_theme from './themes/dark';
+// Themeing
+import { Style } from './theme-manager/theme-manager';
+import { theme_manager } from './globals';
 
-import saticoy_theme from './themes/saticoy';
+// Organism
+import LoginPage from './components/templates/login_page';
 
-import { event_bus } from './globals'
+function set_body_class(style: Style) {
+    document.body.className = style.page['class'];
+}
+
+theme_manager.on_set_style(set_body_class);
+theme_manager.publish();
 
 function App() {
-    const [is_dark_mode, set_dark_mode] = useState(false);
+    // const theme = ugly_theme.dark;
+    const [theme, set_theme] = useState(theme_manager.get_active_style());
 
-
-    event_bus.on('toggle_theme', () => {
-        set_dark_mode(!is_dark_mode);
-    });
+    theme_manager.on_set_style(set_theme);
 
     return (
-        <ConfigProvider theme={is_dark_mode ? saticoy_theme.dark.antd : saticoy_theme.light.antd}>
+        <ConfigProvider theme={theme?.antd}>
             <LoginPage />
-        </ConfigProvider>
+        </ ConfigProvider>
     );
 }
 
