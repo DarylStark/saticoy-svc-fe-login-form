@@ -1,5 +1,5 @@
 // type EventHandlerCallback = ((data: any, event: string) => void) | ((data: any) => void);
-type EventHandlerCallback = (data: any, event: string) => void//) | ((data: any) => void);
+export type EventHandlerCallback = (data: any, event: string) => void//) | ((data: any) => void);
 type Subscriptions = { [key: string]: EventHandlerCallback[] };
 
 class EventBus {
