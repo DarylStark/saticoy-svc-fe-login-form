@@ -1,4 +1,5 @@
-type EventHandlerCallback = (event: string, data: any) => void;
+// type EventHandlerCallback = ((data: any, event: string) => void) | ((data: any) => void);
+export type EventHandlerCallback = (data: any, event: string) => void//) | ((data: any) => void);
 type Subscriptions = { [key: string]: EventHandlerCallback[] };
 
 class EventBus {
@@ -12,13 +13,14 @@ class EventBus {
     }
 
     off(event: string, callback: EventHandlerCallback) {
-        this.subscriptions[event] = (this.subscriptions[event] || [])
-            .filter(sub => sub !== callback);
+        if (this.subscriptions[event]) {
+            this.subscriptions[event] = this.subscriptions[event].filter(sub => sub !== callback);
+        }
     }
 
     raise(event: string, data: any) {
         for (const callback of this.subscriptions[event] || []) {
-            callback(event, data);
+            callback(data, event);
         }
     }
 }
