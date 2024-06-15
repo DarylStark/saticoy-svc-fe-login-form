@@ -43,7 +43,7 @@ export default function AccountMenu() {
 
     return (
         <Popover content={<MenuItems></MenuItems>} placement="bottomRight" arrow={false} trigger='click' open={open} onOpenChange={handle_open_change}>
-            <FaGear />
+            <FaGear size={24} />
         </Popover>
     );
 }
