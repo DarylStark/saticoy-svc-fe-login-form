@@ -29,6 +29,10 @@ class Observable<T> {
     get(): T {
         return this.value;
     }
+
+    get_input_setter() {
+        return (event) => this.set(event.target.value);
+    }
 }
 
 export default Observable;
