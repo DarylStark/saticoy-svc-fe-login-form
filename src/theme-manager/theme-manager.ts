@@ -89,6 +89,10 @@ class ThemeManager<T extends Style = Style> {
         return this.has_dark_mode() && this.has_light_mode();
     }
 
+    get_theme_names(): string[] {
+        return this._theme_repository.get_theme_names();
+    }
+
     private _raise_on_no_active_theme(): void {
         if (!this._selected_theme)
             throw new Error('No active style is set.');

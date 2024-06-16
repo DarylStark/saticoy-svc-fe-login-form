@@ -16,16 +16,17 @@ function MenuItems() {
         theme_manager.set_mode(value ? ThemeMode.Dark : ThemeMode.Light);
     }
 
+    const theme_list = theme_manager.get_theme_names();
+
     const menu_click = (param: ClickParam) => {
+        // Set theme if it exists
+        if (theme_list.indexOf(param.key) !== -1) {
+            theme_manager.activate_theme(param.key);
+        }
+
         switch (param.key) {
             case 'toggle_dark_mode':
                 toggleDarkMode(!(current_theme_mode === 'dark'));
-                break;
-            case 'set_saticoy':
-                theme_manager.activate_theme('Saticoy');
-                break;
-            case 'set_ulgy':
-                theme_manager.activate_theme('Very ugly theme');
                 break;
         }
     }
@@ -41,12 +42,11 @@ function MenuItems() {
                 />
             </Menu.Item>
             <Divider />
-            <Menu.Item key='set_saticoy' icon={<FaGear />}>
-                Saticoy
-            </Menu.Item>
-            <Menu.Item key='set_ulgy' icon={<FaGear />}>
-                Ugly
-            </Menu.Item>
+            {theme_list.map((theme) => (
+                <Menu.Item key={theme} icon={<FaGear />}>
+                    {theme}
+                </Menu.Item>
+            ))}
         </Menu>
     );
 }

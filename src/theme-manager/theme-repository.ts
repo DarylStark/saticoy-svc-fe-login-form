@@ -20,6 +20,10 @@ class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<
             throw new Error(`Theme "${theme_name}" is not found.`);
         return this._themes[theme_name];
     }
+
+    get_theme_names(): string[] {
+        return Object.keys(this._themes);
+    }
 }
 
 export { ManualThemeRepository };
