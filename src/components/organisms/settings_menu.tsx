@@ -4,28 +4,24 @@ import { FaGear } from "react-icons/fa6";
 import { ClickParam } from 'antd/lib/menu';
 
 import { theme_manager } from '../../globals';
+import { ThemeMode } from '../../theme-manager/theme';
 
 function MenuItems() {
-    const [is_dark_mode, set_is_dark_mode] = useState(theme_manager.get_active_mode());
+    const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.get_active_mode());
+    theme_manager.on_set_mode(set_current_theme_mode);
 
-    theme_manager.on_set_mode(set_is_dark_mode);
-
-    const toggleDarkMode = () => {
-        theme_manager.toggle_mode();
-    }
-
-    const menu_click = (param: ClickParam) => {
-        if (param.key === 'toggle_dark_mode')
-            return toggleDarkMode();
-        if (param.key === 'set_saticoy')
-            return theme_manager.activate_theme('Saticoy');
+    const toggleDarkMode = (value: boolean) => {
+        console.log(value);
+        theme_manager.set_mode(value ? ThemeMode.Dark : ThemeMode.Light);
     }
 
     return (
-        <Menu selectable={false} mode='vertical' onClick={menu_click}>
+        <Menu selectable={false} mode='vertical'>
             <Menu.Item key='toggle_dark_mode' icon={<FaGear />}>
-                Toggle dark mode
-                <Switch size="small" checked={is_dark_mode === 'dark'} onChange={toggleDarkMode} />
+                Dark theme
+                <Switch size="small"
+                    checked={current_theme_mode === 'dark'}
+                    onChange={toggleDarkMode} />
             </Menu.Item>
             <Divider />
             <Menu.Item key='set_saticoy' icon={<FaGear />}>
