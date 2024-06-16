@@ -18,6 +18,9 @@ function MenuItems() {
 
     const menu_click = (param: ClickParam) => {
         switch (param.key) {
+            case 'toggle_dark_mode':
+                toggleDarkMode(!(current_theme_mode === 'dark'));
+                break;
             case 'set_saticoy':
                 theme_manager.activate_theme('Saticoy');
                 break;
@@ -29,7 +32,7 @@ function MenuItems() {
 
     return (
         <Menu selectable={false} mode='vertical' onClick={menu_click}>
-            <Menu.Item key='toggle_dark_mode' icon={<FaGear />}>
+            <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available}>
                 Dark theme
                 <Switch size="default"
                     checked={current_theme_mode === 'dark'}
