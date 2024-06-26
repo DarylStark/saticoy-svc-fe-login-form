@@ -6,6 +6,8 @@ import { ClickParam } from 'antd/lib/menu';
 import { theme_manager } from '../../globals';
 import { ThemeMode } from '../../theme-manager/theme';
 
+import './settings_menu.scss'
+
 function MenuItems() {
     const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.get_active_mode());
     const [theme_toggler_available, set_theme_toggler_available] = useState(theme_manager.has_both_modes());
@@ -34,20 +36,26 @@ function MenuItems() {
     return (
         <Menu selectable={false} mode='vertical' onClick={menu_click}>
             <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available}>
-                Dark theme
-                <Switch size="default"
-                    checked={current_theme_mode === 'dark'}
-                    onChange={toggleDarkMode}
-                    disabled={!theme_toggler_available}
-                />
+                <div className='settings-menu-item'>
+                    <div>Dark theme</div>
+                    <div>
+                        <Switch size="default"
+                            checked={current_theme_mode === 'dark'}
+                            onChange={toggleDarkMode}
+                            disabled={!theme_toggler_available}
+                        />
+                    </div>
+                </div>
             </Menu.Item>
             <Divider />
-            {theme_list.map((theme) => (
-                <Menu.Item key={theme} icon={<FaGear />}>
-                    {theme}
-                </Menu.Item>
-            ))}
-        </Menu>
+            {
+                theme_list.map((theme) => (
+                    <Menu.Item key={theme} icon={<FaGear />}>
+                        {theme}
+                    </Menu.Item>
+                ))
+            }
+        </Menu >
     );
 }
 
