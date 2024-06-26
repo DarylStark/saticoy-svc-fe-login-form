@@ -1,8 +1,30 @@
-div.settings-menu-item {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    max-width: 100%;
-    width: 220px;
+.settings-menu--toggle {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+
+    >span {
+        >div {
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            max-width: 100%;
+            width: 220px;
+
+            >div:first-child {
+                flex-grow: 1;
+                flex-basis: 0;
+                overflow: hidden;
+                white-space: nowrap;
+                max-width: 100%;
+                text-overflow: ellipsis;
+            }
+
+            >div:nth-child(2) {
+                flex-grow: 0;
+                flex-basis: auto;
+            }
+        }
+    }
 }

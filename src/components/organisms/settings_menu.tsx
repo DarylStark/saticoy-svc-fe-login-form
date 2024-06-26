@@ -35,7 +35,7 @@ function MenuItems() {
 
     return (
         <Menu selectable={false} mode='vertical' onClick={menu_click}>
-            <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available}>
+            <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available} className='settings-menu--toggle'>
                 <div className='settings-menu-item'>
                     <div>Dark theme</div>
                     <div>
