@@ -1,9 +1,11 @@
 body {
     &.saticoy-light {
-        background-color: white;
+        background-color: rgb(247, 249, 252);
+        color: black;
     }
 
     &.saticoy-dark {
-        background-color: black;
+        background-color: rgb(27, 38, 53);
+        color: white;
     }
 }

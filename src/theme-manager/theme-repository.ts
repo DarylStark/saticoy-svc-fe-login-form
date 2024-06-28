@@ -2,6 +2,7 @@ import { Theme, Style } from './theme';
 
 interface ThemeRepository<T extends Style = Style> {
     get_theme(theme_name: string): Theme<T>;
+    get_theme_names(): string[];
 }
 
 class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<T> {
@@ -19,6 +20,10 @@ class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<
         if (!this._themes[theme_name])
             throw new Error(`Theme "${theme_name}" is not found.`);
         return this._themes[theme_name];
+    }
+
+    get_theme_names(): string[] {
+        return Object.keys(this._themes);
     }
 }
 

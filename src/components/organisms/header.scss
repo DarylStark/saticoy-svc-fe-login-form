@@ -1,3 +1,7 @@
 .header {
-    @apply flex flex-row justify-end items-end;
+    @apply flex flex-row justify-end items-end p-4;
+
+    svg {
+        cursor: pointer;
+    }
 }

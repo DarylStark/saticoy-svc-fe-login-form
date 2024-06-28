@@ -5,6 +5,7 @@ import ThemeManager from './theme-manager/theme-manager';
 import { ManualThemeRepository } from "./theme-manager/theme-repository";
 import { AntDStyle } from "./theme-manager/theme";
 import saticoy_theme from "./themes/saticoy";
+import ugly_theme from "./themes/ugly";
 
 // Event bus for global event handling
 const event_bus = new EventBus();
@@ -15,6 +16,7 @@ const theme_manager = new ThemeManager<AntDStyle>(theme_repository);
 
 // Themes
 theme_repository.install_theme(saticoy_theme);
+theme_repository.install_theme(ugly_theme);
 theme_manager.activate_theme('Saticoy');
 
 // Exports

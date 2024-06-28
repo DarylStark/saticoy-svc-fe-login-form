@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 import EventBus from '../eventbus/eventbus';
 import { EventHandlerCallback } from '../eventbus/eventbus';
 
@@ -29,10 +30,20 @@ class Observable<T> {
     get(): T {
         return this.value;
     }
+}
+
+class StringObservable extends Observable<string> {
+    // Specific implementation for string observable. Contains extra methods
+    // that only apply to strings.
+
+    constructor(value: string) {
+        super(value);
+    }
 
     get_input_setter() {
-        return (event) => this.set(event.target.value);
+        return (event: ChangeEvent<HTMLInputElement>) => this.set(event.target.value);
     }
 }
 
 export default Observable;
+export { StringObservable }
