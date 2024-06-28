@@ -1,16 +1,21 @@
 .settings-menu--toggle {
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
+    display: flex !important;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    >svg {
+        flex-grow: 0;
+    }
 
     >span {
+        flex-grow: 1;
+
         >div {
-            display: inline-flex;
+            display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0;
-            max-width: 100%;
-            width: 220px;
+            width: 180px;
 
             >div:first-child {
                 flex-grow: 1;
