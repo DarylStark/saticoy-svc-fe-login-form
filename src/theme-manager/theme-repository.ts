@@ -2,6 +2,7 @@ import { Theme, Style } from './theme';
 
 interface ThemeRepository<T extends Style = Style> {
     get_theme(theme_name: string): Theme<T>;
+    get_theme_names(): string[];
 }
 
 class ManualThemeRepository<T extends Style = Style> implements ThemeRepository<T> {
