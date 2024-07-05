@@ -3,7 +3,7 @@
 import EventBus from "./eventbus/eventbus";
 import ThemeManager from './theme-manager/theme-manager';
 import { ManualThemeRepository } from "./theme-manager/theme-repository";
-import { AntDStyle } from "./theme-manager/theme";
+import { SaticoyAntDStyle } from "./themes/saticoy-style";
 import saticoy_theme from "./themes/saticoy";
 import ugly_theme from "./themes/ugly";
 
@@ -11,8 +11,8 @@ import ugly_theme from "./themes/ugly";
 const event_bus = new EventBus();
 
 // Themeing managers
-const theme_repository = new ManualThemeRepository<AntDStyle>();
-const theme_manager = new ThemeManager<AntDStyle>(theme_repository);
+const theme_repository = new ManualThemeRepository<SaticoyAntDStyle>();
+const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository);
 
 // Themes
 theme_repository.install_theme(saticoy_theme);

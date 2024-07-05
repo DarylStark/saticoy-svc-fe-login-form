@@ -6,7 +6,7 @@ import { ConfigProvider } from 'antd';
 import './index.scss'
 
 // Themeing
-import { Style } from './theme-manager/theme-manager';
+import { Style } from './theme-manager/theme';
 import { theme_manager } from './globals';
 
 // Organism

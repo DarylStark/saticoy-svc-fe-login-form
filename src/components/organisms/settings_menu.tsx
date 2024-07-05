@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, Popover, Switch, Divider } from 'antd';
+import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { FaGear } from "react-icons/fa6";
-import { ClickParam } from 'antd/lib/menu';
 
 import { theme_manager } from '../../globals';
 import { ThemeMode } from '../../theme-manager/theme';
@@ -20,13 +20,13 @@ function MenuItems() {
 
     const theme_list = theme_manager.get_theme_names();
 
-    const menu_click = (param: ClickParam) => {
+    const menu_click: MenuClickEventHandler = ({ key }) => {
         // Set theme if it exists
-        if (theme_list.indexOf(param.key) !== -1) {
-            theme_manager.activate_theme(param.key);
+        if (theme_list.indexOf(key) !== -1) {
+            theme_manager.activate_theme(key);
         }
 
-        switch (param.key) {
+        switch (key) {
             case 'toggle_dark_mode':
                 toggleDarkMode(!(current_theme_mode === 'dark'));
                 break;
