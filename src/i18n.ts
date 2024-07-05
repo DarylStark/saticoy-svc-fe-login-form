@@ -14,12 +14,9 @@ i18n
             escapeValue: false, // not needed for react as it escapes by default
         },
         backend: {
-            loadPath: '/locales/{{lng}}/{{ns}}.json',
+            loadPath: 'locales/{{lng}}/{{ns}}.json',
         },
     });
 
-i18n.on('languageChanged', (lng) => {
-    console.log('Language changed to:', lng);
-});
 
 export default i18n;
