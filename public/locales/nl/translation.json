@@ -1,3 +1,11 @@
 {
-    "welcome": "Welkom bij deze React website"
+    "login_title": "Welkom terug!",
+    "tagline": "Meld u aan om toegang te krijgen tot uw account",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "login": "Aanmelden",
+    "languages": {
+        "nl": "Nederlands",
+        "en": "Engels (Verenigde Staten)"
+    }
 }

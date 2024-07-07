@@ -8,7 +8,7 @@ i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: 'en',
+        fallbackLng: ['en', 'nl'],
         debug: true,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
@@ -16,7 +16,16 @@ i18n
         backend: {
             loadPath: 'locales/{{lng}}/{{ns}}.json',
         },
+        detection: {
+            order: ['queryString', 'localStorage', 'navigator'],
+            lookupQuerystring: 'lang',
+            lookupLocalStorage: 'last_language',
+        },
     });
+
+i18n.on('initialized', (options) => {
+    console.log('Initialized with languages:', i18n.languages);
+});
 
 
 export default i18n;

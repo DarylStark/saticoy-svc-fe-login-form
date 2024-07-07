@@ -8,7 +8,16 @@ import { ThemeMode } from '../../theme-manager/theme';
 
 import './settings_menu.scss'
 
+import i18n from '../../i18n';
+
+import { useTranslation } from 'react-i18next';
+
+
+// TODO: Split the language menu and the theme menu into separate components
+
 function MenuItems() {
+    const { t } = useTranslation();
+
     const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.get_active_mode());
     const [theme_toggler_available, set_theme_toggler_available] = useState(theme_manager.has_both_modes());
     theme_manager.on_set_mode(set_current_theme_mode);
@@ -20,7 +29,7 @@ function MenuItems() {
 
     const theme_list = theme_manager.get_theme_names();
 
-    const menu_click: MenuClickEventHandler = ({ key }) => {
+    const theme_menu_click: MenuClickEventHandler = ({ key }) => {
         // Set theme if it exists
         if (theme_list.indexOf(key) !== -1) {
             theme_manager.activate_theme(key);
@@ -33,29 +42,66 @@ function MenuItems() {
         }
     }
 
+    const unique_language_list = new Set(i18n.languages.map((language) => language.split('-')[0]));
+    const language_list: { [key: string]: string } = {}
+    unique_language_list.forEach((language_code) => {
+        language_list[language_code] = t(`languages.${language_code}`)
+    });
+
+
+    const language_menu_click: MenuClickEventHandler = ({ key }) => {
+        if (key === 'default_browser_language') {
+            // Remove the saved language
+            localStorage.removeItem(i18n.services.languageDetector.options.lookupLocalStorage);
+
+            // Set the automatically detected language
+            i18n.changeLanguage();
+
+            // Done with this function
+            return;
+        }
+
+        i18n.changeLanguage(key);
+    }
+
     return (
-        <Menu selectable={false} mode='vertical' onClick={menu_click}>
-            <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available} className='settings-menu--toggle'>
-                <div className='settings-menu-item'>
-                    <div>Dark theme</div>
-                    <div>
-                        <Switch size="default"
-                            checked={current_theme_mode === 'dark'}
-                            onChange={toggleDarkMode}
-                            disabled={!theme_toggler_available}
-                        />
+        <>
+            <Menu selectable={false} mode='vertical' onClick={theme_menu_click}>
+                <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available} className='settings-menu--toggle'>
+                    <div className='settings-menu-item'>
+                        <div>Dark theme</div>
+                        <div>
+                            <Switch size="default"
+                                checked={current_theme_mode === 'dark'}
+                                onChange={toggleDarkMode}
+                                disabled={!theme_toggler_available}
+                            />
+                        </div>
                     </div>
-                </div>
-            </Menu.Item>
+                </Menu.Item>
+                <Divider />
+                {
+                    theme_list.map((theme) => (
+                        <Menu.Item key={theme} icon={<FaGear />}>
+                            {theme}
+                        </Menu.Item>
+                    ))
+                }
+            </Menu >
             <Divider />
-            {
-                theme_list.map((theme) => (
-                    <Menu.Item key={theme} icon={<FaGear />}>
-                        {theme}
-                    </Menu.Item>
-                ))
-            }
-        </Menu >
+            <Menu selectable={false} mode='vertical' onClick={language_menu_click}>
+                <Menu.Item key='default_browser_language' icon={<FaGear />}>
+                    Default language
+                </Menu.Item>
+                {
+                    Object.entries(language_list).map(([language_code, name]) => (
+                        <Menu.Item key={language_code} icon={<FaGear />}>
+                            {name}
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        </>
     );
 }
 
