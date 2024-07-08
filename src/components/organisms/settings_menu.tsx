@@ -3,7 +3,7 @@ import { Menu, Popover, Switch, Divider } from 'antd';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { FaGear } from "react-icons/fa6";
 
-import { theme_manager } from '../../globals';
+import { theme_manager, language_manager } from '../../globals';
 import { ThemeMode } from '../../theme-manager/theme';
 
 import './settings_menu.scss'
@@ -50,18 +50,19 @@ function MenuItems() {
 
 
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
-        if (key === 'default_browser_language') {
-            // Remove the saved language
-            localStorage.removeItem(i18n.services.languageDetector.options.lookupLocalStorage);
+        // if (key === 'default_browser_language') {
+        //     // Remove the saved language
+        //     localStorage.removeItem(i18n.services.languageDetector.options.lookupLocalStorage);
 
-            // Set the automatically detected language
-            i18n.changeLanguage();
+        //     // Set the automatically detected language
+        //     i18n.changeLanguage();
 
-            // Done with this function
-            return;
-        }
+        //     // Done with this function
+        //     return;
+        // }
 
-        i18n.changeLanguage(key);
+        // i18n.changeLanguage(key);
+        language_manager.activate_language(key);
     }
 
     return (
@@ -93,13 +94,22 @@ function MenuItems() {
                 <Menu.Item key='default_browser_language' icon={<FaGear />}>
                     Default language
                 </Menu.Item>
-                {
+                {/* {
                     Object.entries(language_list).map(([language_code, name]) => (
                         <Menu.Item key={language_code} icon={<FaGear />}>
                             {name}
                         </Menu.Item>
                     ))
-                }
+                } */}
+                <Menu.Item key='en-US' icon={<FaGear />}>
+                    American
+                </Menu.Item>
+                <Menu.Item key='nl-NL' icon={<FaGear />}>
+                    Dutch
+                </Menu.Item>
+                <Menu.Item key='en-EN' icon={<FaGear />}>
+                    English
+                </Menu.Item>
             </Menu>
         </>
     );

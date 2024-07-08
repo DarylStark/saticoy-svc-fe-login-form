@@ -27,5 +27,4 @@ i18n.on('initialized', (options) => {
     console.log('Initialized with languages:', i18n.languages);
 });
 
-
 export default i18n;
