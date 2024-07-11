@@ -29,11 +29,7 @@ const language_repository = new manualLanguageRepository<{ [key: string]: { [key
 language_repository.install_language(language_en_us);
 language_repository.install_language(language_nl_nl);
 const language_manager = new languageManager<{ [key: string]: { [key: string]: string } }>(language_repository);
-language_manager.eventBus.on('language_changed', (language) => {
-    console.log(language);
-});
-
-console.log();
+language_manager.set_default_language('en-US');
 
 // Exports
 export { event_bus, theme_manager, theme_repository, language_manager }

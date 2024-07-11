@@ -3,28 +3,39 @@ import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+import { language_manager } from './globals';
+
+// Create the language specifications
+const resources: {
+    [key: string]: {
+        [key: string]: {
+            [key: string]: { [key: string]: string; };
+        };
+    }
+} = {}
+
+language_manager.get_available_language_codes().forEach(languageCode => {
+    resources[languageCode] = {
+        translation: language_manager.get_language_by_code(languageCode).properties
+    }
+});
+
 i18n
     .use(HttpApi)
-    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: ['en', 'nl'],
+        fallbackLng: language_manager.get_default_language_code(),
         debug: true,
         interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
+            escapeValue: false,
         },
-        backend: {
-            loadPath: 'locales/{{lng}}/{{ns}}.json',
-        },
-        detection: {
-            order: ['queryString', 'localStorage', 'navigator'],
-            lookupQuerystring: 'lang',
-            lookupLocalStorage: 'last_language',
-        },
+        lng: language_manager.get_default_language_code(),
+        resources: resources
     });
 
-i18n.on('initialized', (options) => {
-    console.log('Initialized with languages:', i18n.languages);
+
+language_manager.eventBus.on('language_changed', (language) => {
+    i18n.changeLanguage(language.languageCode);
 });
 
 export default i18n;
