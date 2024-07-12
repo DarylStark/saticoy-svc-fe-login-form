@@ -1,32 +1,32 @@
-import { language } from "./language"
+import { Language } from "./language"
 
-interface languageRepository<T extends language> {
-    get_langauge(language_name: string): T;
-    get_language_names(): string[];
+interface LanguageRepository<T extends Language> {
+    getLanguage(language_name: string): T;
+    getLanguageNames(): string[];
 }
 
-class manualLanguageRepository<T extends language> implements languageRepository<T> {
+class ManualLanguageRepository<T extends Language> implements LanguageRepository<T> {
     private _languages: { [key: string]: T } = {};
 
-    install_language(language: T) {
+    installLanguage(language: T) {
         // TODO: Make sure the languageCode is in the correct format (xx-XX)
         this._languages[language.languageCode] = language;
     }
 
-    install_languages(languages: T[]) {
-        languages.forEach(language => this.install_language(language));
+    installLanguages(languages: T[]) {
+        languages.forEach(language => this.installLanguage(language));
     }
 
-    get_langauge(languageCode: string): T {
+    getLanguage(languageCode: string): T {
         if (!this._languages[languageCode])
             throw new Error(`Language with code "${languageCode}" is not found.`);
         return this._languages[languageCode];
     }
 
-    get_language_names(): string[] {
+    getLanguageNames(): string[] {
         return Object.keys(this._languages);
     }
 }
 
-export { manualLanguageRepository };
-export default languageRepository;
+export { ManualLanguageRepository };
+export default LanguageRepository;

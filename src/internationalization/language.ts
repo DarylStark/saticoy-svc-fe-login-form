@@ -1,3 +1,3 @@
-export type language = {
+export type Language = {
     languageCode: string
 }

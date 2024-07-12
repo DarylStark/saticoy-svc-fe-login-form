@@ -1,120 +1,120 @@
 import EventBus from "../eventbus/eventbus";
-import { language } from "./language";
-import languageRepository from "./language-repository";
+import { Language } from "./language";
+import LanguageRepository from "./language-repository";
 
 // languageStorage managers store the selected language for the user.
-interface languageSaver {
+interface LanguageSaver {
     clear(): void;
-    save_language(languageCode: string): void;
+    saveLanguage(languageCode: string): void;
 }
 
-class localStorageLanguageSaver implements languageSaver {
+class localStorageLanguageSaver implements LanguageSaver {
     constructor(private _key: string) { }
 
     clear(): void {
         localStorage.removeItem(this._key);
     }
 
-    save_language(languageCode: string): void {
+    saveLanguage(languageCode: string): void {
         localStorage.setItem(this._key, languageCode);
     }
 }
 
 // languageSelectors select a language based on a certain criteria.
-interface languageSelector {
-    get_language(): string | undefined;
+interface LanguageSelector {
+    getLanguage(): string | undefined;
 }
 
-class localStorageLanguageSelector implements languageSelector {
+class LocalStorageLanguageSelector implements LanguageSelector {
     constructor(private _key: string) { }
 
-    get_language(): string | undefined {
+    getLanguage(): string | undefined {
         const storage_value = localStorage.getItem(this._key)
         return storage_value !== null ? storage_value.toString() : undefined;
     }
 }
 
-class browserLanguageSelector implements languageSelector {
-    get_language(): string | undefined {
+class BrowserLanguageSelector implements LanguageSelector {
+    getLanguage(): string | undefined {
         return navigator.language;
     }
 }
 
 // languageManager class manages languages
-class languageManager<T extends language> {
-    private _selected_language: string = '';
-    private _default_language: string = '';
+class LanguageManager<T extends Language> {
+    private _selectedLanguage: string = '';
+    private _defaultLanguage: string = '';
     public eventBus = new EventBus();
-    public automaticLanguageSelectors: languageSelector[] = [new browserLanguageSelector()];
-    public languageSavers: languageSaver[] = [new localStorageLanguageSaver('selected-language')];
-    public languageSelectors: languageSelector[] = [
-        new localStorageLanguageSelector('selected-language'),
+    public automaticLanguageSelectors: LanguageSelector[] = [new BrowserLanguageSelector()];
+    public languageSavers: LanguageSaver[] = [new localStorageLanguageSaver('selected-language')];
+    public languageSelectors: LanguageSelector[] = [
+        new LocalStorageLanguageSelector('selected-language'),
         ...this.automaticLanguageSelectors
     ];
 
-    constructor(private _languageRepository: languageRepository<T>) {
+    constructor(private _languageRepository: LanguageRepository<T>) {
     }
 
-    activate_language(languageCode: string, save: boolean = true): void {
-        const language = this.get_language_by_code(languageCode);
-        this._selected_language = languageCode;
+    activateLanguage(languageCode: string, save: boolean = true): void {
+        const language = this.getLanguageByCode(languageCode);
+        this._selectedLanguage = languageCode;
         if (save)
-            this.languageSavers.forEach(saver => saver.save_language(languageCode));
+            this.languageSavers.forEach(saver => saver.saveLanguage(languageCode));
         this.eventBus.raise("language_changed", language);
     }
 
-    select_language(): void {
-        let language = this._default_language;
+    selectLanguage(): void {
+        let language = this._defaultLanguage;
         for (let i = 0; i < this.languageSelectors.length; i++) {
-            const languageCode = this.languageSelectors[i].get_language();
-            if (languageCode && this._languageRepository.get_language_names().includes(languageCode)) {
+            const languageCode = this.languageSelectors[i].getLanguage();
+            if (languageCode && this._languageRepository.getLanguageNames().includes(languageCode)) {
                 language = languageCode;
                 break;
             }
         }
-        this.activate_language(language, false);
+        this.activateLanguage(language, false);
     }
 
-    set_automatic_language(): void {
-        let language = this._default_language;
+    setAutomaticLanguage(): void {
+        let language = this._defaultLanguage;
         for (let i = 0; i < this.automaticLanguageSelectors.length; i++) {
-            const languageCode = this.automaticLanguageSelectors[i].get_language();
-            if (languageCode && this._languageRepository.get_language_names().includes(languageCode)) {
+            const languageCode = this.automaticLanguageSelectors[i].getLanguage();
+            if (languageCode && this._languageRepository.getLanguageNames().includes(languageCode)) {
                 language = languageCode;
                 break;
             }
         }
-        this.activate_language(language, false);
+        this.activateLanguage(language, false);
         this.languageSavers.forEach(saver => saver.clear());
     }
 
-    set_default_language(languageCode: string): void {
-        this._default_language = languageCode;
+    setDefaultLanguage(languageCode: string): void {
+        this._defaultLanguage = languageCode;
     }
 
-    get_available_language_codes(): string[] {
-        return this._languageRepository.get_language_names();
+    getAvailableLanguageCodes(): string[] {
+        return this._languageRepository.getLanguageNames();
     }
 
-    get_default_language_code(): string {
-        return this._default_language;
+    getDefaultLanguageCode(): string {
+        return this._defaultLanguage;
     }
 
-    get_selected_language(): string {
-        return this._selected_language;
+    getSelectedLanguage(): string {
+        return this._selectedLanguage;
     }
 
-    get_all_languages(): { [key: string]: T } {
-        const return_value: { [key: string]: T } = {}
-        this._languageRepository.get_language_names().forEach(languageCode => {
-            return_value[languageCode] = this.get_language_by_code(languageCode);
+    getAllLanguages(): { [key: string]: T } {
+        const returnValue: { [key: string]: T } = {}
+        this._languageRepository.getLanguageNames().forEach(languageCode => {
+            returnValue[languageCode] = this.getLanguageByCode(languageCode);
         });
-        return return_value;
+        return returnValue;
     }
 
-    get_language_by_code(languageCode: string): T {
-        return this._languageRepository.get_langauge(languageCode);
+    getLanguageByCode(languageCode: string): T {
+        return this._languageRepository.getLanguage(languageCode);
     }
 }
 
-export default languageManager;
+export default LanguageManager;

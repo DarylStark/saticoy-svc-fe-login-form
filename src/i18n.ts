@@ -15,20 +15,20 @@ const resources: {
     }
 } = {}
 
-language_manager.get_available_language_codes().forEach(languageCode => {
-    resources[languageCode] = language_manager.get_language_by_code(languageCode).i18next
+language_manager.getAvailableLanguageCodes().forEach(languageCode => {
+    resources[languageCode] = language_manager.getLanguageByCode(languageCode).i18next
 });
 
 i18n
     .use(HttpApi)
     .use(initReactI18next)
     .init({
-        fallbackLng: language_manager.get_default_language_code(),
+        fallbackLng: language_manager.getDefaultLanguageCode(),
         debug: true,
         interpolation: {
             escapeValue: false,
         },
-        lng: language_manager.get_selected_language(),
+        lng: language_manager.getSelectedLanguage(),
         resources: resources
     });
 

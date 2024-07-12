@@ -18,21 +18,21 @@ import { useTranslation } from 'react-i18next';
 function MenuItems() {
     const { t } = useTranslation();
 
-    const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.get_active_mode());
-    const [theme_toggler_available, set_theme_toggler_available] = useState(theme_manager.has_both_modes());
-    theme_manager.on_set_mode(set_current_theme_mode);
-    theme_manager.on_set_style(() => set_theme_toggler_available(theme_manager.has_both_modes()));
+    const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.getActiveMode());
+    const [theme_toggler_available, set_theme_toggler_available] = useState(theme_manager.hasBothModes());
+    theme_manager.onSetMode(set_current_theme_mode);
+    theme_manager.onSetStyle(() => set_theme_toggler_available(theme_manager.hasBothModes()));
 
     const toggleDarkMode = (value: boolean) => {
-        theme_manager.set_mode(value ? ThemeMode.Dark : ThemeMode.Light);
+        theme_manager.setMode(value ? ThemeMode.Dark : ThemeMode.Light);
     }
 
-    const theme_list = theme_manager.get_theme_names();
+    const theme_list = theme_manager.getThemeNames();
 
     const theme_menu_click: MenuClickEventHandler = ({ key }) => {
         // Set theme if it exists
         if (theme_list.indexOf(key) !== -1) {
-            theme_manager.activate_theme(key);
+            theme_manager.activateTheme(key);
         }
 
         switch (key) {
@@ -44,21 +44,21 @@ function MenuItems() {
 
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
         if (key === 'default_browser_language') {
-            language_manager.set_automatic_language();
+            language_manager.setAutomaticLanguage();
 
             // Done with this function
             return;
         }
 
         // i18n.changeLanguage(key);
-        language_manager.activate_language(key);
+        language_manager.activateLanguage(key);
     }
 
     const get_lanauge_title = (language_code: string) => {
         return t(`languages.${language_code}`);
     }
 
-    const language_list = language_manager.get_available_language_codes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
+    const language_list = language_manager.getAvailableLanguageCodes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
     const language_list_menu = language_list.map(language_code => {
         return (
             <Menu.Item key={language_code} icon={<FaGear />}>

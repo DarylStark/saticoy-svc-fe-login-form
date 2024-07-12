@@ -16,14 +16,14 @@ function set_body_class(style: Style) {
     document.body.className = style.page['class'];
 }
 
-theme_manager.on_set_style(set_body_class);
+theme_manager.onSetStyle(set_body_class);
 theme_manager.publish();
 
 function App() {
     // const theme = ugly_theme.dark;
-    const [theme, set_theme] = useState(theme_manager.get_active_style());
+    const [theme, set_theme] = useState(theme_manager.getActiveStyle());
 
-    theme_manager.on_set_style(set_theme);
+    theme_manager.onSetStyle(set_theme);
 
     return (
         <ConfigProvider theme={theme?.antd}>
