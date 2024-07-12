@@ -29,7 +29,7 @@ i18n
         interpolation: {
             escapeValue: false,
         },
-        lng: language_manager.get_default_language_code(),
+        lng: language_manager.get_selected_language(),
         resources: resources
     });
 

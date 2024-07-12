@@ -43,16 +43,12 @@ function MenuItems() {
     }
 
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
-        // if (key === 'default_browser_language') {
-        //     // Remove the saved language
-        //     localStorage.removeItem(i18n.services.languageDetector.options.lookupLocalStorage);
+        if (key === 'default_browser_language') {
+            language_manager.set_automatic_language();
 
-        //     // Set the automatically detected language
-        //     i18n.changeLanguage();
-
-        //     // Done with this function
-        //     return;
-        // }
+            // Done with this function
+            return;
+        }
 
         // i18n.changeLanguage(key);
         language_manager.activate_language(key);

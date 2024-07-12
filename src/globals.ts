@@ -32,6 +32,7 @@ language_repository.install_language(language_nl_nl);
 language_repository.install_language(language_en_en);
 const language_manager = new languageManager<{ [key: string]: { [key: string]: string } }>(language_repository);
 language_manager.set_default_language('en-US');
+language_manager.select_language();
 
 // Exports
 export { event_bus, theme_manager, theme_repository, language_manager }
