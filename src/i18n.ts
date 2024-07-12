@@ -7,7 +7,7 @@ import { language_manager } from './globals';
 // Create the language specifications
 const resources: {
     [key: string]: {
-        translation: {
+        [key: string]: {
             [key: string]: string | {
                 [key: string]: string
             }
@@ -16,7 +16,7 @@ const resources: {
 } = {}
 
 language_manager.get_available_language_codes().forEach(languageCode => {
-    resources[languageCode] = { translation: language_manager.get_language_by_code(languageCode).translation }
+    resources[languageCode] = language_manager.get_language_by_code(languageCode).i18next
 });
 
 i18n
