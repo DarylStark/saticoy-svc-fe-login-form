@@ -1,6 +1,6 @@
 export type Style = {
     page: {
-        'class': string
+        class: string
     },
 }
 

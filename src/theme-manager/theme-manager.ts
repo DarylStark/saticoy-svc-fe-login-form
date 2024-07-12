@@ -10,116 +10,116 @@ type ModeSubscriptions = ModeSelectHandler[];
 // TODO: Don't rely on exception from the ThemeRepository in `_get_theme_by_name`
 
 class ThemeManager<T extends Style = Style> {
-    private _selected_theme: string = '';
-    private _selected_mode: ThemeMode = ThemeMode.Dark;
-    private _style_subscriptions: StyleSubscriptions<T> = [];
-    private _mode_subscriptions: ModeSubscriptions = [];
+    private _selectedTheme: string = '';
+    private _selectedMode: ThemeMode = ThemeMode.Dark;
+    private _styleSubscriptions: StyleSubscriptions<T> = [];
+    private _modeSubscriptions: ModeSubscriptions = [];
 
     constructor(private _theme_repository: ThemeRepository<T>) { }
 
-    activate_theme(theme_name: string): void {
-        this._get_theme_by_name(theme_name);
-        this._selected_theme = theme_name;
+    activateTheme(theme_name: string): void {
+        this._getThemeByName(theme_name);
+        this._selectedTheme = theme_name;
         this.publish();
     }
 
-    get_active_style(): T {
-        this._raise_on_no_active_theme();
+    getActiveStyle(): T {
+        this._raiseOnNoActiveTheme();
 
         try {
-            return this._get_style_for_theme(
-                this._selected_theme,
-                this._selected_mode);
+            return this._getStyleForName(
+                this._selectedTheme,
+                this._selectedMode);
         } catch {
-            return this._get_style_for_theme(
-                this._selected_theme,
-                this._selected_mode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
+            return this._getStyleForName(
+                this._selectedTheme,
+                this._selectedMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
         }
     }
 
-    get_active_mode(): ThemeMode {
-        return this._selected_mode;
+    getActiveMode(): ThemeMode {
+        return this._selectedMode;
     }
 
-    toggle_mode(): void {
-        this._selected_mode = this._selected_mode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
+    toggleMode(): void {
+        this._selectedMode = this._selectedMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
         this.publish();
     }
 
-    set_mode(mode: ThemeMode): void {
-        this._selected_mode = mode;
+    setMode(mode: ThemeMode): void {
+        this._selectedMode = mode;
         this.publish();
     }
 
-    on_set_style(handler: StyleSelectHandler<T>) {
+    onSetStyle(handler: StyleSelectHandler<T>) {
         // Subscribe to style changes
-        if (!this._style_subscriptions.includes(handler))
-            this._style_subscriptions.push(handler);
+        if (!this._styleSubscriptions.includes(handler))
+            this._styleSubscriptions.push(handler);
     }
 
-    on_set_mode(handler: ModeSelectHandler) {
+    onSetMode(handler: ModeSelectHandler) {
         // Subscribe to mode changes
-        if (!this._mode_subscriptions.includes(handler))
-            this._mode_subscriptions.push(handler);
+        if (!this._modeSubscriptions.includes(handler))
+            this._modeSubscriptions.push(handler);
     }
 
-    off_set_style(handler: StyleSelectHandler<T>) {
+    offSetStyle(handler: StyleSelectHandler<T>) {
         // Unsubscribe from style changes
-        this._style_subscriptions = this._style_subscriptions.filter(sub => sub !== handler);
+        this._styleSubscriptions = this._styleSubscriptions.filter(sub => sub !== handler);
     }
 
-    off_set_mode(handler: ModeSelectHandler) {
+    offSetMode(handler: ModeSelectHandler) {
         // Unsubscribe from mode changes
-        this._mode_subscriptions = this._mode_subscriptions.filter(sub => sub !== handler);
+        this._modeSubscriptions = this._modeSubscriptions.filter(sub => sub !== handler);
     }
 
     publish(): void {
-        this._publish_style();
-        this._publish_mode();
+        this._publishStyle();
+        this._publishMode();
     }
 
-    has_dark_mode(): boolean {
-        this._raise_on_no_active_theme();
-        return this._get_theme_by_name(this._selected_theme).dark !== undefined;
+    hasDarkMode(): boolean {
+        this._raiseOnNoActiveTheme();
+        return this._getThemeByName(this._selectedTheme).dark !== undefined;
     }
 
-    has_light_mode(): boolean {
-        this._raise_on_no_active_theme();
-        return this._get_theme_by_name(this._selected_theme).light !== undefined;
+    hasLightMode(): boolean {
+        this._raiseOnNoActiveTheme();
+        return this._getThemeByName(this._selectedTheme).light !== undefined;
     }
 
-    has_both_modes(): boolean {
-        return this.has_dark_mode() && this.has_light_mode();
+    hasBothModes(): boolean {
+        return this.hasDarkMode() && this.hasLightMode();
     }
 
-    get_theme_names(): string[] {
-        return this._theme_repository.get_theme_names();
+    getThemeNames(): string[] {
+        return this._theme_repository.getThemeNames();
     }
 
-    private _raise_on_no_active_theme(): void {
-        if (!this._selected_theme)
+    private _raiseOnNoActiveTheme(): void {
+        if (!this._selectedTheme)
             throw new Error('No active style is set.');
     }
 
-    private _publish_style(): void {
+    private _publishStyle(): void {
         // Publish to all subscribers
-        const style = this.get_active_style();
-        this._style_subscriptions.forEach(sub => sub(style));
+        const style = this.getActiveStyle();
+        this._styleSubscriptions.forEach(sub => sub(style));
     }
 
-    private _publish_mode(): void {
+    private _publishMode(): void {
         // Publish to all subscribers
-        const mode = this.get_active_mode();
-        this._mode_subscriptions.forEach(sub => sub(mode));
+        const mode = this.getActiveMode();
+        this._modeSubscriptions.forEach(sub => sub(mode));
     }
 
-    private _get_theme_by_name(theme_name: string): Theme<T> {
-        const theme = this._theme_repository.get_theme(theme_name);
+    private _getThemeByName(theme_name: string): Theme<T> {
+        const theme = this._theme_repository.getTheme(theme_name);
         return theme;
     }
 
-    private _get_style_for_theme(theme_name: string, mode: ThemeMode): T {
-        const theme_object = this._get_theme_by_name(theme_name);
+    private _getStyleForName(theme_name: string, mode: ThemeMode): T {
+        const theme_object = this._getThemeByName(theme_name);
         const real_style = mode == ThemeMode.Light ? theme_object.light : theme_object.dark;
         if (!real_style)
             throw new Error(`Theme "${theme_name}" has no mode: "${mode.toString()}"`);

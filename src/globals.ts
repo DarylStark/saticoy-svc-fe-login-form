@@ -21,9 +21,9 @@ const theme_repository = new ManualThemeRepository<SaticoyAntDStyle>();
 const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository);
 
 // Themes
-theme_repository.install_theme(saticoy_theme);
-theme_repository.install_theme(ugly_theme);
-theme_manager.activate_theme('Saticoy');
+theme_repository.installTheme(saticoy_theme);
+theme_repository.installTheme(ugly_theme);
+theme_manager.activateTheme('Saticoy');
 
 // Languages
 const language_repository = new ManualLanguageRepository<i18NextLanguage>();
