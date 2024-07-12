@@ -1,23 +1,22 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 import { language_manager } from './globals';
 
 // Create the language specifications
 const resources: {
     [key: string]: {
-        [key: string]: {
-            [key: string]: { [key: string]: string; };
-        };
+        translation: {
+            [key: string]: string | {
+                [key: string]: string
+            }
+        }
     }
 } = {}
 
 language_manager.get_available_language_codes().forEach(languageCode => {
-    resources[languageCode] = {
-        translation: language_manager.get_language_by_code(languageCode).properties
-    }
+    resources[languageCode] = { translation: language_manager.get_language_by_code(languageCode).translation }
 });
 
 i18n

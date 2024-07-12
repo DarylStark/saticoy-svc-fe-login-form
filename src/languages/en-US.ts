@@ -1,6 +1,8 @@
-export default {
+import { i18NextLanguage } from "./language"
+
+const en_US: i18NextLanguage = {
     languageCode: 'en-US',
-    properties: {
+    translation: {
         "login_title": "Welcome back!",
         "tagline": "Login to get access to your account",
         "username": "Username",
@@ -13,3 +15,5 @@ export default {
         }
     }
 }
+
+export default en_US;

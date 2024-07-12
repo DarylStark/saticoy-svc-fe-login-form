@@ -41,7 +41,7 @@ class browserLanguageSelector implements languageSelector {
 }
 
 // languageManager class manages languages
-class languageManager<T> {
+class languageManager<T extends language> {
     private _selected_language: string = '';
     private _default_language: string = '';
     public eventBus = new EventBus();
@@ -72,7 +72,7 @@ class languageManager<T> {
                 break;
             }
         }
-        this.activate_language(language);
+        this.activate_language(language, false);
     }
 
     set_automatic_language(): void {
@@ -104,15 +104,15 @@ class languageManager<T> {
         return this._selected_language;
     }
 
-    get_all_languages(): { [key: string]: language<T> } {
-        const return_value: { [key: string]: language<T> } = {}
+    get_all_languages(): { [key: string]: T } {
+        const return_value: { [key: string]: T } = {}
         this._languageRepository.get_language_names().forEach(languageCode => {
             return_value[languageCode] = this.get_language_by_code(languageCode);
         });
         return return_value;
     }
 
-    get_language_by_code(languageCode: string): language<T> {
+    get_language_by_code(languageCode: string): T {
         return this._languageRepository.get_langauge(languageCode);
     }
 }

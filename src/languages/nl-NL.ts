@@ -1,6 +1,8 @@
-export default {
+import { i18NextLanguage } from "./language"
+
+const nl_NL: i18NextLanguage = {
     languageCode: 'nl-NL',
-    properties: {
+    translation: {
         "login_title": "Welkom terug!",
         "tagline": "Meld u aan om toegang te krijgen tot uw account",
         "username": "Gebruikersnaam",
@@ -13,3 +15,5 @@ export default {
         }
     }
 }
+
+export default nl_NL;

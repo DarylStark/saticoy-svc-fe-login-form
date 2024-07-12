@@ -1,4 +1,3 @@
-export type language<T> = {
-    languageCode: string,
-    properties: T
+export type language = {
+    languageCode: string
 }
