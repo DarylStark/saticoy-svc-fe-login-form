@@ -42,13 +42,6 @@ function MenuItems() {
         }
     }
 
-    const unique_language_list = new Set(i18n.languages.map((language) => language.split('-')[0]));
-    const language_list: { [key: string]: string } = {}
-    unique_language_list.forEach((language_code) => {
-        language_list[language_code] = t(`languages.${language_code}`)
-    });
-
-
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
         // if (key === 'default_browser_language') {
         //     // Remove the saved language
@@ -64,6 +57,19 @@ function MenuItems() {
         // i18n.changeLanguage(key);
         language_manager.activate_language(key);
     }
+
+    const get_lanauge_title = (language_code: string) => {
+        return t(`languages.${language_code}`);
+    }
+
+    const language_list = language_manager.get_available_language_codes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
+    const language_list_menu = language_list.map(language_code => {
+        return (
+            <Menu.Item key={language_code} icon={<FaGear />}>
+                {t(`languages.${language_code}`)}
+            </Menu.Item>
+        );
+    });
 
     return (
         <>
@@ -95,21 +101,11 @@ function MenuItems() {
                     Default language
                 </Menu.Item>
                 {/* {
-                    Object.entries(language_list).map(([language_code, name]) => (
-                        <Menu.Item key={language_code} icon={<FaGear />}>
-                            {name}
-                        </Menu.Item>
-                    ))
+                    language_manager.get_available_language_codes().forEach(language_code => {
+                        <span>{language_code}</span>
+                    });
                 } */}
-                <Menu.Item key='en-US' icon={<FaGear />}>
-                    American
-                </Menu.Item>
-                <Menu.Item key='nl-NL' icon={<FaGear />}>
-                    Dutch
-                </Menu.Item>
-                <Menu.Item key='en-EN' icon={<FaGear />}>
-                    English
-                </Menu.Item>
+                {language_list_menu}
             </Menu>
         </>
     );
