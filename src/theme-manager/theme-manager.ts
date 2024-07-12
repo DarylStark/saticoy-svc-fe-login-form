@@ -6,6 +6,9 @@ export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
 type StyleSubscriptions<T extends Style> = StyleSelectHandler<T>[];
 type ModeSubscriptions = ModeSelectHandler[];
 
+// TODO: Use `EventBus` instead of a own subscription system
+// TODO: Don't rely on exception from the ThemeRepository in `_get_theme_by_name`
+
 class ThemeManager<T extends Style = Style> {
     private _selected_theme: string = '';
     private _selected_mode: ThemeMode = ThemeMode.Dark;
