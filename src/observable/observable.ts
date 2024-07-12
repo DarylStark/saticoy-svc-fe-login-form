@@ -11,11 +11,11 @@ class Observable<T> {
         this.value = value;
     }
 
-    on_change(callback: EventHandlerCallback) {
+    onChange(callback: EventHandlerCallback) {
         this.event_bus.on('change', callback);
     }
 
-    on_set(callback: EventHandlerCallback) {
+    onSet(callback: EventHandlerCallback) {
         this.event_bus.on('set', callback);
     }
 
@@ -40,7 +40,7 @@ class StringObservable extends Observable<string> {
         super(value);
     }
 
-    get_input_setter() {
+    getInputSetter() {
         return (event: ChangeEvent<HTMLInputElement>) => this.set(event.target.value);
     }
 }
