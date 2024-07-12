@@ -7,8 +7,9 @@ export default {
         "password": "Password",
         "login": "Login",
         "languages": {
-            "nl": "Dutch",
-            "en": "English (United States)"
+            "nl-NL": "Dutch",
+            "en-US": "English (United States)",
+            "en-EN": "English (United Kingdom)"
         }
     }
 }

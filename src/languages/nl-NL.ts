@@ -7,8 +7,9 @@ export default {
         "password": "Wachtwoord",
         "login": "Aanmelden",
         "languages": {
-            "nl": "Nederlands",
-            "en": "Engels (Verenigde Staten)"
+            "nl-NL": "Nederlands",
+            "en-US": "Engels (Verenigde Staten)",
+            "en-UK": "Engels (Verenigd Koninkrijk)"
         }
     }
 }
