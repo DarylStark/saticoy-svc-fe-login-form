@@ -6,8 +6,8 @@ import { ManualThemeRepository } from "./theme-manager/theme-repository";
 import { SaticoyAntDStyle } from "./themes/saticoy-style";
 import saticoy_theme from "./themes/saticoy";
 import ugly_theme from "./themes/ugly";
-import { manualLanguageRepository } from "./internationalization/language-repository";
-import languageManager from "./internationalization/language-manager";
+import { ManualLanguageRepository } from "./internationalization/language-repository";
+import LanguageManager from "./internationalization/language-manager";
 
 import { i18NextLanguage } from './languages/language';
 import language_en_us from "./languages/en-US";
@@ -26,12 +26,12 @@ theme_repository.install_theme(ugly_theme);
 theme_manager.activate_theme('Saticoy');
 
 // Languages
-const language_repository = new manualLanguageRepository<i18NextLanguage>();
-language_repository.install_language(language_en_us);
-language_repository.install_language(language_nl_nl);
-const language_manager = new languageManager<i18NextLanguage>(language_repository);
-language_manager.set_default_language(language_en_us.languageCode);
-language_manager.select_language();
+const language_repository = new ManualLanguageRepository<i18NextLanguage>();
+language_repository.installLanguage(language_en_us);
+language_repository.installLanguage(language_nl_nl);
+const language_manager = new LanguageManager<i18NextLanguage>(language_repository);
+language_manager.setDefaultLanguage(language_en_us.languageCode);
+language_manager.selectLanguage();
 
 // Exports
 export { event_bus, theme_manager, theme_repository, language_manager }

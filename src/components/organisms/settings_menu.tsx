@@ -44,21 +44,21 @@ function MenuItems() {
 
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
         if (key === 'default_browser_language') {
-            language_manager.set_automatic_language();
+            language_manager.setAutomaticLanguage();
 
             // Done with this function
             return;
         }
 
         // i18n.changeLanguage(key);
-        language_manager.activate_language(key);
+        language_manager.activateLanguage(key);
     }
 
     const get_lanauge_title = (language_code: string) => {
         return t(`languages.${language_code}`);
     }
 
-    const language_list = language_manager.get_available_language_codes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
+    const language_list = language_manager.getAvailableLanguageCodes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
     const language_list_menu = language_list.map(language_code => {
         return (
             <Menu.Item key={language_code} icon={<FaGear />}>
