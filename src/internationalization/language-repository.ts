@@ -9,6 +9,7 @@ class manualLanguageRepository<T> implements languageRepository<T> {
     private _languages: { [key: string]: language<T> } = {};
 
     install_language(language: language<T>) {
+        // TODO: Make sure the languageCode is in the correct format (xx-XX)
         this._languages[language.languageCode] = language;
     }
 
