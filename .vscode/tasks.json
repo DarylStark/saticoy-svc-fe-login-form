@@ -5,12 +5,57 @@
 			"label": "Run application",
 			"type": "shell",
 			"command": "npm run dev",
-			"problemMatcher": [],
+			"problemMatcher": {
+				"owner": "custom",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "> vite",
+					"endsPattern": "^ +VITE +v[0-9.]+ +ready in [0-9]+ ms$",
+				},
+				"pattern": [
+					{
+						"regexp": ".*",
+						"file": 0,
+						"location": 1,
+						"message": 2
+					}
+				]
+			},
 			"isBackground": true,
 			"presentation": {
 				"reveal": "always",
 				"panel": "shared"
 			}
+		},
+		{
+			"label": "Build project",
+			"type": "shell",
+			"command": "npm run build",
+			"problemMatcher": {
+				"owner": "custom",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": [
+					{
+						"regexp": "^(.*):\\s*(\\d+):(\\d+)\\s*-\\s*(error|warning)\\s*(.*)$",
+						"file": 0,
+						"location": 1,
+						"message": 2
+					}
+				]
+			},
+			"isBackground": false,
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			},
+			"group": "build"
 		}
 	]
 }
