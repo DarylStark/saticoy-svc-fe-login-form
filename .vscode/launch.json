@@ -13,6 +13,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///src/*": "${webRoot}/*"
             },
+            "preLaunchTask": "Run application"
         }
     ]
 }
