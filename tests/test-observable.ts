@@ -9,28 +9,28 @@ describe('Observable', () => {
 
     it('Raise event on setting variable', () => {
         const callback = jest.fn();
-        my_observable.on_set(callback);
+        my_observable.onSet(callback);
         my_observable.set(1);
         expect(callback).toHaveBeenCalled();
     });
 
     it('Raise "change" on changing variable', () => {
         const callback = jest.fn();
-        my_observable.on_change(callback);
+        my_observable.onChange(callback);
         my_observable.set(1);
         expect(callback).toHaveBeenCalled();
     });
 
     it('Should not raise "change" if value is the same', () => {
         const callback = jest.fn();
-        my_observable.on_change(callback);
+        my_observable.onChange(callback);
         my_observable.set(0);
         expect(callback).not.toHaveBeenCalled();
     });
 
     it('Should raise "set" if value is the same', () => {
         const callback = jest.fn();
-        my_observable.on_set(callback);
+        my_observable.onSet(callback);
         my_observable.set(0);
         expect(callback).toHaveBeenCalled();
     });
