@@ -1,5 +1,5 @@
 import { Theme, ThemeMode } from '../src/theme-manager/theme';
-import { ManualThemeRepository } from '../src/theme-manager/theme-repository';
+import Repository, { BaseRepository } from '../src/repository/repository';
 import ThemeManager from '../src/theme-manager/theme-manager';
 
 const MockThemeDarkLight: Theme = {
@@ -38,37 +38,37 @@ const MockThemeLight: Theme = {
 }
 
 describe('Theme Repository', () => {
-    let repository: ManualThemeRepository;
+    let repository: Repository<Theme>;
 
     beforeEach(() => {
-        repository = new ManualThemeRepository();
-        repository.installTheme(MockThemeDarkLight);
-        repository.installTheme(MockThemeDark);
-        repository.installTheme(MockThemeLight);
+        repository = new BaseRepository<Theme>();
+        repository.add(MockThemeDarkLight, 'mock theme - dark and light');
+        repository.add(MockThemeDark, 'mock theme - dark');
+        repository.add(MockThemeLight, 'mock theme - light');
     });
 
     it('Retrieving themes', () => {
-        repository.getTheme('mock theme - dark and light');
-        repository.getTheme('mock theme - dark');
-        repository.getTheme('mock theme - light');
+        repository.get('mock theme - dark and light');
+        repository.get('mock theme - dark');
+        repository.get('mock theme - light');
     });
 
     it('Retrieving non-existent theme', () => {
         expect(() => {
-            repository.getTheme('non-existent theme');
+            repository.get('non-existent theme');
         }).toThrow();
     });
 });
 
 describe('Theme Manager', () => {
-    let repository: ManualThemeRepository;
+    let repository: Repository<Theme>;
     let manager: ThemeManager;
 
     beforeEach(() => {
-        repository = new ManualThemeRepository();
-        repository.installTheme(MockThemeDarkLight);
-        repository.installTheme(MockThemeDark);
-        repository.installTheme(MockThemeLight);
+        repository = new BaseRepository<Theme>();
+        repository.add(MockThemeDarkLight, 'mock theme - dark and light');
+        repository.add(MockThemeDark, 'mock theme - dark');
+        repository.add(MockThemeLight, 'mock theme - light');
         manager = new ThemeManager(repository);
     });
 
