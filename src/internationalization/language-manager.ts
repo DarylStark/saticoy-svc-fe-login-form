@@ -1,6 +1,6 @@
 import EventBus from "../eventbus/eventbus";
 import { Language } from "./language";
-import LanguageRepository from "./language-repository";
+import Repository from "../repository/repository";
 
 // languageStorage managers store the selected language for the user.
 interface LanguageSaver {
@@ -52,7 +52,7 @@ class LanguageManager<T extends Language> {
         ...this.automaticLanguageSelectors
     ];
 
-    constructor(private _languageRepository: LanguageRepository<T>) {
+    constructor(private _languageRepository: Repository<T>) {
     }
 
     activateLanguage(languageCode: string, save: boolean = true): void {
@@ -67,7 +67,7 @@ class LanguageManager<T extends Language> {
         let language = this._defaultLanguage;
         for (let i = 0; i < this.languageSelectors.length; i++) {
             const languageCode = this.languageSelectors[i].getLanguage();
-            if (languageCode && this._languageRepository.getLanguageNames().includes(languageCode)) {
+            if (languageCode && this._languageRepository.getNames().includes(languageCode)) {
                 language = languageCode;
                 break;
             }
@@ -79,7 +79,7 @@ class LanguageManager<T extends Language> {
         let language = this._defaultLanguage;
         for (let i = 0; i < this.automaticLanguageSelectors.length; i++) {
             const languageCode = this.automaticLanguageSelectors[i].getLanguage();
-            if (languageCode && this._languageRepository.getLanguageNames().includes(languageCode)) {
+            if (languageCode && this._languageRepository.getNames().includes(languageCode)) {
                 language = languageCode;
                 break;
             }
@@ -93,7 +93,7 @@ class LanguageManager<T extends Language> {
     }
 
     getAvailableLanguageCodes(): string[] {
-        return this._languageRepository.getLanguageNames();
+        return this._languageRepository.getNames();
     }
 
     getDefaultLanguageCode(): string {
@@ -106,14 +106,14 @@ class LanguageManager<T extends Language> {
 
     getAllLanguages(): { [key: string]: T } {
         const returnValue: { [key: string]: T } = {}
-        this._languageRepository.getLanguageNames().forEach(languageCode => {
+        this._languageRepository.getNames().forEach(languageCode => {
             returnValue[languageCode] = this.getLanguageByCode(languageCode);
         });
         return returnValue;
     }
 
     getLanguageByCode(languageCode: string): T {
-        return this._languageRepository.getLanguage(languageCode);
+        return this._languageRepository.get(languageCode);
     }
 }
 
