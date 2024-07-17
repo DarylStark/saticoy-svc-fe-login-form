@@ -2,7 +2,7 @@
 
 import EventBus from "./eventbus/eventbus";
 import ThemeManager from './theme-manager/theme-manager';
-import { ManualThemeRepository } from "./theme-manager/theme-repository";
+import { Theme } from "./theme-manager/theme";
 import { SaticoyAntDStyle } from "./themes/saticoy-style";
 import saticoy_theme from "./themes/saticoy";
 import ugly_theme from "./themes/ugly";
@@ -18,12 +18,12 @@ import { BaseRepository } from "./repository/repository";
 const event_bus = new EventBus();
 
 // Themeing managers
-const theme_repository = new ManualThemeRepository<SaticoyAntDStyle>();
+const theme_repository = new BaseRepository<Theme<SaticoyAntDStyle>>();
 const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository);
 
 // Themes
-theme_repository.installTheme(saticoy_theme);
-theme_repository.installTheme(ugly_theme);
+theme_repository.add(saticoy_theme, "Saticoy");
+theme_repository.add(ugly_theme, "Ugly");
 theme_manager.activateTheme('Saticoy');
 
 // Languages
