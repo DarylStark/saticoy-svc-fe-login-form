@@ -27,4 +27,5 @@ class BaseRepository<T> implements Repository<T> {
     }
 }
 
-export default BaseRepository;
+export default Repository;
+export { BaseRepository };
