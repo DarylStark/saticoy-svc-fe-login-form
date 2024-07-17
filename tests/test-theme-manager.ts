@@ -1,5 +1,5 @@
 import { Theme, ThemeMode } from '../src/theme-manager/theme';
-import { ManualThemeRepository } from '../src/theme-manager/theme-repository';
+import Repository, { BaseRepository } from '../src/repository/repository';
 import ThemeManager from '../src/theme-manager/theme-manager';
 
 const MockThemeDarkLight: Theme = {
@@ -38,152 +38,152 @@ const MockThemeLight: Theme = {
 }
 
 describe('Theme Repository', () => {
-    let repository: ManualThemeRepository;
+    let repository: Repository<Theme>;
 
     beforeEach(() => {
-        repository = new ManualThemeRepository();
-        repository.install_theme(MockThemeDarkLight);
-        repository.install_theme(MockThemeDark);
-        repository.install_theme(MockThemeLight);
+        repository = new BaseRepository<Theme>();
+        repository.add(MockThemeDarkLight, 'mock theme - dark and light');
+        repository.add(MockThemeDark, 'mock theme - dark');
+        repository.add(MockThemeLight, 'mock theme - light');
     });
 
     it('Retrieving themes', () => {
-        repository.get_theme('mock theme - dark and light');
-        repository.get_theme('mock theme - dark');
-        repository.get_theme('mock theme - light');
+        repository.get('mock theme - dark and light');
+        repository.get('mock theme - dark');
+        repository.get('mock theme - light');
     });
 
     it('Retrieving non-existent theme', () => {
         expect(() => {
-            repository.get_theme('non-existent theme');
+            repository.get('non-existent theme');
         }).toThrow();
     });
 });
 
 describe('Theme Manager', () => {
-    let repository: ManualThemeRepository;
+    let repository: Repository<Theme>;
     let manager: ThemeManager;
 
     beforeEach(() => {
-        repository = new ManualThemeRepository();
-        repository.install_theme(MockThemeDarkLight);
-        repository.install_theme(MockThemeDark);
-        repository.install_theme(MockThemeLight);
+        repository = new BaseRepository<Theme>();
+        repository.add(MockThemeDarkLight, 'mock theme - dark and light');
+        repository.add(MockThemeDark, 'mock theme - dark');
+        repository.add(MockThemeLight, 'mock theme - light');
         manager = new ThemeManager(repository);
     });
 
     it('Get active style when non is set', () => {
         expect(() => {
-            manager.get_active_style();
+            manager.getActiveStyle();
         }).toThrow();
     });
 
     it('Get active style after setting', () => {
-        manager.activate_theme('mock theme - dark and light');
-        manager.get_active_style();
+        manager.activateTheme('mock theme - dark and light');
+        manager.getActiveStyle();
     });
 
     it('Check given style after toggling', () => {
-        manager.activate_theme('mock theme - dark and light');
-        let style = manager.get_active_style();
+        manager.activateTheme('mock theme - dark and light');
+        let style = manager.getActiveStyle();
 
         // Default style is dark
         expect(style).toEqual(MockThemeDarkLight.dark);
 
         // Toggle to light
-        manager.toggle_mode();
-        style = manager.get_active_style();
+        manager.toggleMode();
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDarkLight.light);
 
         // Toggle to dark again
-        manager.toggle_mode();
-        style = manager.get_active_style();
+        manager.toggleMode();
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDarkLight.dark);
     });
 
     it('Check given style after setting mode', () => {
-        manager.activate_theme('mock theme - dark and light');
-        let style = manager.get_active_style();
+        manager.activateTheme('mock theme - dark and light');
+        let style = manager.getActiveStyle();
 
         // Toggle to light
-        manager.set_mode(ThemeMode.Light);
-        style = manager.get_active_style();
+        manager.setMode(ThemeMode.Light);
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDarkLight.light);
 
         // Toggle to dark again
-        manager.set_mode(ThemeMode.Dark);
-        style = manager.get_active_style();
+        manager.setMode(ThemeMode.Dark);
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDarkLight.dark);
     });
 
     it('Check given style after setting mode', () => {
-        manager.activate_theme('mock theme - dark');
-        let style = manager.get_active_style();
+        manager.activateTheme('mock theme - dark');
+        let style = manager.getActiveStyle();
 
         // Should still be dark
         expect(style).toEqual(MockThemeDark.dark);
 
         // Toggle to light, should still be dark
-        manager.set_mode(ThemeMode.Light);
-        style = manager.get_active_style();
+        manager.setMode(ThemeMode.Light);
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDark.dark);
 
         // Toggle to dark again, should still be dark
-        manager.set_mode(ThemeMode.Dark);
-        style = manager.get_active_style();
+        manager.setMode(ThemeMode.Dark);
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDark.dark);
 
         // Toggle to light, go to a theme with both dark and light styles and
         // see if it changes to light
-        manager.set_mode(ThemeMode.Light);
-        manager.activate_theme('mock theme - dark and light');
-        style = manager.get_active_style();
+        manager.setMode(ThemeMode.Light);
+        manager.activateTheme('mock theme - dark and light');
+        style = manager.getActiveStyle();
         expect(style).toEqual(MockThemeDarkLight.light);
     });
 
     it('Check theme modes', () => {
-        manager.activate_theme('mock theme - dark');
-        expect(manager.has_dark_mode()).toBe(true);
-        expect(manager.has_light_mode()).toBe(false);
-        expect(manager.has_both_modes()).toBe(false);
+        manager.activateTheme('mock theme - dark');
+        expect(manager.hasDarkMode()).toBe(true);
+        expect(manager.hasLightMode()).toBe(false);
+        expect(manager.hasBothModes()).toBe(false);
 
-        manager.activate_theme('mock theme - light');
-        expect(manager.has_dark_mode()).toBe(false);
-        expect(manager.has_light_mode()).toBe(true);
-        expect(manager.has_both_modes()).toBe(false);
+        manager.activateTheme('mock theme - light');
+        expect(manager.hasDarkMode()).toBe(false);
+        expect(manager.hasLightMode()).toBe(true);
+        expect(manager.hasBothModes()).toBe(false);
 
-        manager.activate_theme('mock theme - dark and light');
-        expect(manager.has_dark_mode()).toBe(true);
-        expect(manager.has_light_mode()).toBe(true);
-        expect(manager.has_both_modes()).toBe(true);
+        manager.activateTheme('mock theme - dark and light');
+        expect(manager.hasDarkMode()).toBe(true);
+        expect(manager.hasLightMode()).toBe(true);
+        expect(manager.hasBothModes()).toBe(true);
     });
 
     it('Register to style changes', () => {
         const mock_handler = jest.fn();
-        manager.on_set_style(mock_handler);
+        manager.onSetStyle(mock_handler);
 
-        manager.activate_theme('mock theme - dark and light');
+        manager.activateTheme('mock theme - dark and light');
         expect(mock_handler).toHaveBeenCalledTimes(1);
 
-        manager.off_set_style(mock_handler);
+        manager.offSetStyle(mock_handler);
 
-        manager.activate_theme('mock theme - dark and light');
+        manager.activateTheme('mock theme - dark and light');
         expect(mock_handler).toHaveBeenCalledTimes(1);
     });
 
     it('Register to mode changes', () => {
         const mock_handler = jest.fn();
-        manager.on_set_mode(mock_handler);
+        manager.onSetMode(mock_handler);
 
-        manager.activate_theme('mock theme - dark and light');
+        manager.activateTheme('mock theme - dark and light');
         expect(mock_handler).toHaveBeenCalledTimes(1);
 
-        manager.toggle_mode();
+        manager.toggleMode();
         expect(mock_handler).toHaveBeenCalledTimes(2);
 
-        manager.off_set_mode(mock_handler);
+        manager.offSetMode(mock_handler);
 
-        manager.toggle_mode();
+        manager.toggleMode();
         expect(mock_handler).toHaveBeenCalledTimes(2);
     });
 });

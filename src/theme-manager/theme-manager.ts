@@ -1,5 +1,5 @@
+import Repository from '../repository/repository';
 import { Style, Theme, ThemeMode } from './theme';
-import ThemeRepository from './theme-repository';
 
 export type StyleSelectHandler<T extends Style> = (selected_style: T) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
@@ -15,7 +15,7 @@ class ThemeManager<T extends Style = Style> {
     private _styleSubscriptions: StyleSubscriptions<T> = [];
     private _modeSubscriptions: ModeSubscriptions = [];
 
-    constructor(private _theme_repository: ThemeRepository<T>) { }
+    constructor(private _theme_repository: Repository<Theme<T>>) { }
 
     activateTheme(theme_name: string): void {
         this._getThemeByName(theme_name);
@@ -93,7 +93,7 @@ class ThemeManager<T extends Style = Style> {
     }
 
     getThemeNames(): string[] {
-        return this._theme_repository.getThemeNames();
+        return this._theme_repository.getNames();
     }
 
     private _raiseOnNoActiveTheme(): void {
@@ -114,7 +114,7 @@ class ThemeManager<T extends Style = Style> {
     }
 
     private _getThemeByName(theme_name: string): Theme<T> {
-        const theme = this._theme_repository.getTheme(theme_name);
+        const theme = this._theme_repository.get(theme_name);
         return theme;
     }
 
