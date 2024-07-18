@@ -1,5 +1,5 @@
 interface Repository<T> {
-    add(item: T, name: string): void;
+    add(item: T, name: string | string[]): void;
     remove(name: string): void;
     get(name: string): T;
     getNames(): string[];
@@ -8,8 +8,16 @@ interface Repository<T> {
 class BaseRepository<T> implements Repository<T> {
     private _items: { [key: string]: T } = {};
 
-    add(item: T, name: string): void {
-        this._items[name] = item;
+    add(item: T, name: string | string[]): void {
+        if (typeof name === 'string') {
+            this._items[name] = item;
+        } else if (Array.isArray(name)) {
+            name.forEach((n) => {
+                this._items[n] = item;
+            });
+        } else {
+            throw new Error('Invalid name type. Expected string or array of strings.');
+        }
     }
 
     remove(name: string): void {

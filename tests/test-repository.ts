@@ -12,6 +12,12 @@ describe('BaseRepository', () => {
         expect(repository.get('one')).toBe(1);
     });
 
+    it('Should add multiple items', () => {
+        repository.add(1, ['one', 'uno']);
+        expect(repository.get('one')).toBe(1);
+        expect(repository.get('uno')).toBe(1);
+    });
+
     it('Should remove item', () => {
         repository.add(1, 'one');
         repository.remove('one');
