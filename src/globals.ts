@@ -28,8 +28,8 @@ theme_manager.activateTheme('Saticoy');
 
 // Languages
 const language_repository = new BaseRepository<i18NextLanguage>();
-language_repository.add(language_en_us, "en-US");
-language_repository.add(language_nl_nl, "nl-NL");
+language_repository.add(language_en_us, "en-US", ["en"]);
+language_repository.add(language_nl_nl, "nl-NL", ["nl"]);
 const language_manager = new LanguageManager<i18NextLanguage>(language_repository);
 language_manager.setDefaultLanguage(language_en_us.languageCode);
 language_manager.selectLanguage();
