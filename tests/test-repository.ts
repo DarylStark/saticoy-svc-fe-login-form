@@ -30,4 +30,12 @@ describe('BaseRepository', () => {
         repository.add(2, 'two');
         expect(repository.getNames()).toEqual(['one', 'two']);
     });
+
+    it('Should remove aliasses too', () => {
+        repository.add(1, 'one', ['two', 'three']);
+        repository.remove('one');
+        expect(() => repository.get('one')).toThrow();
+        expect(() => repository.get('two')).toThrow();
+        expect(() => repository.get('three')).toThrow();
+    })
 });
