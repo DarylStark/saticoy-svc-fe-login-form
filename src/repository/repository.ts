@@ -4,6 +4,7 @@ interface Repository<T> {
     get(name: string): T;
     get_alias(name: string): T;
     getNames(): string[];
+    hasName(name: string): boolean;
 }
 
 class BaseRepository<T> implements Repository<T> {
@@ -43,6 +44,10 @@ class BaseRepository<T> implements Repository<T> {
 
     getNames(): string[] {
         return Object.keys(this._items);
+    }
+
+    hasName(name: string): boolean {
+        return this._items[name] !== undefined;
     }
 }
 
