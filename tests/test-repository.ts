@@ -37,5 +37,14 @@ describe('BaseRepository', () => {
         expect(() => repository.get('one')).toThrow();
         expect(() => repository.get('two')).toThrow();
         expect(() => repository.get('three')).toThrow();
-    })
+    });
+
+    it('Should contain some elements', () => {
+        repository.add(1, 'one');
+        expect(repository.hasName('one')).toBeTruthy();
+    });
+
+    it('Should not contain some elements', () => {
+        expect(repository.hasName('one')).toBeFalsy();
+    });
 });
