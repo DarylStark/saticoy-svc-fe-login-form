@@ -42,8 +42,11 @@ class BaseRepository<T> implements Repository<T> {
         return this._items[this._aliasses[name]];
     }
 
-    getNames(): string[] {
-        return Object.keys(this._items);
+    getNames(include_aliases: boolean = true): string[] {
+        const keys = Object.keys(this._items);
+        if (include_aliases)
+            Object.keys(this._aliasses).forEach(alias => keys.push(alias));
+        return keys;
     }
 
     hasName(name: string, include_aliases: boolean = true): boolean {
