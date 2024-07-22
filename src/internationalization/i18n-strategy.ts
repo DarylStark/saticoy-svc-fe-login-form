@@ -7,8 +7,8 @@ interface I18nStrategy {
 class BrowserStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         // Get key from browser
-        // TODO: Implement
-        return 'nl';
+        // TODO: make sure it returns `undefined` if the language is not supported
+        return navigator.language;
     }
 
     saveLocaleKey(key?: string): void {
@@ -23,8 +23,9 @@ class BrowserStrategy implements I18nStrategy {
 class PageArgsStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         // Get key from args
-        // TODO: Implement
-        return 'de';
+        // TODO: Make the key for the argument configurable
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('lang') || undefined;
     }
 
     saveLocaleKey(key?: string): void {
@@ -40,6 +41,7 @@ class PageArgsStrategy implements I18nStrategy {
 class LocalPreferencesStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         // Get key from saved settings
+        // TODO: Make the key for the local storage configurable
         return localStorage.getItem('locale') || undefined;
     }
 
