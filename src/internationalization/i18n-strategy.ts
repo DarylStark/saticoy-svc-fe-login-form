@@ -1,18 +1,18 @@
 interface I18nStrategy {
-    getLanguage(): string | undefined;
+    getLocaleKey(): string | undefined;
 }
 
 class BrowserStrategy implements I18nStrategy {
-    getLanguage(): string | undefined {
-        // Get language from browser
+    getLocaleKey(): string | undefined {
+        // Get key from browser
         // TODO: Implement
         return 'nl';
     }
 }
 
 class PageArgsStrategy implements I18nStrategy {
-    getLanguage(): string | undefined {
-        // Get language from args
+    getLocaleKey(): string | undefined {
+        // Get key from args
         // TODO: Implement
         return 'de';
     }
@@ -20,33 +20,29 @@ class PageArgsStrategy implements I18nStrategy {
 
 
 class LocalPreferencesStrategy implements I18nStrategy {
-    getLanguage(): string | undefined {
-        // Get language from saved settings
+    getLocaleKey(): string | undefined {
+        // Get key from saved settings
         // TODO: Implement
         return 'en';
     }
 }
 
-class ChainedLanguageSelector implements I18nStrategy {
-    private _languageSelectors: I18nStrategy[];
+class ChainedLocaleKeyStrategy implements I18nStrategy {
+    constructor(private _strategies: I18nStrategy[]) { }
 
-    constructor(languageSelectors: I18nStrategy[]) {
-        this._languageSelectors = languageSelectors;
+    addStrategy(strategy: I18nStrategy) {
+        this._strategies.push(strategy);
     }
 
-    addLanguageSelector(languageSelector: I18nStrategy) {
-        this._languageSelectors.push(languageSelector);
-    }
-
-    getLanguage(): string | undefined {
-        for (const languageSelector of this._languageSelectors) {
-            const language = languageSelector.getLanguage();
-            if (language)
-                return language;
+    getLocaleKey(): string | undefined {
+        for (const strategy of this._strategies) {
+            const key = strategy.getLocaleKey();
+            if (key)
+                return key;
         }
         return undefined;
     }
 }
 
 export default I18nStrategy;
-export { BrowserStrategy as BrowserLanguageSelector, LocalPreferencesStrategy as SavedLanguageSelector, PageArgsStrategy as ArgsLanguageSelector, ChainedLanguageSelector };
+export { BrowserStrategy, LocalPreferencesStrategy, PageArgsStrategy, ChainedLocaleKeyStrategy };

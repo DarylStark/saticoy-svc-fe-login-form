@@ -3,50 +3,51 @@ import { LocaleData } from './localedata';
 import I18nStrategy from './i18n-strategy';
 
 interface I18nManager {
-    setDefaultLanguage(defaultLanguage: string): void;
-    setStrategy(languageSelector: I18nStrategy): void;
-    retrieveLanguage(): boolean;
-    get selectedLanguage(): string;
+    setDefaultLocaleKey(defaultKey: string): void;
+    setStrategy(i18nStrategy: I18nStrategy): void;
+    retrieveLocaleKey(): boolean;
+    setLocaleKey(key: string): void;
+    get selectedLocaleKey(): string;
 }
 
 class BaseI18nManager<T extends LocaleData> implements I18nManager {
-    private _selectedLanguage?: string;
+    private _selectedLocaleKey?: string;
 
     constructor(
-        private _languageRepository: Repository<T>,
+        private _localeRepository: Repository<T>,
         private _strategy?: I18nStrategy,
-        private _defaultLanguage?: string) {
-        this._selectedLanguage = _defaultLanguage;
+        private _defaultKey?: string) {
+        this._selectedLocaleKey = _defaultKey;
     }
 
-    setDefaultLanguage(defaultLanguage: string): void {
-        this._defaultLanguage = defaultLanguage;
+    setDefaultLocaleKey(defaultKey: string): void {
+        this._defaultKey = defaultKey;
     }
 
     setStrategy(strategy: I18nStrategy): void {
         this._strategy = strategy;
     }
 
-    retrieveLanguage(): boolean {
-        this._selectedLanguage = this._strategy?.getLanguage() ?? this._defaultLanguage;
-        return this._isValidLanguage();
+    retrieveLocaleKey(): boolean {
+        this._selectedLocaleKey = this._strategy?.getLocaleKey() ?? this._defaultKey;
+        return this._isValidKey();
     }
 
-    setLanguage(language: string): void {
-        if (!this._languageRepository.hasName(language))
-            throw new Error(`Language "${language}" not found`);
-        this._selectedLanguage = language;
+    setLocaleKey(key: string): void {
+        if (!this._localeRepository.hasName(key))
+            throw new Error(`Key "${key}" not found`);
+        this._selectedLocaleKey = key;
     }
 
-    get selectedLanguage(): string {
-        if (!this._isValidLanguage() || !this._selectedLanguage)
-            throw new Error('No valid language selected');
-        return this._selectedLanguage;
+    get selectedLocaleKey(): string {
+        if (!this._isValidKey() || !this._selectedLocaleKey)
+            throw new Error('No valid locale key selected');
+        return this._selectedLocaleKey;
     }
 
-    private _isValidLanguage(): boolean {
-        return this._selectedLanguage !== undefined &&
-            this._languageRepository.hasName(this._selectedLanguage);
+    private _isValidKey(): boolean {
+        return this._selectedLocaleKey !== undefined &&
+            this._localeRepository.hasName(this._selectedLocaleKey);
     }
 }
 
