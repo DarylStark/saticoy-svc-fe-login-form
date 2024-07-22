@@ -1,50 +1,52 @@
 import Repository from '../repository/repository';
-import { Language } from './language';
-import LanguageSelector from './language-selector';
+import { LocaleData } from './localedata';
+import I18nStrategy from './i18n-strategy';
 
 interface I18nManager {
     setDefaultLanguage(defaultLanguage: string): void;
-    setLanguageSelector(languageSelector: LanguageSelector): void;
-    retrieveLanguage(): void;
+    setStrategy(languageSelector: I18nStrategy): void;
+    retrieveLanguage(): boolean;
     get selectedLanguage(): string;
 }
 
-class BaseI18nManager<T extends Language> implements I18nManager {
+class BaseI18nManager<T extends LocaleData> implements I18nManager {
     private _selectedLanguage?: string;
-    private _defaultLanguage?: string;
 
     constructor(
         private _languageRepository: Repository<T>,
-        private _languageSelector?: LanguageSelector) {
-
-        this.retrieveLanguage();
+        private _strategy?: I18nStrategy,
+        private _defaultLanguage?: string) {
+        this._selectedLanguage = _defaultLanguage;
     }
 
     setDefaultLanguage(defaultLanguage: string): void {
         this._defaultLanguage = defaultLanguage;
     }
 
-    setLanguageSelector(languageSelector: LanguageSelector): void {
-        this._languageSelector = languageSelector;
+    setStrategy(strategy: I18nStrategy): void {
+        this._strategy = strategy;
     }
 
-    retrieveLanguage(): void {
-        this._selectedLanguage = undefined;
-        if (this._languageSelector)
-            this._selectedLanguage = this._languageSelector.getLanguage();
-        if (!this._selectedLanguage)
-            this._selectedLanguage = this._defaultLanguage;
+    retrieveLanguage(): boolean {
+        this._selectedLanguage = this._strategy?.getLanguage() ?? this._defaultLanguage;
+        return this._isValidLanguage();
+    }
+
+    setLanguage(language: string): void {
+        if (!this._languageRepository.hasName(language))
+            throw new Error(`Language "${language}" not found`);
+        this._selectedLanguage = language;
+    }
+
+    get selectedLanguage(): string {
+        if (!this._isValidLanguage() || !this._selectedLanguage)
+            throw new Error('No valid language selected');
+        return this._selectedLanguage;
     }
 
     private _isValidLanguage(): boolean {
         return this._selectedLanguage !== undefined &&
             this._languageRepository.hasName(this._selectedLanguage);
-    }
-
-    get selectedLanguage(): string {
-        if (!this._isValidLanguage() || !this._selectedLanguage)
-            throw Error('No valid language selected');
-        return this._selectedLanguage;
     }
 }
 

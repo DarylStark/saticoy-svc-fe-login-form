@@ -1,8 +1,8 @@
-interface LanguageSelector {
+interface I18nStrategy {
     getLanguage(): string | undefined;
 }
 
-class BrowserLanguageSelector implements LanguageSelector {
+class BrowserStrategy implements I18nStrategy {
     getLanguage(): string | undefined {
         // Get language from browser
         // TODO: Implement
@@ -10,7 +10,7 @@ class BrowserLanguageSelector implements LanguageSelector {
     }
 }
 
-class ArgsLanguageSelector implements LanguageSelector {
+class PageArgsStrategy implements I18nStrategy {
     getLanguage(): string | undefined {
         // Get language from args
         // TODO: Implement
@@ -19,7 +19,7 @@ class ArgsLanguageSelector implements LanguageSelector {
 }
 
 
-class SavedLanguageSelector implements LanguageSelector {
+class LocalPreferencesStrategy implements I18nStrategy {
     getLanguage(): string | undefined {
         // Get language from saved settings
         // TODO: Implement
@@ -27,14 +27,14 @@ class SavedLanguageSelector implements LanguageSelector {
     }
 }
 
-class ChainedLanguageSelector implements LanguageSelector {
-    private _languageSelectors: LanguageSelector[];
+class ChainedLanguageSelector implements I18nStrategy {
+    private _languageSelectors: I18nStrategy[];
 
-    constructor(languageSelectors: LanguageSelector[]) {
+    constructor(languageSelectors: I18nStrategy[]) {
         this._languageSelectors = languageSelectors;
     }
 
-    addLanguageSelector(languageSelector: LanguageSelector) {
+    addLanguageSelector(languageSelector: I18nStrategy) {
         this._languageSelectors.push(languageSelector);
     }
 
@@ -48,5 +48,5 @@ class ChainedLanguageSelector implements LanguageSelector {
     }
 }
 
-export default LanguageSelector;
-export { BrowserLanguageSelector, SavedLanguageSelector, ArgsLanguageSelector, ChainedLanguageSelector };
+export default I18nStrategy;
+export { BrowserStrategy as BrowserLanguageSelector, LocalPreferencesStrategy as SavedLanguageSelector, PageArgsStrategy as ArgsLanguageSelector, ChainedLanguageSelector };
