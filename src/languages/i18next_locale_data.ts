@@ -1,6 +1,6 @@
-import { Language } from "../internationalization/language"
+import { LocaleData } from "../internationalization/localedata"
 
-export type i18NextLanguage = Language & {
+export type i18NextLocaleData = LocaleData & {
     i18next: {
         [key: string]: {
             [key: string]: string | {

@@ -1,6 +1,8 @@
 import Repository from '../repository/repository';
 import { LocaleData } from './localedata';
 import I18nStrategy from './i18n-strategy';
+import EventBus from "../eventbus/eventbus";
+
 
 interface I18nManager {
     setDefaultLocaleKey(defaultKey: string): void;
@@ -12,31 +14,42 @@ interface I18nManager {
 
 class BaseI18nManager<T extends LocaleData> implements I18nManager {
     private _selectedLocaleKey?: string;
+    public eventBus = new EventBus();
 
     constructor(
-        private _localeRepository: Repository<T>,
-        private _strategy?: I18nStrategy,
-        private _defaultKey?: string) {
-        this._selectedLocaleKey = _defaultKey;
+        readonly localeRepository: Repository<T>,
+        public defaultKey?: string,
+        public strategy?: I18nStrategy) {
+        this._selectedLocaleKey = defaultKey;
     }
 
     setDefaultLocaleKey(defaultKey: string): void {
-        this._defaultKey = defaultKey;
+        this.defaultKey = defaultKey;
+        this._selectedLocaleKey = defaultKey;
+        this._raiseLocaleChanged();
+        this._saveLocale();
     }
 
-    setStrategy(strategy: I18nStrategy): void {
-        this._strategy = strategy;
+    setStrategy(strategy?: I18nStrategy): void {
+        this.strategy = strategy;
     }
 
     retrieveLocaleKey(): boolean {
-        this._selectedLocaleKey = this._strategy?.getLocaleKey() ?? this._defaultKey;
-        return this._isValidKey();
+        this._selectedLocaleKey = this.strategy?.getLocaleKey() ?? this.defaultKey;
+        if (this._isValidKey()) {
+            this._raiseLocaleChanged();
+            this._saveLocale();
+            return true;
+        }
+        return false;
     }
 
     setLocaleKey(key: string): void {
-        if (!this._localeRepository.hasName(key))
+        if (!this.localeRepository.hasName(key))
             throw new Error(`Key "${key}" not found`);
         this._selectedLocaleKey = key;
+        this._raiseLocaleChanged();
+        this._saveLocale();
     }
 
     get selectedLocaleKey(): string {
@@ -47,7 +60,15 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
 
     private _isValidKey(): boolean {
         return this._selectedLocaleKey !== undefined &&
-            this._localeRepository.hasName(this._selectedLocaleKey);
+            this.localeRepository.hasName(this._selectedLocaleKey);
+    }
+
+    private _raiseLocaleChanged(): void {
+        this.eventBus.raise('locale_changed', this._selectedLocaleKey);
+    }
+
+    private _saveLocale(): void {
+        this.strategy?.saveLocaleKey(this._selectedLocaleKey);
     }
 }
 

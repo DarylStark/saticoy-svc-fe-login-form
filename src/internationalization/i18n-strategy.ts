@@ -1,5 +1,7 @@
 interface I18nStrategy {
     getLocaleKey(): string | undefined;
+    saveLocaleKey(key?: string): void;
+    clear(): void;
 }
 
 class BrowserStrategy implements I18nStrategy {
@@ -7,6 +9,14 @@ class BrowserStrategy implements I18nStrategy {
         // Get key from browser
         // TODO: Implement
         return 'nl';
+    }
+
+    saveLocaleKey(key?: string): void {
+        // Nothing to do here
+    }
+
+    clear(): void {
+        // Nothing to do here
     }
 }
 
@@ -16,14 +26,30 @@ class PageArgsStrategy implements I18nStrategy {
         // TODO: Implement
         return 'de';
     }
+
+    saveLocaleKey(key?: string): void {
+        // Nothing to do here
+    }
+
+    clear(): void {
+        // Nothing to do here
+    }
 }
 
 
 class LocalPreferencesStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         // Get key from saved settings
-        // TODO: Implement
-        return 'en';
+        return localStorage.getItem('locale') || undefined;
+    }
+
+    saveLocaleKey(key?: string): void {
+        if (key)
+            localStorage.setItem('locale', key);
+    }
+
+    clear(): void {
+        localStorage.removeItem('locale');
     }
 }
 
@@ -41,6 +67,14 @@ class ChainedLocaleKeyStrategy implements I18nStrategy {
                 return key;
         }
         return undefined;
+    }
+
+    saveLocaleKey(key?: string): void {
+        // Nothing to do here
+    }
+
+    clear(): void {
+        // Nothing to do here
     }
 }
 

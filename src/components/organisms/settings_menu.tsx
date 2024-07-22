@@ -3,7 +3,7 @@ import { Menu, Popover, Switch, Divider } from 'antd';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { FaGear } from "react-icons/fa6";
 
-import { theme_manager, language_manager } from '../../globals';
+import { theme_manager, i18n_manager, local_preferences_strategy, browser_strategy } from '../../globals';
 import { ThemeMode } from '../../theme-manager/theme';
 
 import './settings_menu.scss'
@@ -43,26 +43,27 @@ function MenuItems() {
     }
 
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
-        if (key === 'default_browser_language') {
-            language_manager.setAutomaticLanguage();
+        i18n_manager.strategy?.clear();
 
-            // Done with this function
+        if (key === 'default_browser_language') {
+            i18n_manager.setStrategy(browser_strategy);
+            i18n_manager.retrieveLocaleKey();
             return;
         }
 
-        // i18n.changeLanguage(key);
-        language_manager.activateLanguage(key);
+        i18n_manager.setStrategy(local_preferences_strategy);
+        i18n_manager.setLocaleKey(key);
     }
 
     const get_lanauge_title = (language_code: string) => {
-        return t(`languages.${language_code}`);
+        return t(`locales.${language_code}`);
     }
 
-    const language_list = language_manager.getAvailableLanguageCodes().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
-    const language_list_menu = language_list.map(language_code => {
+    const language_list = i18n_manager.localeRepository.getNames().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
+    const language_list_menu = language_list.map(key => {
         return (
-            <Menu.Item key={language_code} icon={<FaGear />}>
-                {t(`languages.${language_code}`)}
+            <Menu.Item key={key} icon={<FaGear />}>
+                {get_lanauge_title(key)}
             </Menu.Item>
         );
     });
@@ -96,11 +97,6 @@ function MenuItems() {
                 <Menu.Item key='default_browser_language' icon={<FaGear />}>
                     Default language
                 </Menu.Item>
-                {/* {
-                    language_manager.get_available_language_codes().forEach(language_code => {
-                        <span>{language_code}</span>
-                    });
-                } */}
                 {language_list_menu}
             </Menu>
         </>

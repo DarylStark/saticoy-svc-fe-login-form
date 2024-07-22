@@ -46,8 +46,11 @@ class BaseRepository<T> implements Repository<T> {
         return Object.keys(this._items);
     }
 
-    hasName(name: string): boolean {
-        return this._items[name] !== undefined;
+    hasName(name: string, include_aliases: boolean = true): boolean {
+        let found = this._items[name] !== undefined;
+        if (!found && include_aliases)
+            found = this._aliasses[name] !== undefined;
+        return found;
     }
 }
 
