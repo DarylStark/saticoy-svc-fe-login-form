@@ -6,19 +6,14 @@ import { Theme } from "./theme-manager/theme";
 import { SaticoyAntDStyle } from "./themes/saticoy-style";
 import saticoy_theme from "./themes/saticoy";
 import ugly_theme from "./themes/ugly";
-import LanguageManager from "./internationalization/language-manager";
 
 import { i18NextLocaleData } from './languages/i18next_locale_data';
 import language_en_us from "./languages/en-US";
 import language_nl_nl from "./languages/nl-NL";
 
-import { i18NextLocaleData } from './languages/i18next_locale_data';
-
 import { BaseI18nManager } from "./internationalization/i18n-manager";
 
 import { BaseRepository } from "./repository/repository";
-
-import i18n from "./i18n";
 
 import { BrowserStrategy, PageArgsStrategy, LocalPreferencesStrategy, ChainedLocaleKeyStrategy } from "./internationalization/i18n-strategy";
 
