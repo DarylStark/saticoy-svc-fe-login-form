@@ -11,11 +11,27 @@ class WorkingStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         return 'en';
     }
+
+    saveLocaleKey(key?: string): void {
+        console.log(`Saving key: ${key}`);
+    }
+
+    clear(): void {
+        // Nothing to do here
+    }
 }
 
 class NotWorkingStrategy implements I18nStrategy {
     getLocaleKey(): string | undefined {
         return undefined;
+    }
+
+    saveLocaleKey(key?: string): void {
+        console.log(`Saving key: ${key}`);
+    }
+
+    clear(): void {
+        // Nothing to do here
     }
 }
 

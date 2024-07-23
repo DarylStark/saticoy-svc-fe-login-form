@@ -36,7 +36,7 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
 
     retrieveLocaleKey(): boolean {
         const new_key = this.strategy?.getLocaleKey() ?? this.defaultKey;
-        if (new_key && this._isValidKey()) {
+        if (new_key && this._isValidKey(new_key)) {
             this.setLocaleKey(new_key);
             return true;
         }
@@ -61,9 +61,10 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
         this.setLocaleKey(key);
     }
 
-    private _isValidKey(): boolean {
-        return this._selectedLocaleKey !== undefined &&
-            this.localeRepository.hasName(this._selectedLocaleKey);
+    private _isValidKey(key?: string): boolean {
+        if (!key)
+            key = this._selectedLocaleKey;
+        return key !== undefined && this.localeRepository.hasName(key);
     }
 
     private _raiseLocaleChanged(): void {
