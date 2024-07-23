@@ -15,13 +15,12 @@ interface I18nManager {
 
 class BaseI18nManager<T extends LocaleData> implements I18nManager {
     private _selectedLocaleKey?: string;
-    public eventBus = new EventBus();
 
     constructor(
         readonly localeRepository: Repository<T>,
         public defaultKey?: string,
-        public strategy?: I18nStrategy) {
-        // TODO: Make the `eventBus` a parameter for dependency injection
+        public strategy?: I18nStrategy,
+        public eventBus: EventBus = new EventBus()) {
         this._selectedLocaleKey = defaultKey;
     }
 
