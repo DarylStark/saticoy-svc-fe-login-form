@@ -9,6 +9,7 @@ interface I18nManager {
     setStrategy(i18nStrategy: I18nStrategy): void;
     retrieveLocaleKey(): boolean;
     setLocaleKey(key: string): void;
+    set selectedLocaleKey(key: string);
     get selectedLocaleKey(): string;
 }
 
@@ -26,9 +27,7 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
 
     setDefaultLocaleKey(defaultKey: string): void {
         this.defaultKey = defaultKey;
-        this._selectedLocaleKey = defaultKey;
-        this._raiseLocaleChanged();
-        this._saveLocale();
+        this.setLocaleKey(defaultKey);
     }
 
     setStrategy(strategy?: I18nStrategy): void {
@@ -36,10 +35,9 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
     }
 
     retrieveLocaleKey(): boolean {
-        this._selectedLocaleKey = this.strategy?.getLocaleKey() ?? this.defaultKey;
-        if (this._isValidKey()) {
-            this._raiseLocaleChanged();
-            this._saveLocale();
+        const new_key = this.strategy?.getLocaleKey() ?? this.defaultKey;
+        if (new_key && this._isValidKey()) {
+            this.setLocaleKey(new_key);
             return true;
         }
         return false;
@@ -57,6 +55,10 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
         if (!this._isValidKey() || !this._selectedLocaleKey)
             throw new Error('No valid locale key selected');
         return this._selectedLocaleKey;
+    }
+
+    set selectedLocaleKey(key: string) {
+        this.setLocaleKey(key);
     }
 
     private _isValidKey(): boolean {
