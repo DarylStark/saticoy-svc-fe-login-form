@@ -2,7 +2,7 @@ interface Repository<T> {
     add(item: T, name: string, aliasses?: string[]): void;
     remove(name: string): void;
     get(name: string): T;
-    get_alias(name: string): T;
+    getAlias(name: string): T;
     getNames(include_aliases?: boolean): string[];
     hasName(name: string): boolean;
 }
@@ -30,7 +30,7 @@ class BaseRepository<T> implements Repository<T> {
 
     get(name: string): T {
         if (!this._items[name]) {
-            const alias = this.get_alias(name);
+            const alias = this.getAlias(name);
             if (!alias)
                 throw Error(`Item with name ${name} not found in repository`);
             return alias;
@@ -38,7 +38,7 @@ class BaseRepository<T> implements Repository<T> {
         return this._items[name];
     }
 
-    get_alias(name: string): T {
+    getAlias(name: string): T {
         return this._items[this._aliasses[name]];
     }
 
