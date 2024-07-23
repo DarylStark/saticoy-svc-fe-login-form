@@ -1,6 +1,6 @@
-import { i18NextLanguage } from "./language"
+import { i18NextLocaleData } from "./i18next_locale_data"
 
-const en_US: i18NextLanguage = {
+const en_US: i18NextLocaleData = {
     languageCode: 'en-US',
     i18next: {
         translation: {
@@ -9,7 +9,7 @@ const en_US: i18NextLanguage = {
             "username": "Username",
             "password": "Password",
             "login": "Login",
-            "languages": {
+            "locales": {
                 "nl-NL": "Dutch",
                 "en-US": "English (United States)",
                 "en-EN": "English (United Kingdom)"

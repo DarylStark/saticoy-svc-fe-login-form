@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
 
-import { language_manager } from './globals';
+import { i18n_manager } from './globals';
 
 // Create the language specifications
 const resources: {
@@ -15,26 +15,26 @@ const resources: {
     }
 } = {}
 
-language_manager.getAvailableLanguageCodes().forEach(languageCode => {
-    resources[languageCode] = language_manager.getLanguageByCode(languageCode).i18next
+i18n_manager.localeRepository.getNames().forEach(i18n_key => {
+    resources[i18n_key] = i18n_manager.localeRepository.get(i18n_key).i18next;
 });
 
 i18n
     .use(HttpApi)
     .use(initReactI18next)
     .init({
-        fallbackLng: language_manager.getDefaultLanguageCode(),
+        fallbackLng: i18n_manager.defaultKey,
         debug: true,
         interpolation: {
             escapeValue: false,
         },
-        lng: language_manager.getSelectedLanguage(),
+        lng: i18n_manager.selectedLocaleKey,
         resources: resources
     });
 
 
-language_manager.eventBus.on('language_changed', (language) => {
-    i18n.changeLanguage(language.languageCode);
+i18n_manager.eventBus.on('locale_changed', (key) => {
+    i18n.changeLanguage(key);
 });
 
 export default i18n;
