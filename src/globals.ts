@@ -35,7 +35,7 @@ language_repository.add(language_en_us, "en-US", ["en"]);
 language_repository.add(language_nl_nl, "nl-NL", ["nl"]);
 
 // Internationalization strategies
-const browser_strategy = new BrowserStrategy(language_repository.getNames());
+const browser_strategy = new BrowserStrategy(language_repository.getNames(true));
 const page_args_strategy = new PageArgsStrategy();
 const local_preferences_strategy = new LocalPreferencesStrategy();
 const i18n_strategy = new ChainedLocaleKeyStrategy([
