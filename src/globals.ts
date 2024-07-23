@@ -34,17 +34,19 @@ theme_repository.add(saticoy_theme, "Saticoy");
 theme_repository.add(ugly_theme, "Ugly");
 theme_manager.activateTheme('Saticoy');
 
-// Internationalization strategies
-const browser_strategy = new BrowserStrategy();
-const page_args_strategy = new PageArgsStrategy();
-const local_preferences_strategy = new LocalPreferencesStrategy();
-const i18n_strategy = new ChainedLocaleKeyStrategy([
-    browser_strategy, page_args_strategy, local_preferences_strategy]);
-
-// Internationalization
+// Internationalization repository
 const language_repository = new BaseRepository<i18NextLocaleData>();
 language_repository.add(language_en_us, "en-US", ["en"]);
 language_repository.add(language_nl_nl, "nl-NL", ["nl"]);
+
+// Internationalization strategies
+const browser_strategy = new BrowserStrategy(language_repository.getNames());
+const page_args_strategy = new PageArgsStrategy();
+const local_preferences_strategy = new LocalPreferencesStrategy();
+const i18n_strategy = new ChainedLocaleKeyStrategy([
+    page_args_strategy, local_preferences_strategy, browser_strategy]);
+
+// Internationalization controller
 const i18n_manager = new BaseI18nManager(
     language_repository, "en-US", i18n_strategy);
 i18n_manager.retrieveLocaleKey();
