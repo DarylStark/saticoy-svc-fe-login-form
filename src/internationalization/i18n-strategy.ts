@@ -18,6 +18,7 @@ class BrowserStrategy implements I18nStrategy {
         }
     }
 
+    //@ts-expect-error - Unused parameter
     saveLocaleKey(key?: string): void {
         // Nothing to do here
     }
@@ -37,6 +38,7 @@ class PageArgsStrategy implements I18nStrategy {
         return urlParams.get(this._argument) || undefined;
     }
 
+    //@ts-expect-error - Unused parameter
     saveLocaleKey(key?: string): void {
         // Nothing to do here
     }
@@ -82,6 +84,7 @@ class ChainedLocaleKeyStrategy implements I18nStrategy {
         return undefined;
     }
 
+    //@ts-expect-error - Unused parameter
     saveLocaleKey(key?: string): void {
         // Nothing to do here
     }

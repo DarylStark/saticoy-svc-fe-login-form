@@ -8,8 +8,6 @@ import { ThemeMode } from '../../theme-manager/theme';
 
 import './settings_menu.scss'
 
-import i18n from '../../i18n';
-
 import { useTranslation } from 'react-i18next';
 
 

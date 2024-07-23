@@ -1,7 +1,7 @@
 import { i18NextLocaleData } from "./i18next_locale_data"
 
 const en_US: i18NextLocaleData = {
-    languageCode: 'en-US',
+    identifier: 'en-US',
     i18next: {
         translation: {
             "login_title": "Welcome back!",
