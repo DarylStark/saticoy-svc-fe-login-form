@@ -3,7 +3,7 @@ interface Repository<T> {
     remove(name: string): void;
     get(name: string): T;
     get_alias(name: string): T;
-    getNames(): string[];
+    getNames(include_aliases?: boolean): string[];
     hasName(name: string): boolean;
 }
 
@@ -42,7 +42,7 @@ class BaseRepository<T> implements Repository<T> {
         return this._items[this._aliasses[name]];
     }
 
-    getNames(include_aliases: boolean = true): string[] {
+    getNames(include_aliases?: boolean): string[] {
         const keys = Object.keys(this._items);
         if (include_aliases)
             Object.keys(this._aliasses).forEach(alias => keys.push(alias));

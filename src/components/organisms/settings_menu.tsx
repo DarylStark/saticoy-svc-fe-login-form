@@ -59,7 +59,7 @@ function MenuItems() {
         return t(`locales.${language_code}`);
     }
 
-    const language_list = i18n_manager.localeRepository.getNames().sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
+    const language_list = i18n_manager.localeRepository.getNames(false).sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
     const language_list_menu = language_list.map(key => {
         return (
             <Menu.Item key={key} icon={<FaGear />}>
