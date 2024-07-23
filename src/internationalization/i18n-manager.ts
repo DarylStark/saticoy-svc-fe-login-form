@@ -20,6 +20,7 @@ class BaseI18nManager<T extends LocaleData> implements I18nManager {
         readonly localeRepository: Repository<T>,
         public defaultKey?: string,
         public strategy?: I18nStrategy) {
+        // TODO: Make the `eventBus` a parameter for dependency injection
         this._selectedLocaleKey = defaultKey;
     }
 
