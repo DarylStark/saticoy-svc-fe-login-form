@@ -16,18 +16,29 @@ import { BaseI18nManager } from "./internationalization/i18n-manager";
 import { BaseRepository } from "./repository/repository";
 
 import { BrowserStrategy, PageArgsStrategy, LocalPreferencesStrategy, ChainedLocaleKeyStrategy } from "./internationalization/i18n-strategy";
+import { BrowserStrategy as ThemeBrowserStrategy, LocalPreferencesStrategy as ThemeLocalPreferencesStrategy } from "./theme-manager/theme-mode-strategy";
 
 // Event bus for global event handling
 const event_bus = new EventBus();
 
 // Themeing managers
 const theme_repository = new BaseRepository<Theme<SaticoyAntDStyle>>();
-const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository);
+
+// Theme strategy
+const localPreferencesStrategy = new ThemeLocalPreferencesStrategy();
+const browserStrategy = new ThemeBrowserStrategy();
+
+const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository, browserStrategy);
 
 // Themes
 theme_repository.add(saticoy_theme, "Saticoy");
 theme_repository.add(ugly_theme, "Ugly");
 theme_manager.activateTheme('Saticoy');
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    theme_manager.getActiveMode();
+    console.log('Theme changed to', theme_manager.selectedMode);
+});
 
 // Internationalization repository
 const language_repository = new BaseRepository<i18NextLocaleData>();

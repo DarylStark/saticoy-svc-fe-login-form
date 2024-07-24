@@ -1,5 +1,6 @@
 import Repository from '../repository/repository';
 import { Style, Theme, ThemeMode } from './theme';
+import ThemeModeStrategy from './theme-mode-strategy';
 
 export type StyleSelectHandler<T extends Style> = (selected_style: T) => void;
 export type ModeSelectHandler = (selected_mode: ThemeMode) => void;
@@ -15,11 +16,12 @@ class ThemeManager<T extends Style = Style> {
     private _styleSubscriptions: StyleSubscriptions<T> = [];
     private _modeSubscriptions: ModeSubscriptions = [];
 
-    constructor(private _theme_repository: Repository<Theme<T>>) { }
+    constructor(private _theme_repository: Repository<Theme<T>>, private _strategy?: ThemeModeStrategy, private _defaultMode: ThemeMode = ThemeMode.Dark) { }
 
     activateTheme(theme_name: string): void {
         this._getThemeByName(theme_name);
         this._selectedTheme = theme_name;
+        this.getActiveMode();
         this.publish();
     }
 
@@ -37,18 +39,34 @@ class ThemeManager<T extends Style = Style> {
         }
     }
 
+    setStrategy(strategy?: ThemeModeStrategy): void {
+        this._strategy = strategy;
+    }
+
     getActiveMode(): ThemeMode {
+        const automated_mode = this._strategy?.getMode()
+        if (automated_mode)
+            this.selectedMode = automated_mode;
         return this._selectedMode;
     }
 
-    toggleMode(): void {
-        this._selectedMode = this._selectedMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
-        this.publish();
+    get selectedMode(): ThemeMode {
+        return this.getActiveMode();
     }
 
-    setMode(mode: ThemeMode): void {
-        this._selectedMode = mode;
-        this.publish();
+    set selectedMode(mode: ThemeMode) {
+        if (this._selectedMode !== mode) {
+            this._selectedMode = mode;
+            this.publish();
+        }
+    }
+
+    isManual(): boolean {
+        return this._strategy === undefined;
+    }
+
+    toggleMode(): void {
+        this.selectedMode = this.selectedMode === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
     }
 
     onSetStyle(handler: StyleSelectHandler<T>) {

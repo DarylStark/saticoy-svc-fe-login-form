@@ -22,7 +22,12 @@ function MenuItems() {
     theme_manager.onSetStyle(() => set_theme_toggler_available(theme_manager.hasBothModes()));
 
     const toggleDarkMode = (value: boolean) => {
-        theme_manager.setMode(value ? ThemeMode.Dark : ThemeMode.Light);
+        theme_manager.setStrategy(undefined);
+        theme_manager.selectedMode = value ? ThemeMode.Dark : ThemeMode.Light;
+    }
+
+    const setAutomaticMode = (value: boolean) => {
+        console.log('Automatic mode', value);
     }
 
     const theme_list = theme_manager.getThemeNames();
@@ -54,7 +59,7 @@ function MenuItems() {
     }
 
     const get_lanauge_title = (language_code: string) => {
-        return t(`locales.${language_code}`);
+        return t(`locales.${language_code} `);
     }
 
     const language_list = i18n_manager.localeRepository.getNames(false).sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
@@ -69,6 +74,17 @@ function MenuItems() {
     return (
         <>
             <Menu selectable={false} mode='vertical' onClick={theme_menu_click}>
+                <Menu.Item key='toggle_automatic_mode' icon={<FaGear />} className='settings-menu--toggle'>
+                    <div className='settings-menu-item'>
+                        <div>Automatic darkmode</div>
+                        <div>
+                            <Switch size="default"
+                                onChange={setAutomaticMode()}
+                                checked={!theme_manager.isManual()}
+                            />
+                        </div>
+                    </div>
+                </Menu.Item>
                 <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available} className='settings-menu--toggle'>
                     <div className='settings-menu-item'>
                         <div>Dark theme</div>
