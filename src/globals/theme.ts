@@ -25,6 +25,7 @@ import ThemeController from "../theme-manager/theme-controller";
 import { Theme, ThemeMode } from "../theme-manager/theme";
 import { BrowserRetriever, LocalPreferencesRetriever } from "../theme-manager/theme-retriever";
 import { eventBus } from './eventbus'
+import { LocalPreferencesSaver } from "../theme-manager/theme-saver";
 
 // Repository
 const themeRepo = new BaseRepository<Theme<SaticoyAntDStyle>>();
@@ -40,6 +41,7 @@ const themeController = new ThemeController<SaticoyAntDStyle>(
         new BrowserRetriever(),
     ]
 );
+themeController.saver = new LocalPreferencesSaver("theme", "mode");
 themeController.defaultMode = ThemeMode.Dark;
 themeController.defaultTheme = "Saticoy";
 themeController.retrieveModeAutomatically();
