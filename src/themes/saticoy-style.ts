@@ -1,5 +1,7 @@
 import { Style } from "../theme-manager/theme"
 
-export type SaticoyAntDStyle = Style & {
+type SaticoyAntDStyle = Style & {
     antd: { [key: string]: any }
 }
+
+export default SaticoyAntDStyle;

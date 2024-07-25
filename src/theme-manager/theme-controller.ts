@@ -40,10 +40,6 @@ class ThemeController<T extends Style = Style> {
         return undefined;
     }
 
-    setAutomaticMode() {
-        this.selectedMode = undefined;
-    }
-
     set selectedMode(mode: ThemeMode | undefined) {
         this._selectedMode = mode;
         this.saver?.saveMode(this.selectedMode);
