@@ -2,11 +2,7 @@ import Repository from '../repository/repository';
 import EventBus from '../eventbus/eventbus';
 import { Style, Theme, ThemeMode } from './theme';
 import ThemeRetriever from './theme-retriever';
-
-interface ThemeSaver {
-    saveMode(mode?: ThemeMode): void;
-    saveTheme(theme?: string): void;
-}
+import ThemeSaver from './theme-saver';
 
 class ThemeController<T extends Style = Style> {
     private _selectedMode?: ThemeMode = undefined;
