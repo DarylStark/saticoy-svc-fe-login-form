@@ -10,7 +10,7 @@ import './settings_menu.scss'
 import { useTranslation } from 'react-i18next';
 
 import { themeController } from '../../globals/theme';
-import { ThemeMode } from '../../theme-manager/theme';
+import { ThemeMode } from '../../theme-controller/theme';
 
 
 // TODO: Split the language menu and the theme menu into separate components
@@ -76,6 +76,7 @@ function MenuItems() {
                             <Switch
                                 size="default"
                                 value={currentMode == ThemeMode.Dark}
+                                disabled={!modeToggleAvailable}
                             />
                         </div>
                     </div>

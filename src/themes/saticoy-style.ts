@@ -1,4 +1,4 @@
-import { Style } from "../theme-manager/theme"
+import { Style } from "../theme-controller/theme"
 
 type SaticoyAntDStyle = Style & {
     antd: { [key: string]: any }

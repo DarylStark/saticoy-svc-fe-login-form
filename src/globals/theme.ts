@@ -21,11 +21,11 @@ import SaticoyAntDStyle from "../themes/saticoy-style";
 import { BaseRepository } from "../repository/repository";
 import saticoy_theme from "../themes/saticoy";
 import ugly_theme from "../themes/ugly";
-import ThemeController from "../theme-manager/theme-controller";
-import { Theme, ThemeMode } from "../theme-manager/theme";
-import { BrowserRetriever, LocalPreferencesRetriever } from "../theme-manager/theme-retriever";
+import ThemeController from "../theme-controller/theme-controller";
+import { Theme, ThemeMode } from "../theme-controller/theme";
+import { BrowserRetriever, LocalPreferencesRetriever } from "../theme-controller/theme-retriever";
 import { eventBus } from './eventbus'
-import { LocalPreferencesSaver } from "../theme-manager/theme-saver";
+import { LocalPreferencesSaver } from "../theme-controller/theme-saver";
 
 // Repository
 const themeRepo = new BaseRepository<Theme<SaticoyAntDStyle>>();

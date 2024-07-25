@@ -1,7 +1,7 @@
 import { BaseRepository } from '../src/repository/repository';
-import { Theme, Style, ThemeMode } from '../src/theme-manager/theme';
-import ThemeController from '../src/theme-manager/theme-controller';
-import ThemeRetriever from '../src/theme-manager/theme-retriever';
+import { Theme, Style, ThemeMode } from '../src/theme-controller/theme';
+import ThemeController from '../src/theme-controller/theme-controller';
+import ThemeRetriever from '../src/theme-controller/theme-retriever';
 
 class MockRetriever implements ThemeRetriever {
     constructor(private _mode?: ThemeMode, private _theme?: string) { }
