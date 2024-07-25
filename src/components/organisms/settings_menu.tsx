@@ -21,8 +21,10 @@ function MenuItems() {
     // Themes
     const theme_list = themeController.theme_repository.getNames(true);
     const [currentMode, setMode] = useState(themeController.selectedMode);
-    themeController.eventBus?.on('mode_changed', () => {
+    const [modeToggleAvailable, setModeToggleAvailable] = useState(themeController.hasBothStyles());
+    themeController.eventBus?.on('theme_changed', () => {
         setMode(themeController.selectedMode);
+        setModeToggleAvailable(themeController.hasBothStyles());
     });
     const toggleMode = () => {
         themeController.toggleMode();
@@ -67,14 +69,13 @@ function MenuItems() {
         <>
             {/* Theme menu */}
             <Menu selectable={false} mode='vertical' onClick={themeMenuClick}>
-                <Menu.Item key='toggle_dark_mode' icon={<FaGear />} className='settings-menu--toggle'>
+                <Menu.Item key='toggle_dark_mode' icon={<FaGear />} className='settings-menu--toggle' disabled={!modeToggleAvailable}>
                     <div className='settings-menu-item'>
                         <div>Dark theme</div>
                         <div>
                             <Switch
                                 size="default"
                                 value={currentMode == ThemeMode.Dark}
-                                onChange={toggleMode}
                             />
                         </div>
                     </div>

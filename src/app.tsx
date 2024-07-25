@@ -21,10 +21,6 @@ function App() {
         setTheme(themeController.currentStyle);
         updateBodyClass();
     });
-    themeController.eventBus?.on('mode_changed', () => {
-        setTheme(themeController.currentStyle);
-        updateBodyClass();
-    });
 
     return (
         <ConfigProvider theme={theme?.antd}>

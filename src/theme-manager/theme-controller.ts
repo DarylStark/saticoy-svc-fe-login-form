@@ -43,7 +43,7 @@ class ThemeController<T extends Style = Style> {
     set selectedMode(mode: ThemeMode | undefined) {
         this._selectedMode = mode;
         this.saver?.saveMode(this.selectedMode);
-        this.eventBus?.raise('mode_changed', this.currentStyle);
+        this.eventBus?.raise('theme_changed', this.currentStyle);
     }
 
     get selectedMode(): ThemeMode | undefined {
