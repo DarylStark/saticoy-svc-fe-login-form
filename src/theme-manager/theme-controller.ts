@@ -69,16 +69,15 @@ class ThemeController<T extends Style = Style> {
     }
 
     get currentStyle(): T | undefined {
-        if (this.selectedTheme) {
-            const theme = this.theme_repository.get(this.selectedTheme);
-            if (this.selectedMode == ThemeMode.Light && theme.light !== undefined)
-                return theme.light;
-            if (this.selectedMode == ThemeMode.Dark && theme.dark !== undefined)
-                return theme.dark;
-            if (theme.dark !== undefined)
-                return theme.dark;
-            return theme.light;
-        }
+        if (!this.selectedTheme) return undefined;
+
+        const theme = this.theme_repository.get(this.selectedTheme);
+        if (!theme) return undefined;
+
+        if (this.selectedMode === ThemeMode.Light) return theme.light ?? theme.dark;
+        if (this.selectedMode === ThemeMode.Dark) return theme.dark ?? theme.light;
+
+        return theme.dark ?? theme.light;
     }
 
     toggleMode() {
