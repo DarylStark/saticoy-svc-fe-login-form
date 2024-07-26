@@ -1,22 +1,3 @@
-// // Themeing managers
-// const theme_repository = new BaseRepository<Theme<SaticoyAntDStyle>>();
-
-// // Theme strategy
-// const localPreferencesStrategy = new ThemeLocalPreferencesStrategy();
-// const browserStrategy = new ThemeBrowserStrategy();
-
-// const theme_manager = new ThemeManager<SaticoyAntDStyle>(theme_repository, browserStrategy);
-
-// // Themes
-// theme_repository.add(saticoy_theme, "Saticoy");
-// theme_repository.add(ugly_theme, "Ugly");
-// theme_manager.activateTheme('Saticoy');
-
-// window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-//     theme_manager.getActiveMode();
-//     console.log('Theme changed to', theme_manager.selectedMode);
-// });
-
 import SaticoyAntDStyle from "../themes/saticoy-style";
 import { BaseRepository } from "../repository/repository";
 import saticoy_theme from "../themes/saticoy";
@@ -46,7 +27,5 @@ themeController.defaultMode = ThemeMode.Dark;
 themeController.defaultTheme = "Saticoy";
 themeController.retrieveModeAutomatically();
 themeController.retrieveThemeAutomatically();
-
-window.tc = themeController;
 
 export { themeController, themeRepo };
