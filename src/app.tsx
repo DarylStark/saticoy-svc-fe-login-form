@@ -17,9 +17,15 @@ updateBodyClass();
 
 function App() {
     const [theme, setTheme] = useState(themeController.currentStyle);
+
     themeController.eventBus?.on('theme_changed', () => {
         setTheme(themeController.currentStyle);
         updateBodyClass();
+    });
+
+    // Make sure the theme mode is updated when the user changes the system theme
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        themeController.raiseForChange();
     });
 
     return (

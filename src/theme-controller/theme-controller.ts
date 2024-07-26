@@ -49,7 +49,7 @@ class ThemeController<T extends Style = Style> {
         this._selectedMode = mode;
         this.saver?.saveMode(this.selectedMode);
         this._isAutoMode = false;
-        this.eventBus?.raise('theme_changed', this.currentStyle);
+        this.raiseForChange();
     }
 
     get selectedMode(): ThemeMode | undefined {
@@ -59,7 +59,7 @@ class ThemeController<T extends Style = Style> {
     set selectedTheme(theme: string | undefined) {
         this._selectedTheme = theme;
         this.saver?.saveTheme(this.selectedTheme);
-        this.eventBus?.raise('theme_changed', this.currentStyle);
+        this.raiseForChange();
     }
 
     get selectedTheme(): string | undefined {
@@ -89,7 +89,7 @@ class ThemeController<T extends Style = Style> {
             this._selectedMode = this.retrieveModeAutomatically() || this.defaultMode;
             this.saver?.saveMode(this.selectedMode);
         }
-        this.eventBus?.raise('theme_changed', this.currentStyle);
+        this.raiseForChange();
     }
 
     get isAutoMode(): boolean {
@@ -102,7 +102,7 @@ class ThemeController<T extends Style = Style> {
             this._selectedTheme = undefined;
             this.saver?.saveTheme(undefined);
         }
-        this.eventBus?.raise('theme_changed', this.currentStyle);
+        this.raiseForChange();
     }
 
     get isAutoTheme(): boolean {
@@ -131,6 +131,10 @@ class ThemeController<T extends Style = Style> {
 
     hasBothStyles(): boolean {
         return this.hasDarkStyle() && this.hasLightStyle();
+    }
+
+    raiseForChange() {
+        this.eventBus?.raise('theme_changed', this.currentStyle);
     }
 }
 
