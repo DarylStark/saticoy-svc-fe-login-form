@@ -10,6 +10,7 @@ class ThemeController<T extends Style = Style> {
     public defaultMode: ThemeMode = ThemeMode.Dark;
     public defaultTheme?: string;
     private _isAutoMode: boolean = false;
+    private _isAutoTheme: boolean = false;
 
     constructor(
         public readonly themeRepository: Repository<Theme<T>>,
@@ -93,6 +94,19 @@ class ThemeController<T extends Style = Style> {
 
     get isAutoMode(): boolean {
         return this._isAutoMode;
+    }
+
+    set isAutoTheme(value: boolean) {
+        this._isAutoTheme = value;
+        if (value) {
+            this._selectedTheme = undefined;
+            this.saver?.saveTheme(undefined);
+        }
+        this.eventBus?.raise('theme_changed', this.currentStyle);
+    }
+
+    get isAutoTheme(): boolean {
+        return this._isAutoTheme;
     }
 
     toggleMode() {

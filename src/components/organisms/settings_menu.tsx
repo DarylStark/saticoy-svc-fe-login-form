@@ -52,10 +52,10 @@ function MenuItems() {
     const themeMenuClick: MenuClickEventHandler = ({ key }) => {
         if (key == 'toggle_dark_mode')
             return toggleMode();
-        if (key == 'toggle_automatic_mode') {
-            console.log('H');
+        if (key == 'toggle_automatic_mode')
             return toggleAutoMode();
-        }
+        if (key == 'set_default_theme')
+            return themeController.isAutoTheme = true;
         setTheme(key);
     }
 
@@ -115,6 +115,9 @@ function MenuItems() {
                     </div>
                 </Menu.Item>
                 <Divider />
+                <Menu.Item key='set_default_theme' icon={<FaGear />}>
+                    Default theme
+                </Menu.Item>
                 {
                     theme_list.map((theme) => (
                         <Menu.Item key={theme} icon={<FaGear />}>
