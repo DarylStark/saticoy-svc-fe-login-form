@@ -25,7 +25,6 @@ class ThemeController<T extends Style = Style> {
             const mode = retriever.retrieveMode();
             if (mode !== undefined) {
                 this._isAutoMode = retriever.isAutoMode();
-                this.saver?.saveMode(undefined);
                 return mode;
             }
         }
