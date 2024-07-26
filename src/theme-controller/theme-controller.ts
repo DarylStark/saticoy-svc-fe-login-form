@@ -23,8 +23,11 @@ class ThemeController<T extends Style = Style> {
 
         for (const retriever of this.retrievers) {
             const mode = retriever.retrieveMode();
-            if (mode !== undefined)
+            if (mode !== undefined) {
+                this._isAutoMode = retriever.isAutoMode();
+                this.saver?.saveMode(undefined);
                 return mode;
+            }
         }
         return undefined;
     }
@@ -35,8 +38,9 @@ class ThemeController<T extends Style = Style> {
 
         for (const retriever of this.retrievers) {
             const theme = retriever.retrieveTheme();
-            if (theme !== undefined)
+            if (theme !== undefined) {
                 return theme;
+            }
         }
         return undefined;
     }
@@ -44,6 +48,7 @@ class ThemeController<T extends Style = Style> {
     set selectedMode(mode: ThemeMode | undefined) {
         this._selectedMode = mode;
         this.saver?.saveMode(this.selectedMode);
+        this._isAutoMode = false;
         this.eventBus?.raise('theme_changed', this.currentStyle);
     }
 
@@ -71,6 +76,24 @@ class ThemeController<T extends Style = Style> {
         if (this.selectedMode === ThemeMode.Dark) return theme.dark ?? theme.light;
 
         return theme.dark ?? theme.light;
+    }
+
+    set isAutoMode(value: boolean) {
+        this._isAutoMode = value;
+
+        if (value) {
+            this._selectedMode = undefined;
+            this.saver?.saveMode(undefined);
+        } else {
+
+            this._selectedMode = this.retrieveModeAutomatically() || this.defaultMode;
+            this.saver?.saveMode(this.selectedMode);
+        }
+        this.eventBus?.raise('theme_changed', this.currentStyle);
+    }
+
+    get isAutoMode(): boolean {
+        return this._isAutoMode;
     }
 
     toggleMode() {

@@ -3,6 +3,7 @@ import { ThemeMode } from './theme';
 interface ThemeRetriever {
     retrieveMode(): ThemeMode | undefined;
     retrieveTheme(): string | undefined;
+    isAutoMode(): boolean;
 }
 
 class BrowserRetriever implements ThemeRetriever {
@@ -13,6 +14,10 @@ class BrowserRetriever implements ThemeRetriever {
 
     retrieveTheme(): string | undefined {
         return undefined;
+    }
+
+    isAutoMode(): boolean {
+        return true;
     }
 }
 
@@ -28,6 +33,10 @@ class LocalPreferencesRetriever implements ThemeRetriever {
 
     retrieveTheme(): string | undefined {
         return localStorage.getItem(this._key_theme) || undefined;
+    }
+
+    isAutoMode(): boolean {
+        return false;
     }
 }
 
