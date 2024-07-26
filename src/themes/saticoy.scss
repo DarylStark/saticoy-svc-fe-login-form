@@ -1,4 +1,7 @@
 body {
+
+    transition: all 0.25s ease;
+
     &.saticoy-light {
         background-color: rgb(247, 249, 252);
         color: black;
