@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, Popover, Switch, Divider } from 'antd';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface';
 import { FaGear } from "react-icons/fa6";
 
-import { theme_manager, i18n_manager, local_preferences_strategy, browser_strategy } from '../../globals';
-import { ThemeMode } from '../../theme-manager/theme';
+import { i18n_manager, local_preferences_strategy, browser_strategy } from '../../globals';
 
 import './settings_menu.scss'
 
 import { useTranslation } from 'react-i18next';
+
+import { themeController } from '../../globals/theme';
+import { ThemeMode } from '../../theme-controller/theme';
 
 
 // TODO: Split the language menu and the theme menu into separate components
@@ -16,30 +18,49 @@ import { useTranslation } from 'react-i18next';
 function MenuItems() {
     const { t } = useTranslation();
 
-    const [current_theme_mode, set_current_theme_mode] = useState(theme_manager.getActiveMode());
-    const [theme_toggler_available, set_theme_toggler_available] = useState(theme_manager.hasBothModes());
-    theme_manager.onSetMode(set_current_theme_mode);
-    theme_manager.onSetStyle(() => set_theme_toggler_available(theme_manager.hasBothModes()));
+    // Themes
+    const theme_list = themeController.themeRepository.getNames(true);
 
-    const toggleDarkMode = (value: boolean) => {
-        theme_manager.setMode(value ? ThemeMode.Dark : ThemeMode.Light);
+    const [currentMode, setMode] = useState(themeController.selectedMode);
+    const [isAutoMode, setAutoMode] = useState(themeController.isAutoMode);
+    const [modeToggleAvailable, setModeToggleAvailable] = useState(themeController.hasBothStyles() && !themeController.isAutoMode);
+
+    const updateToggles = () => {
+        setMode(themeController.selectedMode);
+        setAutoMode(themeController.isAutoMode);
+        setModeToggleAvailable(themeController.hasBothStyles() && !themeController.isAutoMode);
     }
 
-    const theme_list = theme_manager.getThemeNames();
+    useEffect(() => {
+        themeController.eventBus?.on('theme_changed', updateToggles);
 
-    const theme_menu_click: MenuClickEventHandler = ({ key }) => {
-        // Set theme if it exists
-        if (theme_list.indexOf(key) !== -1) {
-            theme_manager.activateTheme(key);
-        }
+        // Cleanup function to run when the component is unmounted
+        return () => {
+            themeController.eventBus?.off('theme_changed', updateToggles);
+        };
+    }, []);
 
-        switch (key) {
-            case 'toggle_dark_mode':
-                toggleDarkMode(!(current_theme_mode === 'dark'));
-                break;
-        }
+    const toggleMode = () => {
+        themeController.toggleMode();
+    }
+    const toggleAutoMode = () => {
+        themeController.isAutoMode = !themeController.isAutoMode;
+    }
+    const setTheme = (themeName: string) => {
+        themeController.selectedTheme = themeName;
+    }
+    const themeMenuClick: MenuClickEventHandler = ({ key }) => {
+        if (key == 'toggle_dark_mode')
+            return toggleMode();
+        if (key == 'toggle_automatic_mode')
+            return toggleAutoMode();
+        if (key == 'set_default_theme')
+            return themeController.isAutoTheme = true;
+        setTheme(key);
     }
 
+
+    // Languages
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
         i18n_manager.strategy?.clear();
 
@@ -54,7 +75,7 @@ function MenuItems() {
     }
 
     const get_lanauge_title = (language_code: string) => {
-        return t(`locales.${language_code}`);
+        return t(`locales.${language_code} `);
     }
 
     const language_list = i18n_manager.localeRepository.getNames(false).sort((a: string, b: string) => get_lanauge_title(a) > get_lanauge_title(b) ? 1 : -1);
@@ -68,20 +89,35 @@ function MenuItems() {
 
     return (
         <>
-            <Menu selectable={false} mode='vertical' onClick={theme_menu_click}>
-                <Menu.Item key='toggle_dark_mode' icon={<FaGear />} disabled={!theme_toggler_available} className='settings-menu--toggle'>
+            {/* Theme menu */}
+            <Menu selectable={false} mode='vertical' onClick={themeMenuClick}>
+                <Menu.Item key='toggle_automatic_mode' icon={<FaGear />} className='settings-menu--toggle'>
+                    <div className='settings-menu-item'>
+                        <div>Automatic dark theme</div>
+                        <div>
+                            <Switch
+                                size="default"
+                                value={isAutoMode}
+                            />
+                        </div>
+                    </div>
+                </Menu.Item>
+                <Menu.Item key='toggle_dark_mode' icon={<FaGear />} className='settings-menu--toggle' disabled={!modeToggleAvailable}>
                     <div className='settings-menu-item'>
                         <div>Dark theme</div>
                         <div>
-                            <Switch size="default"
-                                checked={current_theme_mode === 'dark'}
-                                onChange={toggleDarkMode}
-                                disabled={!theme_toggler_available}
+                            <Switch
+                                size="default"
+                                value={currentMode == ThemeMode.Dark}
+                                disabled={!modeToggleAvailable}
                             />
                         </div>
                     </div>
                 </Menu.Item>
                 <Divider />
+                <Menu.Item key='set_default_theme' icon={<FaGear />}>
+                    Default theme
+                </Menu.Item>
                 {
                     theme_list.map((theme) => (
                         <Menu.Item key={theme} icon={<FaGear />}>
@@ -90,7 +126,10 @@ function MenuItems() {
                     ))
                 }
             </Menu >
+
             <Divider />
+
+            {/* Language menu */}
             <Menu selectable={false} mode='vertical' onClick={language_menu_click}>
                 <Menu.Item key='default_browser_language' icon={<FaGear />}>
                     Default language

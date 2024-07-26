@@ -15,7 +15,7 @@ const resources: {
     }
 } = {}
 
-i18n_manager.localeRepository.getNames().forEach(i18n_key => {
+i18n_manager.localeRepository.getNames(true).forEach(i18n_key => {
     resources[i18n_key] = i18n_manager.localeRepository.get(i18n_key).i18next;
 });
 

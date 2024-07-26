@@ -4,26 +4,29 @@ import { useState } from 'react';
 // Styling
 import { ConfigProvider } from 'antd';
 import './index.scss'
-
-// Themeing
-import { Style } from './theme-manager/theme';
-import { theme_manager } from './globals';
+import { themeController } from './globals/theme';
 
 // Organism
 import LoginPage from './components/templates/login_page';
 
-function set_body_class(style: Style) {
-    document.body.className = style.page['class'];
+const updateBodyClass = () => {
+    document.body.className = themeController.currentStyle?.page['class'] || '';
 }
 
-theme_manager.onSetStyle(set_body_class);
-theme_manager.publish();
+updateBodyClass();
 
 function App() {
-    // const theme = ugly_theme.dark;
-    const [theme, set_theme] = useState(theme_manager.getActiveStyle());
+    const [theme, setTheme] = useState(themeController.currentStyle);
 
-    theme_manager.onSetStyle(set_theme);
+    themeController.eventBus?.on('theme_changed', () => {
+        setTheme(themeController.currentStyle);
+        updateBodyClass();
+    });
+
+    // Make sure the theme mode is updated when the user changes the system theme
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        themeController.raiseForChange();
+    });
 
     return (
         <ConfigProvider theme={theme?.antd}>
