@@ -20,14 +20,23 @@ function MenuItems() {
 
     // Themes
     const theme_list = themeController.themeRepository.getNames(true);
+
     const [currentMode, setMode] = useState(themeController.selectedMode);
-    const [modeToggleAvailable, setModeToggleAvailable] = useState(themeController.hasBothStyles());
+    const [isAutoMode, setAutoMode] = useState(themeController.isAutoMode);
+    const [modeToggleAvailable, setModeToggleAvailable] = useState(themeController.hasBothStyles() && !themeController.isAutoMode);
+
     themeController.eventBus?.on('theme_changed', () => {
         setMode(themeController.selectedMode);
-        setModeToggleAvailable(themeController.hasBothStyles());
+        setAutoMode(themeController.isAutoMode);
+        setModeToggleAvailable(themeController.hasBothStyles() && !themeController.isAutoMode);
     });
     const toggleMode = () => {
         themeController.toggleMode();
+    }
+    const toggleAutoMode = () => {
+        themeController.isAutoMode = !themeController.isAutoMode;
+        setAutoMode(themeController.isAutoMode);
+        setModeToggleAvailable(themeController.hasBothStyles() && !themeController.isAutoMode);
     }
     const setTheme = (themeName: string) => {
         themeController.selectedTheme = themeName;
@@ -35,8 +44,11 @@ function MenuItems() {
     const themeMenuClick: MenuClickEventHandler = ({ key }) => {
         if (key == 'toggle_dark_mode')
             return toggleMode();
+        if (key == 'toggle_automatic_mode')
+            return toggleAutoMode();
         setTheme(key);
     }
+
 
     // Languages
     const language_menu_click: MenuClickEventHandler = ({ key }) => {
@@ -69,6 +81,17 @@ function MenuItems() {
         <>
             {/* Theme menu */}
             <Menu selectable={false} mode='vertical' onClick={themeMenuClick}>
+                <Menu.Item key='toggle_automatic_mode' icon={<FaGear />} className='settings-menu--toggle'>
+                    <div className='settings-menu-item'>
+                        <div>Automatic dark mode</div>
+                        <div>
+                            <Switch
+                                size="default"
+                                value={isAutoMode}
+                            />
+                        </div>
+                    </div>
+                </Menu.Item>
                 <Menu.Item key='toggle_dark_mode' icon={<FaGear />} className='settings-menu--toggle' disabled={!modeToggleAvailable}>
                     <div className='settings-menu-item'>
                         <div>Dark theme</div>
