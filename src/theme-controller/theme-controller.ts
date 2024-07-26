@@ -9,9 +9,10 @@ class ThemeController<T extends Style = Style> {
     private _selectedTheme?: string = undefined;
     public defaultMode: ThemeMode = ThemeMode.Dark;
     public defaultTheme?: string;
+    private _isAutoMode: boolean = false;
 
     constructor(
-        public theme_repository: Repository<Theme<T>>,
+        public readonly themeRepository: Repository<Theme<T>>,
         public eventBus?: EventBus,
         public retrievers?: ThemeRetriever[],
         public saver?: ThemeSaver) { }
@@ -63,7 +64,7 @@ class ThemeController<T extends Style = Style> {
     get currentStyle(): T | undefined {
         if (!this.selectedTheme) return undefined;
 
-        const theme = this.theme_repository.get(this.selectedTheme);
+        const theme = this.themeRepository.get(this.selectedTheme);
         if (!theme) return undefined;
 
         if (this.selectedMode === ThemeMode.Light) return theme.light ?? theme.dark;
@@ -78,7 +79,7 @@ class ThemeController<T extends Style = Style> {
 
     hasDarkStyle(): boolean {
         if (this.selectedTheme) {
-            const theme = this.theme_repository.get(this.selectedTheme);
+            const theme = this.themeRepository.get(this.selectedTheme);
             return theme.dark !== undefined;
         }
         return false
@@ -86,7 +87,7 @@ class ThemeController<T extends Style = Style> {
 
     hasLightStyle(): boolean {
         if (this.selectedTheme) {
-            const theme = this.theme_repository.get(this.selectedTheme);
+            const theme = this.themeRepository.get(this.selectedTheme);
             return theme.light !== undefined;
         }
         return false

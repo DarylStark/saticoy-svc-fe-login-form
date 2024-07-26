@@ -19,7 +19,7 @@ function MenuItems() {
     const { t } = useTranslation();
 
     // Themes
-    const theme_list = themeController.theme_repository.getNames(true);
+    const theme_list = themeController.themeRepository.getNames(true);
     const [currentMode, setMode] = useState(themeController.selectedMode);
     const [modeToggleAvailable, setModeToggleAvailable] = useState(themeController.hasBothStyles());
     themeController.eventBus?.on('theme_changed', () => {
