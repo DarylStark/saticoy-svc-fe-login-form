@@ -1,11 +1,20 @@
 // src/components/Button.stories.tsx
-import Header from "./header";
+import Header, { HeaderProps } from "./header";
 
 export default {
     title: 'Organisms/Header',
     component: Header,
 };
 
-const Template = () => <Header />;
+const Template = (props: HeaderProps) => <Header {...props} />;
 
-export const Default = Template.bind({});
+export const NoSettingsMenu = Template.bind({});
+NoSettingsMenu.args = {
+    children: 'Header without settings menu',
+};
+
+export const WithSettingsMenu = Template.bind({});
+WithSettingsMenu.args = {
+    children: 'Header with settings menu',
+    showSettings: true
+};
