@@ -1,12 +1,20 @@
 import SettingsMenu from './settings_menu';
 import './header.scss';
 
-function Header() {
+interface HeaderProps {
+    children?: string,
+    showSettings?: boolean
+}
+
+function Header(props: HeaderProps) {
     return (
         <header className='header'>
-            <SettingsMenu />
+            <h1>{props.children}</h1>
+            {props.showSettings &&
+                <SettingsMenu />}
         </header>
     )
 };
 
 export default Header;
+export type { HeaderProps }
