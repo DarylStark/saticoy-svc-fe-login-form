@@ -1,10 +1,9 @@
 import React from 'react';
 import type { Preview } from "@storybook/react";
-import { ConfigProvider } from 'antd';
-import '../src/index.scss';
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
 import { ChakraProvider } from '@chakra-ui/react';
+import '../src/index.scss';
 
 const updateBodyClass = () => {
   document.body.className = themeController.currentStyle?.page['class'] || '';
