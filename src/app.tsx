@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 // Styling
 import { ConfigProvider } from 'antd';
+import { ChakraProvider } from '@chakra-ui/react';
 import './index.scss'
 import { themeController } from './globals/theme';
 
@@ -29,9 +30,9 @@ function App() {
     });
 
     return (
-        <ConfigProvider theme={theme?.antd}>
+        <ChakraProvider>
             <LoginPage />
-        </ ConfigProvider>
+        </ ChakraProvider>
     );
 }
 
