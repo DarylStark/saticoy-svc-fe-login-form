@@ -2,7 +2,6 @@
 import { useState } from 'react';
 
 // Styling
-import { ConfigProvider } from 'antd';
 import { ChakraProvider } from '@chakra-ui/react';
 import './index.scss'
 import { themeController } from './globals/theme';
