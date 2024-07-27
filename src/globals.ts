@@ -24,4 +24,4 @@ const i18n_manager = new BaseI18nManager(
 i18n_manager.retrieveLocaleKey();
 
 // Exports
-export { theme_manager, theme_repository, i18n_manager, browser_strategy, local_preferences_strategy }
+export { i18n_manager, browser_strategy, local_preferences_strategy }
