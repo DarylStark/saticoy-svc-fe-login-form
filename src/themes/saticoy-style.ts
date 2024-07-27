@@ -1,7 +1,5 @@
 import { Style } from "../theme-controller/theme"
 
-type SaticoyAntDStyle = Style & {
-    antd: { [key: string]: any }
-}
+type SaticoyChakraStyle = Style;
 
-export default SaticoyAntDStyle;
+export default SaticoyChakraStyle;

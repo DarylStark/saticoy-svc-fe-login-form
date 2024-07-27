@@ -1,34 +1,19 @@
 // Saticoy Theme
-import { SaticoyAntDStyle } from './saticoy-style';
+import SaticoyChakraStyle from './saticoy-style';
 import './saticoy.scss'
-import { theme } from 'antd';
 import { Theme } from '../theme-controller/theme';
 
-const saticoy_theme: Theme<SaticoyAntDStyle> = {
+const saticoy_theme: Theme<SaticoyChakraStyle> = {
     name: 'Saticoy',
     author: 'Daryl Stark',
     light: {
         page: {
             'class': 'saticoy-light',
-        },
-        antd: {
-            algorithm: theme.defaultAlgorithm,
-            token: {
-                motion: false
-            }
         }
     },
     dark: {
         page: {
             'class': 'saticoy-dark',
-        },
-        antd: {
-            algorithm: theme.darkAlgorithm,
-            token: {
-                motion: false,
-                colorBgContainer: '#233044',
-                colorBgElevated: '#233044'
-            },
         }
     }
 };

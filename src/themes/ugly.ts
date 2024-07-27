@@ -1,21 +1,14 @@
 // Saticoy Theme
-import { SaticoyAntDStyle } from './saticoy-style';
+import SaticoyChakraStyle from './saticoy-style';
 import './ugly.scss'
-import { theme } from 'antd';
 import { Theme } from '../theme-controller/theme';
 
-const ugly_theme: Theme<SaticoyAntDStyle> = {
+const ugly_theme: Theme<SaticoyChakraStyle> = {
     name: 'Very ugly theme',
     author: 'Daryl Stark',
     light: {
         page: {
             'class': 'ugly-light',
-        },
-        antd: {
-            algorithm: theme.defaultAlgorithm,
-            token: {
-                motion: true
-            }
         }
     }
 };

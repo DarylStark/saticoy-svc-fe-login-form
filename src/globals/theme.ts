@@ -1,4 +1,4 @@
-import SaticoyAntDStyle from "../themes/saticoy-style";
+import SaticoyChakraStyle from "../themes/saticoy-style";
 import { BaseRepository } from "../repository/repository";
 import saticoy_theme from "../themes/saticoy";
 import ugly_theme from "../themes/ugly";
@@ -9,12 +9,12 @@ import { eventBus } from './eventbus'
 import { LocalPreferencesSaver } from "../theme-controller/theme-saver";
 
 // Repository
-const themeRepo = new BaseRepository<Theme<SaticoyAntDStyle>>();
+const themeRepo = new BaseRepository<Theme<SaticoyChakraStyle>>();
 themeRepo.add(saticoy_theme, "Saticoy");
 themeRepo.add(ugly_theme, "Ugly");
 
 // Controller
-const themeController = new ThemeController<SaticoyAntDStyle>(
+const themeController = new ThemeController<SaticoyChakraStyle>(
     themeRepo,
     eventBus,
     [
