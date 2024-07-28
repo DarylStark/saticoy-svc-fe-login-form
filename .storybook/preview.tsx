@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview } from "@storybook/react";
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import '../src/index.scss';
 
 const updateBodyClass = () => {
@@ -17,7 +17,9 @@ const preview: Preview = {
       updateBodyClass();
       return (
         <ChakraProvider>
-          <Story />
+          <ColorModeProvider value={context.globals.mode == ThemeMode.Dark ? 'dark' : 'light'}>
+            <Story />
+          </ColorModeProvider>
         </ChakraProvider >
       );
     }
