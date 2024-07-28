@@ -6,7 +6,7 @@ import LoginForm from '../organisms/login_form'
 function Layout() {
   return (
     <div id='layout'>
-      <Header showSettings />
+      <Header showSettings showThemeSelectMenu />
       <main>
         <LoginForm />
       </main>
