@@ -10,7 +10,7 @@ class ThemeController<T extends Style = Style> {
     public defaultMode: ThemeMode = ThemeMode.Dark;
     public defaultTheme?: string;
     private _isAutoMode: boolean = false;
-    private _isAutoTheme: boolean = false;
+    private _isAutoTheme: boolean = true;
 
     constructor(
         public readonly themeRepository: Repository<Theme<T>>,
@@ -39,6 +39,7 @@ class ThemeController<T extends Style = Style> {
         for (const retriever of this.retrievers) {
             const theme = retriever.retrieveTheme();
             if (theme !== undefined) {
+                this._isAutoTheme = retriever.isAutoMode();
                 return theme;
             }
         }
