@@ -31,7 +31,7 @@ function App() {
     return (
         <ChakraProvider>
             <ColorModeProvider value={chakra_ui_color_mode}>
-                <LoginPage />
+                <LoginPage themeController={themeController} />
             </ColorModeProvider>
         </ ChakraProvider>
     );

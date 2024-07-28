@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import {
     Menu,
     MenuButton,
@@ -6,36 +6,77 @@ import {
     MenuDivider,
     IconButton,
     MenuOptionGroup,
-    MenuItemOption
+    MenuItemOption, Box
 } from '@chakra-ui/react'
 
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
 
-function ThemeList() {
-    return (
-        <MenuOptionGroup defaultValue='auto1' type='radio'>
-            <MenuItemOption value='auto1'>Saticoy</MenuItemOption>
-            <MenuItemOption value='auto2'>Ugly</MenuItemOption>
-        </MenuOptionGroup>
-    )
+import SelectableItemMenu from '../../molecule/selectable_item_menu';
+
+import ThemeController from '../../../theme-controller/theme-controller';
+import { ThemeMode } from '../../../theme-controller/theme';
+import { IconType } from 'react-icons/lib';
+
+interface ThemeSelectMenuProps {
+    themeController: ThemeController;
 }
 
-function ThemeSelectMenu() {
+// TODO: Cleanup
+// TODO: Make sure the `dark` and `light` modes are disabled when a theme is
+//       selected that has only one mode
+// TODO: Make the Icon for the button bigger
+// TODO: Make this work with Storybook
+
+function ThemeSelectMenu(props: ThemeSelectMenuProps) {
     // State for the icon for the current mode
-    const [modeIcon, setModeIcon] = useState(<MdBrightnessAuto />);
+    const [modeIcon, setModeIcon] = useState<ReactElement>(<MdBrightnessAuto />);
 
     // onClick items
     const changeMode = (new_mode: string | string[]) => {
-        if (new_mode === 'auto') {
-            setModeIcon(<MdBrightnessAuto />);
-        } else if (new_mode === 'dark') {
-            setModeIcon(<MdBrightness4 />);
-        } else if (new_mode === 'light') {
-            setModeIcon(<MdBrightness5 />);
+        if (Array.isArray(new_mode))
+            return;
+
+        // Update the button icon
+        const buttonIcons: { [key: string]: ReactElement } = {
+            auto: <MdBrightnessAuto />,
+            dark: <MdBrightness4 />,
+            light: <MdBrightness5 />
+        };
+        setModeIcon(buttonIcons[new_mode]);
+
+        // Configure the ThemeController
+        if (new_mode === 'auto')
+            props.themeController.isAutoMode = true;
+        else if (new_mode === 'dark')
+            props.themeController.selectedMode = ThemeMode.Dark;
+        else if (new_mode === 'light')
+            props.themeController.selectedMode = ThemeMode.Light;
+    }
+
+    const changeTheme = (new_theme: string | string[]) => {
+        if (new_theme === '__default') {
+            props.themeController.isAutoTheme = true;
+            return;
         }
-        console.log(new_mode);
+
+        if (!Array.isArray(new_theme)) {
+            props.themeController.selectedTheme = new_theme;
+        }
+    }
+    const getSelectedTheme = (): string => {
+        if (props.themeController.isAutoTheme)
+            return '__default';
+        return props.themeController.selectedTheme || '';
+    }
+
+    const getSelectedMode = (): string => {
+        if (props.themeController.isAutoMode)
+            return 'auto';
+        if (props.themeController.selectedMode === ThemeMode.Dark)
+            return 'dark';
+        return 'light';
     }
 
     // The component
@@ -46,15 +87,23 @@ function ThemeSelectMenu() {
                 aria-label='Options'
                 icon={modeIcon}
                 variant='none'
+                size='lg'
             />
             <MenuList>
-                <MenuOptionGroup defaultValue='auto' type='radio' onChange={changeMode}>
-                    <MenuItemOption value='auto' icon={<MdBrightnessAuto />}>Automatic mode</MenuItemOption>
-                    <MenuItemOption value='dark' icon={<MdBrightness4 />}>Dark mode</MenuItemOption>
-                    <MenuItemOption value='light' icon={<MdBrightness5 />}>Light mode</MenuItemOption>
+                <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
+                    <MenuItemOption value='auto' >Automatic mode</MenuItemOption>
+                    <MenuItemOption value='dark' >Dark mode</MenuItemOption>
+                    <MenuItemOption value='light'>Light mode</MenuItemOption>
                 </MenuOptionGroup>
                 <MenuDivider />
-                <ThemeList />
+                <SelectableItemMenu
+                    defaultValue={getSelectedTheme()}
+                    onChange={changeTheme}
+                    items={[
+                        { value: '__default', name: 'Default theme' },
+                        { value: 'Saticoy', name: 'Saticoy' },
+                        { value: 'Ugly', name: 'Ugly' },
+                    ]} />
             </MenuList>
         </Menu>
     );
