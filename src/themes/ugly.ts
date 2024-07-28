@@ -7,6 +7,9 @@ const ugly_theme: Theme<SaticoyChakraStyle> = {
     name: 'Very ugly theme',
     author: 'Daryl Stark',
     light: {
+        chakra_config: {
+        },
+        chakra_mode: 'light',
         page: {
             'class': 'ugly-light',
         }
