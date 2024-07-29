@@ -1,17 +1,28 @@
 import './login_page.scss'
 import Header from '../organisms/header'
 import LoginForm from '../organisms/login_form'
+import ThemeController from '../../theme-controller/theme-controller';
+import I18nController from '../../internationalization/i18n-controller';
+
+interface LayoutProps {
+    themeController?: ThemeController
+    localeController?: I18nController
+}
 
 // Component
-function Layout() {
-  return (
-    <div id='layout'>
-      <Header showSettings />
-      <main>
-        <LoginForm />
-      </main>
-    </div>
-  )
+function Layout(props: LayoutProps) {
+    return (
+        <div id='layout'>
+            <Header
+                showSettings
+                themeController={props.themeController}
+                localeController={props.localeController}
+            />
+            <main>
+                <LoginForm />
+            </main>
+        </div>
+    )
 }
 
 export default Layout

@@ -4,6 +4,7 @@ interface ThemeRetriever {
     retrieveMode(): ThemeMode | undefined;
     retrieveTheme(): string | undefined;
     isAutoMode(): boolean;
+    isAutoTheme(): boolean;
 }
 
 class BrowserRetriever implements ThemeRetriever {
@@ -17,6 +18,10 @@ class BrowserRetriever implements ThemeRetriever {
     }
 
     isAutoMode(): boolean {
+        return true;
+    }
+
+    isAutoTheme(): boolean {
         return true;
     }
 }
@@ -36,6 +41,10 @@ class LocalPreferencesRetriever implements ThemeRetriever {
     }
 
     isAutoMode(): boolean {
+        return false;
+    }
+
+    isAutoTheme(): boolean {
         return false;
     }
 }

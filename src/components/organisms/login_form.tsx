@@ -1,22 +1,44 @@
-import { Card } from 'antd'
-import { Button, Input, Typography } from "antd";
+import { Card, CardBody, CardHeader, Heading, Button, Input, InputGroup, InputLeftElement, FormControl, FormLabel } from '@chakra-ui/react'
 import { FaRegUser, FaLock } from "react-icons/fa";
-import './login_form.scss'
 import { useTranslation } from 'react-i18next';
-
-const { Title, Paragraph } = Typography;
+import './login_form.scss'
 
 function LoginForm() {
     const { t } = useTranslation();
     return <>
-        <Card className='card'>
-            <form>
-                <Title level={3}>{t('login_title')}</Title>
-                <Paragraph>{t('tagline')}</Paragraph>
-                <Input placeholder={t('username')} prefix={<FaRegUser />} size='large' />
-                <Input.Password placeholder={t('password')} prefix={<FaLock />} size='large' />
-                <Button type='primary'>{t('login')}</Button>
-            </form>
+        <Card variant='outline' className='card'>
+            <CardHeader>
+                <Heading size='md'>{t('login_title')}</Heading>
+            </CardHeader>
+            <CardBody>
+                <p>{t('tagline')}</p>
+                <form>
+                    <FormControl>
+                        <FormLabel>{t('username')}</FormLabel>
+                        <InputGroup>
+                            <InputLeftElement pointerEvents='none'>
+                                <FaRegUser />
+                            </InputLeftElement>
+                            <Input placeholder={t('username')} />
+                        </InputGroup>
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel>{t('password')}</FormLabel>
+                        <InputGroup>
+                            <InputLeftElement pointerEvents='none'>
+                                <FaLock />
+                            </InputLeftElement>
+                            <Input placeholder={t('password')} type='password' />
+                        </InputGroup>
+                    </FormControl>
+                    <Button
+                        type='submit'
+                        colorScheme='teal'
+                    >
+                        {t('login')}
+                    </Button>
+                </form>
+            </CardBody>
         </Card>
     </>
 }

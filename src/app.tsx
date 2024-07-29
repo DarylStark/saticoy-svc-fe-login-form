@@ -2,9 +2,11 @@
 import { useState } from 'react';
 
 // Styling
-import { ConfigProvider } from 'antd';
-import './index.scss'
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { themeController } from './globals/theme';
+import { i18nController } from './globals/i18n';
+
+import './index.scss'
 
 // Organism
 import LoginPage from './components/templates/login_page';
@@ -16,10 +18,10 @@ const updateBodyClass = () => {
 updateBodyClass();
 
 function App() {
-    const [theme, setTheme] = useState(themeController.currentStyle);
+    const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
 
     themeController.eventBus?.on('theme_changed', () => {
-        setTheme(themeController.currentStyle);
+        setChakraUiColorMode(themeController.currentStyle?.chakra_mode);
         updateBodyClass();
     });
 
@@ -29,9 +31,14 @@ function App() {
     });
 
     return (
-        <ConfigProvider theme={theme?.antd}>
-            <LoginPage />
-        </ ConfigProvider>
+        <ChakraProvider>
+            <ColorModeProvider value={chakra_ui_color_mode}>
+                <LoginPage
+                    themeController={themeController}
+                    localeController={i18nController}
+                />
+            </ColorModeProvider>
+        </ ChakraProvider>
     );
 }
 
