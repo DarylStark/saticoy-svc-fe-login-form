@@ -39,7 +39,7 @@ class ThemeController<T extends Style = Style> {
         for (const retriever of this.retrievers) {
             const theme = retriever.retrieveTheme();
             if (theme !== undefined) {
-                this._isAutoTheme = retriever.isAutoMode();
+                this._isAutoTheme = retriever.isAutoTheme();
                 return theme;
             }
         }
