@@ -18,11 +18,11 @@ import SelectableItemMenu from '../../molecule/selectable_item_menu';
 import ThemeController from '../../../theme-controller/theme-controller';
 import { ThemeMode } from '../../../theme-controller/theme';
 
+import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu';
+
 interface ThemeSelectMenuProps {
     themeController: ThemeController
 }
-
-// TODO: Make this work with Storybook
 
 const buttonIcons: { [key: string]: ReactElement } = {
     auto: <MdBrightnessAuto />,
@@ -32,6 +32,16 @@ const buttonIcons: { [key: string]: ReactElement } = {
 
 function ThemeSelectMenu(props: ThemeSelectMenuProps) {
     // Retrievers for values
+    const availableThemes = (): SelectableItemMenuItemProp[] => {
+        const themes = props.themeController.themeRepository.getNames(false).map((name: string) => {
+            return { value: name, name: name }
+        });
+        return [
+            { value: '__default', name: 'Default theme' },
+            ...themes
+        ]
+    }
+
     const getSelectedMode = (): string => {
         if (props.themeController.isAutoMode)
             return 'auto';
@@ -109,11 +119,7 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                 <SelectableItemMenu
                     defaultValue={getSelectedTheme()}
                     onChange={changeTheme}
-                    items={[
-                        { value: '__default', name: 'Default theme' },
-                        { value: 'Saticoy', name: 'Saticoy' },
-                        { value: 'Ugly', name: 'Ugly' },
-                    ]} />
+                    items={availableThemes()} />
             </MenuList>
         </Menu>
     );
