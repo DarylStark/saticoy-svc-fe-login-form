@@ -22,7 +22,6 @@ interface ThemeSelectMenuProps {
     themeController: ThemeController
 }
 
-// TODO: Make the Icon for the button bigger
 // TODO: Make this work with Storybook
 
 const buttonIcons: { [key: string]: ReactElement } = {
@@ -32,19 +31,34 @@ const buttonIcons: { [key: string]: ReactElement } = {
 };
 
 function ThemeSelectMenu(props: ThemeSelectMenuProps) {
+    // Retrievers for values
+    const getSelectedMode = (): string => {
+        if (props.themeController.isAutoMode)
+            return 'auto';
+        if (props.themeController.selectedMode === ThemeMode.Dark)
+            return 'dark';
+        return 'light';
+    }
+
+    const getSelectedTheme = (): string => {
+        if (props.themeController.isAutoTheme)
+            return '__default';
+        return props.themeController.selectedTheme || '';
+    }
+
     // State for the icon for the current mode
-    const [modeIcon, setModeIcon] = useState<ReactElement>(<MdBrightnessAuto />);
+    const [modeIcon, setModeIcon] = useState<ReactElement>(buttonIcons[getSelectedMode()]);
 
     // State from themeController
     const [modeSwitchingEnabled, setModeSwitchingEnabled] = useState(props.themeController.hasBothStyles());
-    const [selectedMode, setSelectedMode] = useState(props.themeController.selectedMode);
-    const [selectedTheme, setSelectedTheme] = useState(props.themeController.selectedTheme);
+
+    const updateButtonIcon = () => {
+        setModeIcon(buttonIcons[getSelectedMode()]);
+    };
 
     const updateState = () => {
         setModeSwitchingEnabled(props.themeController.hasBothStyles());
-        setSelectedMode(props.themeController.selectedMode);
-        setSelectedTheme(props.themeController.selectedTheme);
-        setModeIcon(buttonIcons[selectedMode === ThemeMode.Dark ? 'dark' : 'light']);
+        updateButtonIcon();
     }
 
     props.themeController.eventBus?.on('theme_changed', updateState);
@@ -74,21 +88,6 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
         }
     }
 
-    // Retrievers for values
-    const getSelectedMode = (): string => {
-        if (props.themeController.isAutoMode)
-            return 'auto';
-        if (selectedMode === ThemeMode.Dark)
-            return 'dark';
-        return 'light';
-    }
-
-    const getSelectedTheme = (): string => {
-        if (props.themeController.isAutoTheme)
-            return '__default';
-        return selectedTheme || '';
-    }
-
     // The component
     return (
         <Menu>
@@ -98,6 +97,7 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                 icon={modeIcon}
                 variant='none'
                 size='lg'
+                fontSize={24}
             />
             <MenuList>
                 <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
