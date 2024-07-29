@@ -45,7 +45,7 @@ themeRepo.add(
             }
         }
     },
-    "Theme 2 - Only light mode"
+    "Theme 3 - Only light mode"
 );
 
 // Create a Theme Controller
