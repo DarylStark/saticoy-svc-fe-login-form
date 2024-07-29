@@ -4,6 +4,8 @@ import { useState } from 'react';
 // Styling
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { themeController } from './globals/theme';
+import { i18nController } from './globals/i18n';
+
 import './index.scss'
 
 // Organism
@@ -31,7 +33,10 @@ function App() {
     return (
         <ChakraProvider>
             <ColorModeProvider value={chakra_ui_color_mode}>
-                <LoginPage themeController={themeController} />
+                <LoginPage
+                    themeController={themeController}
+                    localeController={i18nController}
+                />
             </ColorModeProvider>
         </ ChakraProvider>
     );

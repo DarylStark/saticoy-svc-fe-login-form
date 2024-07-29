@@ -1,12 +1,13 @@
-import SettingsMenu from './settings_menu';
 import ThemeSelectMenu from './theme_select_menu/theme_select_menu';
+import LocaleSelectMenu from './locale_select_menu/locale_select_menu';
 import './header.scss';
 import ThemeController from '../../theme-controller/theme-controller';
+import I18nController from '../../internationalization/i18n-controller';
 
 interface HeaderProps {
     children?: string,
-    showSettings?: boolean
-    themeController?: ThemeController;
+    themeController?: ThemeController
+    localeController?: I18nController
 }
 
 function Header(props: HeaderProps) {
@@ -16,8 +17,9 @@ function Header(props: HeaderProps) {
             {props.themeController &&
                 <ThemeSelectMenu
                     themeController={props.themeController} />}
-            {props.showSettings &&
-                <SettingsMenu />}
+            {props.localeController &&
+                <LocaleSelectMenu
+                    localeController={props.localeController} />}
         </header>
     )
 };

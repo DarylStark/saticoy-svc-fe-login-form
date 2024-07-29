@@ -10,9 +10,8 @@ const en_US: i18NextLocaleData = {
             "password": "Password",
             "login": "Login",
             "locales": {
-                "nl-NL": "Dutch",
-                "en-US": "English (United States)",
-                "en-EN": "English (United Kingdom)"
+                "nl-NL": "Dutch (The Netherlands)",
+                "en-US": "English (United States)"
             }
         }
     }
