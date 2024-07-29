@@ -1,13 +1,12 @@
 import { ReactElement, useState } from 'react';
 import {
     Menu,
-    MenuItem,
     MenuButton,
     MenuList,
     MenuDivider,
     IconButton,
     MenuOptionGroup,
-    MenuItemOption, Box
+    MenuItemOption
 } from '@chakra-ui/react'
 
 import { MdBrightness4 } from "react-icons/md";
@@ -18,7 +17,6 @@ import SelectableItemMenu from '../../molecule/selectable_item_menu';
 
 import ThemeController from '../../../theme-controller/theme-controller';
 import { ThemeMode } from '../../../theme-controller/theme';
-import { useEffect } from 'react';
 
 interface ThemeSelectMenuProps {
     themeController: ThemeController
