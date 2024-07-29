@@ -1,4 +1,4 @@
-import ThemeSelectMenu from "./theme_select_menu";
+import ThemeSelectMenu, { ThemeSelectMenuProps } from "./theme_select_menu";
 import { BaseRepository } from "../../../repository/repository";
 import { Theme, Style } from "../../../theme-controller/theme";
 import ThemeController from "../../../theme-controller/theme-controller";
@@ -63,6 +63,22 @@ export default {
     component: ThemeSelectMenu,
 };
 
-const Template = () => <ThemeSelectMenu themeController={themeController} />;
+const Template = (props: ThemeSelectMenuProps) => <ThemeSelectMenu {...props} />;
 
 export const Default = Template.bind({});
+Default.args = {
+    themeController: themeController
+}
+
+export const DefaultWithoutModeSelector = Template.bind({});
+DefaultWithoutModeSelector.args = {
+    themeController: themeController,
+    showModeSelector: false
+}
+
+export const DefaultWithoutThemeSelector = Template.bind({});
+DefaultWithoutThemeSelector.args = {
+    themeController: themeController,
+    showModeSelector: true,
+    showThemeSelector: false
+}

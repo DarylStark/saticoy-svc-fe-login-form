@@ -21,7 +21,9 @@ import { ThemeMode } from '../../../theme-controller/theme';
 import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
-    themeController: ThemeController
+    themeController: ThemeController,
+    showModeSelector?: boolean,
+    showThemeSelector?: boolean
 }
 
 const buttonIcons: { [key: string]: ReactElement } = {
@@ -110,19 +112,35 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                 fontSize={24}
             />
             <MenuList>
-                <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
-                    <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>Automatic mode</MenuItemOption>
-                    <MenuItemOption value='dark' isDisabled={!modeSwitchingEnabled}>Dark mode</MenuItemOption>
-                    <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>Light mode</MenuItemOption>
-                </MenuOptionGroup>
-                <MenuDivider />
-                <SelectableItemMenu
-                    defaultValue={getSelectedTheme()}
-                    onChange={changeTheme}
-                    items={availableThemes()} />
+                {props.showModeSelector && (
+                    <>
+                        <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
+                            <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>Automatic mode</MenuItemOption>
+                            <MenuItemOption value='dark' isDisabled={!modeSwitchingEnabled}>Dark mode</MenuItemOption>
+                            <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>Light mode</MenuItemOption>
+                        </MenuOptionGroup>
+                    </>)}
+                {props.showModeSelector && props.showThemeSelector && (
+                    <MenuDivider />
+                )}
+                {props.showThemeSelector && (
+                    <>
+                        <SelectableItemMenu
+                            defaultValue={getSelectedTheme()}
+                            onChange={changeTheme}
+                            items={availableThemes()} />
+                    </>
+                )}
             </MenuList>
         </Menu>
     );
 }
 
+// Set default props
+ThemeSelectMenu.defaultProps = {
+    showModeSelector: true,
+    showThemeSelector: true
+};
+
+export type { ThemeSelectMenuProps };
 export default ThemeSelectMenu;
