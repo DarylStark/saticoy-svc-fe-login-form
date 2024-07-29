@@ -5,7 +5,7 @@ import i18nController from "./test_data";
 
 // Default component
 export default {
-    title: 'Organisms/LocaleSelectMenu',
+    title: 'Organisms/Menus/LocaleSelectMenu',
     component: LocaleSelectMenu,
 };
 

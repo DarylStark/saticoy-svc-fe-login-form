@@ -1,6 +1,6 @@
 import './login_page.scss'
-import Header from '../organisms/header'
-import LoginForm from '../organisms/login_form'
+import Header from '../molecule/header/header'
+import LoginForm from '../organisms/forms/login_form'
 import ThemeController from '../../theme-controller/theme-controller';
 import I18nController from '../../internationalization/i18n-controller';
 
@@ -14,7 +14,6 @@ function Layout(props: LayoutProps) {
     return (
         <div id='layout'>
             <Header
-                showSettings
                 themeController={props.themeController}
                 localeController={props.localeController}
             />

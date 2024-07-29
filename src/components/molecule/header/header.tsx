@@ -1,8 +1,8 @@
-import ThemeSelectMenu from './theme_select_menu/theme_select_menu';
-import LocaleSelectMenu from './locale_select_menu/locale_select_menu';
+import ThemeSelectMenu from '../../organisms/theme_select_menu/theme_select_menu';
+import LocaleSelectMenu from '../../organisms/locale_select_menu/locale_select_menu';
 import './header.scss';
-import ThemeController from '../../theme-controller/theme-controller';
-import I18nController from '../../internationalization/i18n-controller';
+import ThemeController from '../../../theme-controller/theme-controller';
+import I18nController from '../../../internationalization/i18n-controller';
 
 interface HeaderProps {
     children?: string,

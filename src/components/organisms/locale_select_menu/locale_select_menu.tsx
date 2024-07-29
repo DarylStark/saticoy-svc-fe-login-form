@@ -5,7 +5,7 @@ import {
     MenuList,
     IconButton,
 } from '@chakra-ui/react'
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
 import { HiLanguage } from "react-icons/hi2";
 import I18nController from '../../../internationalization/i18n-controller';
 import { useTranslation } from 'react-i18next';
