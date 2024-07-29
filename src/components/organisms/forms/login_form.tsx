@@ -1,17 +1,28 @@
-import { Card, CardBody, CardHeader, Heading, Button, Input, InputGroup, InputLeftElement, FormControl, FormLabel } from '@chakra-ui/react'
+import {
+    Text,
+    Card,
+    CardBody,
+    CardHeader,
+    Heading,
+    Button,
+    Input,
+    InputGroup,
+    InputLeftElement,
+    FormControl,
+    FormLabel
+} from '@chakra-ui/react'
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
-import './login_form.scss'
 
 function LoginForm() {
     const { t } = useTranslation();
     return <>
-        <Card variant='outline' className='card'>
+        <Card variant='outline' size='lg'>
             <CardHeader>
                 <Heading size='md'>{t('login_title')}</Heading>
             </CardHeader>
             <CardBody>
-                <p>{t('tagline')}</p>
+                <Text>{t('tagline')}</Text>
                 <form>
                     <FormControl>
                         <FormLabel>{t('username')}</FormLabel>
