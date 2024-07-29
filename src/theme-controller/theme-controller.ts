@@ -140,4 +140,3 @@ class ThemeController<T extends Style = Style> {
 }
 
 export default ThemeController;
-export type { ThemeSaver };
