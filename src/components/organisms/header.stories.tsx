@@ -1,5 +1,6 @@
 // src/components/Button.stories.tsx
 import Header, { HeaderProps } from "./header";
+import i18nController from "./locale_select_menu/test_data";
 
 export default {
     title: 'Organisms/Header',
@@ -11,4 +12,10 @@ const Template = (props: HeaderProps) => <Header {...props} />;
 export const NoMenus = Template.bind({});
 NoMenus.args = {
     children: 'Header without menus',
+};
+
+export const WithLocaleMenu = Template.bind({});
+WithLocaleMenu.args = {
+    children: 'Header with locale menu',
+    localeController: i18nController,
 };
