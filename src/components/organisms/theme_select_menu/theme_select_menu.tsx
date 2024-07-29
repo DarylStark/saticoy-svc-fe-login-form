@@ -1,6 +1,7 @@
 import { ReactElement, useState } from 'react';
 import {
     Menu,
+    MenuItem,
     MenuButton,
     MenuList,
     MenuDivider,
@@ -17,34 +18,43 @@ import SelectableItemMenu from '../../molecule/selectable_item_menu';
 
 import ThemeController from '../../../theme-controller/theme-controller';
 import { ThemeMode } from '../../../theme-controller/theme';
-import { IconType } from 'react-icons/lib';
+import { useEffect } from 'react';
 
 interface ThemeSelectMenuProps {
-    themeController: ThemeController;
+    themeController: ThemeController
 }
 
-// TODO: Cleanup
-// TODO: Make sure the `dark` and `light` modes are disabled when a theme is
-//       selected that has only one mode
 // TODO: Make the Icon for the button bigger
 // TODO: Make this work with Storybook
+
+const buttonIcons: { [key: string]: ReactElement } = {
+    auto: <MdBrightnessAuto />,
+    dark: <MdBrightness4 />,
+    light: <MdBrightness5 />
+};
 
 function ThemeSelectMenu(props: ThemeSelectMenuProps) {
     // State for the icon for the current mode
     const [modeIcon, setModeIcon] = useState<ReactElement>(<MdBrightnessAuto />);
 
+    // State from themeController
+    const [modeSwitchingEnabled, setModeSwitchingEnabled] = useState(props.themeController.hasBothStyles());
+    const [selectedMode, setSelectedMode] = useState(props.themeController.selectedMode);
+    const [selectedTheme, setSelectedTheme] = useState(props.themeController.selectedTheme);
+
+    const updateState = () => {
+        setModeSwitchingEnabled(props.themeController.hasBothStyles());
+        setSelectedMode(props.themeController.selectedMode);
+        setSelectedTheme(props.themeController.selectedTheme);
+        setModeIcon(buttonIcons[selectedMode === ThemeMode.Dark ? 'dark' : 'light']);
+    }
+
+    props.themeController.eventBus?.on('theme_changed', updateState);
+
     // onClick items
     const changeMode = (new_mode: string | string[]) => {
         if (Array.isArray(new_mode))
             return;
-
-        // Update the button icon
-        const buttonIcons: { [key: string]: ReactElement } = {
-            auto: <MdBrightnessAuto />,
-            dark: <MdBrightness4 />,
-            light: <MdBrightness5 />
-        };
-        setModeIcon(buttonIcons[new_mode]);
 
         // Configure the ThemeController
         if (new_mode === 'auto')
@@ -65,18 +75,20 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
             props.themeController.selectedTheme = new_theme;
         }
     }
-    const getSelectedTheme = (): string => {
-        if (props.themeController.isAutoTheme)
-            return '__default';
-        return props.themeController.selectedTheme || '';
-    }
 
+    // Retrievers for values
     const getSelectedMode = (): string => {
         if (props.themeController.isAutoMode)
             return 'auto';
-        if (props.themeController.selectedMode === ThemeMode.Dark)
+        if (selectedMode === ThemeMode.Dark)
             return 'dark';
         return 'light';
+    }
+
+    const getSelectedTheme = (): string => {
+        if (props.themeController.isAutoTheme)
+            return '__default';
+        return selectedTheme || '';
     }
 
     // The component
@@ -91,9 +103,9 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
             />
             <MenuList>
                 <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
-                    <MenuItemOption value='auto' >Automatic mode</MenuItemOption>
-                    <MenuItemOption value='dark' >Dark mode</MenuItemOption>
-                    <MenuItemOption value='light'>Light mode</MenuItemOption>
+                    <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>Automatic mode</MenuItemOption>
+                    <MenuItemOption value='dark' isDisabled={!modeSwitchingEnabled}>Dark mode</MenuItemOption>
+                    <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>Light mode</MenuItemOption>
                 </MenuOptionGroup>
                 <MenuDivider />
                 <SelectableItemMenu
