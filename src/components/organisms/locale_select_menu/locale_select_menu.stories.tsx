@@ -9,6 +9,7 @@ export default {
     component: LocaleSelectMenu,
 };
 
-const Template = () => <LocaleSelectMenu localeController={i18nController} />;
+const Template = () => <LocaleSelectMenu
+    localeController={i18nController} />;
 
 export const Default = Template.bind({});
