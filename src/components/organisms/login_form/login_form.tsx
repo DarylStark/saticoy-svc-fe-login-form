@@ -40,7 +40,7 @@ function LoginForm(props: LoginFormProps) {
                 
                 <form>
                 <VStack spacing={4}>
-                    <Box>
+                    <Box w='100%'>
                         <FormControl>
                             <FormLabel>{t('username')}</FormLabel>
                             <InputGroup>
@@ -51,7 +51,7 @@ function LoginForm(props: LoginFormProps) {
                             </InputGroup>
                         </FormControl>
                     </Box>
-                    <Box>
+                    <Box w='100%'>
                         <FormControl>
                             <FormLabel>{t('password')}</FormLabel>
                             <InputGroup>
@@ -62,7 +62,7 @@ function LoginForm(props: LoginFormProps) {
                             </InputGroup>
                         </FormControl>
                     </Box>
-                    <Box>
+                    <Box w='100%'>
                         <Button
                             type='submit'
                             colorScheme='teal'
