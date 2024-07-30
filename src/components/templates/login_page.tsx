@@ -1,6 +1,6 @@
 import './login_page.scss'
 import Header from '../molecule/header/header'
-import LoginForm from '../organisms/forms/login_form'
+import LoginForm from '../organisms/login_form/login_form'
 import ThemeController from '../../theme-controller/theme-controller';
 import I18nController from '../../internationalization/i18n-controller';
 
