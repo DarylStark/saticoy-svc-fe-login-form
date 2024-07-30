@@ -1,6 +1,5 @@
 // Saticoy Theme
 import SaticoyChakraStyle from './saticoy-style';
-import './ugly.scss'
 import { Theme } from '../theme-controller/theme';
 
 const ugly_theme: Theme<SaticoyChakraStyle> = {
@@ -8,10 +7,17 @@ const ugly_theme: Theme<SaticoyChakraStyle> = {
     author: 'Daryl Stark',
     light: {
         chakra_mode: 'light',
-        page: {
-            'class': 'ugly-light',
+        chakra_theme: {
+            styles:{
+                global: {
+                    'html, body': {
+                        bg: 'lime',
+                        color: 'red',
+                    }
+                },
+            },
         }
-    }
+    },
 };
 
 export default ugly_theme;
