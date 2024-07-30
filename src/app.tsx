@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // Styling
-import { ChakraProvider, ColorModeProvider, extendTheme, ColorMode } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
 import { themeController } from './globals/theme';
 import { i18nController } from './globals/i18n';
 
