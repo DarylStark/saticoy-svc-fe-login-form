@@ -1,7 +1,15 @@
 // Saticoy Theme
-import { defineStyleConfig } from '@chakra-ui/react'
+import { background, defineStyleConfig } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
+
+const components = {
+    Heading: {
+        baseStyle: {
+            fontFamily: 'inherit'
+        }
+    }
+}
 
 const saticoy_theme: Theme<SaticoyChakraStyle> = {
     name: 'Saticoy',
@@ -9,34 +17,29 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
     light: {
         chakra_mode: 'light',
         chakra_theme: {
-            styles:{
+            styles: {
                 global: {
                     'html, body': {
                         bg: 'rgb(247, 249, 252)',
                         color: 'black',
                     }
                 },
-                components: {
-                    Input: {
-                        baseStyle: {
-                            bg: 'rgb(27, 38, 53)'
-                        }
-                    }
-                }
             },
+            components: components
         }
     },
     dark: {
         chakra_mode: 'dark',
         chakra_theme: {
-            styles:{
+            styles: {
                 global: {
                     'html, body': {
                         bg: 'rgb(27, 38, 53)',
                         color: 'white',
                     }
                 },
-            }
+            },
+            components: components
         }
     }
 };
