@@ -28,7 +28,7 @@
 			"isBackground": true,
 			"presentation": {
 				"reveal": "always",
-				"panel": "shared"
+				"panel": "dedicated"
 			}
 		},
 		{
@@ -55,15 +55,15 @@
 				"reveal": "always",
 				"panel": "shared"
 			},
-			"group": "build"
+			"group": "build",
 		},
 		{
-			"label": "Start Storybook",
+			"label": "Run Storybook",
 			"type": "shell",
 			"command": "npm run storybook",
-			"isBackground": true,
+			"isBackground": false,
 			"presentation": {
-				"reveal": "never",
+				"reveal": "always",
 				"panel": "dedicated"
 			},
 			"group": "none",
