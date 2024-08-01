@@ -1,6 +1,7 @@
 import SaticoyChakraStyle from "../themes/saticoy-style";
 import { BaseRepository } from "../repository/repository";
 import saticoy_theme from "../themes/saticoy";
+import saticoy_roboto_slab_theme from "../themes/saticoy-roboto-slab";
 import ugly_theme from "../themes/ugly";
 import ThemeController from "../theme-controller/theme-controller";
 import { Theme, ThemeMode } from "../theme-controller/theme";
@@ -11,6 +12,7 @@ import { LocalPreferencesSaver } from "../theme-controller/theme-saver";
 // Repository
 const themeRepo = new BaseRepository<Theme<SaticoyChakraStyle>>();
 themeRepo.add(saticoy_theme, "Saticoy");
+themeRepo.add(saticoy_roboto_slab_theme, "Saticoy (Roboto Slab)");
 themeRepo.add(ugly_theme, "Ugly");
 
 // Controller
