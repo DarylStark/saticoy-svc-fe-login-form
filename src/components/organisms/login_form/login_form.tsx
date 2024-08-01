@@ -28,7 +28,7 @@ interface LoginFormProps {
 function LoginForm(props: LoginFormProps) {
     const { t } = useTranslation();
     return <>
-        <Card variant='outline'>
+        <Card variant='outline' maxW='100%' width='loginFormWidth'>
             <CardHeader>
                 <Heading size='xl'>{t('login_form.login_title')}</Heading>
             </CardHeader>

@@ -11,6 +11,10 @@ const components = {
     }
 }
 
+const sizes = {
+    loginFormWidth: '650px'
+}
+
 const saticoy_theme: Theme<SaticoyChakraStyle> = {
     name: 'Saticoy',
     author: 'Daryl Stark',
@@ -25,6 +29,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                     }
                 },
             },
+            sizes: sizes,
             components: components
         }
     },
@@ -39,6 +44,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                     }
                 },
             },
+            sizes: sizes,
             components: components
         }
     }
