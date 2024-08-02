@@ -18,10 +18,10 @@ interface LoginFormProps {
     warning?: string
     info?: string
     text?: string
-    form?: number
+    form: number
 }
 
-function GetForm(props: { status: number } = { status: 0 }) {
+function GetForm(props: { status: number }) {
     switch (props.status) {
         case 1:
             return <UsernameAndPassword />
