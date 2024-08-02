@@ -7,6 +7,8 @@ export default {
 
 const Template = (props: LoginFormProps) => <LoginForm {...props} />;
 
+// With Username and Password link
+
 export const UsernameAndPasswordDefault = Template.bind({});
 UsernameAndPasswordDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
@@ -61,4 +63,12 @@ MFATOTPWithInfo.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     info: 'This is information!',
     form: 2
+};
+
+// With Magic Link form
+
+export const MagicLinkDefault = Template.bind({});
+MagicLinkDefault.args = {
+    text: 'Here comes the text to explain to the user what he needs to do.',
+    form: 3
 };
