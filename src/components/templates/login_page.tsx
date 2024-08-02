@@ -3,6 +3,7 @@ import Header from '../molecule/header/header'
 import LoginForm from '../organisms/login_form/login_form'
 import ThemeController from '../../theme-controller/theme-controller';
 import I18nController from '../../internationalization/i18n-controller';
+import { useTranslation } from 'react-i18next';
 
 interface LayoutProps {
     themeController?: ThemeController
@@ -11,6 +12,8 @@ interface LayoutProps {
 
 // Component
 function Layout(props: LayoutProps) {
+    const { t } = useTranslation();
+
     return (
         <div id='layout'>
             <Header
@@ -18,7 +21,8 @@ function Layout(props: LayoutProps) {
                 localeController={props.localeController}
             />
             <main>
-                <LoginForm />
+                <LoginForm
+                    text={t('login_form.tagline')} />
             </main>
         </div>
     )

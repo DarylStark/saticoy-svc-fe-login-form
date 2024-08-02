@@ -17,6 +17,7 @@ interface LoginFormProps {
     error?: string
     warning?: string
     info?: string
+    text?: string
 }
 
 function GetForm(props: { status: number } = { status: 0 }) {
@@ -38,7 +39,7 @@ function LoginForm(props: LoginFormProps) {
             </CardHeader>
             <CardBody>
                 <Text>
-                    {t('login_form.tagline')}
+                    {props.text}
                 </Text>
 
                 <VStack alignItems='left' spacing={4} paddingBottom={2} paddingTop={2}>
