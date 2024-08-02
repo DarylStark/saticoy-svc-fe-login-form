@@ -53,11 +53,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                     'html, body': {
                         bg: 'rgb(247, 249, 252)',
                         color: '#555',
-                        padding: 0,
-                        margin: 0
-                    },
-                    'main': {
-                        padding: '0px'
+                        fontSize: '16px',
                     }
                 },
             },
@@ -73,6 +69,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                     'html, body': {
                         bg: 'rgb(27, 38, 53)',
                         color: 'white',
+                        fontSize: '16px',
                     }
                 },
             },
