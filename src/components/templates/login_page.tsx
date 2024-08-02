@@ -22,6 +22,7 @@ function Layout(props: LayoutProps) {
             />
             <main>
                 <LoginForm
+                    form={1}
                     text={t('login_form.tagline')} />
             </main>
         </div>
