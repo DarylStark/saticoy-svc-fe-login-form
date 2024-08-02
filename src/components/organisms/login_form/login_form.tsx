@@ -39,35 +39,36 @@ function LoginForm(props: LoginFormProps) {
     return <>
         <Card variant='outline' size='dialog'>
             <CardHeader>
-                <Heading size='xl'>{t('application.name')}</Heading>
+                <Heading size='xl' align='center'>{t('application.name')}</Heading>
             </CardHeader>
             <CardBody>
-                <Text>
+                <Text align='center'>
                     {props.text}
                 </Text>
+                {(props.info || props.warning || props.error) && (
 
-                <VStack alignItems='left' spacing={4} paddingBottom={2} paddingTop={2}>
-                    {props.info &&
-                        <Alert status='info'>
-                            <AlertIcon />
-                            {props.info}
-                        </Alert>
-                    }
+                    <VStack alignItems='left' spacing={4} paddingBottom={2} paddingTop={4}>
+                        {props.info &&
+                            <Alert status='info'>
+                                <AlertIcon />
+                                {props.info}
+                            </Alert>
+                        }
 
-                    {props.warning &&
-                        <Alert status='warning'>
-                            <AlertIcon />
-                            {props.warning}
-                        </Alert>
-                    }
+                        {props.warning &&
+                            <Alert status='warning'>
+                                <AlertIcon />
+                                {props.warning}
+                            </Alert>
+                        }
 
-                    {props.error &&
-                        <Alert status='error'>
-                            <AlertIcon />
-                            {props.error}
-                        </Alert>
-                    }
-                </VStack>
+                        {props.error &&
+                            <Alert status='error'>
+                                <AlertIcon />
+                                {props.error}
+                            </Alert>
+                        }
+                    </VStack>)}
 
                 <form onSubmit={(e) => e.preventDefault()}>
                     <GetForm status={props.form} />
