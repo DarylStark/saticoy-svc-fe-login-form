@@ -14,7 +14,7 @@ import { GrLogin } from "react-icons/gr";
 import { MdEmail } from "react-icons/md";
 
 
-function MagicLink() {
+function MagicCode() {
     const { t } = useTranslation();
 
     return (
@@ -42,4 +42,4 @@ function MagicLink() {
     )
 }
 
-export default MagicLink
+export default MagicCode

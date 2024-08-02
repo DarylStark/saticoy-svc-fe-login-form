@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import UsernameAndPassword from './forms/username_and_password'
-import MagicLink from './forms/magic_link';
+import MagicCode from './forms/magic_link';
 import MFATOTP from './forms/mfa_topt'
 
 interface LoginFormProps {
@@ -29,7 +29,7 @@ function GetForm(props: { status: number }) {
         case 2:
             return <MFATOTP />
         case 3:
-            return <MagicLink />
+            return <MagicCode />
     }
     return <p>ERROR</p>
 }

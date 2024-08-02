@@ -44,31 +44,10 @@ MFATOTPDefault.args = {
     form: 2
 };
 
-export const MFATOTPWithWarning = Template.bind({});
-MFATOTPWithWarning.args = {
-    text: 'Here comes the text to explain to the user what he needs to do.',
-    warning: 'This is a warning!',
-    form: 2
-};
+// With Magic Code form
 
-export const MFATOTPWithError = Template.bind({});
-MFATOTPWithError.args = {
-    text: 'Here comes the text to explain to the user what he needs to do.',
-    error: 'This is a error!',
-    form: 2
-};
-
-export const MFATOTPWithInfo = Template.bind({});
-MFATOTPWithInfo.args = {
-    text: 'Here comes the text to explain to the user what he needs to do.',
-    info: 'This is information!',
-    form: 2
-};
-
-// With Magic Link form
-
-export const MagicLinkDefault = Template.bind({});
-MagicLinkDefault.args = {
+export const MagicCodeDefault = Template.bind({});
+MagicCodeDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     form: 3
 };
