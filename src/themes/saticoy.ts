@@ -1,18 +1,45 @@
 // Saticoy Theme
-import { background, defineStyleConfig } from '@chakra-ui/react'
+import { extendBaseTheme } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
+import { cardAnatomy } from '@chakra-ui/anatomy'
+import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
+
+const { definePartsStyle, defineMultiStyleConfig } =
+    createMultiStyleConfigHelpers(cardAnatomy.keys)
+
+const fonts = {
+    body: `'Inter'`,
+}
 
 const components = {
     Heading: {
         baseStyle: {
             fontFamily: 'inherit'
         }
-    }
-}
+    },
+    Card: defineMultiStyleConfig({
+        sizes: {
+            dialog: definePartsStyle({
+                container: {
+                    width: '750px',
+                    maxWidth: '100%',
+                    borderRadius: '0'
+                },
+                header: {
+                    padding: '20px',
+                    paddingBottom: '0'
+                },
+                body: {
+                    padding: '20px'
+                },
+                footer: {
+                    padding: '20px'
 
-const sizes = {
-    loginFormWidth: '650px'
+                }
+            })
+        }
+    })
 }
 
 const saticoy_theme: Theme<SaticoyChakraStyle> = {
@@ -25,12 +52,17 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                 global: {
                     'html, body': {
                         bg: 'rgb(247, 249, 252)',
-                        color: 'black',
+                        color: '#555',
+                        padding: 0,
+                        margin: 0
+                    },
+                    'main': {
+                        padding: '0px'
                     }
                 },
             },
-            sizes: sizes,
-            components: components
+            fonts: fonts,
+            components: extendBaseTheme(components)
         }
     },
     dark: {
@@ -44,8 +76,8 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                     }
                 },
             },
-            sizes: sizes,
-            components: components
+            fonts: fonts,
+            components: extendBaseTheme(components)
         }
     }
 };

@@ -4,8 +4,10 @@ const nl_NL: i18NextLocaleData = {
     identifier: 'nl-NL',
     i18next: {
         translation: {
+            "application": {
+                "name": "Saticoy"
+            },
             "login_form": {
-                "login_title": "Welkom terug!",
                 "tagline": "Meld u aan om toegang te krijgen tot uw account",
                 "username": "Gebruikersnaam",
                 "password": "Wachtwoord",

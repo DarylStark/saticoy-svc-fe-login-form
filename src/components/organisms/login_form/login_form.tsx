@@ -1,43 +1,47 @@
 import {
     Alert,
     AlertIcon,
-    Box,
-    Button,
     Card,
     CardBody,
     CardHeader,
-    Center,
-    FormControl,
-    FormLabel,
     Heading,
-    Input,
-    InputGroup,
-    InputLeftElement,
     VStack,
     Text
 } from '@chakra-ui/react'
-import { FaRegUser, FaLock } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
+
+import UsernameAndPassword from './forms/username_and_password'
+import MFATOTP from './forms/mfa_topt'
 
 interface LoginFormProps {
     error?: string
     warning?: string
     info?: string
-};
+}
+
+function GetForm(props: { status: number } = { status: 0 }) {
+    switch (props.status) {
+        case 0:
+            return <UsernameAndPassword />
+        case 1:
+            return <MFATOTP />
+    }
+    return <></>
+}
 
 function LoginForm(props: LoginFormProps) {
     const { t } = useTranslation();
     return <>
-        <Card variant='outline' maxW='100%' width='loginFormWidth'>
+        <Card variant='outline' size='dialog'>
             <CardHeader>
-                <Heading size='xl'>{t('login_form.login_title')}</Heading>
+                <Heading size='xl'>{t('application.name')}</Heading>
             </CardHeader>
             <CardBody>
-                <VStack alignItems='left' spacing={4} paddingBottom={8}>
-                    <Text>
-                        {t('login_form.tagline')}
-                    </Text>
+                <Text>
+                    {t('login_form.tagline')}
+                </Text>
 
+                <VStack alignItems='left' spacing={4} paddingBottom={2} paddingTop={2}>
                     {props.info &&
                         <Alert status='info'>
                             <AlertIcon />
@@ -60,44 +64,11 @@ function LoginForm(props: LoginFormProps) {
                     }
                 </VStack>
 
-                <form>
-                    <VStack spacing={4}>
-                        <Box w='100%'>
-                            <FormControl>
-                                <FormLabel>{t('login_form.username')}</FormLabel>
-                                <InputGroup>
-                                    <InputLeftElement pointerEvents='none'>
-                                        <FaRegUser />
-                                    </InputLeftElement>
-                                    <Input placeholder={t('login_form.username')} />
-                                </InputGroup>
-                            </FormControl>
-                        </Box>
-                        <Box w='100%'>
-                            <FormControl>
-                                <FormLabel>{t('login_form.password')}</FormLabel>
-                                <InputGroup>
-                                    <InputLeftElement pointerEvents='none'>
-                                        <FaLock />
-                                    </InputLeftElement>
-                                    <Input placeholder={t('login_form.password')} type='password' />
-                                </InputGroup>
-                            </FormControl>
-                        </Box>
-                        <Box w='100%'>
-                            <Center>
-                                <Button
-                                    type='submit'
-                                    colorScheme='teal'
-                                >
-                                    {t('login_form.login')}
-                                </Button>
-                            </Center>
-                        </Box>
-                    </VStack>
+                <form onSubmit={(e) => e.preventDefault()}>
+                    <GetForm status={0} />
                 </form>
             </CardBody>
-        </Card>
+        </Card >
     </>
 }
 

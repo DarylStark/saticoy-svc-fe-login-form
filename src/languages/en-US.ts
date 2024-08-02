@@ -4,8 +4,10 @@ const en_US: i18NextLocaleData = {
     identifier: 'en-US',
     i18next: {
         translation: {
+            "application": {
+                "name": "Saticoy"
+            },
             "login_form": {
-                "login_title": "Welcome back!",
                 "tagline": "Login to get access to your account",
                 "username": "Username",
                 "password": "Password",
