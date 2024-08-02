@@ -18,16 +18,17 @@ interface LoginFormProps {
     warning?: string
     info?: string
     text?: string
+    form?: number
 }
 
 function GetForm(props: { status: number } = { status: 0 }) {
     switch (props.status) {
-        case 0:
-            return <UsernameAndPassword />
         case 1:
+            return <UsernameAndPassword />
+        case 2:
             return <MFATOTP />
     }
-    return <></>
+    return <p>ERROR</p>
 }
 
 function LoginForm(props: LoginFormProps) {
@@ -66,7 +67,7 @@ function LoginForm(props: LoginFormProps) {
                 </VStack>
 
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <GetForm status={0} />
+                    <GetForm status={props.form} />
                 </form>
             </CardBody>
         </Card >
