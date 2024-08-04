@@ -32,6 +32,36 @@
 			}
 		},
 		{
+			"label": "Run application (external)",
+			"type": "shell",
+			"command": "npm run dev-external",
+			"problemMatcher": {
+				"owner": "custom",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "> vite",
+					"endsPattern": "^ +VITE +v[0-9.]+ +ready in [0-9]+ ms$"
+				},
+				"pattern": [
+					{
+						"regexp": ".*",
+						"file": 0,
+						"location": 1,
+						"message": 2
+					}
+				]
+			},
+			"isBackground": true,
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
+			}
+		},
+		{
 			"label": "Build project",
 			"type": "shell",
 			"command": "npm run build",
