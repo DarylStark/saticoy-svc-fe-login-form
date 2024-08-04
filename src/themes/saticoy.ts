@@ -22,7 +22,7 @@ const components = {
         sizes: {
             dialog: definePartsStyle({
                 container: {
-                    width: '750px',
+                    width: '550px',
                     maxWidth: '100%',
                     borderRadius: '0'
                 },
@@ -54,6 +54,8 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                         bg: 'rgb(247, 249, 252)',
                         color: '#555',
                         fontSize: '16px',
+                        paddingLeft: '8px',
+                        paddingRight: '8px'
                     }
                 },
             },
@@ -70,6 +72,8 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                         bg: 'rgb(27, 38, 53)',
                         color: 'white',
                         fontSize: '16px',
+                        paddingLeft: '8px',
+                        paddingRight: '8px'
                     }
                 },
             },
