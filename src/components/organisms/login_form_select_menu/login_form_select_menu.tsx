@@ -6,31 +6,15 @@ import {
 } from '@chakra-ui/react'
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
 import { FaRegUser } from "react-icons/fa";
+import { LoginForm } from '../login_form/login_form_dialog';
 
 interface LoginFormSelectMenuProps {
-    onChange?: (new_value: string | string[]) => void;
+    onChange?: (new_value: string | string[]) => void,
+    items: SelectableItemMenuItemProp[],
+    defaultValue: LoginForm
 }
 
 function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
-    // Retrievers for values
-    const availableLoginMethods = (): SelectableItemMenuItemProp[] => {
-        return [
-            {
-                value: '1',
-                name: 'Username and password'
-            },
-            {
-                value: '4',
-                name: 'Authorize from logged in session'
-            },
-            {
-                value: '3',
-                name: 'Magic code in email'
-            },
-        ]
-    }
-
-    // The component
     return (
         <Menu>
             <MenuButton
@@ -43,9 +27,9 @@ function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
             />
             <MenuList>
                 <SelectableItemMenu
-                    defaultValue='1'
+                    defaultValue={props.defaultValue}
                     onChange={props.onChange}
-                    items={availableLoginMethods()}
+                    items={props.items}
                 />
             </MenuList>
         </Menu>

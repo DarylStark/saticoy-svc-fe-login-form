@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { GrLogin } from "react-icons/gr";
 
 
-function AuthorizeFromSessions() {
+function AuthorizeFromSession() {
     const { t } = useTranslation();
 
     return (
@@ -41,4 +41,4 @@ function AuthorizeFromSessions() {
     )
 }
 
-export default AuthorizeFromSessions
+export default AuthorizeFromSession

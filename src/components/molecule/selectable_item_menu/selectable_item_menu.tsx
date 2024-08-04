@@ -5,7 +5,7 @@ import {
 
 interface SelectableItemMenuItemProp {
     name: string;
-    value?: string;
+    value?: T;
 }
 
 interface SelectableItemMenuProps {

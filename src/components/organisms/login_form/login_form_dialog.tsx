@@ -12,37 +12,45 @@ import { useTranslation } from 'react-i18next';
 
 import UsernameAndPassword from './forms/username_and_password'
 import MagicCode from './forms/magic_link';
-import AuthorizeFromSessions from './forms/authorize_from_session';
+import AuthorizeFromSession from './forms/authorize_from_session';
 import MFATOTP from './forms/mfa_topt'
+
+enum LoginForm {
+    // Primary login forms
+    UsernameAndPassword = 'username_and_password',
+    MagicCode = 'magic_code',
+    AuthorizeFromSession = 'authorize_from_session',
+
+    // Secondary login forms
+    MFATOTP = 'mfa_totp',
+}
 
 interface LoginFormProps {
     error?: string
     warning?: string
     info?: string
     text?: string
-    form: number
+    form: LoginForm
 }
 
-function GetForm(props: { status: number }) {
-    switch (props.status) {
-        case 1:
-            return <UsernameAndPassword />
-        case 2:
-            return <MFATOTP />
-        case 3:
-            return <MagicCode />
-        case 4:
-            return <AuthorizeFromSessions />
-    }
-    return <p>ERROR</p>
+const formComponents = {
+    [LoginForm.UsernameAndPassword]: UsernameAndPassword,
+    [LoginForm.MagicCode]: MagicCode,
+    [LoginForm.AuthorizeFromSession]: AuthorizeFromSession,
+    [LoginForm.MFATOTP]: MFATOTP,
+};
+
+function GetForm(props: { form: LoginForm }) {
+    const FormComponent = formComponents[props.form] || (() => <p>Unrecognized form</p>);
+    return <FormComponent />;
 }
 
-function LoginForm(props: LoginFormProps) {
+function LoginFormDialog(props: LoginFormProps) {
     const { t } = useTranslation();
     return <>
         <Card variant='outline' size='dialog'>
             <CardHeader>
-                <Heading size='xl' align='center'>{t('application.name')}</Heading>
+                <Heading size='xl' textAlign='center'>{t('application.name')}</Heading>
             </CardHeader>
             <CardBody>
                 <Text align='center'>
@@ -74,12 +82,13 @@ function LoginForm(props: LoginFormProps) {
                     </VStack>)}
 
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <GetForm status={props.form} />
+                    <GetForm form={props.form} />
                 </form>
             </CardBody>
         </Card >
     </>
 }
 
-export default LoginForm
+export default LoginFormDialog
 export type { LoginFormProps }
+export { LoginForm }

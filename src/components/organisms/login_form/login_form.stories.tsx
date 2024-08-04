@@ -1,11 +1,11 @@
-import LoginForm, { LoginFormProps } from "./login_form";
+import LoginFormDialog, { LoginFormProps } from "./login_form_dialog";
 
 export default {
     title: 'Molecules/Forms/LoginForm',
-    component: LoginForm,
+    component: LoginFormDialog,
 };
 
-const Template = (props: LoginFormProps) => <LoginForm {...props} />;
+const Template = (props: LoginFormProps) => <LoginFormDialog {...props} />;
 
 // With Username and Password link
 
