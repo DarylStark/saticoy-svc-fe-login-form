@@ -17,11 +17,16 @@ function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
         return [
             {
                 value: '1',
-                name: 'Username and Password'
-            }, {
+                name: 'Username and password'
+            },
+            {
+                value: '4',
+                name: 'Authorize from logged in session'
+            },
+            {
                 value: '3',
-                name: 'Magic Code'
-            }
+                name: 'Magic code in email'
+            },
         ]
     }
 

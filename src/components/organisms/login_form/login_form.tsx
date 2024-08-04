@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 import UsernameAndPassword from './forms/username_and_password'
 import MagicCode from './forms/magic_link';
+import AuthorizeFromSessions from './forms/authorize_from_session';
 import MFATOTP from './forms/mfa_topt'
 
 interface LoginFormProps {
@@ -30,6 +31,8 @@ function GetForm(props: { status: number }) {
             return <MFATOTP />
         case 3:
             return <MagicCode />
+        case 4:
+            return <AuthorizeFromSessions />
     }
     return <p>ERROR</p>
 }
