@@ -2,13 +2,11 @@ import {
     Box,
     Button,
     FormControl,
-    FormLabel,
     Input,
     InputGroup,
     InputLeftElement,
     VStack
 } from '@chakra-ui/react'
-import { FaRegUser, FaLock } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 import { GrLogin } from "react-icons/gr";
 import { MdEmail } from "react-icons/md";
