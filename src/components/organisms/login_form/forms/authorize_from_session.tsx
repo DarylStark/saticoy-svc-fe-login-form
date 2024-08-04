@@ -17,7 +17,7 @@ function AuthorizeFromSession() {
     const { t } = useTranslation();
 
     return (
-        <VStack spacing={8} paddingTop={4}>
+        <VStack spacing={4} paddingTop={4}>
             <Box w='100%'>
                 <FormControl>
                     <InputGroup>

@@ -12,7 +12,7 @@ import { GrLogin } from "react-icons/gr";
 function MFATOTP() {
     const { t } = useTranslation();
 
-    return (<VStack spacing={8} paddingTop={4}>
+    return (<VStack spacing={4} paddingTop={4}>
         <Box w='100%'>
             <FormControl>
                 <Center>
