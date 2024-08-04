@@ -12,7 +12,8 @@ const en_US: i18NextLocaleData = {
                 "username": "Username",
                 "password": "Password",
                 "login": "Login",
-                "email": "E-mail address"
+                "email": "E-mail address",
+                "magic_code": "Received magic code"
             },
             "locales": {
                 "nl-NL": "Dutch (The Netherlands)",

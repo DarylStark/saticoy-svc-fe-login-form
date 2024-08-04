@@ -12,7 +12,8 @@ const nl_NL: i18NextLocaleData = {
                 "username": "Gebruikersnaam",
                 "password": "Wachtwoord",
                 "login": "Aanmelden",
-                "email": "E-mail adres"
+                "email": "E-mail adres",
+                "magic_code": "Ontvangen magische code"
             },
             "locales": {
                 "nl-NL": "Nederlands (Nederland)",
