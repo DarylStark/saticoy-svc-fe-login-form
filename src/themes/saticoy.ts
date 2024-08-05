@@ -22,7 +22,7 @@ const components = {
         sizes: {
             dialog: definePartsStyle({
                 container: {
-                    width: '550px',
+                    width: '400px',
                     maxWidth: '100%',
                     borderRadius: '0'
                 },
