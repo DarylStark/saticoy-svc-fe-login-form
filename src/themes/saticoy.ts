@@ -1,5 +1,5 @@
 // Saticoy Theme
-import { extendBaseTheme } from '@chakra-ui/react'
+import { extendBaseTheme, PinInput } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
 import { cardAnatomy } from '@chakra-ui/anatomy'
@@ -18,7 +18,14 @@ const fonts = {
 const components = {
     Heading: {
         baseStyle: {
-            fontFamily: 'inherit'
+            fontFamily: 'inherit',
+        }
+    },
+    PinInput: {
+        baseStyle: {
+            _placeholder: {
+                fontFamily: 'auto',
+            }
         }
     },
     Card: defineMultiStyleConfig({
@@ -42,7 +49,7 @@ const components = {
                 }
             })
         }
-    })
+    }),
 }
 
 const saticoy_theme: Theme<SaticoyChakraStyle> = {
