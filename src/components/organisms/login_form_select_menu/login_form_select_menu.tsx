@@ -6,7 +6,6 @@ import {
 } from '@chakra-ui/react'
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
 import { FaRegUser } from "react-icons/fa";
-import { LoginForm } from '../login_form/login_form_dialog';
 
 interface LoginFormSelectMenuProps {
     onChange?: (new_value: string | string[]) => void,
