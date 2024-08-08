@@ -30,7 +30,7 @@ interface LayoutProps {
 }
 
 // Component
-function Layout(props: LayoutProps) {
+function LoginPageTemplate(props: LayoutProps) {
     const { t } = useTranslation();
     const [selectedForm, setSelectedForm] = useState(LoginFormType.UsernameAndPassword);
 
@@ -59,4 +59,4 @@ function Layout(props: LayoutProps) {
     )
 }
 
-export default Layout
+export default LoginPageTemplate

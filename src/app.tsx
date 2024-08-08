@@ -9,7 +9,7 @@ import { i18nController } from './globals/i18n';
 import './index.scss'
 
 // Organism
-import LoginPage from './components/templates/login_page';
+import LoginPageTemplate from './components/templates/login_page';
 
 function App() {
     const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
@@ -28,7 +28,7 @@ function App() {
     return (
         <ChakraProvider theme={extendTheme(chakra_ui_theme || {})}>
             <ColorModeProvider value={chakra_ui_color_mode}>
-                <LoginPage
+                <LoginPageTemplate
                     themeController={themeController}
                     localeController={i18nController}
                 />
