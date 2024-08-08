@@ -1,6 +1,6 @@
 import './login_page.scss'
 import Header from '../molecule/header/header'
-import LoginFormDialog, { LoginForm } from '../organisms/login_form/login_form_dialog'
+import LoginFormDialog, { LoginForm } from '../organisms/login_form_dialog/login_form_dialog'
 import ThemeController from '../../theme-controller/theme-controller';
 import I18nController from '../../internationalization/i18n-controller';
 import { useTranslation } from 'react-i18next';
