@@ -4,4 +4,12 @@
     main {
         @apply flex-grow flex items-center justify-center flex-col;
     }
+
+    @media (max-width: 767px) {
+        main {
+            display: flex;
+            align-items: flex-start;
+            justify-content: start;
+        }
+    }
 }
