@@ -5,6 +5,9 @@ import { Theme } from '../theme-controller/theme';
 import { cardAnatomy } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 
+// Needed fonts
+import 'typeface-inter'
+
 const { definePartsStyle, defineMultiStyleConfig } =
     createMultiStyleConfigHelpers(cardAnatomy.keys)
 

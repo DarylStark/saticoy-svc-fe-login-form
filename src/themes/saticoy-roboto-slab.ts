@@ -3,6 +3,9 @@ import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
 import OriginalSaticoyTheme from './saticoy'
 
+// Needed fonts
+import 'typeface-roboto-slab'
+
 const saticoy_roboto_slab: Theme<SaticoyChakraStyle> = JSON.parse(JSON.stringify(OriginalSaticoyTheme));
 
 saticoy_roboto_slab.name = 'Saticoy (Roboto Slab)';

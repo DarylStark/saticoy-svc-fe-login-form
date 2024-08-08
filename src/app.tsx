@@ -8,10 +8,6 @@ import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react
 import { themeController } from './globals/theme';
 import { i18nController } from './globals/i18n';
 
-// Fonts
-import 'typeface-inter'
-import 'typeface-roboto-slab'
-
 // Organism
 import LoginPageTemplate from './components/templates/login_page_template';
 
