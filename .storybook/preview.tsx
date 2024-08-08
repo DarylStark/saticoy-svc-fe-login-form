@@ -2,22 +2,17 @@ import React from 'react';
 import type { Preview } from "@storybook/react";
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
-import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
 import '../src/index.scss';
-
-const updateBodyClass = () => {
-  document.body.className = themeController.currentStyle?.page['class'] || '';
-};
 
 const preview: Preview = {
   decorators: [
     (Story, context) => {
       themeController.selectedTheme = context.globals.theme;
       themeController.selectedMode = context.globals.mode;
-      updateBodyClass();
       return (
-        <ChakraProvider>
-          <ColorModeProvider value={context.globals.mode == ThemeMode.Dark ? 'dark' : 'light'}>
+        <ChakraProvider theme={extendTheme(themeController.currentStyle?.chakra_theme || {})}>
+          <ColorModeProvider value={themeController.currentStyle?.chakra_mode}>
             <Story />
           </ColorModeProvider>
         </ChakraProvider >

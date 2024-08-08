@@ -28,7 +28,37 @@
 			"isBackground": true,
 			"presentation": {
 				"reveal": "always",
-				"panel": "shared"
+				"panel": "dedicated"
+			}
+		},
+		{
+			"label": "Run application (external)",
+			"type": "shell",
+			"command": "npm run dev-external",
+			"problemMatcher": {
+				"owner": "custom",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "> vite",
+					"endsPattern": "^ +VITE +v[0-9.]+ +ready in [0-9]+ ms$"
+				},
+				"pattern": [
+					{
+						"regexp": ".*",
+						"file": 0,
+						"location": 1,
+						"message": 2
+					}
+				]
+			},
+			"isBackground": true,
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated"
 			}
 		},
 		{
@@ -55,15 +85,15 @@
 				"reveal": "always",
 				"panel": "shared"
 			},
-			"group": "build"
+			"group": "build",
 		},
 		{
-			"label": "Start Storybook",
+			"label": "Run Storybook",
 			"type": "shell",
 			"command": "npm run storybook",
-			"isBackground": true,
+			"isBackground": false,
 			"presentation": {
-				"reveal": "never",
+				"reveal": "always",
 				"panel": "dedicated"
 			},
 			"group": "none",

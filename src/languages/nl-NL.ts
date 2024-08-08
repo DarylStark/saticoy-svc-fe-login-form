@@ -4,11 +4,17 @@ const nl_NL: i18NextLocaleData = {
     identifier: 'nl-NL',
     i18next: {
         translation: {
-            "login_title": "Welkom terug!",
-            "tagline": "Meld u aan om toegang te krijgen tot uw account",
-            "username": "Gebruikersnaam",
-            "password": "Wachtwoord",
-            "login": "Aanmelden",
+            "application": {
+                "name": "Saticoy"
+            },
+            "login_form": {
+                "tagline": "Meld u aan om toegang te krijgen tot uw account",
+                "username": "Gebruikersnaam",
+                "password": "Wachtwoord",
+                "login": "Aanmelden",
+                "email": "E-mail adres",
+                "magic_code": "Ontvangen magische code"
+            },
             "locales": {
                 "nl-NL": "Nederlands (Nederland)",
                 "en-US": "Engels (Verenigde Staten)"

@@ -1,7 +1,4 @@
 export type Style = {
-    page: {
-        class: string
-    },
 }
 
 export type Theme<T extends Style = Style> = {

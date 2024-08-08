@@ -1,10 +1,10 @@
 // src/components/Button.stories.tsx
 import Header, { HeaderProps } from "./header";
-import i18nController from "./locale_select_menu/test_data";
-import themeController from "./theme_select_menu/test_data";
+import i18nController from "../../organisms/locale_select_menu/test_data";
+import themeController from "../../organisms/theme_select_menu/test_data";
 
 export default {
-    title: 'Organisms/Header',
+    title: 'Organisms/Layout/Header',
     component: Header,
 };
 

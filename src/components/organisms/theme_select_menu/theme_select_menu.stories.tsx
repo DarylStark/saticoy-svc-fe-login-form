@@ -3,7 +3,7 @@ import themeController from "./test_data";
 
 // Default component
 export default {
-    title: 'Organisms/ThemeSelectMenu',
+    title: 'Organisms/Menus/ThemeSelectMenu',
     component: ThemeSelectMenu,
 };
 

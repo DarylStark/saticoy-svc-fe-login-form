@@ -32,5 +32,5 @@ function SelectableItemMenu(props: SelectableItemMenuProps) {
     )
 }
 
-export type { SelectableItemMenuItemProp };
+export type { SelectableItemMenuItemProp, SelectableItemMenuProps };
 export default SelectableItemMenu;
