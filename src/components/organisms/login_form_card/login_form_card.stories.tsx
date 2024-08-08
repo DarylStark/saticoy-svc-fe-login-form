@@ -1,4 +1,5 @@
 import LoginFormCard, { LoginFormCardProps, LoginFormType } from "./login_form_card";
+import { StoryFn } from "@storybook/react";
 
 export default {
     title: 'Organisms/LoginFormCard',
@@ -9,7 +10,7 @@ const Template = (props: LoginFormCardProps) => <LoginFormCard {...props} />;
 
 // With Username and Password form
 
-export const UsernameAndPasswordDefault = Template.bind({});
+export const UsernameAndPasswordDefault: StoryFn<LoginFormCardProps> = Template.bind({});
 UsernameAndPasswordDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     form_type: LoginFormType.UsernameAndPassword
@@ -17,7 +18,7 @@ UsernameAndPasswordDefault.args = {
 
 // With Magic Code form
 
-export const MagicCodeDefault = Template.bind({});
+export const MagicCodeDefault: StoryFn<LoginFormCardProps> = Template.bind({});
 MagicCodeDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     form_type: LoginFormType.MagicCode
@@ -25,7 +26,7 @@ MagicCodeDefault.args = {
 
 // With Authorize from session form
 
-export const AuthorizeFromSessionDefault = Template.bind({});
+export const AuthorizeFromSessionDefault: StoryFn<LoginFormCardProps> = Template.bind({});
 AuthorizeFromSessionDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     form_type: LoginFormType.AuthorizeFromSession
@@ -33,7 +34,7 @@ AuthorizeFromSessionDefault.args = {
 
 // With MFA TOTP form
 
-export const MFATOTPDefault = Template.bind({});
+export const MFATOTPDefault: StoryFn<LoginFormCardProps> = Template.bind({});
 MFATOTPDefault.args = {
     text: 'Here comes the text to explain to the user what he needs to do.',
     form_type: LoginFormType.MFATOTP

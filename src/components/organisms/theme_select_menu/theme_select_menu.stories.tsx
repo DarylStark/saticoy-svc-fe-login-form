@@ -1,5 +1,6 @@
 import ThemeSelectMenu, { ThemeSelectMenuProps } from "./theme_select_menu";
 import themeController from "./test_data";
+import { StoryFn } from "@storybook/react";
 
 // Default component
 export default {
@@ -9,20 +10,20 @@ export default {
 
 const Template = (props: ThemeSelectMenuProps) => <ThemeSelectMenu {...props} />;
 
-export const Default = Template.bind({});
+export const Default: StoryFn<ThemeSelectMenuProps> = Template.bind({});
 Default.args = {
     themeController: themeController
 }
 
-export const DefaultWithoutModeSelector = Template.bind({});
+export const DefaultWithoutModeSelector: StoryFn<ThemeSelectMenuProps> = Template.bind({});
 DefaultWithoutModeSelector.args = {
     themeController: themeController,
     showModeSelector: false
 }
 
-export const DefaultWithoutThemeSelector = Template.bind({});
+export const DefaultWithoutThemeSelector: StoryFn<ThemeSelectMenuProps> = Template.bind({});
 DefaultWithoutThemeSelector.args = {
     themeController: themeController,
     showModeSelector: true,
-    showThemeSelector: false
+    showThemeSelector: false,
 }

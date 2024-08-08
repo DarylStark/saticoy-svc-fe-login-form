@@ -1,4 +1,4 @@
-export type Style = Record<string, never>
+export type Style = object
 
 export type Theme<T extends Style = Style> = {
     name: string,

@@ -2,7 +2,7 @@ import { Style } from "../theme-controller/theme"
 
 
 type ChakraTheme = {
-    [key: string]: string | bool | ChakraTheme
+    [key: string]: string | boolean | ChakraTheme
 }
 
 type SaticoyChakraStyle = Style & {
