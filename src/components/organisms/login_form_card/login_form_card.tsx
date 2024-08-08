@@ -89,7 +89,7 @@ function LoginFormCard(props: LoginFormCardProps) {
                         }
                     </VStack>)}
 
-                <GetForm form_type={props.form_type} onSubmit={(e) => { e.preventDefault(); console.log(e) }} />
+                <GetForm form_type={props.form_type} onSubmit={(e) => e.preventDefault()} />
             </CardBody>
         </Card >
     </>
