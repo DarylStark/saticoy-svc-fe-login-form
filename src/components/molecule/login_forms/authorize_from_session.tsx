@@ -13,7 +13,7 @@ import { GrLogin } from "react-icons/gr";
 import { FormEvent } from 'react';
 
 interface AuthorizeFromSessionProps {
-    onSubmit: (e: FormEvent) => void;
+    onSubmit?: (e: FormEvent) => void;
 }
 
 function AuthorizeFromSession(props: AuthorizeFromSessionProps) {
@@ -47,3 +47,4 @@ function AuthorizeFromSession(props: AuthorizeFromSessionProps) {
 }
 
 export default AuthorizeFromSession
+export type { AuthorizeFromSessionProps }

@@ -13,7 +13,7 @@ import { GrLogin } from "react-icons/gr";
 import { FormEvent } from 'react';
 
 interface UsernameAndPasswordProps {
-    onSubmit: (e: FormEvent) => void;
+    onSubmit?: (e: FormEvent) => void;
 }
 
 function UsernameAndPassword(props: UsernameAndPasswordProps) {

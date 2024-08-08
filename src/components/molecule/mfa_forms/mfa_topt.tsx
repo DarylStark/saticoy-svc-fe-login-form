@@ -11,7 +11,7 @@ import { GrLogin } from "react-icons/gr";
 import { FormEvent } from 'react';
 
 interface MFATOTPProps {
-    onSubmit: (e: FormEvent) => void;
+    onSubmit?: (e: FormEvent) => void;
 }
 
 function MFATOTP(props: MFATOTPProps) {

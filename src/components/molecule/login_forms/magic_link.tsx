@@ -16,7 +16,7 @@ import { MdEmail } from "react-icons/md";
 import { FormEvent } from 'react';
 
 interface MagicCodeProps {
-    onSubmit: (e: FormEvent) => void;
+    onSubmit?: (e: FormEvent) => void;
 }
 
 function MagicCode(props: MagicCodeProps) {
