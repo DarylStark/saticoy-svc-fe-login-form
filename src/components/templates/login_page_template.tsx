@@ -1,4 +1,4 @@
-import './login_page.scss'
+import './login_page_template.scss'
 import Header from '../organisms/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import ThemeController from '../../theme-controller/theme-controller';
@@ -24,13 +24,13 @@ const primaryForms: SelectableItemMenuItemProp[] = [
     },
 ]
 
-interface LayoutProps {
+interface LoginPageTemplateProps {
     themeController?: ThemeController
     localeController?: I18nController
 }
 
 // Component
-function LoginPageTemplate(props: LayoutProps) {
+function LoginPageTemplate(props: LoginPageTemplateProps) {
     const { t } = useTranslation();
     const [selectedForm, setSelectedForm] = useState(LoginFormType.UsernameAndPassword);
 
@@ -45,7 +45,7 @@ function LoginPageTemplate(props: LayoutProps) {
                 localeController={props.localeController}
                 extraMenus={
                     <LoginFormTypeSelectMenu
-                        defaultValue={primaryForms[0].value}
+                        defaultValue={primaryForms[0].value?.toString() || ''}
                         onChange={setForm}
                         items={primaryForms} />
                 }

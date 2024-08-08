@@ -10,7 +10,7 @@ import { FaRegUser } from "react-icons/fa";
 interface LoginFormSelectMenuProps {
     onChange?: (new_value: string | string[]) => void,
     items: SelectableItemMenuItemProp[],
-    defaultValue: LoginForm
+    defaultValue: string
 }
 
 function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {

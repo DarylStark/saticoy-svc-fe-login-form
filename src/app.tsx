@@ -9,7 +9,7 @@ import { i18nController } from './globals/i18n';
 import './index.scss'
 
 // Organism
-import LoginPageTemplate from './components/templates/login_page';
+import LoginPageTemplate from './components/templates/login_page_template';
 
 function App() {
     const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
