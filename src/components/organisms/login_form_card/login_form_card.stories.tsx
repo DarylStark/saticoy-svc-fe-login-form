@@ -1,11 +1,11 @@
-import LoginFormDialog, { LoginFormProps } from "./login_form_dialog";
+import LoginFormCard, { LoginFormCardProps } from "./login_form_card";
 
 export default {
-    title: 'Organisms/LoginFormDialog',
-    component: LoginFormDialog,
+    title: 'Organisms/LoginFormCard',
+    component: LoginFormCard,
 };
 
-const Template = (props: LoginFormProps) => <LoginFormDialog {...props} />;
+const Template = (props: LoginFormCardProps) => <LoginFormCard {...props} />;
 
 // With Username and Password link
 

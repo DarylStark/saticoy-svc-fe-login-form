@@ -15,7 +15,7 @@ import MagicCode from '../login_forms/magic_link';
 import AuthorizeFromSession from '../login_forms/authorize_from_session';
 import MFATOTP from '../login_forms/mfa_topt'
 
-enum LoginForm {
+enum LoginFormType {
     // Primary login forms
     UsernameAndPassword = 'username_and_password',
     MagicCode = 'magic_code',
@@ -25,28 +25,29 @@ enum LoginForm {
     MFATOTP = 'mfa_totp',
 }
 
-interface LoginFormProps {
+interface LoginFormCardProps {
     error?: string
     warning?: string
     info?: string
     text?: string
-    form: LoginForm
+    form_type: LoginFormType
 }
 
 const formComponents = {
-    [LoginForm.UsernameAndPassword]: UsernameAndPassword,
-    [LoginForm.MagicCode]: MagicCode,
-    [LoginForm.AuthorizeFromSession]: AuthorizeFromSession,
-    [LoginForm.MFATOTP]: MFATOTP,
+    [LoginFormType.UsernameAndPassword]: UsernameAndPassword,
+    [LoginFormType.MagicCode]: MagicCode,
+    [LoginFormType.AuthorizeFromSession]: AuthorizeFromSession,
+    [LoginFormType.MFATOTP]: MFATOTP,
 };
 
-function GetForm(props: { form: LoginForm }) {
-    const FormComponent = formComponents[props.form] || (() => <p>Unrecognized form</p>);
+function GetForm(props: { form_type: LoginFormType }) {
+    const FormComponent = formComponents[props.form_type] || (() => <p>Unrecognized form</p>);
     return <FormComponent />;
 }
 
-function LoginFormDialog(props: LoginFormProps) {
+function LoginFormCard(props: LoginFormCardProps) {
     const { t } = useTranslation();
+
     return <>
         <Card variant='outline' size='dialog'>
             <CardHeader>
@@ -82,13 +83,13 @@ function LoginFormDialog(props: LoginFormProps) {
                     </VStack>)}
 
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <GetForm form={props.form} />
+                    <GetForm form_type={props.form_type} />
                 </form>
             </CardBody>
         </Card >
     </>
 }
 
-export default LoginFormDialog
-export type { LoginFormProps }
-export { LoginForm }
+export default LoginFormCard
+export type { LoginFormCardProps }
+export { LoginFormType }

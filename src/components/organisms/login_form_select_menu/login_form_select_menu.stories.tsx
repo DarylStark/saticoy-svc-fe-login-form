@@ -1,18 +1,18 @@
 import LoginFormSelectMenu from "./login_form_select_menu";
 import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
-import { LoginForm } from "../login_form_dialog/login_form_dialog";
+import { LoginFormType } from "../login_form_card/login_form_card";
 
 const exampleForm: SelectableItemMenuItemProp[] = [
     {
-        value: LoginForm.UsernameAndPassword,
+        value: LoginFormType.UsernameAndPassword,
         name: 'Username and password'
     },
     {
-        value: LoginForm.AuthorizeFromSession,
+        value: LoginFormType.AuthorizeFromSession,
         name: 'Authorize from logged in session'
     },
     {
-        value: LoginForm.MagicCode,
+        value: LoginFormType.MagicCode,
         name: 'Magic code in email'
     },
 ]
@@ -23,6 +23,8 @@ export default {
     component: LoginFormSelectMenu,
 };
 
-const Template = () => <LoginFormSelectMenu items={exampleForm} defaultValue={LoginForm.UsernameAndPassword} />;
+const Template = () => <LoginFormSelectMenu
+    items={exampleForm}
+    defaultValue={LoginFormType.UsernameAndPassword} />;
 
 export const Default = Template.bind({});
