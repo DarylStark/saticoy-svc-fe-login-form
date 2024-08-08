@@ -1,5 +1,5 @@
 import './login_page.scss'
-import Header from '../molecule/header/header'
+import Header from '../organisms/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import ThemeController from '../../theme-controller/theme-controller';
 import I18nController from '../../internationalization/i18n-controller';

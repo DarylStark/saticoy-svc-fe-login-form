@@ -4,7 +4,7 @@ import i18nController from "../../organisms/locale_select_menu/test_data";
 import themeController from "../../organisms/theme_select_menu/test_data";
 
 export default {
-    title: 'Molecules/Layout/Header',
+    title: 'Organisms/Layout/Header',
     component: Header,
 };
 

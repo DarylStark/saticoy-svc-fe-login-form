@@ -14,6 +14,7 @@ import UsernameAndPassword from '../login_forms/username_and_password'
 import MagicCode from '../login_forms/magic_link';
 import AuthorizeFromSession from '../login_forms/authorize_from_session';
 import MFATOTP from '../login_forms/mfa_topt'
+import { FormEvent } from 'react';
 
 enum LoginFormType {
     // Primary login forms
@@ -40,9 +41,15 @@ const formComponents = {
     [LoginFormType.MFATOTP]: MFATOTP,
 };
 
-function GetForm(props: { form_type: LoginFormType }) {
+interface GetFormProps {
+    form_type: LoginFormType,
+    onSubmit: (e: FormEvent) => void
+}
+
+function GetForm(props: GetFormProps) {
     const FormComponent = formComponents[props.form_type] || (() => <p>Unrecognized form</p>);
-    return <FormComponent />;
+    return <FormComponent
+        onSubmit={props.onSubmit} />;
 }
 
 function LoginFormCard(props: LoginFormCardProps) {
@@ -82,9 +89,7 @@ function LoginFormCard(props: LoginFormCardProps) {
                         }
                     </VStack>)}
 
-                <form onSubmit={(e) => e.preventDefault()}>
-                    <GetForm form_type={props.form_type} />
-                </form>
+                <GetForm form_type={props.form_type} onSubmit={(e) => { e.preventDefault(); console.log(e) }} />
             </CardBody>
         </Card >
     </>
