@@ -34,7 +34,7 @@ function MagicCode() {
                 <FormControl alignItems='center' display='flex' flexDirection='column'>
                     <FormLabel>{t('login_form.magic_code')}</FormLabel>
                     <InputGroup justifyContent='center' alignItems='center'>
-                        <PinInput size='lg' otp={false} autoFocus={false} isDisabled={false}>
+                        <PinInput size='lg' otp={false} autoFocus={false} isDisabled={false} type='alphanumeric'>
                             <PinInputField />
                             <PinInputField />
                             <PinInputField />
