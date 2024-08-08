@@ -16,11 +16,18 @@ const nl_NL: i18NextLocaleData = {
                 "magic_code": "Ontvangen magische code"
             },
             "locales": {
+                "automatic_locale": "Automatische taal",
                 "nl-NL": "Nederlands (Nederland)",
                 "en-US": "Engels (Verenigde Staten)"
             },
             "login_page": {
                 "title": "Aanmelden bij Saticoy",
+            },
+            "theming": {
+                "default_theme": "Standaard thema",
+                "automatic_mode": "Automatische modus",
+                "dark_mode": "Donkere modus",
+                "light_mode": "Lichte modus",
             },
         }
     }

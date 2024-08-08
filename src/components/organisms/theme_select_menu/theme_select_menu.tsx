@@ -8,6 +8,7 @@ import {
     MenuOptionGroup,
     MenuItemOption
 } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next';
 
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
@@ -33,13 +34,15 @@ const buttonIcons: { [key: string]: ReactElement } = {
 };
 
 function ThemeSelectMenu(props: ThemeSelectMenuProps) {
+    const { t } = useTranslation();
+
     // Retrievers for values
     const availableThemes = (): SelectableItemMenuItemProp[] => {
         const themes = props.themeController.themeRepository.getNames(false).map((name: string) => {
             return { value: name, name: name }
         });
         return [
-            { value: '__default', name: 'Default theme' },
+            { value: '__default', name: t('theming.default_theme') },
             ...themes
         ]
     }
@@ -115,9 +118,9 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                 {props.showModeSelector && (
                     <>
                         <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
-                            <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>Automatic mode</MenuItemOption>
-                            <MenuItemOption value='dark' isDisabled={!modeSwitchingEnabled}>Dark mode</MenuItemOption>
-                            <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>Light mode</MenuItemOption>
+                            <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>{t('theming.automatic_mode')}</MenuItemOption>
+                            <MenuItemOption value='dark' isDisabled={!modeSwitchingEnabled}>{t('theming.dark_mode')}</MenuItemOption>
+                            <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>{t('theming.light_mode')}</MenuItemOption>
                         </MenuOptionGroup>
                     </>)}
                 {props.showModeSelector && props.showThemeSelector && (
