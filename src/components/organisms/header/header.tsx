@@ -25,7 +25,7 @@ function Header(props: HeaderProps) {
                     localeController={props.localeController} />}
         </header>
     )
-};
+}
 
 export default Header;
 export type { HeaderProps }

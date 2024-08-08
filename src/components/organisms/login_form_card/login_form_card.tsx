@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import UsernameAndPassword from '../../molecule/login_forms/username_and_password'
 import MagicCode from '../../molecule/login_forms/magic_link';
 import AuthorizeFromSession from '../../molecule/login_forms/authorize_from_session';
-import MFATOTP from '../../molecule/mfa_forms/mfa_topt'
+import MFATOTPForm from '../../molecule/mfa_forms/mfa_topt'
 import { FormEvent } from 'react';
 
 enum LoginFormType {
@@ -38,7 +38,7 @@ const formComponents = {
     [LoginFormType.UsernameAndPassword]: UsernameAndPassword,
     [LoginFormType.MagicCode]: MagicCode,
     [LoginFormType.AuthorizeFromSession]: AuthorizeFromSession,
-    [LoginFormType.MFATOTP]: MFATOTP,
+    [LoginFormType.MFATOTP]: MFATOTPForm,
 };
 
 interface GetFormProps {

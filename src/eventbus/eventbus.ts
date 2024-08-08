@@ -1,5 +1,7 @@
-// type EventHandlerCallback = ((data: any, event: string) => void) | ((data: any) => void);
-export type EventHandlerCallback = (data: any, event: string) => void//) | ((data: any) => void);
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export type EventHandlerCallback = (data: any, event: string) => void;
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
 type Subscriptions = { [key: string]: EventHandlerCallback[] };
 
 class EventBus {
@@ -18,7 +20,9 @@ class EventBus {
         }
     }
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     raise(event: string, data: any) {
+        /* eslint-enable @typescript-eslint/no-explicit-any */
         for (const callback of this.subscriptions[event] || []) {
             callback(data, event);
         }
