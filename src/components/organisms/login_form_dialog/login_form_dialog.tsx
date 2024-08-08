@@ -10,10 +10,10 @@ import {
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next';
 
-import UsernameAndPassword from './forms/username_and_password'
-import MagicCode from './forms/magic_link';
-import AuthorizeFromSession from './forms/authorize_from_session';
-import MFATOTP from './forms/mfa_topt'
+import UsernameAndPassword from '../login_forms/username_and_password'
+import MagicCode from '../login_forms/magic_link';
+import AuthorizeFromSession from '../login_forms/authorize_from_session';
+import MFATOTP from '../login_forms/mfa_topt'
 
 enum LoginForm {
     // Primary login forms

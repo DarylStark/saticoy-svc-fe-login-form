@@ -1,7 +1,7 @@
 import LoginFormDialog, { LoginFormProps } from "./login_form_dialog";
 
 export default {
-    title: 'Molecules/Forms/LoginForm',
+    title: 'Organisms/LoginFormDialog',
     component: LoginFormDialog,
 };
 

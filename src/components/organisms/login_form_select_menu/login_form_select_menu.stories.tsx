@@ -1,6 +1,6 @@
 import LoginFormSelectMenu from "./login_form_select_menu";
 import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
-import { LoginForm } from "../login_form/login_form_dialog";
+import { LoginForm } from "../login_form_dialog/login_form_dialog";
 
 const exampleForm: SelectableItemMenuItemProp[] = [
     {
