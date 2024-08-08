@@ -5,7 +5,7 @@ import {
 
 interface SelectableItemMenuItemProp {
     name: string;
-    value?: T;
+    value?: string;
 }
 
 interface SelectableItemMenuProps {
@@ -32,5 +32,5 @@ function SelectableItemMenu(props: SelectableItemMenuProps) {
     )
 }
 
-export type { SelectableItemMenuItemProp };
+export type { SelectableItemMenuItemProp, SelectableItemMenuProps };
 export default SelectableItemMenu;
