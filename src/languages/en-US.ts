@@ -5,7 +5,7 @@ const en_US: i18NextLocaleData = {
     i18next: {
         translation: {
             "application": {
-                "name": "Saticoy"
+                "name": "Saticoy",
             },
             "login_form": {
                 "tagline": "Login to get access to your account",
@@ -18,7 +18,10 @@ const en_US: i18NextLocaleData = {
             "locales": {
                 "nl-NL": "Dutch (The Netherlands)",
                 "en-US": "English (United States)"
-            }
+            },
+            "login_page": {
+                "title": "Login to Saticoy",
+            },
         }
     }
 }

@@ -18,7 +18,10 @@ const nl_NL: i18NextLocaleData = {
             "locales": {
                 "nl-NL": "Nederlands (Nederland)",
                 "en-US": "Engels (Verenigde Staten)"
-            }
+            },
+            "login_page": {
+                "title": "Aanmelden bij Saticoy",
+            },
         }
     }
 }

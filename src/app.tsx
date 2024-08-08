@@ -1,5 +1,7 @@
 // React imports
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 // Styling
 import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
@@ -15,6 +17,8 @@ function App() {
     const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
     const [chakra_ui_theme, setChakraUiTheme] = useState(themeController.currentStyle?.chakra_theme);
 
+    const { t } = useTranslation();
+
     themeController.eventBus?.on('theme_changed', () => {
         setChakraUiColorMode(themeController.currentStyle?.chakra_mode);
         setChakraUiTheme(themeController.currentStyle?.chakra_theme);
@@ -28,6 +32,9 @@ function App() {
     return (
         <ChakraProvider theme={extendTheme(chakra_ui_theme || {})}>
             <ColorModeProvider value={chakra_ui_color_mode}>
+                <Helmet>
+                    <title>{t('login_page.title')}</title>
+                </Helmet>
                 <LoginPageTemplate
                     themeController={themeController}
                     localeController={i18nController}
