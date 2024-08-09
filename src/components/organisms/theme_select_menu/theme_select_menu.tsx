@@ -33,12 +33,16 @@ const buttonIcons: { [key: string]: ReactElement } = {
     light: <MdBrightness5 />
 };
 
-function ThemeSelectMenu(props: ThemeSelectMenuProps) {
+function ThemeSelectMenu({
+    themeController,
+    showModeSelector = true,
+    showThemeSelector = true
+}: ThemeSelectMenuProps) {
     const { t } = useTranslation();
 
     // Retrievers for values
     const availableThemes = (): SelectableItemMenuItemProp[] => {
-        const themes = props.themeController.themeRepository.getNames(false).map((name: string) => {
+        const themes = themeController.themeRepository.getNames(false).map((name: string) => {
             return { value: name, name: name }
         });
         return [
@@ -48,35 +52,35 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
     }
 
     const getSelectedMode = (): string => {
-        if (props.themeController.isAutoMode)
+        if (themeController.isAutoMode)
             return 'auto';
-        if (props.themeController.selectedMode === ThemeMode.Dark)
+        if (themeController.selectedMode === ThemeMode.Dark)
             return 'dark';
         return 'light';
     }
 
     const getSelectedTheme = (): string => {
-        if (props.themeController.isAutoTheme)
+        if (themeController.isAutoTheme)
             return '__default';
-        return props.themeController.selectedTheme || '';
+        return themeController.selectedTheme || '';
     }
 
     // State for the icon for the current mode
     const [modeIcon, setModeIcon] = useState<ReactElement>(buttonIcons[getSelectedMode()]);
 
     // State from themeController
-    const [modeSwitchingEnabled, setModeSwitchingEnabled] = useState(props.themeController.hasBothStyles());
+    const [modeSwitchingEnabled, setModeSwitchingEnabled] = useState(themeController.hasBothStyles());
 
     const updateButtonIcon = () => {
         setModeIcon(buttonIcons[getSelectedMode()]);
     };
 
     const updateState = () => {
-        setModeSwitchingEnabled(props.themeController.hasBothStyles());
+        setModeSwitchingEnabled(themeController.hasBothStyles());
         updateButtonIcon();
     }
 
-    props.themeController.eventBus?.on('theme_changed', updateState);
+    themeController.eventBus?.on('theme_changed', updateState);
 
     // onClick items
     const changeMode = (new_mode: string | string[]) => {
@@ -85,21 +89,21 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
 
         // Configure the ThemeController
         if (new_mode === 'auto')
-            props.themeController.isAutoMode = true;
+            themeController.isAutoMode = true;
         else if (new_mode === 'dark')
-            props.themeController.selectedMode = ThemeMode.Dark;
+            themeController.selectedMode = ThemeMode.Dark;
         else if (new_mode === 'light')
-            props.themeController.selectedMode = ThemeMode.Light;
+            themeController.selectedMode = ThemeMode.Light;
     }
 
     const changeTheme = (new_theme: string | string[]) => {
         if (new_theme === '__default') {
-            props.themeController.isAutoTheme = true;
+            themeController.isAutoTheme = true;
             return;
         }
 
         if (!Array.isArray(new_theme)) {
-            props.themeController.selectedTheme = new_theme;
+            themeController.selectedTheme = new_theme;
         }
     }
 
@@ -115,7 +119,7 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                 fontSize={24}
             />
             <MenuList>
-                {props.showModeSelector && (
+                {showModeSelector && (
                     <>
                         <MenuOptionGroup defaultValue={getSelectedMode()} type='radio' onChange={changeMode}>
                             <MenuItemOption value='auto' isDisabled={!modeSwitchingEnabled}>{t('theming.automatic_mode')}</MenuItemOption>
@@ -123,27 +127,19 @@ function ThemeSelectMenu(props: ThemeSelectMenuProps) {
                             <MenuItemOption value='light' isDisabled={!modeSwitchingEnabled}>{t('theming.light_mode')}</MenuItemOption>
                         </MenuOptionGroup>
                     </>)}
-                {props.showModeSelector && props.showThemeSelector && (
+                {showModeSelector && showThemeSelector && (
                     <MenuDivider />
                 )}
-                {props.showThemeSelector && (
-                    <>
-                        <SelectableItemMenu
-                            defaultValue={getSelectedTheme()}
-                            onChange={changeTheme}
-                            items={availableThemes()} />
-                    </>
+                {showThemeSelector && (
+                    <SelectableItemMenu
+                        defaultValue={getSelectedTheme()}
+                        onChange={changeTheme}
+                        items={availableThemes()} />
                 )}
             </MenuList>
         </Menu>
     );
 }
-
-// Set default props
-ThemeSelectMenu.defaultProps = {
-    showModeSelector: true,
-    showThemeSelector: true
-};
 
 export type { ThemeSelectMenuProps };
 export default ThemeSelectMenu;
