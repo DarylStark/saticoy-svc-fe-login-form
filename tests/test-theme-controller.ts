@@ -13,6 +13,14 @@ class MockRetriever implements ThemeRetriever {
     retrieveTheme(): string | undefined {
         return this._theme;
     }
+
+    isAutoMode(): boolean {
+        return true;
+    }
+
+    isAutoTheme(): boolean {
+        return true;
+    }
 }
 
 const MockThemeDarkLight: Theme = {

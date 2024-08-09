@@ -2,6 +2,7 @@ import {
     Menu,
 } from '@chakra-ui/react'
 import SelectableItemMenu, { SelectableItemMenuProps, SelectableItemMenuItemProp } from "./selectable_item_menu";
+import { StoryFn } from "@storybook/react";
 
 // Testdata
 const items: SelectableItemMenuItemProp[] = [
@@ -28,7 +29,7 @@ export default {
     component: SelectableItemMenu,
 };
 
-const Template = (props: SelectableItemMenuProps) => <Menu><SelectableItemMenu {...props} /></Menu>;
+const Template: StoryFn<SelectableItemMenuProps> = (props: SelectableItemMenuProps) => <Menu><SelectableItemMenu {...props} /></Menu>;
 
 export const Default = Template.bind({});
 Default.args = {

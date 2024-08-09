@@ -5,5 +5,11 @@ export type stringDict = {
 }
 
 export type i18NextLocaleData = LocaleData & {
-    i18next: stringDict
+    i18next: {
+        translation: {
+            [key: string]: string | {
+                [key: string]: string
+            }
+        }
+    }
 }

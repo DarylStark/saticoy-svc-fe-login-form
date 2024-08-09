@@ -3,7 +3,6 @@ import type { Preview } from "@storybook/react";
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
 import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
-import '../src/index.scss';
 
 const preview: Preview = {
   decorators: [

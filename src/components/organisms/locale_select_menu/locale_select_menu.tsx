@@ -30,7 +30,7 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
             return { value: name, name: t(`locales.${name}`) }
         });
         return [
-            { value: '__default', name: 'Automatic language' },
+            { value: '__default', name: t('locales.automatic_locale') },
             ...themes
         ]
     }

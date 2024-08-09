@@ -14,7 +14,7 @@ interface MFATOTPProps {
     onSubmit?: (e: FormEvent) => void;
 }
 
-function MFATOTP(props: MFATOTPProps) {
+function MFATOTPForm(props: MFATOTPProps) {
     const { t } = useTranslation();
 
     return (
@@ -48,4 +48,4 @@ function MFATOTP(props: MFATOTPProps) {
     )
 }
 
-export default MFATOTP
+export default MFATOTPForm

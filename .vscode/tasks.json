@@ -91,7 +91,7 @@
 			"label": "Run Storybook",
 			"type": "shell",
 			"command": "npm run storybook",
-			"isBackground": false,
+			"isBackground": true,
 			"presentation": {
 				"reveal": "always",
 				"panel": "dedicated"
