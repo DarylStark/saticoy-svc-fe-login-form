@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import LoginPage from './LoginPage'
+import LoginPage from './login_page'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
