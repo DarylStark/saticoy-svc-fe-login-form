@@ -1,7 +1,6 @@
-import LocaleSelectMenu from "./locale_select_menu";
-
-// Data to test with
-import i18nController from "./test_data";
+import { StoryFn } from "@storybook/react";
+import LocaleSelectMenu, { LocaleSelectMenuProps } from "./locale_select_menu";
+import { action } from '@storybook/addon-actions';
 
 // Default component
 export default {
@@ -9,7 +8,16 @@ export default {
     component: LocaleSelectMenu,
 };
 
-const Template = () => <LocaleSelectMenu
-    localeController={i18nController} />;
+const Template = (props: LocaleSelectMenuProps) => <LocaleSelectMenu {...props} />;
 
-export const Default = Template.bind({});
+export const Default: StoryFn<LocaleSelectMenuProps> = Template.bind({});
+Default.args = {
+    locales: [
+        { 'name': 'English', value: 'en' },
+        { 'name': 'Español', value: 'es' },
+        { 'name': 'Français', value: 'fr' },
+        { 'name': 'Deutsch', value: 'de' },
+    ],
+    onChange: action('Locale changed'),
+    selectedLocale: 'auto'
+}

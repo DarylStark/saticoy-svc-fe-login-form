@@ -1,6 +1,5 @@
 import Header from '../organisms/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
-import I18nController from '../../internationalization/i18n-controller';
 import { useTranslation } from 'react-i18next';
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 import { useState } from 'react';
@@ -24,7 +23,6 @@ const primaryForms: SelectableItemMenuItemProp[] = [
 ]
 
 interface LoginPageTemplateProps {
-    localeController?: I18nController
     headerMenus?: React.ReactNode
 }
 
@@ -44,7 +42,6 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
             <Box flexGrow={0}>
                 <header>
                     <Header
-                        localeController={props.localeController}
                         extraMenus={
                             <>
                                 {props.headerMenus}

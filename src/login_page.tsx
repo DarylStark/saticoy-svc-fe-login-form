@@ -14,6 +14,7 @@ import { i18nController } from './globals/i18n';
 
 // Components
 import ThemeSelectMenu from './components/organisms/theme_select_menu/theme_select_menu';
+import LocaleSelectMenu from './components/organisms/locale_select_menu/locale_select_menu';
 
 // Template
 import LoginPageTemplate from './components/templates/login_page_template';
@@ -59,6 +60,33 @@ function LocalThemeSelectMenu() {
     />
 }
 
+function LocalLocaleSelectMenu() {
+    const { t } = useTranslation();
+
+    function getLocales() {
+        const locales = i18nController.localeRepository.getNames(false);
+        return locales.map(l => ({ 'name': t(`locales.${l}`), value: l }));
+    }
+
+    function getSelectedLocale(): string {
+        if (i18nController.isAutoLocale) return 'auto';
+        return i18nController.selectedLocale || 'auto';
+    }
+
+    // Update the locale when the locale changes
+    const updateLocale = (locale: string) => {
+        if (locale === 'auto')
+            return i18nController.isAutoLocale = true;
+        i18nController.selectedLocale = locale;
+    }
+
+    return <LocaleSelectMenu
+        locales={getLocales()}
+        selectedLocale={getSelectedLocale()}
+        onChange={updateLocale}
+    />
+}
+
 function LoginPage() {
     // State for theming
     const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
@@ -86,8 +114,12 @@ function LoginPage() {
                         <title>{t('login_page.title')}</title>
                     </Helmet>
                     <LoginPageTemplate
-                        localeController={i18nController}
-                        headerMenus={<LocalThemeSelectMenu />}
+                        headerMenus={
+                            <>
+                                <LocalThemeSelectMenu />
+                                <LocalLocaleSelectMenu />
+                            </>
+                        }
                     />
                 </ColorModeProvider>
             </ChakraProvider>

@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import {
     Menu,
     MenuButton,
@@ -9,16 +9,10 @@ import {
     MenuItemOption
 } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next';
-
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-
 import SelectableItemMenu from '../../molecule/selectable_item_menu/selectable_item_menu';
-
-import ThemeController from '../../../theme-controller/theme-controller';
-import { ThemeMode } from '../../../theme-controller/theme';
-
 import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {

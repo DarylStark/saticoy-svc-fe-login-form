@@ -2,7 +2,6 @@ import ThemeSelectMenu, { ThemeSelectMenuProps } from "./theme_select_menu";
 import { StoryFn } from "@storybook/react";
 import { action } from '@storybook/addon-actions';
 
-
 // Default component
 export default {
     title: 'Organisms/Menus/ThemeSelectMenu',
