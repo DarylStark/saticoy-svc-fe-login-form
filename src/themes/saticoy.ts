@@ -1,5 +1,5 @@
 // Saticoy Theme
-import { extendBaseTheme, PinInput } from '@chakra-ui/react'
+import { extendBaseTheme } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
 import { cardAnatomy } from '@chakra-ui/anatomy'
@@ -64,8 +64,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                         bg: 'rgb(247, 249, 252)',
                         color: '#555',
                         fontSize: '16px',
-                        paddingLeft: '8px',
-                        paddingRight: '8px'
+                        padding: '0px'
                     }
                 },
             },
@@ -82,8 +81,7 @@ const saticoy_theme: Theme<SaticoyChakraStyle> = {
                         bg: 'rgb(27, 38, 53)',
                         color: 'white',
                         fontSize: '16px',
-                        paddingLeft: '8px',
-                        paddingRight: '8px'
+                        padding: '0px',
                     }
                 },
             },
