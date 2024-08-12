@@ -44,11 +44,11 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
                     <Header
                         extraMenus={
                             <>
-                                {props.headerMenus}
                                 <LoginFormTypeSelectMenu
                                     defaultValue={primaryForms[0].value?.toString() || ''}
                                     onChange={setForm}
                                     items={primaryForms} />
+                                {props.headerMenus}
                             </>
                         }
                     />
@@ -80,3 +80,4 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
 }
 
 export default LoginPageTemplate
+export { LoginPageTemplateProps }
