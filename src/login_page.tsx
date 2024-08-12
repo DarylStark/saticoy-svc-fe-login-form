@@ -50,6 +50,8 @@ function LocalThemeSelectMenu() {
         themeController.selectedTheme = theme
     }
 
+    // TODO: When going from Automatic to 'Dark', the icon is not updated
+
     // The component
     return <ThemeSelectMenu
         themes={getThemes()}
