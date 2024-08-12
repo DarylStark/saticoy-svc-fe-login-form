@@ -1,5 +1,5 @@
 // Saticoy Theme
-import { extendBaseTheme, PinInput } from '@chakra-ui/react'
+import { extendBaseTheme } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
 import { Theme } from '../theme-controller/theme';
 import { cardAnatomy } from '@chakra-ui/anatomy'
