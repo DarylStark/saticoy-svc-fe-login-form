@@ -19,7 +19,7 @@ Default.args = {
         { 'name': 'Example theme 4', value: 'example_theme_4' },
     ],
     selectedMode: 'auto',
-    selectedTheme: 'testtheme1',
+    selectedTheme: 'example_theme_1',
     onChangeMode: action('Mode changed'),
     onChangeTheme: action('Theme changed')
 }
