@@ -15,22 +15,20 @@ interface HeaderProps {
 
 function Header(props: HeaderProps) {
     return (
-        <header>
-            <Flex direction='row' align='center' height='48px'>
-                <Box flexGrow={1}>
-                    <Heading size='md' fontWeight='normal'>{props.children}</Heading>
-                </Box>
-                <Box flexGrow={0}>
-                    {props.extraMenus}
-                    {props.themeController &&
-                        <ThemeSelectMenu
-                            themeController={props.themeController} />}
-                    {props.localeController &&
-                        <LocaleSelectMenu
-                            localeController={props.localeController} />}
-                </Box>
-            </Flex>
-        </header>
+        <Flex direction='row' align='center' height='48px'>
+            <Box flexGrow={1}>
+                <Heading size='md' fontWeight='normal'>{props.children}</Heading>
+            </Box>
+            <Box flexGrow={0}>
+                {props.extraMenus}
+                {props.themeController &&
+                    <ThemeSelectMenu
+                        themeController={props.themeController} />}
+                {props.localeController &&
+                    <LocaleSelectMenu
+                        localeController={props.localeController} />}
+            </Box>
+        </Flex>
     )
 }
 

@@ -1,4 +1,3 @@
-import './login_page_template.scss'
 import Header from '../organisms/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import ThemeController from '../../theme-controller/theme-controller';
@@ -7,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 import { useState } from 'react';
 import { SelectableItemMenuItemProp } from '../molecule/selectable_item_menu/selectable_item_menu';
+import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [
@@ -38,24 +38,46 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
         setSelectedForm(new_value as LoginFormType);
     }
 
+    const [isMobileView] = useMediaQuery('(max-width: 768px)');
+
     return (
-        <div id='layout'>
-            <Header
-                themeController={props.themeController}
-                localeController={props.localeController}
-                extraMenus={
-                    <LoginFormTypeSelectMenu
-                        defaultValue={primaryForms[0].value?.toString() || ''}
-                        onChange={setForm}
-                        items={primaryForms} />
-                }
-            />
-            <main>
-                <LoginFormCard
-                    form_type={selectedForm}
-                    text={t('login_form.tagline')} />
-            </main>
-        </div>
+        <Flex h='100dvh' direction='column' p='8px'>
+            <Box flexGrow={0}>
+                <header>
+                    <Header
+                        themeController={props.themeController}
+                        localeController={props.localeController}
+                        extraMenus={
+                            <LoginFormTypeSelectMenu
+                                defaultValue={primaryForms[0].value?.toString() || ''}
+                                onChange={setForm}
+                                items={primaryForms} />
+                        }
+                    />
+                </header>
+            </Box>
+            <Flex
+                flexGrow={1}
+                direction='column'
+                align='center'
+                position='relative'
+            >
+                <Box
+                    maxW='100%'
+                    position='absolute'
+                    top={isMobileView ? '0' : '50%'}
+                    left='50%'
+                    transform={isMobileView ? 'translate(-50%, 0)' : 'translate(-50%, -50%)'}
+                    transition='top 0.5s ease-in-out, transform 0.5s ease-in-out'
+                >
+                    <main>
+                        <LoginFormCard
+                            form_type={selectedForm}
+                            text={t('login_form.tagline')} />
+                    </main>
+                </Box>
+            </Flex>
+        </Flex>
     )
 }
 
