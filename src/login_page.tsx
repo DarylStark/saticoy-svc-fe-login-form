@@ -50,12 +50,18 @@ function LocalThemeSelectMenu() {
         themeController.selectedTheme = theme
     }
 
-    // TODO: When going from Automatic to 'Dark', the icon is not updated
+    // State for theming
+    const [selectedMode, setSelectedMode] = useState(getSelectedThemeMode());
+
+    // Update the theme mode when the theme changes
+    themeController.eventBus?.on('theme_changed', () => {
+        setSelectedMode(getSelectedThemeMode());
+    });
 
     // The component
     return <ThemeSelectMenu
         themes={getThemes()}
-        selectedMode={getSelectedThemeMode()}
+        selectedMode={selectedMode}
         selectedTheme={getSelectedTheme()}
         onChangeMode={updateMode}
         onChangeTheme={updateTheme}
