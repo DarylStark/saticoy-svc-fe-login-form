@@ -80,4 +80,4 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
 }
 
 export default LoginPageTemplate
-export { LoginPageTemplateProps }
+export type { LoginPageTemplateProps }

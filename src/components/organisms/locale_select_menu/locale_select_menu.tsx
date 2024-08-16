@@ -52,4 +52,4 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
 }
 
 export default LocaleSelectMenu;
-export { LocaleSelectMenuProps }
+export type { LocaleSelectMenuProps }
