@@ -3,9 +3,9 @@ import { BrowserRetriever, LocalPreferencesRetriever } from "../internationaliza
 import { eventBus } from './eventbus'
 import { LocalPreferencesSaver } from "../internationalization/i18n-saver";
 
-import { i18NextLocaleData } from '../languages/i18next_locale_data';
-import en_US from "../languages/en-US";
-import nl_NL from "../languages/nl-NL";
+import { i18NextLocaleData } from '../saticoy-ui/languages/i18next_locale_data';
+import en_US from "../saticoy-ui/languages/en-US";
+import nl_NL from "../saticoy-ui/languages/nl-NL";
 import I18nController from "../internationalization/i18n-controller";
 
 // Repository

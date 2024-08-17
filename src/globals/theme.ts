@@ -1,7 +1,7 @@
-import SaticoyChakraStyle from "../themes/saticoy-style";
+import SaticoyChakraStyle from "../saticoy-ui/themes/saticoy-style";
 import { BaseRepository } from "../repository/repository";
-import saticoy_theme from "../themes/saticoy";
-import saticoy_roboto_slab_theme from "../themes/saticoy-roboto-slab";
+import saticoy_theme from "../saticoy-ui/themes/saticoy";
+import saticoy_roboto_slab_theme from "../saticoy-ui/themes/saticoy-roboto-slab";
 import ThemeController from "../theme-controller/theme-controller";
 import { Theme, ThemeMode } from "../theme-controller/theme";
 import { BrowserRetriever, LocalPreferencesRetriever } from "../theme-controller/theme-retriever";

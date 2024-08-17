@@ -1,4 +1,4 @@
-import { Style } from "../theme-controller/theme"
+import { Style } from "../../theme-controller/theme"
 
 
 type ChakraTheme = {
