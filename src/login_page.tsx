@@ -12,41 +12,11 @@ import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react
 import { themeController } from './globals/theme';
 import { i18nController } from './globals/i18n';
 
-// Components
-import LocaleSelectMenu from './components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
-
 // Template
 import LoginPageTemplate from './local_components/templates/login_page_template';
 
 import SaticoyThemeSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
-
-function LocalLocaleSelectMenu() {
-    const { t } = useTranslation();
-
-    function getLocales() {
-        const locales = i18nController.localeRepository.getNames(false);
-        return locales.map(l => ({ 'name': t(`locales.${l}`), value: l }));
-    }
-
-    function getSelectedLocale(): string {
-        if (i18nController.isAutoLocale) return 'auto';
-        return i18nController.selectedLocale || 'auto';
-    }
-
-    // Update the locale when the locale changes
-    const updateLocale = (locale: string) => {
-        if (locale === 'auto')
-            return i18nController.isAutoLocale = true;
-        i18nController.selectedLocale = locale;
-    }
-
-    return <LocaleSelectMenu
-        locales={getLocales()}
-        selectedLocale={getSelectedLocale()}
-        onChange={updateLocale}
-        stringAutomaticLanguage={t('locales.automatic_locale')}
-    />
-}
+import SaticoyLocaleSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_locale_select_menu/saticoy_locale_select_menu';
 
 function LoginPage() {
     // State for theming
@@ -78,7 +48,7 @@ function LoginPage() {
                         headerMenus={
                             <>
                                 <SaticoyThemeSelectMenu themeController={themeController} />
-                                <LocalLocaleSelectMenu />
+                                <SaticoyLocaleSelectMenu i18nController={i18nController} />
                             </>
                         }
                     />
