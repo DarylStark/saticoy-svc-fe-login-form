@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 // Default component
 export default {
-    title: 'Organisms/Menus/ThemeSelectMenu',
+    title: 'Organisms/UserIconMenus/ThemeSelectMenu',
     component: ThemeSelectMenu,
 };
 
@@ -21,5 +21,9 @@ Default.args = {
     selectedMode: 'auto',
     selectedTheme: 'example_theme_1',
     onChangeMode: action('Mode changed'),
-    onChangeTheme: action('Theme changed')
+    onChangeTheme: action('Theme changed'),
+    stringAutomaticMode: 'Automatic mode',
+    stringDefaultTheme: 'Automatic theme',
+    stringDarkMode: 'Dark mode',
+    stringLightMode: 'Light mode',
 }

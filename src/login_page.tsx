@@ -13,7 +13,7 @@ import { themeController } from './globals/theme';
 import { i18nController } from './globals/i18n';
 
 // Components
-import ThemeSelectMenu from './local_components/organisms/theme_select_menu/theme_select_menu';
+import ThemeSelectMenu from './components/organisms/user_icon_menus/theme_select_menu/theme_select_menu';
 import LocaleSelectMenu from './components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
 
 // Template
@@ -21,6 +21,8 @@ import LoginPageTemplate from './local_components/templates/login_page_template'
 import { ThemeMode } from './theme-controller/theme';
 
 function LocalThemeSelectMenu() {
+    const { t } = useTranslation();
+
     function getSelectedThemeMode(): 'dark' | 'light' | 'auto' {
         if (themeController.isAutoMode) return 'auto';
         return themeController.selectedMode || 'auto';
@@ -65,6 +67,10 @@ function LocalThemeSelectMenu() {
         selectedTheme={getSelectedTheme()}
         onChangeMode={updateMode}
         onChangeTheme={updateTheme}
+        stringAutomaticMode={t('theming.automatic_mode')}
+        stringDefaultTheme={t('theming.default_theme')}
+        stringDarkMode={t('theming.dark_mode')}
+        stringLightMode={t('theming.light_mode')}
     />
 }
 

@@ -1,19 +1,14 @@
 import { ReactElement } from 'react';
 import {
-    Menu,
-    MenuButton,
-    MenuList,
     MenuDivider,
-    IconButton,
     MenuOptionGroup,
     MenuItemOption
 } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next';
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import UserIconMenu from '../../../components/molecules/user_icon_menu/user_icon_menu';
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
+import UserIconMenu from '../../../molecules/user_icon_menu/user_icon_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../molecules/selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
     themes: SelectableItemMenuItemProp[]
@@ -24,6 +19,10 @@ interface ThemeSelectMenuProps {
     showThemeSelector?: boolean
     onChangeMode?: (new_mode: string) => void
     onChangeTheme?: (new_mode: string) => void
+    stringAutomaticMode: string,
+    stringDarkMode: string,
+    stringLightMode: string,
+    stringDefaultTheme: string,
 }
 
 const buttonIcons: { [key: string]: ReactElement } = {
@@ -38,8 +37,6 @@ function ThemeSelectMenu({
     showThemeSelector = true,
     ...props
 }: ThemeSelectMenuProps) {
-    const { t } = useTranslation();
-
     // Callbacks for the changes
     const onChangeMode = (new_mode: string | string[]) => {
         if (Array.isArray(new_mode))
@@ -56,16 +53,15 @@ function ThemeSelectMenu({
     return (
         <UserIconMenu icon={buttonIcons[props.selectedMode]}>
             {showModeSelector && (
-                <>
-                    <MenuOptionGroup
-                        defaultValue={props.selectedMode}
-                        type='radio'
-                        onChange={onChangeMode}>
-                        <MenuItemOption value='auto' isDisabled={!modeSelectorEnabled}>{t('theming.automatic_mode')}</MenuItemOption>
-                        <MenuItemOption value='dark' isDisabled={!modeSelectorEnabled}>{t('theming.dark_mode')}</MenuItemOption>
-                        <MenuItemOption value='light' isDisabled={!modeSelectorEnabled}>{t('theming.light_mode')}</MenuItemOption>
-                    </MenuOptionGroup>
-                </>)}
+                <MenuOptionGroup
+                    defaultValue={props.selectedMode}
+                    type='radio'
+                    onChange={onChangeMode}>
+                    <MenuItemOption value='auto' isDisabled={!modeSelectorEnabled}>{props.stringAutomaticMode}</MenuItemOption>
+                    <MenuItemOption value='dark' isDisabled={!modeSelectorEnabled}>{props.stringDarkMode}</MenuItemOption>
+                    <MenuItemOption value='light' isDisabled={!modeSelectorEnabled}>{props.stringLightMode}</MenuItemOption>
+                </MenuOptionGroup>
+            )}
             {showModeSelector && showThemeSelector && (
                 <MenuDivider />
             )}
@@ -74,7 +70,7 @@ function ThemeSelectMenu({
                     defaultValue={props.selectedTheme}
                     onChange={onChangeTheme}
                     items={[
-                        { value: 'auto', name: t('theming.default_theme') },
+                        { value: 'auto', name: props.stringDefaultTheme },
                         ...props.themes
                     ]} />
             )}

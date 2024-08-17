@@ -1,5 +1,5 @@
 import LoginPageTemplate from "./login_page_template"
-import ThemeSelectMenu from "../organisms/theme_select_menu/theme_select_menu"
+import ThemeSelectMenu from "../../components/organisms/user_icon_menus/theme_select_menu/theme_select_menu"
 import LocaleSelectMenu from "../../components/organisms/user_icon_menus/locale_select_menu/locale_select_menu"
 import { LoginPageTemplateProps } from "./login_page_template"
 import { StoryFn } from "@storybook/react";
