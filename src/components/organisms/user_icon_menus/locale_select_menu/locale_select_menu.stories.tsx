@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 // Default component
 export default {
-    title: 'Organisms/Menus/LocaleSelectMenu',
+    title: 'Organisms/UserIconMenus/LocaleSelectMenu',
     component: LocaleSelectMenu,
 };
 
@@ -19,5 +19,6 @@ Default.args = {
         { 'name': 'Deutsch', value: 'de' },
     ],
     onChange: action('Locale changed'),
-    selectedLocale: 'auto'
+    selectedLocale: 'auto',
+    stringAutomaticLanguage: 'Automatic language'
 }

@@ -14,7 +14,7 @@ import { i18nController } from './globals/i18n';
 
 // Components
 import ThemeSelectMenu from './local_components/organisms/theme_select_menu/theme_select_menu';
-import LocaleSelectMenu from './local_components/organisms/locale_select_menu/locale_select_menu';
+import LocaleSelectMenu from './components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
 
 // Template
 import LoginPageTemplate from './local_components/templates/login_page_template';
@@ -92,6 +92,7 @@ function LocalLocaleSelectMenu() {
         locales={getLocales()}
         selectedLocale={getSelectedLocale()}
         onChange={updateLocale}
+        stringAutomaticLanguage={t('locales.automatic_locale')}
     />
 }
 

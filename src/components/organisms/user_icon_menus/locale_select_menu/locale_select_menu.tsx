@@ -1,17 +1,15 @@
-import UserIconMenu from '../../../components/molecules/user_icon_menu/user_icon_menu';
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
+import UserIconMenu from '../../../molecules/user_icon_menu/user_icon_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../molecules/selectable_item_menu/selectable_item_menu';
 import { HiLanguage } from "react-icons/hi2";
-import { useTranslation } from 'react-i18next';
 
 interface LocaleSelectMenuProps {
     locales: SelectableItemMenuItemProp[]
     selectedLocale: string
     onChange?: (new_locale: string) => void
+    stringAutomaticLanguage: string
 }
 
 function LocaleSelectMenu(props: LocaleSelectMenuProps) {
-    const { t } = useTranslation();
-
     // Callbacks for the changes
     const onChangeLocale = (new_locale: string | string[]) => {
         if (Array.isArray(new_locale))
@@ -25,7 +23,10 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
                 defaultValue={props.selectedLocale}
                 onChange={onChangeLocale}
                 items={[
-                    { value: 'auto', name: t('locales.automatic_locale') },
+                    {
+                        value: 'auto',
+                        name: props.stringAutomaticLanguage
+                    },
                     ...props.locales
                 ]}
             />
