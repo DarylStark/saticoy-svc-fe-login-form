@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
+import UserIconMenu from '../../../components/organisms/user_icon_menu/user_icon_menu';
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
@@ -52,44 +53,33 @@ function ThemeSelectMenu({
         return props.onChangeTheme?.(new_mode);
     };
 
-    // The component
     return (
-        <Menu>
-            <MenuButton
-                as={IconButton}
-                aria-label='Options'
-                icon={buttonIcons[props.selectedMode]}
-                variant='none'
-                size='lg'
-                fontSize={24}
-            />
-            <MenuList>
-                {showModeSelector && (
-                    <>
-                        <MenuOptionGroup
-                            defaultValue={props.selectedMode}
-                            type='radio'
-                            onChange={onChangeMode}>
-                            <MenuItemOption value='auto' isDisabled={!modeSelectorEnabled}>{t('theming.automatic_mode')}</MenuItemOption>
-                            <MenuItemOption value='dark' isDisabled={!modeSelectorEnabled}>{t('theming.dark_mode')}</MenuItemOption>
-                            <MenuItemOption value='light' isDisabled={!modeSelectorEnabled}>{t('theming.light_mode')}</MenuItemOption>
-                        </MenuOptionGroup>
-                    </>)}
-                {showModeSelector && showThemeSelector && (
-                    <MenuDivider />
-                )}
-                {showThemeSelector && (
-                    <SelectableItemMenu
-                        defaultValue={props.selectedTheme}
-                        onChange={onChangeTheme}
-                        items={[
-                            { value: 'auto', name: t('theming.default_theme') },
-                            ...props.themes
-                        ]} />
-                )}
-            </MenuList>
-        </Menu>
-    );
+        <UserIconMenu icon={buttonIcons[props.selectedMode]}>
+            {showModeSelector && (
+                <>
+                    <MenuOptionGroup
+                        defaultValue={props.selectedMode}
+                        type='radio'
+                        onChange={onChangeMode}>
+                        <MenuItemOption value='auto' isDisabled={!modeSelectorEnabled}>{t('theming.automatic_mode')}</MenuItemOption>
+                        <MenuItemOption value='dark' isDisabled={!modeSelectorEnabled}>{t('theming.dark_mode')}</MenuItemOption>
+                        <MenuItemOption value='light' isDisabled={!modeSelectorEnabled}>{t('theming.light_mode')}</MenuItemOption>
+                    </MenuOptionGroup>
+                </>)}
+            {showModeSelector && showThemeSelector && (
+                <MenuDivider />
+            )}
+            {showThemeSelector && (
+                <SelectableItemMenu
+                    defaultValue={props.selectedTheme}
+                    onChange={onChangeTheme}
+                    items={[
+                        { value: 'auto', name: t('theming.default_theme') },
+                        ...props.themes
+                    ]} />
+            )}
+        </UserIconMenu>
+    )
 }
 
 export type { ThemeSelectMenuProps };

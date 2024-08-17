@@ -1,9 +1,4 @@
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    IconButton,
-} from '@chakra-ui/react'
+import UserIconMenu from '../../../components/organisms/user_icon_menu/user_icon_menu';
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
 import { HiLanguage } from "react-icons/hi2";
 import { useTranslation } from 'react-i18next';
@@ -24,31 +19,18 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
         return props.onChange?.(new_locale);
     };
 
-    // The component
     return (
-        <Menu>
-            <MenuButton
-                as={IconButton}
-                aria-label='Options'
-                icon={<HiLanguage />}
-                variant='none'
-                size='lg'
-                fontSize={24}
+        <UserIconMenu icon={<HiLanguage />}>
+            <SelectableItemMenu
+                defaultValue={props.selectedLocale}
+                onChange={onChangeLocale}
+                items={[
+                    { value: 'auto', name: t('locales.automatic_locale') },
+                    ...props.locales
+                ]}
             />
-            <MenuList>
-                <>
-                    <SelectableItemMenu
-                        defaultValue={props.selectedLocale}
-                        onChange={onChangeLocale}
-                        items={[
-                            { value: 'auto', name: t('locales.automatic_locale') },
-                            ...props.locales
-                        ]}
-                    />
-                </>
-            </MenuList>
-        </Menu>
-    );
+        </UserIconMenu>
+    )
 }
 
 export default LocaleSelectMenu;
