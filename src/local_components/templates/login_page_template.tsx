@@ -5,6 +5,12 @@ import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_f
 import { useState } from 'react';
 import { SelectableItemMenuItemProp } from '../../components/molecules/selectable_item_menu/selectable_item_menu';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
+import SaticoyThemeSelectMenu from '../../saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
+import SaticoyLocaleSelectMenu from '../../saticoy_components/organisms/UserIconMenus/saticoy_locale_select_menu/saticoy_locale_select_menu';
+import ThemeController from "../../theme-controller/theme-controller";
+import SaticoyChakraStyle from "../../themes/saticoy-style"
+import I18nController from "../../internationalization/i18n-controller";
+import { i18NextLocaleData } from '../../languages/i18next_locale_data';
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [
@@ -23,7 +29,8 @@ const primaryForms: SelectableItemMenuItemProp[] = [
 ]
 
 interface LoginPageTemplateProps {
-    headerMenus?: React.ReactNode
+    themeController: ThemeController<SaticoyChakraStyle>
+    i18nController: I18nController<i18NextLocaleData>
 }
 
 // Component
@@ -48,7 +55,10 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
                                     defaultValue={primaryForms[0].value?.toString() || ''}
                                     onChange={setForm}
                                     items={primaryForms} />
-                                {props.headerMenus}
+                                <SaticoyThemeSelectMenu
+                                    themeController={props.themeController} />
+                                <SaticoyLocaleSelectMenu
+                                    i18nController={props.i18nController} />
                             </>
                         }
                     />

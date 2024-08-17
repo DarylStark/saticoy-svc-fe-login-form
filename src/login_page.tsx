@@ -15,9 +15,6 @@ import { i18nController } from './globals/i18n';
 // Template
 import LoginPageTemplate from './local_components/templates/login_page_template';
 
-import SaticoyThemeSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
-import SaticoyLocaleSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_locale_select_menu/saticoy_locale_select_menu';
-
 function LoginPage() {
     // State for theming
     const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
@@ -45,12 +42,8 @@ function LoginPage() {
                         <title>{t('login_page.title')}</title>
                     </Helmet>
                     <LoginPageTemplate
-                        headerMenus={
-                            <>
-                                <SaticoyThemeSelectMenu themeController={themeController} />
-                                <SaticoyLocaleSelectMenu i18nController={i18nController} />
-                            </>
-                        }
+                        themeController={themeController}
+                        i18nController={i18nController}
                     />
                 </ColorModeProvider>
             </ChakraProvider>
