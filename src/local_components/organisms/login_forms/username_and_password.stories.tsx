@@ -1,7 +1,7 @@
 import UsernameAndPassword from "./username_and_password"
 
 export default {
-    title: 'Molecules/Login forms/UsernameAndPassword',
+    title: 'Organisms/LoginForms/UsernameAndPassword',
     component: UsernameAndPassword,
 };
 

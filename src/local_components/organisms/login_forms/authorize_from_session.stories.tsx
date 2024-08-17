@@ -1,7 +1,7 @@
 import AuthorizeFromSession from "./authorize_from_session"
 
 export default {
-    title: 'Molecules/Login forms/AuthorizeFromSession',
+    title: 'Organisms/LoginForms/AuthorizeFromSession',
     component: AuthorizeFromSession,
 };
 

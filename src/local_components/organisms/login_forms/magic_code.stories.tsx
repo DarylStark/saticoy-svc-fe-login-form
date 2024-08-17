@@ -1,7 +1,7 @@
 import MagicCode from "./magic_code"
 
 export default {
-    title: 'Molecules/Login forms/MagicCode',
+    title: 'Organisms/LoginForms/MagicCode',
     component: MagicCode,
 };
 
