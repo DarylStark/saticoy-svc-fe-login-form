@@ -5,15 +5,15 @@ import { useTranslation } from 'react-i18next';
 
 // Language
 import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n';
+import i18n from '../../../i18n';
 
 // Styling
 import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
-import { themeController } from './globals/theme';
-import { i18nController } from './globals/i18n';
+import { themeController } from '../../../globals/theme';
+import { i18nController } from '../../../globals/i18n';
 
 // Template
-import LoginPageTemplate from './local_components/templates/login_page_template';
+import LoginPageTemplate from '../../templates/login_page_template';
 
 function LoginPage() {
     // State for theming

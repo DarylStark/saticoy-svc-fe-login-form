@@ -1,14 +1,29 @@
-import Header from '../../components/molecules/header/header'
-import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
-import { useTranslation } from 'react-i18next';
-import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
+// Imports from React
 import { useState } from 'react';
-import { SelectableItemMenuItemProp } from '../../components/molecules/selectable_item_menu/selectable_item_menu';
+
+// Imports from React I18Next
+import { useTranslation } from 'react-i18next';
+
+// Imports from Chakra UI
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
+
+// Imports from shared components
+import Header from '../../components/molecules/header/header'
+import { SelectableItemMenuItemProp } from '../../components/molecules/selectable_item_menu/selectable_item_menu';
+
+// Imports from Saticoy shared components
 import SaticoyThemeSelectMenu from '../../saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
 import SaticoyLocaleSelectMenu from '../../saticoy_components/organisms/UserIconMenus/saticoy_locale_select_menu/saticoy_locale_select_menu';
+
+// Imports from local components
+import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
+import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
+
+// Themes
 import ThemeController from "../../theme-controller/theme-controller";
 import SaticoyChakraStyle from "../../themes/saticoy-style"
+
+// Internationalization
 import I18nController from "../../internationalization/i18n-controller";
 import { i18NextLocaleData } from '../../languages/i18next_locale_data';
 
