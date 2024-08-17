@@ -13,11 +13,11 @@ import { themeController } from './globals/theme';
 import { i18nController } from './globals/i18n';
 
 // Components
-import ThemeSelectMenu from './components/organisms/theme_select_menu/theme_select_menu';
-import LocaleSelectMenu from './components/organisms/locale_select_menu/locale_select_menu';
+import ThemeSelectMenu from './local_components/organisms/theme_select_menu/theme_select_menu';
+import LocaleSelectMenu from './local_components/organisms/locale_select_menu/locale_select_menu';
 
 // Template
-import LoginPageTemplate from './components/templates/login_page_template';
+import LoginPageTemplate from './local_components/templates/login_page_template';
 import { ThemeMode } from './theme-controller/theme';
 
 function LocalThemeSelectMenu() {

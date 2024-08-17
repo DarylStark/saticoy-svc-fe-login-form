@@ -1,9 +1,9 @@
-import Header from '../organisms/header/header'
+import Header from '../../components/organisms/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import { useTranslation } from 'react-i18next';
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 import { useState } from 'react';
-import { SelectableItemMenuItemProp } from '../molecule/selectable_item_menu/selectable_item_menu';
+import { SelectableItemMenuItemProp } from '../../components/molecule/selectable_item_menu/selectable_item_menu';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // List with available forms
@@ -42,7 +42,7 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
             <Box flexGrow={0}>
                 <header>
                     <Header
-                        extraMenus={
+                        menus={
                             <>
                                 <LoginFormTypeSelectMenu
                                     defaultValue={primaryForms[0].value?.toString() || ''}

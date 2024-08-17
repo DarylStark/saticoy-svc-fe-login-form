@@ -3,7 +3,7 @@ import { Flex, Heading, Box } from '@chakra-ui/react';
 
 interface HeaderProps {
     children?: string
-    extraMenus: React.ReactNode
+    menus: React.ReactNode
 }
 
 function Header(props: HeaderProps) {
@@ -15,7 +15,7 @@ function Header(props: HeaderProps) {
                 </Heading>
             </Box>
             <Box flexGrow={0}>
-                {props.extraMenus}
+                {props.menus}
             </Box>
         </Flex>
     )

@@ -20,7 +20,7 @@ Default.args = {
 export const WithMenus: StoryFn<HeaderProps> = Template.bind({});
 WithMenus.args = {
     children: 'Header title',
-    extraMenus: <>
+    menus: <>
         <ThemeSelectMenu
             themes={[
                 { 'name': 'Example theme 1', value: 'example_theme_1' },

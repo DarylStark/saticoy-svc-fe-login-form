@@ -12,8 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import SelectableItemMenu from '../../molecule/selectable_item_menu/selectable_item_menu';
-import { SelectableItemMenuItemProp } from '../../molecule/selectable_item_menu/selectable_item_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecule/selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
     themes: SelectableItemMenuItemProp[]
