@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import I18nController from "../../../../internationalization/i18n-controller";
-import { i18NextLocaleData } from '../../../../languages/i18next_locale_data';
-import LocaleSelectMenu from '../../../../components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
+import I18nController from "../../../../../internationalization/i18n-controller";
+import { i18NextLocaleData } from '../../../../../languages/i18next_locale_data';
+import LocaleSelectMenu from '../../../../../components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
 
 interface SaticoyLocaleSelectMenuProps {
     i18nController: I18nController<i18NextLocaleData>

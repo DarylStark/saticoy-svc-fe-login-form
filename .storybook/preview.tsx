@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview } from "@storybook/react";
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
-import SaticoyUI from '../src/saticoy-ui/saticoy-ui';
+import SaticoyUI from '../src/saticoy-ui/components/saticoy-ui';
 
 const preview: Preview = {
   decorators: [

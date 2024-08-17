@@ -1,5 +1,5 @@
 // Saticoy UI main component
-import SaticoyUI from '../../../saticoy-ui/saticoy-ui';
+import SaticoyUI from '../../../saticoy-ui/components/saticoy-ui';
 
 // Template
 import LoginPageTemplate from '../../templates/login_page_template';
