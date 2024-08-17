@@ -1,7 +1,7 @@
 import MFATOPT from "./mfa_topt"
 
 export default {
-    title: 'Molecules/MFA Forms/MFA TOPT',
+    title: 'Organisms/LoginMFAForms/MFA TOPT',
     component: MFATOPT,
 };
 
