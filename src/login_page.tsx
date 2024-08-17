@@ -18,7 +18,7 @@ import LocaleSelectMenu from './components/organisms/user_icon_menus/locale_sele
 // Template
 import LoginPageTemplate from './local_components/templates/login_page_template';
 
-import LocalThemeSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
+import SaticoyThemeSelectMenu from './saticoy_components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
 
 function LocalLocaleSelectMenu() {
     const { t } = useTranslation();
@@ -77,7 +77,7 @@ function LoginPage() {
                     <LoginPageTemplate
                         headerMenus={
                             <>
-                                <LocalThemeSelectMenu themeController={themeController} />
+                                <SaticoyThemeSelectMenu themeController={themeController} />
                                 <LocalLocaleSelectMenu />
                             </>
                         }

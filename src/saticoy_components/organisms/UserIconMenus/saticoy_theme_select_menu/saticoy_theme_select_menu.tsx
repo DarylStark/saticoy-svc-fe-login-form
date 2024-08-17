@@ -5,11 +5,11 @@ import SaticoyChakraStyle from "../../../../themes/saticoy-style"
 import ThemeSelectMenu from '../../../../components/organisms/user_icon_menus/theme_select_menu/theme_select_menu';
 import { ThemeMode } from '../../../../theme-controller/theme';
 
-interface LocalThemeSelectMenuProps {
+interface SaticoyThemeSelectMenuProps {
     themeController: ThemeController<SaticoyChakraStyle>
 }
 
-function LocalThemeSelectMenu(props: LocalThemeSelectMenuProps) {
+function SaticoyThemeSelectMenu(props: SaticoyThemeSelectMenuProps) {
     const { t } = useTranslation();
     const { themeController } = props;
 
@@ -64,4 +64,4 @@ function LocalThemeSelectMenu(props: LocalThemeSelectMenuProps) {
     />
 }
 
-export default LocalThemeSelectMenu
+export default SaticoyThemeSelectMenu
