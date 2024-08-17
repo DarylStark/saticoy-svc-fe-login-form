@@ -1,11 +1,11 @@
 import { MenuDivider } from '@chakra-ui/react';
 import UserIconMenu, { UserSelectableItemMenuProps } from './user_icon_menu';
-import SelectableItemMenu from '../../molecules/selectable_item_menu/selectable_item_menu';
+import SelectableItemMenu from '../selectable_item_menu/selectable_item_menu';
 import { StoryFn } from "@storybook/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 export default {
-    title: 'Organisms/UserSelectableItemMenu',
+    title: 'Molecules/UserSelectableItemMenu',
     component: UserIconMenu,
 };
 

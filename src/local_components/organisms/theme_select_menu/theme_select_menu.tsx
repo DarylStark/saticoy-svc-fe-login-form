@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import UserIconMenu from '../../../components/organisms/user_icon_menu/user_icon_menu';
+import UserIconMenu from '../../../components/molecules/user_icon_menu/user_icon_menu';
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
