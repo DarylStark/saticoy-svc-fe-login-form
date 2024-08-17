@@ -65,3 +65,4 @@ function SaticoyThemeSelectMenu(props: SaticoyThemeSelectMenuProps) {
 }
 
 export default SaticoyThemeSelectMenu
+export type { SaticoyThemeSelectMenuProps }

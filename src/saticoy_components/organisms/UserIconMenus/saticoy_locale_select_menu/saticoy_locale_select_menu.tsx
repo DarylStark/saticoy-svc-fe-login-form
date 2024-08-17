@@ -37,3 +37,4 @@ function SaticoyLocaleSelectMenu(props: SaticoyLocaleSelectMenuProps) {
 }
 
 export default SaticoyLocaleSelectMenu
+export type { SaticoyLocaleSelectMenuProps }
