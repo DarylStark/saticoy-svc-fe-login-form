@@ -1,9 +1,9 @@
-import Header from '../../components/molecules/header/header'
+import Header from '../molecules/header/header'
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import { useTranslation } from 'react-i18next';
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 import { useState } from 'react';
-import { SelectableItemMenuItemProp } from '../../components/molecules/selectable_item_menu/selectable_item_menu';
+import { SelectableItemMenuItemProp } from '../molecules/selectable_item_menu/selectable_item_menu';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // List with available forms

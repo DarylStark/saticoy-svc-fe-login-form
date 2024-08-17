@@ -4,7 +4,7 @@ import {
     MenuList,
     IconButton,
 } from '@chakra-ui/react'
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecule/selectable_item_menu/selectable_item_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
 import { FaRegUser } from "react-icons/fa";
 
 interface LoginFormSelectMenuProps {
