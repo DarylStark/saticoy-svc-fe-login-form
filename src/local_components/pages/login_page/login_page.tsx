@@ -1,53 +1,26 @@
-// React imports
-import { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useTranslation } from 'react-i18next';
-
-// Language
-import { I18nextProvider } from 'react-i18next';
-import i18n from '../../../i18n';
-
-// Styling
-import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
-import { themeController } from '../../../globals/theme';
-import { i18nController } from '../../../globals/i18n';
+// Saticoy UI main component
+import SaticoyUI from '../../../saticoy-ui/saticoy-ui';
 
 // Template
 import LoginPageTemplate from '../../templates/login_page_template';
 
-function LoginPage() {
-    // State for theming
-    const [chakra_ui_color_mode, setChakraUiColorMode] = useState(themeController.currentStyle?.chakra_mode);
-    const [chakra_ui_theme, setChakraUiTheme] = useState(themeController.currentStyle?.chakra_theme);
+// Translation
+import { useTranslation } from 'react-i18next';
 
-    // Translation
+// Styling
+import { themeController } from '../../../globals/theme';
+import { i18nController } from '../../../globals/i18n';
+
+function LoginPage() {
     const { t } = useTranslation();
 
-    // Update the theme when the theme changes
-    themeController.eventBus?.on('theme_changed', () => {
-        setChakraUiColorMode(themeController.currentStyle?.chakra_mode);
-        setChakraUiTheme(themeController.currentStyle?.chakra_theme);
-    });
-
-    // Make sure the theme mode is updated when the user changes the system theme
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        themeController.raiseForChange();
-    });
-
     return (
-        <I18nextProvider i18n={i18n}>
-            <ChakraProvider theme={extendTheme(chakra_ui_theme || {})}>
-                <ColorModeProvider value={chakra_ui_color_mode}>
-                    <Helmet>
-                        <title>{t('login_page.title')}</title>
-                    </Helmet>
-                    <LoginPageTemplate
-                        themeController={themeController}
-                        i18nController={i18nController}
-                    />
-                </ColorModeProvider>
-            </ChakraProvider>
-        </I18nextProvider>
+        <SaticoyUI pageTitle={t('login_page.title')}>
+            <LoginPageTemplate
+                themeController={themeController}
+                i18nController={i18nController}
+            />
+        </SaticoyUI>
     );
 }
 

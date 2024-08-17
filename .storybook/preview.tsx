@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview } from "@storybook/react";
 import { themeController } from '../src/globals/theme';
 import { ThemeMode } from '../src/theme-controller/theme';
-import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
+import SaticoyUI from '../src/saticoy-ui/saticoy-ui';
 
 const preview: Preview = {
   decorators: [
@@ -10,11 +10,9 @@ const preview: Preview = {
       themeController.selectedTheme = context.globals.theme;
       themeController.selectedMode = context.globals.mode;
       return (
-        <ChakraProvider theme={extendTheme(themeController.currentStyle?.chakra_theme || {})}>
-          <ColorModeProvider value={themeController.currentStyle?.chakra_mode}>
-            <Story />
-          </ColorModeProvider>
-        </ChakraProvider >
+        <SaticoyUI pageTitle='Storybook preview'>
+          <Story />
+        </SaticoyUI>
       );
     }
     ,
