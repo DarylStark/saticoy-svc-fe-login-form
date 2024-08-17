@@ -1,4 +1,3 @@
-// src/components/Button.stories.tsx
 import Header, { HeaderProps } from "./header";
 import { StoryFn } from "@storybook/react";
 
