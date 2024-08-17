@@ -1,10 +1,5 @@
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    IconButton,
-} from '@chakra-ui/react'
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
+import UserIconMenu from '../../../components/molecules/user_icon_menu/user_icon_menu';
 import { FaRegUser } from "react-icons/fa";
 
 interface LoginFormSelectMenuProps {
@@ -15,24 +10,14 @@ interface LoginFormSelectMenuProps {
 
 function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
     return (
-        <Menu>
-            <MenuButton
-                as={IconButton}
-                aria-label='Options'
-                icon={<FaRegUser />}
-                variant='none'
-                size='lg'
-                fontSize={24}
+        <UserIconMenu icon={<FaRegUser />}>
+            <SelectableItemMenu
+                defaultValue={props.defaultValue}
+                onChange={props.onChange}
+                items={props.items}
             />
-            <MenuList>
-                <SelectableItemMenu
-                    defaultValue={props.defaultValue}
-                    onChange={props.onChange}
-                    items={props.items}
-                />
-            </MenuList>
-        </Menu>
-    );
+        </UserIconMenu>
+    )
 }
 
 export default LoginFormSelectMenu;
