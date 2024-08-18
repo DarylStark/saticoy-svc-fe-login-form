@@ -1,6 +1,6 @@
 // Saticoy Theme with Roboto Slab font
 import SaticoyChakraStyle from './saticoy-style';
-import { Theme } from '../theme-controller/theme';
+import { Theme } from '../../saticoy-core/theme-controller/theme';
 import OriginalSaticoyTheme from './saticoy'
 
 // Needed fonts

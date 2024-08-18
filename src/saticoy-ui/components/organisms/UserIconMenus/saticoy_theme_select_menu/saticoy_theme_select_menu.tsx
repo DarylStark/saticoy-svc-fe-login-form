@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeController from "../../../../../saticoy-core/theme-controller/theme-controller";
-import SaticoyChakraStyle from "../../../../../themes/saticoy-style"
+import SaticoyChakraStyle from "../../../../themes/saticoy-style"
 import ThemeSelectMenu from '../../../../../components/organisms/user_icon_menus/theme_select_menu/theme_select_menu';
 import { ThemeMode } from '../../../../../saticoy-core/theme-controller/theme';
 

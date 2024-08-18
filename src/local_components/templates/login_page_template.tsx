@@ -21,11 +21,11 @@ import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_f
 
 // Themes
 import ThemeController from "../../saticoy-core/theme-controller/theme-controller";
-import SaticoyChakraStyle from "../../themes/saticoy-style"
+import SaticoyChakraStyle from "../../saticoy-ui/themes/saticoy-style"
 
 // Internationalization
 import I18nController from "../../saticoy-core/internationalization/i18n-controller";
-import { i18NextLocaleData } from '../../languages/i18next_locale_data';
+import { i18NextLocaleData } from '../../saticoy-ui/languages/i18next_locale_data';
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [

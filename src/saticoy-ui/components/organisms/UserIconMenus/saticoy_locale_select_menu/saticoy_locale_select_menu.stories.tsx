@@ -1,4 +1,3 @@
-import React from 'react';
 import SaticoyLocaleSelectMenu, { SaticoyLocaleSelectMenuProps } from "./saticoy_locale_select_menu";
 import { StoryFn } from "@storybook/react";
 import { i18nController } from "../../../../../globals/i18n";

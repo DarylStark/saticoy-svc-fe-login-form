@@ -1,4 +1,4 @@
-import { LocaleData } from "../internationalization/localedata"
+import { LocaleData } from "../../saticoy-core/internationalization/localedata"
 
 export type stringDict = {
     [key: string]: string | stringDict

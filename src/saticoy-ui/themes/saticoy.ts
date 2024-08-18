@@ -1,7 +1,7 @@
 // Saticoy Theme
 import { extendBaseTheme } from '@chakra-ui/react'
 import SaticoyChakraStyle from './saticoy-style';
-import { Theme } from '../theme-controller/theme';
+import { Theme } from '../../saticoy-core/theme-controller/theme';
 import { cardAnatomy } from '@chakra-ui/anatomy'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 

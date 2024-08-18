@@ -1,4 +1,3 @@
-import React from 'react';
 import SaticoyThemeSelectMenu, { SaticoyThemeSelectMenuProps } from "./saticoy_theme_select_menu";
 import { StoryFn } from "@storybook/react";
 import { themeController } from "../../../../../globals/theme";
