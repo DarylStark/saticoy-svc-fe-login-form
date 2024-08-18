@@ -1,5 +1,5 @@
-import Repository from '../repository/repository';
-import EventBus from '../eventbus/eventbus';
+import Repository from '../../repository/repository';
+import EventBus from '../../eventbus/eventbus';
 import { Style, Theme, ThemeMode } from './theme';
 import ThemeRetriever from './theme-retriever';
 import ThemeSaver from './theme-saver';

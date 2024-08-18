@@ -20,7 +20,7 @@ import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 
 // Themes
-import ThemeController from "../../theme-controller/theme-controller";
+import ThemeController from "../../saticoy-core/theme-controller/theme-controller";
 import SaticoyChakraStyle from "../../themes/saticoy-style"
 
 // Internationalization
