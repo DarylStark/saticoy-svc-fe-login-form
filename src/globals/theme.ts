@@ -1,5 +1,5 @@
 import SaticoyChakraStyle from "../saticoy-ui/themes/saticoy-style";
-import { BaseRepository } from "../repository/repository";
+import { BaseRepository } from "../saticoy-core/repository/repository";
 import saticoy_theme from "../saticoy-ui/themes/saticoy";
 import saticoy_roboto_slab_theme from "../saticoy-ui/themes/saticoy-roboto-slab";
 import ThemeController from "../saticoy-core/theme-controller/theme-controller";

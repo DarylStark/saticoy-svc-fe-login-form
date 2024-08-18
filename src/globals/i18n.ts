@@ -1,4 +1,4 @@
-import { BaseRepository } from "../repository/repository";
+import { BaseRepository } from "../saticoy-core/repository/repository";
 import { BrowserRetriever, LocalPreferencesRetriever } from "../internationalization/i18n-retriever";
 import { eventBus } from './eventbus'
 import { LocalPreferencesSaver } from "../internationalization/i18n-saver";

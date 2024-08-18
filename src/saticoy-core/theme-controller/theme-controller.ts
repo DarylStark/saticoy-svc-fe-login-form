@@ -1,4 +1,4 @@
-import Repository from '../../repository/repository';
+import Repository from '../repository/repository';
 import EventBus from '../../eventbus/eventbus';
 import { Style, Theme, ThemeMode } from './theme';
 import ThemeRetriever from './theme-retriever';

@@ -1,4 +1,4 @@
-import Repository from '../repository/repository';
+import Repository from '../saticoy-core/repository/repository';
 import EventBus from '../eventbus/eventbus';
 import I18nRetriever from './i18n-retriever';
 import I18nSaver from './i18n-saver';
