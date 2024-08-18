@@ -7,8 +7,8 @@ import {
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import UserIconMenu from '../../../molecules/user_icon_menu/user_icon_menu';
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../molecules/selectable_item_menu/selectable_item_menu';
+import UserIconMenu from '../user_icon_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
     themes: SelectableItemMenuItemProp[]

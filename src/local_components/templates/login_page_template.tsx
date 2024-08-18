@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // Imports from shared components
-import Header from '../../components/molecules/header/header'
-import { SelectableItemMenuItemProp } from '../../components/molecules/selectable_item_menu/selectable_item_menu';
+import Header from '../../saticoy-ui/components/molecule/header/header'
+import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
 
 // Imports from Saticoy shared components
 import SaticoyThemeSelectMenu from '../../saticoy-ui/components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';

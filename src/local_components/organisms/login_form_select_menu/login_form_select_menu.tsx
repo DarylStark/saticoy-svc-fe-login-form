@@ -1,5 +1,5 @@
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../components/molecules/selectable_item_menu/selectable_item_menu';
-import UserIconMenu from '../../../components/molecules/user_icon_menu/user_icon_menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
+import UserIconMenu from '../../../saticoy-ui/components/molecule/user_icon_menu/user_icon_menu';
 import { FaRegUser } from "react-icons/fa";
 
 interface LoginFormSelectMenuProps {
