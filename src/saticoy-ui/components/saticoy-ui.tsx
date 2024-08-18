@@ -8,7 +8,7 @@ import i18n from '../i18n';
 
 // Styling
 import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
-import { themeController } from '../../globals/theme';
+import { themeController } from '../../saticoy-ui/globals/theme';
 
 interface SaticoyUIProps {
     pageTitle: string

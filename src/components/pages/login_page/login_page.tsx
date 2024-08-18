@@ -8,8 +8,8 @@ import LoginPageTemplate from '../../templates/login_page_template';
 import { useTranslation } from 'react-i18next';
 
 // Styling
-import { themeController } from '../../../globals/theme';
-import { i18nController } from '../../../globals/i18n';
+import { themeController } from '../../../saticoy-ui/globals/theme';
+import { i18nController } from '../../../saticoy-ui/globals/i18n';
 
 function LoginPage() {
     const { t } = useTranslation();
