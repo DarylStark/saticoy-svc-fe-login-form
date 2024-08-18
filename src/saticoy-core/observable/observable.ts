@@ -1,7 +1,5 @@
 import { ChangeEvent } from 'react'
-import EventBus from '../eventbus/eventbus';
-import { EventHandlerCallback } from '../eventbus/eventbus';
-
+import EventBus, { EventHandlerCallback } from "../eventbus/eventbus";
 class Observable<T> {
     private event_bus: EventBus;
     private value: T;
