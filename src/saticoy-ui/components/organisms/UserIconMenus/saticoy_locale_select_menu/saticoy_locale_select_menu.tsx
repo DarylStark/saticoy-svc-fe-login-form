@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import I18nController from "../../../../../internationalization/i18n-controller";
+import I18nController from "../../../../../saticoy-core/internationalization/i18n-controller";
 import { i18NextLocaleData } from '../../../../../languages/i18next_locale_data';
 import LocaleSelectMenu from '../../../../../components/organisms/user_icon_menus/locale_select_menu/locale_select_menu';
 

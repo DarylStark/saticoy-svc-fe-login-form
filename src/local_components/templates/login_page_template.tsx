@@ -24,7 +24,7 @@ import ThemeController from "../../saticoy-core/theme-controller/theme-controlle
 import SaticoyChakraStyle from "../../themes/saticoy-style"
 
 // Internationalization
-import I18nController from "../../internationalization/i18n-controller";
+import I18nController from "../../saticoy-core/internationalization/i18n-controller";
 import { i18NextLocaleData } from '../../languages/i18next_locale_data';
 
 // List with available forms
