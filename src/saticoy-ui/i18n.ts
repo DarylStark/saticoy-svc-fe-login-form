@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
-import { i18nController } from './globals/i18n';
+import { i18nController } from '../globals/i18n';
 
 // Create the language specifications
 const resources: {
