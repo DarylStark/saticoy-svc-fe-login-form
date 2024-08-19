@@ -1,17 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import ThemeController from "../../../../../saticoy-core/theme-controller/theme-controller";
-import SaticoyChakraStyle from "../../../../themes/saticoy-style"
 import ThemeSelectMenu from '../../../molecule/user_icon_menu/theme_select_menu/theme_select_menu';
 import { ThemeMode } from '../../../../../saticoy-core/theme-controller/theme';
+import SaticoyUIContext from '../../../../context';
 
-interface SaticoyThemeSelectMenuProps {
-    themeController: ThemeController<SaticoyChakraStyle>
-}
-
-function SaticoyThemeSelectMenu(props: SaticoyThemeSelectMenuProps) {
+function SaticoyThemeSelectMenu() {
     const { t } = useTranslation();
-    const { themeController } = props;
+    const context = useContext(SaticoyUIContext);
+
+    const { themeController } = context;
 
     function getSelectedThemeMode(): 'dark' | 'light' | 'auto' {
         if (themeController.isAutoMode) return 'auto';
@@ -44,17 +41,24 @@ function SaticoyThemeSelectMenu(props: SaticoyThemeSelectMenuProps) {
 
     // State for theming
     const [selectedMode, setSelectedMode] = useState(getSelectedThemeMode());
+    const [selectedTheme, setSelectedTheme] = useState(getSelectedTheme());
 
     // Update the theme mode when the theme changes
+    themeController.eventBus?.on('mode_changed', () => {
+        setSelectedMode(getSelectedThemeMode());
+        setSelectedTheme(getSelectedTheme());
+    });
+
     themeController.eventBus?.on('theme_changed', () => {
         setSelectedMode(getSelectedThemeMode());
+        setSelectedTheme(getSelectedTheme());
     });
 
     // The component
     return <ThemeSelectMenu
         themes={getThemes()}
         selectedMode={selectedMode}
-        selectedTheme={getSelectedTheme()}
+        selectedTheme={selectedTheme}
         onChangeMode={updateMode}
         onChangeTheme={updateTheme}
         stringAutomaticMode={t('theming.automatic_mode')}
@@ -65,4 +69,3 @@ function SaticoyThemeSelectMenu(props: SaticoyThemeSelectMenuProps) {
 }
 
 export default SaticoyThemeSelectMenu
-export type { SaticoyThemeSelectMenuProps }

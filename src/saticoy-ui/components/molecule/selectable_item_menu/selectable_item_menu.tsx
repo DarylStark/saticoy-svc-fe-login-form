@@ -4,14 +4,16 @@ import {
 } from '@chakra-ui/react'
 
 interface SelectableItemMenuItemProp {
-    name: string;
-    value?: string;
+    name: string
+    value?: string
+    isDiabled?: boolean
 }
 
 interface SelectableItemMenuProps {
-    items: SelectableItemMenuItemProp[];
-    onChange?: (new_value: string | string[]) => void;
-    defaultValue: string;
+    items: SelectableItemMenuItemProp[]
+    onChange?: (new_value: string | string[]) => void
+    defaultValue: string
+    value: string
 }
 
 function SelectableItemMenu(props: SelectableItemMenuProps) {
@@ -20,11 +22,14 @@ function SelectableItemMenu(props: SelectableItemMenuProps) {
             defaultValue={props.defaultValue}
             type='radio'
             onChange={props.onChange}
+            value={props.value}
         >
             {props.items.map((item: SelectableItemMenuItemProp) => (
                 <MenuItemOption
                     key={item.value || item.name}
-                    value={item.value || item.name}>
+                    value={item.value || item.name}
+                    isDisabled={item.isDiabled}
+                >
                     {item.name}
                 </MenuItemOption>
             ))}

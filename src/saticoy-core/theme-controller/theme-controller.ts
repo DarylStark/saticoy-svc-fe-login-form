@@ -60,6 +60,7 @@ class ThemeController<T extends Style = Style> {
     set selectedTheme(theme: string | undefined) {
         this._selectedTheme = theme;
         this.saver?.saveTheme(this.selectedTheme);
+        this._isAutoTheme = false;
         this.raiseForChange();
     }
 
@@ -135,7 +136,8 @@ class ThemeController<T extends Style = Style> {
     }
 
     raiseForChange() {
-        this.eventBus?.raise('theme_changed', this.currentStyle);
+        this.eventBus?.raise('mode_changed', this._selectedMode);
+        this.eventBus?.raise('theme_changed', this._selectedTheme);
     }
 }
 

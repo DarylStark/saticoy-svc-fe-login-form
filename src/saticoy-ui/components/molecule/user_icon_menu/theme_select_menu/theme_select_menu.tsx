@@ -52,15 +52,17 @@ function ThemeSelectMenu({
 
     return (
         <UserSelectableItemMenu icon={buttonIcons[props.selectedMode]}>
-            {showModeSelector && (
-                <MenuOptionGroup
+            {showModeSelector && (<>
+                <SelectableItemMenu
                     defaultValue={props.selectedMode}
-                    type='radio'
-                    onChange={onChangeMode}>
-                    <MenuItemOption value='auto' isDisabled={!modeSelectorEnabled}>{props.stringAutomaticMode}</MenuItemOption>
-                    <MenuItemOption value='dark' isDisabled={!modeSelectorEnabled}>{props.stringDarkMode}</MenuItemOption>
-                    <MenuItemOption value='light' isDisabled={!modeSelectorEnabled}>{props.stringLightMode}</MenuItemOption>
-                </MenuOptionGroup>
+                    value={props.selectedMode}
+                    onChange={onChangeMode}
+                    items={[
+                        { value: 'auto', name: props.stringAutomaticMode, isDiabled: !modeSelectorEnabled },
+                        { value: 'dark', name: props.stringDarkMode, isDiabled: !modeSelectorEnabled },
+                        { value: 'light', name: props.stringLightMode, isDiabled: !modeSelectorEnabled },
+                    ]} />
+            </>
             )}
             {showModeSelector && showThemeSelector && (
                 <MenuDivider />
@@ -68,6 +70,7 @@ function ThemeSelectMenu({
             {showThemeSelector && (
                 <SelectableItemMenu
                     defaultValue={props.selectedTheme}
+                    value={props.selectedTheme}
                     onChange={onChangeTheme}
                     items={[
                         { value: 'auto', name: props.stringDefaultTheme },

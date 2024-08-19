@@ -63,8 +63,7 @@ function LoginPageTemplate() {
                                     defaultValue={primaryForms[0].value?.toString() || ''}
                                     onChange={setForm}
                                     items={primaryForms} />
-                                <SaticoyThemeSelectMenu
-                                    themeController={context.themeController} />
+                                <SaticoyThemeSelectMenu />
                                 <SaticoyLocaleSelectMenu
                                     i18nController={context.i18nController} />
                             </>
