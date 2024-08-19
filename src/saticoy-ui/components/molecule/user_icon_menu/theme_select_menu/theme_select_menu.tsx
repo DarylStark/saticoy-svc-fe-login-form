@@ -1,9 +1,5 @@
 import { ReactElement } from 'react';
-import {
-    MenuDivider,
-    MenuOptionGroup,
-    MenuItemOption
-} from '@chakra-ui/react'
+import { MenuDivider } from '@chakra-ui/react'
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";

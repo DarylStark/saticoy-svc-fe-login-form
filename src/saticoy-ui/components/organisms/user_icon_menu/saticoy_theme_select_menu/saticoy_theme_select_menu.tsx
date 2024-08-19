@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useCallback } from 'react';
+import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeSelectMenu from '../../../molecule/user_icon_menu/theme_select_menu/theme_select_menu';
 import { ThemeMode } from '../../../../../saticoy-core/theme-controller/theme';

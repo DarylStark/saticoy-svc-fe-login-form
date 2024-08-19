@@ -33,15 +33,15 @@ const Template: StoryFn<UserSelectableItemMenuProps> =
 export const OneMenu = Template.bind({});
 OneMenu.args = {
     icon: <BsThreeDotsVertical />,
-    children: <SelectableItemMenu defaultValue='item1' items={itemsMenu1} />,
+    children: <SelectableItemMenu defaultValue='item1' items={itemsMenu1} value='item1' />,
 }
 
 export const TwoMenus = Template.bind({});
 TwoMenus.args = {
     icon: <BsThreeDotsVertical />,
     children: <>
-        <SelectableItemMenu defaultValue='item1' items={itemsMenu1} />
+        <SelectableItemMenu defaultValue='item1' items={itemsMenu1} value='item1' />
         <MenuDivider />
-        <SelectableItemMenu defaultValue='item1' items={itemsMenu1} />
+        <SelectableItemMenu defaultValue='item1' items={itemsMenu1} value='item1' />
     </>,
 }

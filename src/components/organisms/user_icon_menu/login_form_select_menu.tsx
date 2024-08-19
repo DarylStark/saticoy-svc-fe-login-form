@@ -13,6 +13,7 @@ function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
         <UserSelectableItemMenu icon={<FaRegUser />}>
             <SelectableItemMenu
                 defaultValue={props.defaultValue}
+                value={props.defaultValue}
                 onChange={props.onChange}
                 items={props.items}
             />

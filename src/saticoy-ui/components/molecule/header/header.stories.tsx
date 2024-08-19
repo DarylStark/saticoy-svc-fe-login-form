@@ -33,6 +33,7 @@ WithMenus.args = {
                     { 'name': 'Menuitem 4', value: 'example_menuitem_4' },
                 ]}
                 defaultValue='auto'
+                value='auto'
             />
         </UserSelectableItemMenu>
         <UserSelectableItemMenu icon={<BsThreeDotsVertical />}>
@@ -44,6 +45,7 @@ WithMenus.args = {
                     { 'name': 'Menuitem 4', value: 'example_menuitem_4' },
                 ]}
                 defaultValue='auto'
+                value='auto'
             />
         </UserSelectableItemMenu>
     </>

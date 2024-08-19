@@ -1,12 +1,11 @@
-import SaticoyLocaleSelectMenu, { SaticoyLocaleSelectMenuProps } from "./saticoy_locale_select_menu";
+import SaticoyLocaleSelectMenu from "./saticoy_locale_select_menu";
 import { StoryFn } from "@storybook/react";
-import { i18nController } from "../../../../globals/i18n";
 
 export default {
     title: 'Organisms/UserIconMenu/SaticoyLocaleSelectMenu',
     component: SaticoyLocaleSelectMenu,
 };
 
-const Template = () => <SaticoyLocaleSelectMenu i18nController={i18nController} />;
+const Template = () => <SaticoyLocaleSelectMenu />;
 
-export const Default: StoryFn<SaticoyLocaleSelectMenuProps> = Template.bind({});
+export const Default: StoryFn = Template.bind({});
