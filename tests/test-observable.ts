@@ -1,4 +1,4 @@
-import Observable from '../src/observable/observable';
+import Observable from '../src/saticoy-core/observable/observable';
 
 describe('Observable', () => {
     let my_observable: Observable<number>;

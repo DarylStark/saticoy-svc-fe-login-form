@@ -1,4 +1,4 @@
-import EventBus from '../src/eventbus/eventbus';
+import EventBus from '../src/saticoy-core/eventbus/eventbus';
 
 describe('EventBus', () => {
     let event_bus: EventBus;
