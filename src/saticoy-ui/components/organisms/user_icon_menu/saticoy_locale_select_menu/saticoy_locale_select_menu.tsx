@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import LocaleSelectMenu from '../../../molecule/user_icon_menu/locale_select_menu/locale_select_menu';
 import SaticoyUIContext from '../../../../context';
 
-function SaticoyLocaleSelectMenu(props: SaticoyLocaleSelectMenuProps) {
+function SaticoyLocaleSelectMenu() {
     const { t } = useTranslation();
     const context = useContext(SaticoyUIContext);
 
