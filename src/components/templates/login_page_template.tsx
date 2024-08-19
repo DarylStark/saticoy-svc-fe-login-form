@@ -12,8 +12,8 @@ import Header from '../../saticoy-ui/components/molecule/header/header'
 import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
 
 // Imports from Saticoy shared components
-import SaticoyThemeSelectMenu from '../../saticoy-ui/components/organisms/UserIconMenus/saticoy_theme_select_menu/saticoy_theme_select_menu';
-import SaticoyLocaleSelectMenu from '../../saticoy-ui/components/organisms/UserIconMenus/saticoy_locale_select_menu/saticoy_locale_select_menu';
+import SaticoyThemeSelectMenu from '../../saticoy-ui/components/organisms/user_icon_menu/saticoy_theme_select_menu/saticoy_theme_select_menu';
+import SaticoyLocaleSelectMenu from '../../saticoy-ui/components/organisms/user_icon_menu/saticoy_locale_select_menu/saticoy_locale_select_menu';
 
 // Imports from local components
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
