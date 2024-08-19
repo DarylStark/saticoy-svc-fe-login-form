@@ -1,5 +1,5 @@
 // Imports from React
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
 // Imports from React I18Next
 import { useTranslation } from 'react-i18next';
@@ -8,19 +8,12 @@ import { useTranslation } from 'react-i18next';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // Imports from shared components
-import Header from '../../saticoy-ui/components/molecule/header/header'
+import SaticoyHeader from '../../saticoy-ui/components/organisms/header/saticoy-header'
 import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
-
-// Imports from Saticoy shared components
-import SaticoyThemeSelectMenu from '../../saticoy-ui/components/organisms/user_icon_menu/saticoy_theme_select_menu/saticoy_theme_select_menu';
-import SaticoyLocaleSelectMenu from '../../saticoy-ui/components/organisms/user_icon_menu/saticoy_locale_select_menu/saticoy_locale_select_menu';
 
 // Imports from local components
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import LoginFormTypeSelectMenu from '../organisms/user_icon_menu/login_form_select_menu';
-
-// Internationalization
-import SaticoyUIContext from '../../saticoy-ui/context';
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [
@@ -49,27 +42,19 @@ function LoginPageTemplate() {
 
     const [isMobileView] = useMediaQuery('(max-width: 768px)');
 
-    // Context for Saticoy UI
-    const context = useContext(SaticoyUIContext);
-
     return (
         <Flex h='100dvh' direction='column' p='8px'>
             <Box flexGrow={0}>
-                <header>
-                    <Header
-                        menus={
-                            <>
-                                <LoginFormTypeSelectMenu
-                                    defaultValue={primaryForms[0].value?.toString() || ''}
-                                    onChange={setForm}
-                                    items={primaryForms} />
-                                <SaticoyThemeSelectMenu />
-                                <SaticoyLocaleSelectMenu
-                                    i18nController={context.i18nController} />
-                            </>
-                        }
-                    />
-                </header>
+                <SaticoyHeader
+                    extraMenus={
+                        <>
+                            <LoginFormTypeSelectMenu
+                                defaultValue={primaryForms[0].value?.toString() || ''}
+                                onChange={setForm}
+                                items={primaryForms} />
+                        </>
+                    }
+                />
             </Box>
             <Flex
                 flexGrow={1}
