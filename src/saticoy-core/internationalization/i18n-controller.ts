@@ -34,6 +34,7 @@ class I18nController<T extends LocaleData = LocaleData> {
     set selectedLocale(theme: string | undefined) {
         this._selectedLocale = theme;
         this.saver?.saveLocale(this.selectedLocale);
+        this._isAutoLocale = false;
         this.raiseForChange();
     }
 

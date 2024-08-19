@@ -21,6 +21,7 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
         <UserSelectableItemMenu icon={<HiLanguage />}>
             <SelectableItemMenu
                 defaultValue={props.selectedLocale}
+                value={props.selectedLocale}
                 onChange={onChangeLocale}
                 items={[
                     {

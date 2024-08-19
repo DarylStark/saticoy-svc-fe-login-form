@@ -66,4 +66,6 @@ i18nController.eventBus?.on('i18n_locale_changed', (key) => {
     i18n.changeLanguage(key);
 });
 
+window.tc = i18nController
+
 export { i18nController, localeRepo, i18n };

@@ -28,6 +28,4 @@ themeController.defaultTheme = "Saticoy";
 themeController.retrieveModeAutomatically();
 themeController.retrieveThemeAutomatically();
 
-window.tc = themeController
-
 export { themeController, themeRepo };
