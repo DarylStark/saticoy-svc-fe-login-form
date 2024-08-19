@@ -1,12 +1,12 @@
 import { MenuDivider } from '@chakra-ui/react';
-import UserIconMenu, { UserSelectableItemMenuProps } from './user_icon_menu';
+import UserSelectableItemMenu, { UserSelectableItemMenuProps } from './user_selectable_item_menu';
 import SelectableItemMenu from '../selectable_item_menu/selectable_item_menu';
 import { StoryFn } from "@storybook/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 export default {
     title: 'Molecules/UserSelectableItemMenu',
-    component: UserIconMenu,
+    component: UserSelectableItemMenu,
 };
 
 const itemsMenu1 = [
@@ -26,9 +26,9 @@ const itemsMenu1 = [
 
 const Template: StoryFn<UserSelectableItemMenuProps> =
     (args: UserSelectableItemMenuProps) =>
-        <UserIconMenu {...args}>
+        <UserSelectableItemMenu {...args}>
             {args.children}
-        </UserIconMenu>
+        </UserSelectableItemMenu>
 
 export const OneMenu = Template.bind({});
 OneMenu.args = {

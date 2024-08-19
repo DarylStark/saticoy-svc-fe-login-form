@@ -12,7 +12,7 @@ interface UserSelectableItemMenuProps {
     icon: React.ReactElement
 }
 
-function UserIconMenu(props: UserSelectableItemMenuProps) {
+function UserSelectableItemMenu(props: UserSelectableItemMenuProps) {
     // The component
     return (
         <Menu>
@@ -31,5 +31,5 @@ function UserIconMenu(props: UserSelectableItemMenuProps) {
     );
 }
 
-export default UserIconMenu
+export default UserSelectableItemMenu
 export type { UserSelectableItemMenuProps }

@@ -1,7 +1,7 @@
 import Header, { HeaderProps } from "./header";
 import { StoryFn } from "@storybook/react";
 
-import UserIconMenu from "../user_icon_menu/user_icon_menu";
+import UserSelectableItemMenu from "../user_icon_menu/user_selectable_item_menu";
 import SelectableItemMenu from "../selectable_item_menu/selectable_item_menu";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -24,7 +24,7 @@ export const WithMenus: StoryFn<HeaderProps> = Template.bind({});
 WithMenus.args = {
     children: 'Header title',
     menus: <>
-        <UserIconMenu icon={<FaGear />}>
+        <UserSelectableItemMenu icon={<FaGear />}>
             <SelectableItemMenu
                 items={[
                     { 'name': 'Menuitem 1', value: 'example_menuitem_1' },
@@ -34,8 +34,8 @@ WithMenus.args = {
                 ]}
                 defaultValue='auto'
             />
-        </UserIconMenu>
-        <UserIconMenu icon={<BsThreeDotsVertical />}>
+        </UserSelectableItemMenu>
+        <UserSelectableItemMenu icon={<BsThreeDotsVertical />}>
             <SelectableItemMenu
                 items={[
                     { 'name': 'Menuitem 1', value: 'example_menuitem_1' },
@@ -45,6 +45,6 @@ WithMenus.args = {
                 ]}
                 defaultValue='auto'
             />
-        </UserIconMenu>
+        </UserSelectableItemMenu>
     </>
 };

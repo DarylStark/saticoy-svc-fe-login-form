@@ -1,4 +1,4 @@
-import UserIconMenu from '../user_icon_menu';
+import UserSelectableItemMenu from '../user_selectable_item_menu';
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable_item_menu/selectable_item_menu';
 import { HiLanguage } from "react-icons/hi2";
 
@@ -18,7 +18,7 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
     };
 
     return (
-        <UserIconMenu icon={<HiLanguage />}>
+        <UserSelectableItemMenu icon={<HiLanguage />}>
             <SelectableItemMenu
                 defaultValue={props.selectedLocale}
                 onChange={onChangeLocale}
@@ -30,7 +30,7 @@ function LocaleSelectMenu(props: LocaleSelectMenuProps) {
                     ...props.locales
                 ]}
             />
-        </UserIconMenu>
+        </UserSelectableItemMenu>
     )
 }
 

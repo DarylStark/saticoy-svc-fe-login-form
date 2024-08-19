@@ -7,7 +7,7 @@ import {
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import UserIconMenu from '../user_icon_menu';
+import UserSelectableItemMenu from '../user_selectable_item_menu';
 import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable_item_menu/selectable_item_menu';
 
 interface ThemeSelectMenuProps {
@@ -51,7 +51,7 @@ function ThemeSelectMenu({
     };
 
     return (
-        <UserIconMenu icon={buttonIcons[props.selectedMode]}>
+        <UserSelectableItemMenu icon={buttonIcons[props.selectedMode]}>
             {showModeSelector && (
                 <MenuOptionGroup
                     defaultValue={props.selectedMode}
@@ -74,7 +74,7 @@ function ThemeSelectMenu({
                         ...props.themes
                     ]} />
             )}
-        </UserIconMenu>
+        </UserSelectableItemMenu>
     )
 }
 
