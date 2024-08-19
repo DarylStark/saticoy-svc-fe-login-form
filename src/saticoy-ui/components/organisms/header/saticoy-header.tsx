@@ -6,6 +6,7 @@ import SaticoyThemeSelectMenu from '../../organisms/user_icon_menu/saticoy_theme
 import SaticoyLocaleSelectMenu from '../../organisms/user_icon_menu/saticoy_locale_select_menu/saticoy_locale_select_menu';
 
 interface SaticoyHeaderProps {
+    children?: string
     extraMenus?: React.ReactNode
 }
 
@@ -20,9 +21,12 @@ function SaticoyHeader(props: SaticoyHeaderProps) {
                         <SaticoyLocaleSelectMenu />
                     </>
                 }
-            />
+            >
+                {props.children}
+            </Header>
         </header>
     )
 }
 
 export default SaticoyHeader
+export type { SaticoyHeaderProps }
