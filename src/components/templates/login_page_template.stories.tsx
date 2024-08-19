@@ -1,5 +1,4 @@
 import LoginPageTemplate from "./login_page_template"
-import { LoginPageTemplateProps } from "./login_page_template"
 import { StoryFn } from "@storybook/react";
 
 import { themeController } from '../../saticoy-ui/globals/theme';
@@ -10,9 +9,9 @@ export default {
     component: LoginPageTemplate,
 };
 
-const Template = (props: LoginPageTemplateProps) => <LoginPageTemplate {...props} />
+const Template = () => <LoginPageTemplate />
 
-export const Default: StoryFn<LoginPageTemplateProps> = Template.bind({});
+export const Default: StoryFn = Template.bind({});
 Default.args = {
     themeController: themeController,
     i18nController: i18nController

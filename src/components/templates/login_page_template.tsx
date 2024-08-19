@@ -1,5 +1,5 @@
 // Imports from React
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 // Imports from React I18Next
 import { useTranslation } from 'react-i18next';
@@ -19,13 +19,8 @@ import SaticoyLocaleSelectMenu from '../../saticoy-ui/components/organisms/UserI
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
 import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
 
-// Themes
-import ThemeController from "../../saticoy-core/theme-controller/theme-controller";
-import SaticoyChakraStyle from "../../saticoy-ui/themes/saticoy-style"
-
 // Internationalization
-import I18nController from "../../saticoy-core/internationalization/i18n-controller";
-import { i18NextLocaleData } from '../../saticoy-ui/languages/i18next_locale_data';
+import SaticoyUIContext from '../../saticoy-ui/context';
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [
@@ -43,13 +38,8 @@ const primaryForms: SelectableItemMenuItemProp[] = [
     },
 ]
 
-interface LoginPageTemplateProps {
-    themeController: ThemeController<SaticoyChakraStyle>
-    i18nController: I18nController<i18NextLocaleData>
-}
-
 // Component
-function LoginPageTemplate(props: LoginPageTemplateProps) {
+function LoginPageTemplate() {
     const { t } = useTranslation();
     const [selectedForm, setSelectedForm] = useState(LoginFormType.UsernameAndPassword);
 
@@ -58,6 +48,9 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
     }
 
     const [isMobileView] = useMediaQuery('(max-width: 768px)');
+
+    // Context for Saticoy UI
+    const context = useContext(SaticoyUIContext);
 
     return (
         <Flex h='100dvh' direction='column' p='8px'>
@@ -71,9 +64,9 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
                                     onChange={setForm}
                                     items={primaryForms} />
                                 <SaticoyThemeSelectMenu
-                                    themeController={props.themeController} />
+                                    themeController={context.themeController} />
                                 <SaticoyLocaleSelectMenu
-                                    i18nController={props.i18nController} />
+                                    i18nController={context.i18nController} />
                             </>
                         }
                     />
@@ -105,4 +98,3 @@ function LoginPageTemplate(props: LoginPageTemplateProps) {
 }
 
 export default LoginPageTemplate
-export type { LoginPageTemplateProps }

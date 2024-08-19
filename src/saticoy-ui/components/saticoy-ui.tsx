@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
+// Saticoy imports
+import SaticoyUIContext, { SaticoyUIContextProps } from '../context';
+
 // Language
 import { I18nextProvider } from 'react-i18next';
-import { i18n } from '../globals/i18n';
+import { i18n, i18nController } from '../globals/i18n';
 
 // Styling
 import { ChakraProvider, ColorModeProvider, extendTheme } from '@chakra-ui/react';
@@ -31,17 +34,25 @@ function SaticoyUI(props: SaticoyUIProps) {
         themeController.raiseForChange();
     });
 
+    // Context
+    const contextValue: SaticoyUIContextProps = {
+        themeController: themeController,
+        i18nController: i18nController,
+    };
+
     return (
-        <I18nextProvider i18n={i18n}>
-            <ChakraProvider theme={extendTheme(chakra_ui_theme || {})}>
-                <ColorModeProvider value={chakra_ui_color_mode}>
-                    <Helmet>
-                        <title>{props.pageTitle}</title>
-                    </Helmet>
-                    {props.children}
-                </ColorModeProvider>
-            </ChakraProvider>
-        </I18nextProvider>
+        <SaticoyUIContext.Provider value={contextValue}>
+            <I18nextProvider i18n={i18n}>
+                <ChakraProvider theme={extendTheme(chakra_ui_theme || {})}>
+                    <ColorModeProvider value={chakra_ui_color_mode}>
+                        <Helmet>
+                            <title>{props.pageTitle}</title>
+                        </Helmet>
+                        {props.children}
+                    </ColorModeProvider>
+                </ChakraProvider>
+            </I18nextProvider>
+        </SaticoyUIContext.Provider>
     );
 }
 
