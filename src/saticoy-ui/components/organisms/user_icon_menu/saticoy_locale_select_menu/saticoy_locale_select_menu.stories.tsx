@@ -3,7 +3,7 @@ import { StoryFn } from "@storybook/react";
 import { i18nController } from "../../../../globals/i18n";
 
 export default {
-    title: 'Organisms/UserIconMenus/SaticoyLocaleSelectMenu',
+    title: 'Organisms/UserIconMenu/SaticoyLocaleSelectMenu',
     component: SaticoyLocaleSelectMenu,
 };
 

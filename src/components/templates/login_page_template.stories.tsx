@@ -1,7 +1,7 @@
 import LoginPageTemplate from "./login_page_template"
 
 export default {
-    title: 'Templates/LoginPageTemplate',
+    title: 'Templates/LoginPage',
     component: LoginPageTemplate,
 };
 

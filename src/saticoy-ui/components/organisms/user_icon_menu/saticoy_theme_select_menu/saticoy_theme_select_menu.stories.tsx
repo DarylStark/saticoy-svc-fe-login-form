@@ -3,7 +3,7 @@ import { StoryFn } from "@storybook/react";
 import { themeController } from "../../../../globals/theme";
 
 export default {
-    title: 'Organisms/UserIconMenus/SaticoyThemeSelectMenu',
+    title: 'Organisms/UserIconMenu/SaticoyThemeSelectMenu',
     component: SaticoyThemeSelectMenu,
 };
 

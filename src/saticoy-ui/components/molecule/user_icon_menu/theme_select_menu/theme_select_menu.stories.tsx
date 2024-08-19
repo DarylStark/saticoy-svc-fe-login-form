@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 // Default component
 export default {
-    title: 'Organisms/UserIconMenus/ThemeSelectMenu',
+    title: 'Organisms/UserIconMenu/ThemeSelectMenu',
     component: ThemeSelectMenu,
 };
 

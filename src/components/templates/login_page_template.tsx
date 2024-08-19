@@ -17,7 +17,7 @@ import SaticoyLocaleSelectMenu from '../../saticoy-ui/components/organisms/user_
 
 // Imports from local components
 import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
-import LoginFormTypeSelectMenu from '../organisms/login_form_select_menu/login_form_select_menu';
+import LoginFormTypeSelectMenu from '../organisms/user_icon_menu/login_form_select_menu';
 
 // Internationalization
 import SaticoyUIContext from '../../saticoy-ui/context';

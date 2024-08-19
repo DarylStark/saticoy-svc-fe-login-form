@@ -19,7 +19,7 @@ const exampleForm: SelectableItemMenuItemProp[] = [
 
 // Default component
 export default {
-    title: 'Organisms/UserIconMenus/LoginFormSelectMenu',
+    title: 'Organisms/UserIconMenu/LoginFormSelectMenu',
     component: LoginFormSelectMenu,
 };
 

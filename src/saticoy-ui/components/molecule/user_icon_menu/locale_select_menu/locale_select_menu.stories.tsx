@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 // Default component
 export default {
-    title: 'Organisms/UserIconMenus/LocaleSelectMenu',
+    title: 'Organisms/UserIconMenu/LocaleSelectMenu',
     component: LocaleSelectMenu,
 };
 
