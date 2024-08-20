@@ -1,13 +1,4 @@
-interface Repository<T> {
-    add(item: T, name: string, aliasses?: string[]): void;
-    remove(name: string): void;
-    get(name: string): T;
-    getAlias(name: string): T;
-    getNames(include_aliases?: boolean): string[];
-    hasName(name: string): boolean;
-}
-
-class BaseRepository<T> implements Repository<T> {
+class Repository<T> {
     private _items: { [key: string]: T } = {};
     private _aliasses: { [key: string]: string } = {};
 
@@ -58,4 +49,3 @@ class BaseRepository<T> implements Repository<T> {
 }
 
 export default Repository;
-export { BaseRepository };

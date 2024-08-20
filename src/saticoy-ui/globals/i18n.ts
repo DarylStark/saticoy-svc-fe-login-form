@@ -1,4 +1,4 @@
-import { BaseRepository } from "../../saticoy-core/repository/repository";
+import Repository from "../../saticoy-core/repository/repository";
 import { BrowserRetriever, LocalPreferencesRetriever } from "../../saticoy-core/internationalization/i18n-retriever";
 import { eventBus } from './eventbus'
 import { LocalPreferencesSaver } from "../../saticoy-core/internationalization/i18n-saver";
@@ -13,7 +13,7 @@ import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
 
 // Repository
-const localeRepo = new BaseRepository<i18NextLocaleData>();
+const localeRepo = new Repository<i18NextLocaleData>();
 localeRepo.add(en_US, "en-US", ["en"]);
 localeRepo.add(nl_NL, "nl-NL", ["nl"]);
 
