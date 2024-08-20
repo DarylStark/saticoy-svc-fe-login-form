@@ -24,3 +24,4 @@ dist-ssr
 coverage/*
 
 *storybook.log
+storybook-static

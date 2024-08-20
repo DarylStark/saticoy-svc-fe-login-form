@@ -1,4 +1,4 @@
-import { BaseRepository } from '../src/repository/repository';
+import { BaseRepository } from '../src/saticoy-core/repository/repository';
 
 describe('BaseRepository', () => {
     let repository: BaseRepository<number>;

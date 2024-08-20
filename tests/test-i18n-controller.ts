@@ -1,8 +1,8 @@
-import I18nConroller from '../src/internationalization/i18n-controller';
-import { LocaleData } from '../src/internationalization/localedata';
-import Repository, { BaseRepository } from '../src/repository/repository';
-import I18nRetriever from '../src/internationalization/i18n-retriever';
-import I18nSaver from '../src/internationalization/i18n-saver';
+import I18nConroller from '../src/saticoy-core/internationalization/i18n-controller';
+import { LocaleData } from '../src/saticoy-core/internationalization/localedata';
+import Repository, { BaseRepository } from '../src/saticoy-core/repository/repository';
+import I18nRetriever from '../src/saticoy-core/internationalization/i18n-retriever';
+import I18nSaver from '../src/saticoy-core/internationalization/i18n-saver';
 
 class MockRetriever implements I18nRetriever {
     constructor(private _locale?: string) { }
