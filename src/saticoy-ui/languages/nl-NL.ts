@@ -1,4 +1,4 @@
-import { i18NextLocaleData } from "./i18next_locale_data"
+import { i18NextLocaleData } from "./i18next-locale-data"
 
 const nl_NL: i18NextLocaleData = {
     identifier: 'nl-NL',

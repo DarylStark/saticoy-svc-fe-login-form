@@ -1,5 +1,5 @@
 import LoginFormSelectMenu from "./login-form-select-menu";
-import { SelectableItemMenuItemProp } from "../../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu";
+import { SelectableItemMenuItemProp } from "../../../saticoy-ui/components/molecule/selectable-item-menu/selectable-item-menu";
 import { LoginFormType } from "../login-form-card/login-form-card";
 
 const exampleForm: SelectableItemMenuItemProp[] = [

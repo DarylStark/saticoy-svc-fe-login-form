@@ -3,8 +3,8 @@ import { MenuDivider } from '@chakra-ui/react'
 import { MdBrightness4 } from "react-icons/md";
 import { MdBrightness5 } from "react-icons/md";
 import { MdBrightnessAuto } from "react-icons/md";
-import UserSelectableItemMenu from '../user_selectable_item_menu';
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable_item_menu/selectable_item_menu';
+import UserSelectableItemMenu from '../user-selectable-item-menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable-item-menu/selectable-item-menu';
 
 interface ThemeSelectMenuProps {
     themes: SelectableItemMenuItemProp[]

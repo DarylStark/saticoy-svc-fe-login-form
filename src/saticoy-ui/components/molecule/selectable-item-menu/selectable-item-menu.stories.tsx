@@ -1,7 +1,7 @@
 import {
     Menu,
 } from '@chakra-ui/react'
-import SelectableItemMenu, { SelectableItemMenuProps, SelectableItemMenuItemProp } from "./selectable_item_menu";
+import SelectableItemMenu, { SelectableItemMenuProps, SelectableItemMenuItemProp } from "./selectable-item-menu";
 import { StoryFn } from "@storybook/react";
 
 // Testdata

@@ -1,4 +1,4 @@
-import SaticoyThemeSelectMenu from "./saticoy_theme_select_menu";
+import SaticoyThemeSelectMenu from "./saticoy-theme-select-menu";
 import { StoryFn } from "@storybook/react";
 
 export default {

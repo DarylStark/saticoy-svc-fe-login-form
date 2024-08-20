@@ -2,8 +2,8 @@
 import Header from '../../molecule/header/header'
 
 // Imports from Saticoy shared components
-import SaticoyThemeSelectMenu from '../../organisms/user_icon_menu/saticoy_theme_select_menu/saticoy_theme_select_menu';
-import SaticoyLocaleSelectMenu from '../../organisms/user_icon_menu/saticoy_locale_select_menu/saticoy_locale_select_menu';
+import SaticoyThemeSelectMenu from '../user-icon-menu/saticoy-theme-select-menu/saticoy-theme-select-menu';
+import SaticoyLocaleSelectMenu from '../user-icon-menu/saticoy-locale-select-menu/saticoy-locale-select-menu';
 
 interface SaticoyHeaderProps {
     children?: string

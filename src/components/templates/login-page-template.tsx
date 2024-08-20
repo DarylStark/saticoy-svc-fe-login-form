@@ -9,7 +9,7 @@ import { Flex, Box, useMediaQuery } from '@chakra-ui/react'
 
 // Imports from shared components
 import SaticoyHeader from '../../saticoy-ui/components/organisms/header/saticoy-header'
-import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
+import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable-item-menu/selectable-item-menu';
 
 // Imports from local components
 import LoginFormCard, { LoginFormType } from '../organisms/login-form-card/login-form-card'

@@ -1,5 +1,5 @@
 import { StoryFn } from "@storybook/react";
-import LocaleSelectMenu, { LocaleSelectMenuProps } from "./locale_select_menu";
+import LocaleSelectMenu, { LocaleSelectMenuProps } from "./locale-select-menu";
 import { action } from '@storybook/addon-actions';
 
 // Default component

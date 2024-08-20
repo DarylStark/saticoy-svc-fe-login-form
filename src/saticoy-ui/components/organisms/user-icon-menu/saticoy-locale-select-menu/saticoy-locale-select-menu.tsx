@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import LocaleSelectMenu from '../../../molecule/user_icon_menu/locale_select_menu/locale_select_menu';
+import LocaleSelectMenu from '../../../molecule/user-icon-menu/locale-select-menu/locale-select-menu';
 import SaticoyUIContext from '../../../../context';
 
 function SaticoyLocaleSelectMenu() {

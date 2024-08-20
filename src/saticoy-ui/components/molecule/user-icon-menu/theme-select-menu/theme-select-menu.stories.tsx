@@ -1,4 +1,4 @@
-import ThemeSelectMenu, { ThemeSelectMenuProps } from "./theme_select_menu";
+import ThemeSelectMenu, { ThemeSelectMenuProps } from "./theme-select-menu";
 import { StoryFn } from "@storybook/react";
 import { action } from '@storybook/addon-actions';
 

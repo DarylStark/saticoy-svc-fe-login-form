@@ -3,7 +3,7 @@ import { BrowserRetriever, LocalPreferencesRetriever } from "../../saticoy-core/
 import { eventBus } from './eventbus'
 import { LocalPreferencesSaver } from "../../saticoy-core/internationalization/i18n-saver";
 
-import { i18NextLocaleData } from '../languages/i18next_locale_data';
+import { i18NextLocaleData } from '../languages/i18next-locale-data';
 import en_US from "../languages/en-US";
 import nl_NL from "../languages/nl-NL";
 import I18nController from "../../saticoy-core/internationalization/i18n-controller";

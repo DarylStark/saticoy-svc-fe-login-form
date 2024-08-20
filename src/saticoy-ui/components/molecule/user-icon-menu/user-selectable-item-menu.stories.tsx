@@ -1,6 +1,6 @@
 import { MenuDivider } from '@chakra-ui/react';
-import UserSelectableItemMenu, { UserSelectableItemMenuProps } from './user_selectable_item_menu';
-import SelectableItemMenu from '../selectable_item_menu/selectable_item_menu';
+import UserSelectableItemMenu, { UserSelectableItemMenuProps } from './user-selectable-item-menu';
+import SelectableItemMenu from '../selectable-item-menu/selectable-item-menu';
 import { StoryFn } from "@storybook/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 

@@ -1,8 +1,8 @@
 import Header, { HeaderProps } from "./header";
 import { StoryFn } from "@storybook/react";
 
-import UserSelectableItemMenu from "../user_icon_menu/user_selectable_item_menu";
-import SelectableItemMenu from "../selectable_item_menu/selectable_item_menu";
+import UserSelectableItemMenu from "../user-icon-menu/user-selectable-item-menu";
+import SelectableItemMenu from "../selectable-item-menu/selectable-item-menu";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaGear } from "react-icons/fa6";

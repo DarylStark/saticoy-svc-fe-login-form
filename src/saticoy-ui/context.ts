@@ -5,7 +5,7 @@ import I18nController from "../saticoy-core/internationalization/i18n-controller
 import ThemeController from "../saticoy-core/theme-controller/theme-controller";
 
 // Implementationss
-import { i18NextLocaleData } from './languages/i18next_locale_data';
+import { i18NextLocaleData } from './languages/i18next-locale-data';
 import SaticoyChakraStyle from "./themes/saticoy-style";
 
 // Objects

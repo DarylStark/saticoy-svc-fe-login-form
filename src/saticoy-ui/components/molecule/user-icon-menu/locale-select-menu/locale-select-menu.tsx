@@ -1,5 +1,5 @@
-import UserSelectableItemMenu from '../user_selectable_item_menu';
-import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable_item_menu/selectable_item_menu';
+import UserSelectableItemMenu from '../user-selectable-item-menu';
+import SelectableItemMenu, { SelectableItemMenuItemProp } from '../../selectable-item-menu/selectable-item-menu';
 import { HiLanguage } from "react-icons/hi2";
 
 interface LocaleSelectMenuProps {
