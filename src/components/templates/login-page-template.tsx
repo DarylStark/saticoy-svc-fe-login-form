@@ -12,8 +12,8 @@ import SaticoyHeader from '../../saticoy-ui/components/organisms/header/saticoy-
 import { SelectableItemMenuItemProp } from '../../saticoy-ui/components/molecule/selectable_item_menu/selectable_item_menu';
 
 // Imports from local components
-import LoginFormCard, { LoginFormType } from '../organisms/login_form_card/login_form_card'
-import LoginFormTypeSelectMenu from '../organisms/user_icon_menu/login_form_select_menu';
+import LoginFormCard, { LoginFormType } from '../organisms/login-form-card/login-form-card'
+import LoginFormTypeSelectMenu from '../organisms/user-icon-menu/login-form-select-menu';
 
 // List with available forms
 const primaryForms: SelectableItemMenuItemProp[] = [

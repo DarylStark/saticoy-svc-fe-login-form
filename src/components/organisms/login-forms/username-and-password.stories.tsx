@@ -1,4 +1,4 @@
-import UsernameAndPassword from "./username_and_password"
+import UsernameAndPassword from "./username-and-password"
 
 export default {
     title: 'Organisms/LoginForms/UsernameAndPassword',

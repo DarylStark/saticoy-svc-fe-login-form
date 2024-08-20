@@ -2,7 +2,7 @@
 import SaticoyUI from '../../../saticoy-ui/components/saticoy-ui';
 
 // Template
-import LoginPageTemplate from '../../templates/login_page_template';
+import LoginPageTemplate from '../../templates/login-page-template';
 
 // Translation
 import { useTranslation } from 'react-i18next';

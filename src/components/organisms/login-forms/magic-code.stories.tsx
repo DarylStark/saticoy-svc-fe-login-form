@@ -1,4 +1,4 @@
-import MagicCode from "./magic_code"
+import MagicCode from "./magic-code"
 
 export default {
     title: 'Organisms/LoginForms/MagicCode',

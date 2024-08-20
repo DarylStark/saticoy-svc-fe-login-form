@@ -1,4 +1,4 @@
-import LoginPageTemplate from "./login_page_template"
+import LoginPageTemplate from "./login-page-template"
 
 export default {
     title: 'Templates/LoginPage',

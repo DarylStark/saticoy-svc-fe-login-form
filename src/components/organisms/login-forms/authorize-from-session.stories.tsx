@@ -1,4 +1,4 @@
-import AuthorizeFromSession from "./authorize_from_session"
+import AuthorizeFromSession from "./authorize-from-session"
 
 export default {
     title: 'Organisms/LoginForms/AuthorizeFromSession',

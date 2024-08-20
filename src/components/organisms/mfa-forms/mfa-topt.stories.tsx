@@ -1,4 +1,4 @@
-import MFATOPT from "./mfa_topt"
+import MFATOPT from "./mfa-topt"
 
 export default {
     title: 'Organisms/LoginMFAForms/MFA TOPT',

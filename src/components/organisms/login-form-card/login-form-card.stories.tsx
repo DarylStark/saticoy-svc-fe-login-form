@@ -1,4 +1,4 @@
-import LoginFormCard, { LoginFormCardProps, LoginFormType } from "./login_form_card";
+import LoginFormCard, { LoginFormCardProps, LoginFormType } from "./login-form-card";
 import { StoryFn } from "@storybook/react";
 
 export default {
