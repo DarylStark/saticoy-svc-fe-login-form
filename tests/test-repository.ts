@@ -1,10 +1,10 @@
-import { BaseRepository } from '../src/saticoy-core/repository/repository';
+import Repository from '../src/saticoy-core/repository/repository';
 
-describe('BaseRepository', () => {
-    let repository: BaseRepository<number>;
+describe('Repository', () => {
+    let repository: Repository<number>;
 
     beforeEach(() => {
-        repository = new BaseRepository<number>();
+        repository = new Repository<number>();
     });
 
     it('Should add item', () => {

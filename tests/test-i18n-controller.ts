@@ -1,6 +1,6 @@
 import I18nConroller from '../src/saticoy-core/internationalization/i18n-controller';
 import { LocaleData } from '../src/saticoy-core/internationalization/localedata';
-import Repository, { BaseRepository } from '../src/saticoy-core/repository/repository';
+import Repository from '../src/saticoy-core/repository/repository';
 import I18nRetriever from '../src/saticoy-core/internationalization/i18n-retriever';
 import I18nSaver from '../src/saticoy-core/internationalization/i18n-saver';
 
@@ -33,7 +33,7 @@ describe('I18nController', () => {
     let i18n_repository: Repository<LocaleData>;
 
     beforeEach(() => {
-        i18n_repository = new BaseRepository<LocaleData>();
+        i18n_repository = new Repository<LocaleData>();
         i18n_controller = new I18nConroller(
             i18n_repository,
             undefined,

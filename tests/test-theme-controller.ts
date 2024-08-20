@@ -1,4 +1,4 @@
-import { BaseRepository } from '../src/saticoy-core/repository/repository';
+import Repository from '../src/saticoy-core/repository/repository';
 import { Theme, Style, ThemeMode } from '../src/saticoy-core/theme-controller/theme';
 import ThemeController from '../src/saticoy-core/theme-controller/theme-controller';
 import ThemeRetriever from '../src/saticoy-core/theme-controller/theme-retriever';
@@ -59,7 +59,7 @@ const MockThemeLight: Theme = {
 }
 
 describe('Mode control', () => {
-    const repository = new BaseRepository<Theme<Style>>();
+    const repository = new Repository<Theme<Style>>();
     let controller: ThemeController<Style>;
 
     beforeEach(() => {
@@ -117,7 +117,7 @@ describe('Mode control', () => {
 });
 
 describe('Theme control', () => {
-    const repository = new BaseRepository<Theme<Style>>();
+    const repository = new Repository<Theme<Style>>();
     let controller: ThemeController<Style>;
 
     beforeEach(() => {
@@ -169,7 +169,7 @@ describe('Theme control', () => {
 });
 
 describe('Style retrieval', () => {
-    const repository = new BaseRepository<Theme<Style>>();
+    const repository = new Repository<Theme<Style>>();
     let controller: ThemeController<Style>;
 
     beforeEach(() => {
@@ -217,7 +217,7 @@ describe('Style retrieval', () => {
 });
 
 describe('Theme styles', () => {
-    const repository = new BaseRepository<Theme<Style>>();
+    const repository = new Repository<Theme<Style>>();
     let controller: ThemeController<Style>;
 
     beforeEach(() => {
