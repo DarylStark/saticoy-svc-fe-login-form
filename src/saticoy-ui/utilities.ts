@@ -7,7 +7,6 @@ const extendLanguage = (locale: string, data: {
 }) => {
     const localeObject = i18nController.localeRepository.get(locale);
     localeObject.i18next.translation = { ...localeObject.i18next.translation, ...data };
-    console.log(localeObject.i18next.translation);
 };
 
 export { extendLanguage }
