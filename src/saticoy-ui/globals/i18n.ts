@@ -52,7 +52,7 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: i18nController.defaultLocale,
-        debug: true,
+        debug: import.meta.env.MODE != 'production',
         interpolation: {
             escapeValue: false,
         },
