@@ -7,21 +7,10 @@ const en_US: i18NextLocaleData = {
             "application": {
                 "name": "Saticoy",
             },
-            "login_form": {
-                "tagline": "Login to get access to your account",
-                "username": "Username",
-                "password": "Password",
-                "login": "Login",
-                "email": "E-mail address",
-                "magic_code": "Received magic code"
-            },
             "locales": {
                 "automatic_locale": "Automatic language",
                 "nl-NL": "Dutch (The Netherlands)",
                 "en-US": "English (United States)"
-            },
-            "login_page": {
-                "title": "Login to Saticoy",
             },
             "theming": {
                 "default_theme": "Default theme",
