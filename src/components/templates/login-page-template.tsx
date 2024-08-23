@@ -51,6 +51,7 @@ function LoginPageTemplate() {
                             <LoginFormTypeSelectMenu
                                 defaultValue={primaryForms[0].value?.toString() || ''}
                                 onChange={setForm}
+                                value={selectedForm}
                                 items={primaryForms} />
                         </>
                     }

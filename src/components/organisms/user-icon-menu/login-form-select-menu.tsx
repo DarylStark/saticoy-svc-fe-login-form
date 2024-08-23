@@ -6,6 +6,7 @@ interface LoginFormSelectMenuProps {
     onChange?: (new_value: string | string[]) => void,
     items: SelectableItemMenuItemProp[],
     defaultValue: string
+    value: string
 }
 
 function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
@@ -13,7 +14,7 @@ function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
         <UserSelectableItemMenu icon={<FaRegUser />}>
             <SelectableItemMenu
                 defaultValue={props.defaultValue}
-                value={props.defaultValue}
+                value={props.value}
                 onChange={props.onChange}
                 items={props.items}
             />
