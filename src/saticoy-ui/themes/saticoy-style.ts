@@ -1,4 +1,4 @@
-import { Style } from "../../saticoy-core/theme-controller/theme"
+import { Style } from "@saticoy/core"
 
 
 type ChakraTheme = {

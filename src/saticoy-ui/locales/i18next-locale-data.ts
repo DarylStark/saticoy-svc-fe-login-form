@@ -1,4 +1,4 @@
-import { LocaleData } from "../../saticoy-core/internationalization/localedata"
+import { LocaleData } from "@saticoy/core"
 
 export type i18NextLocaleData = LocaleData & {
     i18next: {

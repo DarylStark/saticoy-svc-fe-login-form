@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeSelectMenu from '../../../molecule/user-icon-menu/theme-select-menu/theme-select-menu';
-import { ThemeMode } from '../../../../../saticoy-core/theme-controller/theme';
+import { ThemeMode } from '@saticoy/core';
 import SaticoyUIContext from '../../../../context';
 
 function SaticoyThemeSelectMenu() {

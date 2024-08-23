@@ -1,12 +1,15 @@
-import Repository from "../../saticoy-core/repository/repository";
-import { BrowserRetriever, LocalPreferencesRetriever } from "../../saticoy-core/internationalization/i18n-retriever";
+import {
+    Repository,
+    I18nLocalPreferencesSaver,
+    I18nBrowserRetriever,
+    I18nLocalPreferencesRetriever,
+    I18nController
+} from "@saticoy/core";
 import { eventBus } from './eventbus'
-import { LocalPreferencesSaver } from "../../saticoy-core/internationalization/i18n-saver";
 
 import { i18NextLocaleData } from '../locales/i18next-locale-data';
 import en_US from "../locales/en-US";
 import nl_NL from "../locales/nl-NL";
-import I18nController from "../../saticoy-core/internationalization/i18n-controller";
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -22,11 +25,11 @@ const i18nController = new I18nController<i18NextLocaleData>(
     localeRepo,
     eventBus,
     [
-        new LocalPreferencesRetriever("locale"),
-        new BrowserRetriever(),
+        new I18nLocalPreferencesRetriever("locale"),
+        new I18nBrowserRetriever(),
     ]
 );
-i18nController.saver = new LocalPreferencesSaver("locale");
+i18nController.saver = new I18nLocalPreferencesSaver("locale");
 i18nController.defaultLocale = "en-US";
 i18nController.retrieveLocaleAutomatically();
 
