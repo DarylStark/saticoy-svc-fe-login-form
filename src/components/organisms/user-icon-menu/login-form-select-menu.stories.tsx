@@ -25,6 +25,7 @@ export default {
 
 const Template = () => <LoginFormSelectMenu
     items={exampleForm}
+    value={LoginFormType.UsernameAndPassword}
     defaultValue={LoginFormType.UsernameAndPassword} />;
 
 export const Default = Template.bind({});
