@@ -1,5 +1,5 @@
 import LoginFormSelectMenu from "./login-form-select-menu";
-import { SelectableItemMenuItemProp } from "../../../saticoy-ui/components/molecule/selectable-item-menu/selectable-item-menu";
+import { SelectableItemMenuItemProp } from '@saticoy/ui';
 import { LoginFormType } from "../login-form-card/login-form-card";
 
 const exampleForm: SelectableItemMenuItemProp[] = [
@@ -25,6 +25,7 @@ export default {
 
 const Template = () => <LoginFormSelectMenu
     items={exampleForm}
+    value={LoginFormType.UsernameAndPassword}
     defaultValue={LoginFormType.UsernameAndPassword} />;
 
 export const Default = Template.bind({});
