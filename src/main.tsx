@@ -4,7 +4,7 @@ import LoginPage from './components/pages/login-page'
 import en_US from './locales/en-US'
 import nl_NL from './locales/nl-NL'
 
-import { extendLanguage } from './saticoy-ui/utilities'
+import { extendLanguage } from '@saticoy/ui'
 
 extendLanguage('en-US', en_US);
 extendLanguage('nl-NL', nl_NL);
