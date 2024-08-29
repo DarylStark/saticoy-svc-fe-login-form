@@ -1,12 +1,12 @@
 import { SelectableItemMenu, SelectableItemMenuItemProp } from '@saticoy/ui';
 import { UserSelectableItemMenu } from '@saticoy/ui';
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser } from 'react-icons/fa';
 
 interface LoginFormSelectMenuProps {
-    onChange?: (new_value: string | string[]) => void,
-    items: SelectableItemMenuItemProp[],
-    defaultValue: string
-    value: string
+    onChange?: (new_value: string | string[]) => void;
+    items: SelectableItemMenuItemProp[];
+    defaultValue: string;
+    value: string;
 }
 
 function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
@@ -19,7 +19,7 @@ function LoginFormSelectMenu(props: LoginFormSelectMenuProps) {
                 items={props.items}
             />
         </UserSelectableItemMenu>
-    )
+    );
 }
 
 export default LoginFormSelectMenu;

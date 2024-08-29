@@ -1,21 +1,21 @@
-import LoginFormSelectMenu from "./login-form-select-menu";
+import LoginFormSelectMenu from './login-form-select-menu';
 import { SelectableItemMenuItemProp } from '@saticoy/ui';
-import { LoginFormType } from "../login-form-card/login-form-card";
+import { LoginFormType } from '../login-form-card/login-form-card';
 
 const exampleForm: SelectableItemMenuItemProp[] = [
     {
         value: LoginFormType.UsernameAndPassword,
-        name: 'Username and password'
+        name: 'Username and password',
     },
     {
         value: LoginFormType.AuthorizeFromSession,
-        name: 'Authorize from logged in session'
+        name: 'Authorize from logged in session',
     },
     {
         value: LoginFormType.MagicCode,
-        name: 'Magic code in email'
+        name: 'Magic code in email',
     },
-]
+];
 
 // Default component
 export default {
@@ -23,9 +23,12 @@ export default {
     component: LoginFormSelectMenu,
 };
 
-const Template = () => <LoginFormSelectMenu
-    items={exampleForm}
-    value={LoginFormType.UsernameAndPassword}
-    defaultValue={LoginFormType.UsernameAndPassword} />;
+const Template = () => (
+    <LoginFormSelectMenu
+        items={exampleForm}
+        value={LoginFormType.UsernameAndPassword}
+        defaultValue={LoginFormType.UsernameAndPassword}
+    />
+);
 
 export const Default = Template.bind({});
