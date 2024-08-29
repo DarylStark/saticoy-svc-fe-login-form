@@ -1,4 +1,4 @@
-import pkg from "@saticoy/core";
+import pkg from '@saticoy/core';
 
 const { I18nController } = pkg;
 
