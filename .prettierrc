@@ -6,5 +6,5 @@
     "bracketSpacing": true,
     "singleAttributePerLine": true,
     "useTabs": false,
-    "tabWidth": 2
+    "tabWidth": 4
 }
