@@ -4,10 +4,11 @@ import {
     FormControl,
     Center,
     VStack,
-    PinInput, PinInputField
-} from '@chakra-ui/react'
+    PinInput,
+    PinInputField,
+} from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { GrLogin } from "react-icons/gr";
+import { GrLogin } from 'react-icons/gr';
 import { FormEvent } from 'react';
 
 interface MFATOTPProps {
@@ -19,11 +20,16 @@ function MFATOTPForm(props: MFATOTPProps) {
 
     return (
         <form onSubmit={props.onSubmit}>
-            <VStack spacing={4} paddingTop={4}>
+            <VStack
+                spacing={4}
+                paddingTop={4}>
                 <Box w='100%'>
                     <FormControl>
                         <Center>
-                            <PinInput size='lg' otp={true} autoFocus={true}>
+                            <PinInput
+                                size='lg'
+                                otp={true}
+                                autoFocus={true}>
                                 <PinInputField />
                                 <PinInputField />
                                 <PinInputField />
@@ -34,18 +40,20 @@ function MFATOTPForm(props: MFATOTPProps) {
                         </Center>
                     </FormControl>
                 </Box>
-                <Box w='100%' justifyContent='center' display='flex'>
+                <Box
+                    w='100%'
+                    justifyContent='center'
+                    display='flex'>
                     <Button
                         type='submit'
                         colorScheme='blue'
-                        rightIcon={<GrLogin />}
-                    >
+                        rightIcon={<GrLogin />}>
                         {t('login_form.login')}
                     </Button>
                 </Box>
             </VStack>
         </form>
-    )
+    );
 }
 
-export default MFATOTPForm
+export default MFATOTPForm;
