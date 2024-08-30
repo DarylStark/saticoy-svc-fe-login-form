@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@saticoy/core": "^0.0.2-dev",
-    "@saticoy/ui": "^0.0.5-dev",
+    "@saticoy/ui": "^0.0.6-dev",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
