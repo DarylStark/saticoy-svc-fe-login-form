@@ -18,7 +18,7 @@ module.exports = {
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
         indent: ['error', 4],
-        'no-unused-vars': 'error',
+        '@typescript-eslint/no-unused-vars': 'error',
         eqeqeq: ['error', 'always'],
         'no-console': 'error',
         'no-var': 'error',
