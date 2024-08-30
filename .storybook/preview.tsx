@@ -1,8 +1,22 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import { themeController } from '../src/saticoy-ui/globals/theme';
+import { themeController, i18nController } from '@saticoy/ui';
 import { ThemeMode } from '@saticoy/core';
-import SaticoyUI from '../src/saticoy-ui/components/saticoy-ui';
+import SaticoyUI from '@saticoy/ui';
+
+import { extendLanguage } from '@saticoy/ui';
+
+import en_US from '../src/locales/en-US';
+import nl_NL from '../src/locales/nl-NL';
+
+// Import fonts. We need to do this to make sure the fonts are loaded before
+// the app is rendered.
+import 'typeface-roboto-slab/index.css';
+import 'typeface-inter/inter.css';
+
+// Extend the languages
+extendLanguage('en-US', en_US);
+extendLanguage('nl-NL', nl_NL);
 
 const preview: Preview = {
     decorators: [
